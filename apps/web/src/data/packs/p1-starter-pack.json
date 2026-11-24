@@ -1,0 +1,689 @@
+{
+  "packId": "ccea-p1-starter-pack",
+  "version": "1.0.0",
+  "title": "P1 Starter Quest: Sounds, Blending & Ten-Frames",
+  "description": "Twelve Northern Ireland CCEA Foundation Stage Primary 1 exercises covering Linguistic Phonics Stage 1 initial sounds (s, a, t, p, i, n), CVC blending, and Ten-Frames 1–10.",
+  "yearGroup": "P1",
+  "locale": "en-GB-NI",
+  "skillIds": [
+    "ccea-p1-lit-initial-satpin",
+    "ccea-p1-lit-cvc-blend-satpin",
+    "ccea-p1-num-ten-frames-1-10"
+  ],
+  "exercises": [
+    {
+      "id": "p1-init-01",
+      "type": "initial-sound-match",
+      "mode": "sound-to-picture",
+      "skillId": "ccea-p1-lit-initial-satpin",
+      "yearGroup": "P1",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "targetSound": "s",
+      "targetSoundAudioKey": "phoneme/s",
+      "stimulus": {
+        "label": "sun",
+        "emoji": "☀️",
+        "audioKey": "word/sun"
+      },
+      "prompt": {
+        "text": "Tap the space picture that starts with the /s/ sound.",
+        "audioKey": "prompt/p1-init-01",
+        "visualCueEmoji": "🚀"
+      },
+      "hint": {
+        "text": "Listen closely: sss-un starts with /s/!",
+        "audioKey": "hint/p1-init-01"
+      },
+      "feedback": {
+        "correctText": "Brilliant! Sun starts with /s/!",
+        "correctAudioKey": "feedback/correct-p1-init-01",
+        "encourageText": "Good try! Listen to the first sound of each picture.",
+        "encourageAudioKey": "feedback/encourage-initial-sound"
+      },
+      "offlineParentTip": "Look out the window together and spot things that start with a pure 'ssss' sound like sun, sky, or socks.",
+      "options": [
+        {
+          "id": "opt-sun",
+          "label": "sun",
+          "emoji": "☀️",
+          "audioKey": "word/sun"
+        },
+        {
+          "id": "opt-moon",
+          "label": "moon",
+          "emoji": "🌙",
+          "audioKey": "word/moon"
+        },
+        {
+          "id": "opt-rocket",
+          "label": "rocket",
+          "emoji": "🚀",
+          "audioKey": "word/rocket"
+        },
+        {
+          "id": "opt-comet",
+          "label": "comet",
+          "emoji": "☄️",
+          "audioKey": "word/comet"
+        }
+      ],
+      "correctOptionId": "opt-sun"
+    },
+    {
+      "id": "p1-init-02",
+      "type": "initial-sound-match",
+      "mode": "picture-to-grapheme",
+      "skillId": "ccea-p1-lit-initial-satpin",
+      "yearGroup": "P1",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "targetSound": "a",
+      "targetSoundAudioKey": "phoneme/a",
+      "stimulus": {
+        "label": "ant",
+        "emoji": "🐜",
+        "audioKey": "word/ant"
+      },
+      "prompt": {
+        "text": "Which letter makes the first sound in ant?",
+        "audioKey": "prompt/p1-init-02",
+        "visualCueEmoji": "🐜"
+      },
+      "hint": {
+        "text": "Say a-a-ant! Tap the letter for /a/.",
+        "audioKey": "hint/p1-init-02"
+      },
+      "feedback": {
+        "correctText": "Well done! Ant starts with /a/!",
+        "correctAudioKey": "feedback/correct-p1-init-02",
+        "encourageText": "Almost! Say ant slowly and listen to the very first sound.",
+        "encourageAudioKey": "feedback/encourage-initial-sound"
+      },
+      "offlineParentTip": "Practise the short /a/ sound at snack time with words like apple and ant—remind your child to open their mouth wide for /a/.",
+      "options": [
+        {
+          "id": "opt-a",
+          "label": "a",
+          "displayText": "a",
+          "audioKey": "phoneme/a"
+        },
+        {
+          "id": "opt-s",
+          "label": "s",
+          "displayText": "s",
+          "audioKey": "phoneme/s"
+        },
+        {
+          "id": "opt-t",
+          "label": "t",
+          "displayText": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "id": "opt-p",
+          "label": "p",
+          "displayText": "p",
+          "audioKey": "phoneme/p"
+        }
+      ],
+      "correctOptionId": "opt-a"
+    },
+    {
+      "id": "p1-init-03",
+      "type": "initial-sound-match",
+      "mode": "sound-to-picture",
+      "skillId": "ccea-p1-lit-initial-satpin",
+      "yearGroup": "P1",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "emerging",
+      "targetSound": "t",
+      "targetSoundAudioKey": "phoneme/t",
+      "stimulus": {
+        "label": "taxi",
+        "emoji": "🚕",
+        "audioKey": "word/taxi"
+      },
+      "prompt": {
+        "text": "Tap the vehicle that starts with the /t/ sound.",
+        "audioKey": "prompt/p1-init-03",
+        "visualCueEmoji": "🛣️"
+      },
+      "hint": {
+        "text": "Listen for the crisp /t/ at the start of t-t-taxi.",
+        "audioKey": "hint/p1-init-03"
+      },
+      "feedback": {
+        "correctText": "Super! Taxi starts with /t/!",
+        "correctAudioKey": "feedback/correct-p1-init-03",
+        "encourageText": "Have another go! Tap the speaker to hear /t/ again.",
+        "encourageAudioKey": "feedback/encourage-initial-sound"
+      },
+      "offlineParentTip": "Keep the /t/ sound short and quiet (no 'tuh' on the end). Tap the table gently every time you hear /t/ in a word.",
+      "options": [
+        {
+          "id": "opt-bus",
+          "label": "bus",
+          "emoji": "🚌",
+          "audioKey": "word/bus"
+        },
+        {
+          "id": "opt-taxi",
+          "label": "taxi",
+          "emoji": "🚕",
+          "audioKey": "word/taxi"
+        },
+        {
+          "id": "opt-van",
+          "label": "van",
+          "emoji": "🚐",
+          "audioKey": "word/van"
+        },
+        {
+          "id": "opt-car",
+          "label": "car",
+          "emoji": "🚗",
+          "audioKey": "word/car"
+        }
+      ],
+      "correctOptionId": "opt-taxi"
+    },
+    {
+      "id": "p1-init-04",
+      "type": "initial-sound-match",
+      "mode": "picture-to-grapheme",
+      "skillId": "ccea-p1-lit-initial-satpin",
+      "yearGroup": "P1",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "targetSound": "p",
+      "targetSoundAudioKey": "phoneme/p",
+      "stimulus": {
+        "label": "pig",
+        "emoji": "🐷",
+        "audioKey": "word/pig"
+      },
+      "prompt": {
+        "text": "Which letter makes the first sound in pig?",
+        "audioKey": "prompt/p1-init-04",
+        "visualCueEmoji": "🐷"
+      },
+      "hint": {
+        "text": "Pop your lips together for p-p-pig!",
+        "audioKey": "hint/p1-init-04"
+      },
+      "feedback": {
+        "correctText": "Fantastic! Pig starts with /p/!",
+        "correctAudioKey": "feedback/correct-p1-init-04",
+        "encourageText": "Try again! Feel your lips pop at the start of pig.",
+        "encourageAudioKey": "feedback/encourage-initial-sound"
+      },
+      "offlineParentTip": "Hold a tissue lightly in front of your lips while saying /p/ so your child can see the tiny puff of air that makes a clean /p/ sound.",
+      "options": [
+        {
+          "id": "opt-s",
+          "label": "s",
+          "displayText": "s",
+          "audioKey": "phoneme/s"
+        },
+        {
+          "id": "opt-i",
+          "label": "i",
+          "displayText": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "id": "opt-p",
+          "label": "p",
+          "displayText": "p",
+          "audioKey": "phoneme/p"
+        },
+        {
+          "id": "opt-n",
+          "label": "n",
+          "displayText": "n",
+          "audioKey": "phoneme/n"
+        }
+      ],
+      "correctOptionId": "opt-p"
+    },
+    {
+      "id": "p1-init-05",
+      "type": "initial-sound-match",
+      "mode": "picture-to-grapheme",
+      "skillId": "ccea-p1-lit-initial-satpin",
+      "yearGroup": "P1",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "targetSound": "i",
+      "targetSoundAudioKey": "phoneme/i",
+      "stimulus": {
+        "label": "insect",
+        "emoji": "🪲",
+        "audioKey": "word/insect"
+      },
+      "prompt": {
+        "text": "A dinosaur spotted an insect! Tap the letter for the first sound in insect.",
+        "audioKey": "prompt/p1-init-05",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "Listen to the short /i/ at the beginning of i-i-insect.",
+        "audioKey": "hint/p1-init-05"
+      },
+      "feedback": {
+        "correctText": "Spot on! Insect starts with /i/!",
+        "correctAudioKey": "feedback/correct-p1-init-05",
+        "encourageText": "Nice try! Say insect again and listen for the short /i/.",
+        "encourageAudioKey": "feedback/encourage-initial-sound"
+      },
+      "offlineParentTip": "Contrast short /i/ (insect, in, it) with short /a/ (ant, at) by placing two bowls labelled 'i' and 'a' and sorting tiny toys or pictures.",
+      "options": [
+        {
+          "id": "opt-a",
+          "label": "a",
+          "displayText": "a",
+          "audioKey": "phoneme/a"
+        },
+        {
+          "id": "opt-i",
+          "label": "i",
+          "displayText": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "id": "opt-t",
+          "label": "t",
+          "displayText": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "id": "opt-n",
+          "label": "n",
+          "displayText": "n",
+          "audioKey": "phoneme/n"
+        }
+      ],
+      "correctOptionId": "opt-i"
+    },
+    {
+      "id": "p1-init-06",
+      "type": "initial-sound-match",
+      "mode": "sound-to-picture",
+      "skillId": "ccea-p1-lit-initial-satpin",
+      "yearGroup": "P1",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "targetSound": "n",
+      "targetSoundAudioKey": "phoneme/n",
+      "stimulus": {
+        "label": "nest",
+        "emoji": "🪺",
+        "audioKey": "word/nest"
+      },
+      "prompt": {
+        "text": "Help the dinosaur find the picture that starts with /n/.",
+        "audioKey": "prompt/p1-init-06",
+        "visualCueEmoji": "🦖"
+      },
+      "hint": {
+        "text": "Stretch out the sound: nnnn-est!",
+        "audioKey": "hint/p1-init-06"
+      },
+      "feedback": {
+        "correctText": "Roar-some! Nest starts with /n/!",
+        "correctAudioKey": "feedback/correct-p1-init-06",
+        "encourageText": "Keep going! Tap the sound button to hear /n/ once more.",
+        "encourageAudioKey": "feedback/encourage-initial-sound"
+      },
+      "offlineParentTip": "Practise stretching continuous sounds like /s/ and /n/ during bath time by tracing the letters with a wet finger on the tiles.",
+      "options": [
+        {
+          "id": "opt-egg",
+          "label": "egg",
+          "emoji": "🥚",
+          "audioKey": "word/egg"
+        },
+        {
+          "id": "opt-leaf",
+          "label": "leaf",
+          "emoji": "🍃",
+          "audioKey": "word/leaf"
+        },
+        {
+          "id": "opt-nest",
+          "label": "nest",
+          "emoji": "🪺",
+          "audioKey": "word/nest"
+        },
+        {
+          "id": "opt-rock",
+          "label": "rock",
+          "emoji": "🪨",
+          "audioKey": "word/rock"
+        }
+      ],
+      "correctOptionId": "opt-nest"
+    },
+    {
+      "id": "p1-cvc-01",
+      "type": "cvc-blending",
+      "skillId": "ccea-p1-lit-cvc-blend-satpin",
+      "yearGroup": "P1",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "targetWord": "sat",
+      "wordAudioKey": "word/sat",
+      "phonemes": [
+        { "grapheme": "s", "audioKey": "phoneme/s" },
+        { "grapheme": "a", "audioKey": "phoneme/a" },
+        { "grapheme": "t", "audioKey": "phoneme/t" }
+      ],
+      "prompt": {
+        "text": "Tap each sound tile, blend s-a-t together, and tap the matching card!",
+        "audioKey": "prompt/p1-cvc-01",
+        "visualCueEmoji": "🐱"
+      },
+      "hint": {
+        "text": "Slide the sounds smoothly: sss-aaa-t ... sat!",
+        "audioKey": "hint/p1-cvc-01"
+      },
+      "feedback": {
+        "correctText": "Brilliant blending! s-a-t makes sat!",
+        "correctAudioKey": "feedback/correct-p1-cvc-01",
+        "encourageText": "Try tapping each letter tile in order from left to right.",
+        "encourageAudioKey": "feedback/encourage-cvc-blending"
+      },
+      "offlineParentTip": "Write s, a, and t on three bottle tops. Push them closer together on the table as your child blends 's-a-t' into 'sat'.",
+      "options": [
+        {
+          "id": "opt-sat",
+          "label": "sat",
+          "displayText": "sat",
+          "emoji": "🐱",
+          "audioKey": "word/sat"
+        },
+        {
+          "id": "opt-pin",
+          "label": "pin",
+          "displayText": "pin",
+          "emoji": "📌",
+          "audioKey": "word/pin"
+        },
+        {
+          "id": "opt-tap",
+          "label": "tap",
+          "displayText": "tap",
+          "emoji": "🚰",
+          "audioKey": "word/tap"
+        },
+        {
+          "id": "opt-pan",
+          "label": "pan",
+          "displayText": "pan",
+          "emoji": "🍳",
+          "audioKey": "word/pan"
+        }
+      ],
+      "correctOptionId": "opt-sat"
+    },
+    {
+      "id": "p1-cvc-02",
+      "type": "cvc-blending",
+      "skillId": "ccea-p1-lit-cvc-blend-satpin",
+      "yearGroup": "P1",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "developing",
+      "targetWord": "pin",
+      "wordAudioKey": "word/pin",
+      "phonemes": [
+        { "grapheme": "p", "audioKey": "phoneme/p" },
+        { "grapheme": "i", "audioKey": "phoneme/i" },
+        { "grapheme": "n", "audioKey": "phoneme/n" }
+      ],
+      "prompt": {
+        "text": "Blend the three sounds p-i-n to unlock the space badge!",
+        "audioKey": "prompt/p1-cvc-02",
+        "visualCueEmoji": "🪐"
+      },
+      "hint": {
+        "text": "Say the sounds faster together: p-i-n ... pin!",
+        "audioKey": "hint/p1-cvc-02"
+      },
+      "feedback": {
+        "correctText": "Blast off! p-i-n blends to pin!",
+        "correctAudioKey": "feedback/correct-p1-cvc-02",
+        "encourageText": "Have another go! Tap the Blend button to hear the sounds flow together.",
+        "encourageAudioKey": "feedback/encourage-cvc-blending"
+      },
+      "offlineParentTip": "Swap just the first letter of 'pin' with 't' (tin) on paper so your child sees how changing one sound builds a brand-new word.",
+      "options": [
+        {
+          "id": "opt-tin",
+          "label": "tin",
+          "displayText": "tin",
+          "emoji": "🥫",
+          "audioKey": "word/tin"
+        },
+        {
+          "id": "opt-pin",
+          "label": "pin",
+          "displayText": "pin",
+          "emoji": "📌",
+          "audioKey": "word/pin"
+        },
+        {
+          "id": "opt-nap",
+          "label": "nap",
+          "displayText": "nap",
+          "emoji": "😴",
+          "audioKey": "word/nap"
+        },
+        {
+          "id": "opt-pan",
+          "label": "pan",
+          "displayText": "pan",
+          "emoji": "🍳",
+          "audioKey": "word/pan"
+        }
+      ],
+      "correctOptionId": "opt-pin"
+    },
+    {
+      "id": "p1-cvc-03",
+      "type": "cvc-blending",
+      "skillId": "ccea-p1-lit-cvc-blend-satpin",
+      "yearGroup": "P1",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "targetWord": "tap",
+      "wordAudioKey": "word/tap",
+      "phonemes": [
+        { "grapheme": "t", "audioKey": "phoneme/t" },
+        { "grapheme": "a", "audioKey": "phoneme/a" },
+        { "grapheme": "p", "audioKey": "phoneme/p" }
+      ],
+      "prompt": {
+        "text": "The thirsty dinosaur needs water! Blend t-a-p and tap the matching card.",
+        "audioKey": "prompt/p1-cvc-03",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "Start with /t/, add /a/, finish with /p/: tap!",
+        "audioKey": "hint/p1-cvc-03"
+      },
+      "feedback": {
+        "correctText": "Great reading! t-a-p makes tap!",
+        "correctAudioKey": "feedback/correct-p1-cvc-03",
+        "encourageText": "Listen to the end sound /p/ and try again!",
+        "encourageAudioKey": "feedback/encourage-cvc-blending"
+      },
+      "offlineParentTip": "Play 'Word Chain' using only s, a, t, p, i, n: turn 'tap' into 'pat', 'pan', 'pin', 'pit', and 'sit' by swapping one letter at a time.",
+      "options": [
+        {
+          "id": "opt-tin",
+          "label": "tin",
+          "displayText": "tin",
+          "emoji": "🥫",
+          "audioKey": "word/tin"
+        },
+        {
+          "id": "opt-pin",
+          "label": "pin",
+          "displayText": "pin",
+          "emoji": "📌",
+          "audioKey": "word/pin"
+        },
+        {
+          "id": "opt-tap",
+          "label": "tap",
+          "displayText": "tap",
+          "emoji": "🚰",
+          "audioKey": "word/tap"
+        },
+        {
+          "id": "opt-sit",
+          "label": "sit",
+          "displayText": "sit",
+          "emoji": "🪑",
+          "audioKey": "word/sit"
+        }
+      ],
+      "correctOptionId": "opt-tap"
+    },
+    {
+      "id": "p1-tf-01",
+      "type": "ten-frame-count",
+      "mode": "count-to-numeral",
+      "skillId": "ccea-p1-num-ten-frames-1-10",
+      "yearGroup": "P1",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "frameSize": 10,
+      "targetNumber": 4,
+      "initialCounters": 4,
+      "counterVisual": {
+        "emoji": "⭐",
+        "label": "gold star",
+        "colour": "yellow",
+        "audioKey": "object/star"
+      },
+      "prompt": {
+        "text": "How many gold stars are in the Ten-Frame?",
+        "audioKey": "prompt/p1-tf-01",
+        "visualCueEmoji": "⭐"
+      },
+      "hint": {
+        "text": "The top row holds 5 stars, and 1 space is empty — that means 4!",
+        "audioKey": "hint/p1-tf-01"
+      },
+      "feedback": {
+        "correctText": "Star counter! There are 4 stars in the Ten-Frame!",
+        "correctAudioKey": "feedback/correct-p1-tf-01",
+        "encourageText": "Count each star carefully from left to right and try again.",
+        "encourageAudioKey": "feedback/encourage-ten-frame"
+      },
+      "offlineParentTip": "Ask your child to show 4 on one hand—notice together that 4 is 1 less than a full hand of 5, just like on the top row of a Ten-Frame.",
+      "options": [
+        { "id": "opt-3", "label": "3", "displayText": "3", "audioKey": "number/3" },
+        { "id": "opt-4", "label": "4", "displayText": "4", "audioKey": "number/4" },
+        { "id": "opt-5", "label": "5", "displayText": "5", "audioKey": "number/5" },
+        { "id": "opt-6", "label": "6", "displayText": "6", "audioKey": "number/6" }
+      ],
+      "correctOptionId": "opt-4"
+    },
+    {
+      "id": "p1-tf-02",
+      "type": "ten-frame-count",
+      "mode": "count-to-numeral",
+      "skillId": "ccea-p1-num-ten-frames-1-10",
+      "yearGroup": "P1",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "frameSize": 10,
+      "targetNumber": 7,
+      "initialCounters": 7,
+      "counterVisual": {
+        "emoji": "🥚",
+        "label": "dinosaur egg",
+        "colour": "green",
+        "audioKey": "object/dinosaur-egg"
+      },
+      "prompt": {
+        "text": "How many dinosaur eggs are in the Ten-Frame?",
+        "audioKey": "prompt/p1-tf-02",
+        "visualCueEmoji": "🥚"
+      },
+      "hint": {
+        "text": "A full top row is 5. Count on 2 more on the bottom row: 5, 6, 7!",
+        "audioKey": "hint/p1-tf-02"
+      },
+      "feedback": {
+        "correctText": "Awesome! 5 on top and 2 more makes 7 eggs!",
+        "correctAudioKey": "feedback/correct-p1-tf-02",
+        "encourageText": "Remember the full top row is 5—now count the extra eggs underneath.",
+        "encourageAudioKey": "feedback/encourage-ten-frame"
+      },
+      "offlineParentTip": "Encourage '5 and a bit' thinking with an egg-box Ten-Frame: place 5 pasta pieces on top and 2 on the bottom so your child recognises 7 without counting from 1.",
+      "options": [
+        { "id": "opt-5", "label": "5", "displayText": "5", "audioKey": "number/5" },
+        { "id": "opt-6", "label": "6", "displayText": "6", "audioKey": "number/6" },
+        { "id": "opt-7", "label": "7", "displayText": "7", "audioKey": "number/7" },
+        { "id": "opt-8", "label": "8", "displayText": "8", "audioKey": "number/8" }
+      ],
+      "correctOptionId": "opt-7"
+    },
+    {
+      "id": "p1-tf-03",
+      "type": "ten-frame-count",
+      "mode": "build-on-frame",
+      "skillId": "ccea-p1-num-ten-frames-1-10",
+      "yearGroup": "P1",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "secure",
+      "frameSize": 10,
+      "targetNumber": 9,
+      "initialCounters": 5,
+      "counterVisual": {
+        "emoji": "🚌",
+        "label": "red bus",
+        "colour": "red",
+        "audioKey": "object/bus"
+      },
+      "prompt": {
+        "text": "There are 5 buses parked. Tap empty squares to build 9 buses on the Ten-Frame!",
+        "audioKey": "prompt/p1-tf-03",
+        "visualCueEmoji": "🚌"
+      },
+      "hint": {
+        "text": "9 is just 1 less than 10 — leave only 1 empty square!",
+        "audioKey": "hint/p1-tf-03"
+      },
+      "feedback": {
+        "correctText": "Beep beep! 9 buses — just 1 empty space left to make 10!",
+        "correctAudioKey": "feedback/correct-p1-tf-03",
+        "encourageText": "Check how many buses are on the frame. We want 9 in total!",
+        "encourageAudioKey": "feedback/encourage-ten-frame"
+      },
+      "offlineParentTip": "Line up 10 toy cars or coins in two neat rows of 5, then take 1 away. Ask your child how they know straight away that 9 are left.",
+      "options": [
+        { "id": "opt-8", "label": "8", "displayText": "8", "audioKey": "number/8" },
+        { "id": "opt-9", "label": "9", "displayText": "9", "audioKey": "number/9" },
+        { "id": "opt-10", "label": "10", "displayText": "10", "audioKey": "number/10" }
+      ],
+      "correctOptionId": "opt-9"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply bg-gradient-to-b from-sky-100 via-sky-50 to-amber-50 text-slate-900 antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Foundation Stage accessibility: enforce generous >= 64px tap targets */
+.touch-card {
+  @apply min-h-[64px] min-w-[64px] select-none transition-all duration-150 active:scale-95;
+}
+
+@keyframes starPop {
+  0% {
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes gentleShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+
+.animate-star-pop {
+  animation: starPop 0.35s ease-out;
+}
+
+.animate-gentle-shake {
+  animation: gentleShake 0.3s ease-in-out;
+}

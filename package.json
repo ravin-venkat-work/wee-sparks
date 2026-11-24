@@ -1,0 +1,17 @@
+{
+  "name": "wee-sparks",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Adaptive, audio-first numeracy and literacy learning platform for Northern Ireland CCEA Foundation Stage (P1–P2).",
+  "packageManager": "pnpm@12.23.0",
+  "engines": {
+    "node": ">=20.11.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @wee-sparks/web dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "validate:packs": "pnpm --filter content-studio validate"
+  }
+}
