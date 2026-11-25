@@ -41,7 +41,13 @@ export function SparkyMascot({
         type="button"
         onClick={onTap}
         aria-label={MOOD_LABEL[mood]}
-        className={`touch-card relative flex shrink-0 items-center justify-center rounded-3xl p-1.5 shadow-sm ring-4 transition-all hover:scale-105 ${dim} ${MOOD_RING[mood]}`}
+        className={`touch-card relative flex shrink-0 items-center justify-center rounded-3xl p-1.5 shadow-sm ring-4 transition-all hover:scale-105 ${dim} ${MOOD_RING[mood]} ${
+          mood === "celebrating"
+            ? "animate-mascot-celebrate"
+            : mood === "idle"
+            ? "animate-mascot-float"
+            : ""
+        }`}
       >
         <svg
           viewBox="0 0 96 96"

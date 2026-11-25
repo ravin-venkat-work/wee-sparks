@@ -6,27 +6,80 @@ interface StarProgressBarProps {
   earnedIndices: ReadonlySet<number>;
 }
 
-function StarIcon({ filled, active }: { filled: boolean; active: boolean }) {
+/**
+ * Hexagonal Giant's Causeway basalt stepping stone SVG tile.
+ * Earned stones glow golden with a star; current stone pulses with a sky beacon.
+ */
+function CausewayStone({
+  earned,
+  current,
+  stepNumber,
+}: {
+  earned: boolean;
+  current: boolean;
+  stepNumber: number;
+}) {
   return (
-    <svg
-      viewBox="0 0 36 36"
-      className={`h-7 w-7 sm:h-8 sm:w-8 ${filled ? "animate-star-pop" : ""}`}
-      aria-hidden="true"
+    <div
+      className={`relative flex flex-col items-center transition-transform duration-300 ${
+        current ? "scale-110 -translate-y-1" : earned ? "animate-stone-pop" : ""
+      }`}
     >
-      <path
-        d="M18 3.5 L22.2 12.2 L31.8 13.5 L24.8 20.1 L26.5 29.6 L18 25 L9.5 29.6 L11.2 20.1 L4.2 13.5 L13.8 12.2 Z"
-        fill={filled ? "#FACC15" : active ? "#E0F2FE" : "#F1F5F9"}
-        stroke={filled ? "#CA8A04" : active ? "#0284C7" : "#CBD5E1"}
-        strokeWidth="2.4"
-        strokeLinejoin="round"
-      />
-    </svg>
+      <svg
+        viewBox="0 0 56 52"
+        className="h-12 w-14 sm:h-14 sm:w-16"
+        aria-hidden="true"
+      >
+        {/* Basalt 3D column side */}
+        <polygon
+          points="8,24 28,36 48,24 48,38 28,50 8,38"
+          fill={earned ? "#B45309" : current ? "#0284C7" : "#475569"}
+        />
+        {/* Hexagonal top face */}
+        <polygon
+          points="28,4 48,15 48,26 28,37 8,26 8,15"
+          fill={earned ? "#FDE047" : current ? "#BAE6FD" : "#CBD5E1"}
+          stroke={earned ? "#CA8A04" : current ? "#0369A1" : "#64748B"}
+          strokeWidth="2.4"
+          strokeLinejoin="round"
+        />
+
+        {earned ? (
+          <path
+            d="M28 11 L30.8 17 L37.2 17.8 L32.4 22 L33.6 28.4 L28 25.2 L22.4 28.4 L23.6 22 L18.8 17.8 L25.2 17 Z"
+            fill="#F59E0B"
+            stroke="#92400E"
+            strokeWidth="1.2"
+          />
+        ) : (
+          <text
+            x="28"
+            y="25"
+            textAnchor="middle"
+            fontSize="13"
+            fontWeight="900"
+            fill={current ? "#0C4A6E" : "#475569"}
+          >
+            {stepNumber}
+          </text>
+        )}
+      </svg>
+
+      {current && (
+        <span
+          className="absolute -top-2.5 text-sm leading-none animate-bounce"
+          aria-hidden="true"
+        >
+          🦊
+        </span>
+      )}
+    </div>
   );
 }
 
 /**
- * Kid-friendly star progress track with inline SVG gold stars,
- * continuous golden progress ribbon, and spotlight indicator.
+ * Northern Ireland Giant's Causeway basalt stepping-stone progress path
+ * across gentle coastal waves, tracking stars earned across the session.
  */
 export function StarProgressBar({
   total,
@@ -38,49 +91,51 @@ export function StarProgressBar({
 
   return (
     <div
-      className="rounded-3xl bg-white/95 p-4 shadow-sm ring-2 ring-sky-100"
+      className="overflow-hidden rounded-3xl bg-gradient-to-r from-sky-100 via-cyan-50 to-sky-100 p-4 shadow-sm ring-2 ring-sky-200"
       role="region"
-      aria-label={`Session progress: ${earnedCount} of ${total} stars earned`}
+      aria-label={`Giant's Causeway progress: ${earnedCount} of ${total} stars earned`}
     >
-      <div className="mb-3 flex items-center justify-between gap-3">
+      <div className="mb-2.5 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <StarIcon filled active={false} />
-          <span className="text-lg font-black text-slate-900">
+          <span className="text-xl" aria-hidden="true">
+            ⭐
+          </span>
+          <span className="text-base font-black text-slate-900 sm:text-lg">
             {earnedCount} / {total} Stars
+          </span>
+          <span className="hidden rounded-full bg-white/80 px-2.5 py-0.5 text-xs font-extrabold text-sky-900 sm:inline">
+            Giant&apos;s Causeway Path
           </span>
         </div>
 
-        <div className="hidden h-4 flex-1 overflow-hidden rounded-full bg-slate-100 sm:block">
+        <div className="hidden h-3.5 flex-1 overflow-hidden rounded-full bg-white/80 ring-1 ring-sky-200 sm:block">
           <div
             className="h-full rounded-full bg-gradient-to-r from-amber-400 via-yellow-300 to-emerald-400 transition-all duration-500"
             style={{ width: `${percent}%` }}
           />
         </div>
 
-        <span className="rounded-full bg-sky-100 px-3.5 py-1 text-sm font-extrabold text-sky-900">
-          {currentIndex + 1} of {total}
+        <span className="rounded-full bg-white px-3.5 py-1 text-sm font-extrabold text-sky-900 shadow-sm">
+          Step {currentIndex + 1} / {total}
         </span>
       </div>
 
-      {/* Visual star slots (non-button so kids don't accidentally skip exercises) */}
-      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:justify-between">
+      {/* Stepping-stone hexagonal trail */}
+      <div className="relative flex flex-wrap items-center justify-around gap-1.5 rounded-2xl bg-sky-200/45 px-3 py-2.5">
         {Array.from({ length: total }).map((_, idx) => {
           const isEarned = earnedIndices.has(idx);
           const isCurrent = idx === currentIndex;
-
           return (
             <div
               key={idx}
               aria-current={isCurrent ? "step" : undefined}
-              className={`flex h-11 w-11 items-center justify-center rounded-2xl transition-all sm:h-12 sm:w-12 ${
-                isCurrent
-                  ? "scale-110 bg-sky-100 ring-4 ring-sky-400 shadow-sm"
-                  : isEarned
-                  ? "bg-amber-50 ring-2 ring-amber-300"
-                  : "bg-slate-50"
-              }`}
+              className={idx % 2 === 1 ? "translate-y-1" : "-translate-y-0.5"}
             >
-              <StarIcon filled={isEarned} active={isCurrent} />
+              <CausewayStone
+                earned={isEarned}
+                current={isCurrent}
+                stepNumber={idx + 1}
+              />
             </div>
           );
         })}

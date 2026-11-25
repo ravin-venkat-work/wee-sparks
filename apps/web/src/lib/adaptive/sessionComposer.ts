@@ -3,6 +3,7 @@ import {
   type DifficultyTier,
   type Exercise,
   type MicroSkillId,
+  type YearGroup,
 } from "@wee-sparks/curriculum-schema";
 import type {
   ExerciseAttempt,
@@ -16,16 +17,25 @@ import {
 } from "./mastery";
 
 export type SessionSlotRole = "warmup" | "focus" | "review";
+export type YearGroupFilter = YearGroup | "all";
+export type EngineKind =
+  | "tap-choice"
+  | "phonics-builder"
+  | "number-line"
+  | "drag-sort"
+  | "trace-canvas";
 
 export interface ComposedSessionItem {
   exercise: Exercise;
   slotRole: SessionSlotRole;
+  engineKind: EngineKind;
   themeMatched: boolean;
   reason: string;
 }
 
 export interface ComposedSession {
   items: ComposedSessionItem[];
+  yearGroupFilter: YearGroupFilter;
   selectedTheme: LearnerThemePreference;
   themeMatchCount: number;
   fallbackUsed: boolean;
@@ -40,6 +50,7 @@ export interface ComposeSessionOptions {
   exercises: readonly Exercise[];
   masteryRecords: readonly SkillMasteryRecord[];
   recentAttempts?: readonly ExerciseAttempt[];
+  yearGroupFilter?: YearGroupFilter;
   selectedTheme: LearnerThemePreference;
   sessionLength?: number;
   now?: Date;
@@ -50,6 +61,32 @@ const DIFFICULTY_RANK: Record<DifficultyTier, number> = {
   developing: 1,
   secure: 2,
 };
+
+/**
+ * Maps an Exercise to the interactive Foundation Stage UI engine that renders it.
+ */
+export function getExerciseEngineKind(exercise: Exercise): EngineKind {
+  if (
+    exercise.type === "cvc-blending" ||
+    exercise.type === "phoneme-segment"
+  ) {
+    return "phonics-builder";
+  }
+  if (exercise.type === "number-line-hop") {
+    return "number-line";
+  }
+  if (exercise.type === "trace-glyph") {
+    return "trace-canvas";
+  }
+  if (
+    exercise.type === "shape-sort" ||
+    exercise.type === "uk-coin-match" ||
+    (exercise.type === "ten-frame-count" && exercise.mode === "build-on-frame")
+  ) {
+    return "drag-sort";
+  }
+  return "tap-choice";
+}
 
 function targetDifficultyForRecord(
   record?: SkillMasteryRecord
@@ -83,7 +120,8 @@ function buildExerciseHistoryMap(
     } else {
       map.set(attempt.exerciseId, {
         lastCompletedMs: Math.max(prev.lastCompletedMs, ms),
-        lastMissed: ms >= prev.lastCompletedMs ? !attempt.isCorrect : prev.lastMissed,
+        lastMissed:
+          ms >= prev.lastCompletedMs ? !attempt.isCorrect : prev.lastMissed,
         count: prev.count + 1,
       });
     }
@@ -95,16 +133,19 @@ function buildExerciseHistoryMap(
 /**
  * Deterministically composes a balanced Foundation Stage learning session from:
  *  1. Confidence warm-ups (accessible emerging or strong-mastery starter)
- *  2. Active skills below mastery threshold (scaffolded to current tier)
+ *  2. Active skills below mastery threshold (scaffolded to current tier, with
+ *     engine-kind diversity so Phonics, NumberLine, DragSort, Trace, and TapChoice
+ *     all get exercised naturally)
  *  3. Spaced-repetition review items (due or mastered skills)
  *
- * When the learner has chosen a specific theme and matching exercises exist,
- * the candidate pool is filtered to that theme.
+ * Respects yearGroupFilter (P1, P2, or all) and filters by the learner's
+ * selected theme whenever matching exercises exist.
  */
 export function composeAdaptiveSession(
   options: ComposeSessionOptions
 ): ComposedSession {
   const now = options.now ?? new Date();
+  const yearGroupFilter: YearGroupFilter = options.yearGroupFilter ?? "all";
   const selectedTheme = options.selectedTheme;
   const recentAttempts = options.recentAttempts ?? [];
   const masteryMap = new Map<MicroSkillId, SkillMasteryRecord>(
@@ -112,27 +153,32 @@ export function composeAdaptiveSession(
   );
   const exerciseHistory = buildExerciseHistoryMap(recentAttempts);
 
-  // Filter by selected theme when matching exercises exist
+  // 1. Apply year-group filter (P1, P2, or all)
+  const yearPool =
+    yearGroupFilter === "all"
+      ? options.exercises
+      : options.exercises.filter((ex) => ex.yearGroup === yearGroupFilter);
+  const effectiveYearPool = yearPool.length > 0 ? yearPool : options.exercises;
+
+  // 2. Apply theme filter when matching exercises exist
   const themedMatches =
     selectedTheme === "all"
-      ? options.exercises
-      : options.exercises.filter((ex) => ex.theme === selectedTheme);
+      ? effectiveYearPool
+      : effectiveYearPool.filter((ex) => ex.theme === selectedTheme);
 
   const fallbackUsed =
     selectedTheme !== "all" && themedMatches.length === 0;
   const pool: readonly Exercise[] =
     selectedTheme !== "all" && themedMatches.length > 0
       ? themedMatches
-      : options.exercises;
+      : effectiveYearPool;
 
-  const targetLength = Math.min(
-    options.sessionLength ?? 6,
-    pool.length
-  );
+  const targetLength = Math.min(options.sessionLength ?? 6, pool.length);
 
   if (targetLength === 0) {
     return {
       items: [],
+      yearGroupFilter,
       selectedTheme,
       themeMatchCount: 0,
       fallbackUsed,
@@ -141,6 +187,7 @@ export function composeAdaptiveSession(
   }
 
   const chosenIds = new Set<string>();
+  const usedEngineKinds = new Set<EngineKind>();
   const warmupItems: ComposedSessionItem[] = [];
   const reviewItems: ComposedSessionItem[] = [];
   const focusItems: ComposedSessionItem[] = [];
@@ -152,15 +199,14 @@ export function composeAdaptiveSession(
   ): ComposedSessionItem => ({
     exercise,
     slotRole,
+    engineKind: getExerciseEngineKind(exercise),
     themeMatched:
       selectedTheme === "all" || exercise.theme === selectedTheme,
     reason,
   });
 
   // -------------------------------------------------------------------------
-  // 1. Confidence Warm-up (1 item)
-  // Prefer an "emerging" item from a skill where the child already has good
-  // mastery/accuracy (or a gentle emerging starter if they are brand new).
+  // A. Confidence Warm-up (1 item)
   // -------------------------------------------------------------------------
   const warmupCandidates = [...pool].sort((a, b) => {
     const recA = masteryMap.get(a.skillId);
@@ -181,6 +227,7 @@ export function composeAdaptiveSession(
   const warmupPick = warmupCandidates[0];
   if (warmupPick) {
     chosenIds.add(warmupPick.id);
+    usedEngineKinds.add(getExerciseEngineKind(warmupPick));
     const rec = masteryMap.get(warmupPick.skillId);
     warmupItems.push(
       toItem(
@@ -194,8 +241,7 @@ export function composeAdaptiveSession(
   }
 
   // -------------------------------------------------------------------------
-  // 2. Spaced-Repetition Review (up to 1–2 items when eligible)
-  // Draw from mastered skills or skills due for spaced-repetition review.
+  // B. Spaced-Repetition Review (up to 1–2 items when eligible)
   // -------------------------------------------------------------------------
   const reviewQuota = targetLength >= 5 ? 2 : targetLength >= 3 ? 1 : 0;
   const reviewCandidates = pool
@@ -203,9 +249,7 @@ export function composeAdaptiveSession(
       if (chosenIds.has(ex.id)) return false;
       const rec = masteryMap.get(ex.skillId);
       if (!rec || rec.totalCount === 0) return false;
-      return (
-        isSkillDueForReview(rec, now) || isSkillMastered(ex.skillId, rec)
-      );
+      return isSkillDueForReview(rec, now) || isSkillMastered(ex.skillId, rec);
     })
     .sort((a, b) => {
       const recA = masteryMap.get(a.skillId)!;
@@ -226,6 +270,7 @@ export function composeAdaptiveSession(
     if (warmupItems.length + reviewItems.length >= targetLength) break;
 
     chosenIds.add(candidate.id);
+    usedEngineKinds.add(getExerciseEngineKind(candidate));
     const rec = masteryMap.get(candidate.skillId);
     const due = isSkillDueForReview(rec, now);
     reviewItems.push(
@@ -240,11 +285,9 @@ export function composeAdaptiveSession(
   }
 
   // -------------------------------------------------------------------------
-  // 3. Active Skills Below Mastery Threshold (remaining slots)
-  // Prioritise skills below masteryThreshold, matching difficulty to tier,
-  // revisiting missed exercises, and interleaving literacy + numeracy.
+  // C. Active Skills Below Mastery Threshold (with engine & skill diversity)
   // -------------------------------------------------------------------------
-  const focusScore = (ex: Exercise): number => {
+  const baseFocusScore = (ex: Exercise): number => {
     const rec = masteryMap.get(ex.skillId);
     const mastered = isSkillMastered(ex.skillId, rec);
     const prereqsReady = arePrerequisitesMet(ex.skillId, masteryMap);
@@ -255,49 +298,64 @@ export function composeAdaptiveSession(
     const hist = exerciseHistory.get(ex.id);
 
     let score = 0;
-    // Strongly favour active skills below mastery threshold
     score += mastered ? 10 : 100;
-    // Favour skills already started (emerging/developing) so learner progresses smoothly
     if (rec && !mastered) {
       score += 25 + (1 - rec.masteryScore) * 20;
     } else if (!rec) {
       score += prereqsReady ? 20 : 12;
     }
-    // Match exercise difficulty tier to current mastery tier
     score += (2 - tierDistance) * 14;
-    // Prioritise previously missed or unseen exercises
-    if (hist?.lastMissed) score += 22;
-    if (!hist) score += 16;
-    else score -= Math.min(hist.count * 4, 16);
+    if (hist?.lastMissed) {
+      score += 48;
+    } else if (!hist) {
+      score += 16;
+    } else {
+      score -= Math.min(hist.count * 4, 16);
+    }
 
     return score;
   };
 
-  const remainingPool = pool
-    .filter((ex) => !chosenIds.has(ex.id))
-    .sort((a, b) => {
-      const diff = focusScore(b) - focusScore(a);
-      if (diff !== 0) return diff;
-      return a.id.localeCompare(b.id);
-    });
-
-  // Interleave skills/subjects gently so a child gets variety across the session
-  const workingCandidates = [...remainingPool];
+  const workingCandidates = pool.filter((ex) => !chosenIds.has(ex.id));
   let lastSkillId: MicroSkillId | null = warmupPick?.skillId ?? null;
+  const yearCounts: Record<YearGroup, number> = { P1: 0, P2: 0 };
+  for (const item of [...warmupItems, ...reviewItems]) {
+    yearCounts[item.exercise.yearGroup] += 1;
+  }
 
   while (
     warmupItems.length + reviewItems.length + focusItems.length < targetLength &&
     workingCandidates.length > 0
   ) {
-    let pickIdx = workingCandidates.findIndex(
-      (ex) => ex.skillId !== lastSkillId
-    );
-    if (pickIdx === -1) pickIdx = 0;
+    // Score dynamically with engine-kind, skill-interleaving, and P1/P2 balance bonuses
+    workingCandidates.sort((a, b) => {
+      const aEngineBonus = usedEngineKinds.has(getExerciseEngineKind(a)) ? 0 : 24;
+      const bEngineBonus = usedEngineKinds.has(getExerciseEngineKind(b)) ? 0 : 24;
+      const aSkillBonus = a.skillId !== lastSkillId ? 10 : 0;
+      const bSkillBonus = b.skillId !== lastSkillId ? 10 : 0;
+      const aYearBonus =
+        yearGroupFilter === "all" &&
+        yearCounts[a.yearGroup] < yearCounts[a.yearGroup === "P1" ? "P2" : "P1"]
+          ? 20
+          : 0;
+      const bYearBonus =
+        yearGroupFilter === "all" &&
+        yearCounts[b.yearGroup] < yearCounts[b.yearGroup === "P1" ? "P2" : "P1"]
+          ? 20
+          : 0;
 
-    const [picked] = workingCandidates.splice(pickIdx, 1);
+      const totalA = baseFocusScore(a) + aEngineBonus + aSkillBonus + aYearBonus;
+      const totalB = baseFocusScore(b) + bEngineBonus + bSkillBonus + bYearBonus;
+      if (totalB !== totalA) return totalB - totalA;
+      return a.id.localeCompare(b.id);
+    });
+
+    const picked = workingCandidates.shift();
     if (!picked) break;
 
     chosenIds.add(picked.id);
+    usedEngineKinds.add(getExerciseEngineKind(picked));
+    yearCounts[picked.yearGroup] += 1;
     lastSkillId = picked.skillId;
 
     const rec = masteryMap.get(picked.skillId);
@@ -337,6 +395,7 @@ export function composeAdaptiveSession(
 
   return {
     items: ordered,
+    yearGroupFilter,
     selectedTheme,
     themeMatchCount: themedMatches.length,
     fallbackUsed,

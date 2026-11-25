@@ -2,7 +2,19 @@
 
 export type SfxCue = "tap" | "snap" | "success" | "retry";
 
+const SFX_STORAGE_KEY = "wee-sparks-sfx-enabled";
+const MUSIC_STORAGE_KEY = "wee-sparks-music-enabled";
+
 let sharedAudioCtx: AudioContext | null = null;
+let sfxEnabledCache: boolean | null = null;
+let musicEnabledCache: boolean | null = null;
+let musicTimerId: number | null = null;
+let musicStepIndex = 0;
+
+// Gentle C-major pentatonic marimba melody (Hz)
+const AMBIENT_MELODY = [
+  523.25, 659.25, 587.33, 783.99, 659.25, 523.25, 440.0, 587.33,
+];
 
 function getAudioContext(): AudioContext | null {
   if (typeof window === "undefined") return null;
@@ -26,6 +38,90 @@ function getAudioContext(): AudioContext | null {
   }
 
   return sharedAudioCtx;
+}
+
+export function isSfxEnabled(): boolean {
+  if (sfxEnabledCache !== null) return sfxEnabledCache;
+  if (typeof window === "undefined") return true;
+  try {
+    const raw = window.localStorage.getItem(SFX_STORAGE_KEY);
+    sfxEnabledCache = raw === null ? true : raw === "1";
+    return sfxEnabledCache;
+  } catch {
+    return true;
+  }
+}
+
+export function setSfxEnabled(enabled: boolean): void {
+  sfxEnabledCache = enabled;
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(SFX_STORAGE_KEY, enabled ? "1" : "0");
+  } catch {
+    // Ignore storage errors in restricted modes.
+  }
+}
+
+export function isMusicEnabled(): boolean {
+  if (musicEnabledCache !== null) return musicEnabledCache;
+  if (typeof window === "undefined") return false;
+  try {
+    const raw = window.localStorage.getItem(MUSIC_STORAGE_KEY);
+    musicEnabledCache = raw === "1";
+    return musicEnabledCache;
+  } catch {
+    return false;
+  }
+}
+
+export function stopAmbientMusic(): void {
+  if (musicTimerId !== null && typeof window !== "undefined") {
+    window.clearInterval(musicTimerId);
+    musicTimerId = null;
+  }
+}
+
+export function setMusicEnabled(enabled: boolean): void {
+  musicEnabledCache = enabled;
+  if (typeof window !== "undefined") {
+    try {
+      window.localStorage.setItem(MUSIC_STORAGE_KEY, enabled ? "1" : "0");
+    } catch {
+      // Ignore storage errors.
+    }
+  }
+
+  if (!enabled) {
+    stopAmbientMusic();
+    return;
+  }
+
+  if (typeof window === "undefined" || musicTimerId !== null) return;
+
+  const playNote = () => {
+    if (!isMusicEnabled()) {
+      stopAmbientMusic();
+      return;
+    }
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const freq = AMBIENT_MELODY[musicStepIndex % AMBIENT_MELODY.length]!;
+    musicStepIndex += 1;
+    try {
+      scheduleTone(ctx, {
+        startFreq: freq,
+        startOffset: 0,
+        duration: 0.42,
+        gain: 0.024,
+        type: "sine",
+      });
+    } catch {
+      // Ignore audio errors.
+    }
+  };
+
+  playNote();
+  musicTimerId = window.setInterval(playNote, 920);
 }
 
 function scheduleTone(
@@ -69,6 +165,7 @@ function scheduleTone(
  * Foundation Stage tactile cues: tap, snap, success, and gentle retry.
  */
 export function playSfx(cue: SfxCue): void {
+  if (!isSfxEnabled()) return;
   const ctx = getAudioContext();
   if (!ctx) return;
 
@@ -105,7 +202,6 @@ export function playSfx(cue: SfxCue): void {
         break;
 
       case "success":
-        // Warm ascending C5 -> E5 -> G5 -> C6 sparkle
         scheduleTone(ctx, {
           startFreq: 523.25,
           startOffset: 0,
@@ -137,7 +233,6 @@ export function playSfx(cue: SfxCue): void {
         break;
 
       case "retry":
-        // Gentle, non-harsh warm nudge (E4 -> C4)
         scheduleTone(ctx, {
           startFreq: 329.63,
           startOffset: 0,

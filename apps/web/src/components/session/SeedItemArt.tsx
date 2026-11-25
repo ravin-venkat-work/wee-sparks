@@ -1,21 +1,39 @@
 "use client";
 
+import type { UkCoin } from "@wee-sparks/curriculum-schema";
+import { UkCoinSvg } from "./art/UkCoinSvg";
+import { ShapeSvg } from "./art/ShapeSvg";
+import { renderP2OrStickerSvg } from "./art/P2WordArt";
+
 interface SeedItemArtProps {
   itemKey: string;
   fallbackEmoji?: string;
   className?: string;
 }
 
+const UK_COINS = new Set<string>(["1p", "2p", "5p", "10p", "20p"]);
+const SHAPE_KEYS = new Set<string>([
+  "circle",
+  "square",
+  "triangle",
+  "rectangle",
+  "cube",
+  "sphere",
+  "cylinder",
+  "cone",
+]);
+
 function normaliseItemKey(raw: string): string {
   const cleaned = raw.trim().toLowerCase();
-  const slug = cleaned.includes("/") ? cleaned.split("/").pop() ?? cleaned : cleaned;
+  const slug = cleaned.includes("/")
+    ? cleaned.split("/").pop() ?? cleaned
+    : cleaned;
   return slug.replace(/\s+/g, "-");
 }
 
 /**
- * Custom offline inline SVG storybook visuals for all P1 seed pack items
- * (space, animals, vehicles, dinosaurs, CVC words, and Ten-Frame counters).
- * Falls back cleanly to emoji if a future pack adds an unmapped item.
+ * Custom offline inline SVG storybook visuals covering all P1 & P2 words,
+ * 2D/3D shapes, UK coins (1p–20p), and Northern Ireland collectible stickers.
  */
 export function SeedItemArt({
   itemKey,
@@ -24,7 +42,24 @@ export function SeedItemArt({
 }: SeedItemArtProps) {
   const key = normaliseItemKey(itemKey);
 
-  const renderArtwork = () => {
+  if (UK_COINS.has(key)) {
+    return <UkCoinSvg coin={key as UkCoin} className={className} />;
+  }
+
+  if (SHAPE_KEYS.has(key)) {
+    return <ShapeSvg shape={key} className={className} />;
+  }
+
+  const p2Art = renderP2OrStickerSvg(key);
+  if (p2Art) {
+    return (
+      <svg viewBox="0 0 80 80" className={className} role="img" aria-hidden="true">
+        {p2Art}
+      </svg>
+    );
+  }
+
+  const renderP1Artwork = () => {
     switch (key) {
       case "sun":
         return (
@@ -243,7 +278,6 @@ export function SeedItemArt({
       case "sat":
         return (
           <g>
-            {/* Cosy mat + sitting cat */}
             <ellipse cx="40" cy="64" rx="28" ry="8" fill="#F472B6" stroke="#BE185D" strokeWidth="2.5" />
             <path d="M28 24 L25 13 L35 20 Z" fill="#F59E0B" stroke="#92400E" strokeWidth="2" />
             <path d="M52 24 L55 13 L45 20 Z" fill="#F59E0B" stroke="#92400E" strokeWidth="2" />
@@ -296,15 +330,9 @@ export function SeedItemArt({
         return (
           <g>
             <rect x="14" y="38" width="52" height="24" rx="10" fill="#C4B5FD" stroke="#6D28D9" strokeWidth="3" />
-            <text x="26" y="30" fontSize="16" fontWeight="900" fill="#4C1D95">
-              Z
-            </text>
-            <text x="41" y="22" fontSize="13" fontWeight="900" fill="#6D28D9">
-              z
-            </text>
-            <text x="52" y="16" fontSize="10" fontWeight="900" fill="#8B5CF6">
-              z
-            </text>
+            <text x="26" y="30" fontSize="16" fontWeight="900" fill="#4C1D95">Z</text>
+            <text x="41" y="22" fontSize="13" fontWeight="900" fill="#6D28D9">z</text>
+            <text x="52" y="16" fontSize="10" fontWeight="900" fill="#8B5CF6">z</text>
           </g>
         );
 
@@ -366,7 +394,7 @@ export function SeedItemArt({
     }
   };
 
-  const artwork = renderArtwork();
+  const artwork = renderP1Artwork();
   if (!artwork) {
     return (
       <span className="text-5xl leading-none" aria-hidden="true">
@@ -376,12 +404,7 @@ export function SeedItemArt({
   }
 
   return (
-    <svg
-      viewBox="0 0 80 80"
-      className={className}
-      role="img"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 80 80" className={className} role="img" aria-hidden="true">
       {artwork}
     </svg>
   );

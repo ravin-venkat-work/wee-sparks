@@ -1,6 +1,14 @@
 "use client";
 
-export { playSfx, type SfxCue } from "./sfx";
+export {
+  isMusicEnabled,
+  isSfxEnabled,
+  playSfx,
+  setMusicEnabled,
+  setSfxEnabled,
+  stopAmbientMusic,
+  type SfxCue,
+} from "./sfx";
 
 /**
  * Northern Ireland Linguistic Phonics phonetic approximations for Web Speech API
@@ -64,6 +72,7 @@ const audioElementCache = new Map<string, HTMLAudioElement>();
 const missingAudioUrls = new Set<string>();
 
 let activeHtmlAudio: HTMLAudioElement | null = null;
+let activeCancelCallback: (() => void) | null = null;
 let playbackGeneration = 0;
 
 /**
@@ -137,6 +146,12 @@ function pickUkVoice(): SpeechSynthesisVoice | null {
 
 export function stopAudio(): void {
   playbackGeneration += 1;
+
+  if (activeCancelCallback) {
+    const cancel = activeCancelCallback;
+    activeCancelCallback = null;
+    cancel();
+  }
 
   if (typeof window === "undefined") return;
 
@@ -222,17 +237,21 @@ function speakWithWebSpeech(
       }
 
       let settled = false;
+      let timerId: number | null = null;
       const done = () => {
         if (!settled) {
           settled = true;
+          if (timerId !== null) window.clearTimeout(timerId);
+          if (activeCancelCallback === done) activeCancelCallback = null;
           resolve();
         }
       };
 
+      activeCancelCallback = done;
       utterance.onend = done;
       utterance.onerror = done;
 
-      window.setTimeout(done, Math.max(950, text.length * 115));
+      timerId = window.setTimeout(done, Math.max(950, text.length * 115));
       window.speechSynthesis.speak(utterance);
     } catch {
       resolve();

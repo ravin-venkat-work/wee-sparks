@@ -14,7 +14,10 @@ import {
   type Theme,
   type YearGroup,
 } from "@wee-sparks/curriculum-schema";
-import { buildFixtureContentPack } from "./fixtures";
+import {
+  buildFixtureContentPack,
+  type FixturePreset,
+} from "./fixtures";
 import { buildContentPackJsonSchema } from "./packJsonSchema";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -26,12 +29,19 @@ const DEFAULT_SKILLS_BY_YEAR: Record<YearGroup, MicroSkillId[]> = {
     "ccea-p1-lit-initial-satpin",
     "ccea-p1-lit-cvc-blend-satpin",
     "ccea-p1-lit-hfw-p1",
+    "ccea-p1-num-subitise-1-5",
     "ccea-p1-num-ten-frames-1-10",
     "ccea-p1-num-bonds-to-5",
     "ccea-p1-num-shapes-2d",
     "ccea-p1-num-coins-1p-5p",
   ],
-  P2: ["ccea-p2-num-bonds-to-10", "ccea-p2-num-coins-to-20p"],
+  P2: [
+    "ccea-p2-lit-digraphs-sh-ch-th-ng",
+    "ccea-p2-lit-cvcc-ccvc",
+    "ccea-p2-num-bonds-to-10",
+    "ccea-p2-num-add-sub-within-20",
+    "ccea-p2-num-coins-to-20p",
+  ],
 };
 
 function printUsage(): void {
@@ -153,6 +163,7 @@ async function main(): Promise<void> {
       theme: { type: "string", short: "t", default: "all" },
       count: { type: "string", short: "c", default: "16" },
       out: { type: "string", short: "o" },
+      preset: { type: "string", default: "default" },
       "pack-id": { type: "string" },
       title: { type: "string" },
       "dry-run": { type: "boolean", default: false },
@@ -233,9 +244,11 @@ async function main(): Promise<void> {
 
   let candidate: unknown;
 
+  const preset = (values.preset ?? "default") as FixturePreset;
+
   if (useFixtureMode) {
     console.log(
-      `Running content-studio in offline ${values["dry-run"] ? "--dry-run" : "--fixture"} mode (${yearGroup}, theme=${theme}, count=${count})...`
+      `Running content-studio in offline ${values["dry-run"] ? "--dry-run" : "--fixture"} mode (${yearGroup}, preset=${preset}, theme=${theme}, count=${count})...`
     );
     candidate = buildFixtureContentPack({
       yearGroup,
@@ -244,6 +257,7 @@ async function main(): Promise<void> {
       count,
       packId,
       title,
+      preset,
     });
   } else {
     const apiKey = process.env.GEMINI_API_KEY;

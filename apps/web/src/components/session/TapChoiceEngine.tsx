@@ -67,14 +67,15 @@ export function TapChoiceEngine({
     audioKey: string,
     label: string
   ) => {
-    playSfx("tap");
-    if (audioKey.startsWith("phoneme/")) {
-      void playPhoneme(label, audioKey);
-    } else {
-      void playAudioKey(audioKey, label);
+    if (isSolved) {
+      playSfx("tap");
+      if (audioKey.startsWith("phoneme/")) {
+        void playPhoneme(label, audioKey);
+      } else {
+        void playAudioKey(audioKey, label);
+      }
+      return;
     }
-
-    if (isSolved) return;
 
     setSelectedOptionId(optionId);
     const isCorrect = optionId === correctOptionId;
@@ -84,6 +85,7 @@ export function TapChoiceEngine({
       window.setTimeout(() => setWrongOptionId(null), 500);
     }
 
+    // Let KidSessionPlayer play the single clean feedback cue without audio overlap
     onAttempt(isCorrect);
   };
 

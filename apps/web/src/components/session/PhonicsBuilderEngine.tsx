@@ -76,9 +76,14 @@ export function PhonicsBuilderEngine({
     const usedLetters = new Set(
       exercise.phonemes.map((p) => p.grapheme.toLowerCase())
     );
-    const extras = LINGUISTIC_PHONICS_SATPIN.filter(
-      (g) => !usedLetters.has(g)
-    ).slice(0, 2);
+    const hasDigraph = exercise.phonemes.some((p) => p.grapheme.length >= 2);
+    const distractorSource: readonly string[] = hasDigraph
+      ? ["sh", "ch", "th", "ng", ...LINGUISTIC_PHONICS_SATPIN]
+      : LINGUISTIC_PHONICS_SATPIN;
+
+    const extras = distractorSource
+      .filter((g) => !usedLetters.has(g))
+      .slice(0, 2);
 
     const distractorTiles: ElkoninTile[] = extras.map((g, idx) => ({
       id: `${exercise.id}-extra-${idx}-${g}`,
@@ -98,6 +103,8 @@ export function PhonicsBuilderEngine({
   const [shakeBoxes, setShakeBoxes] = useState(false);
   const [wrongOptionId, setWrongOptionId] = useState<string | null>(null);
   const autoSweptRef = useRef(false);
+  const activeExerciseIdRef = useRef(exercise.id);
+  activeExerciseIdRef.current = exercise.id;
 
   useEffect(() => {
     setSlots(Array.from({ length: expectedGraphemes.length }, () => null));
@@ -196,14 +203,17 @@ export function PhonicsBuilderEngine({
           slot?.grapheme.toLowerCase() === expectedGraphemes[idx]?.toLowerCase()
       );
 
+    const capturedExerciseId = exercise.id;
     // Always play the tapped tile's isolated phoneme first
     void playPhoneme(tile.grapheme, tile.audioKey).then(() => {
+      if (activeExerciseIdRef.current !== capturedExerciseId) return;
       if (!allFilledNow) return;
 
       if (matchesTargetNow && !autoSweptRef.current) {
         autoSweptRef.current = true;
         // Automatically sweep left-to-right across boxes, then speak full word
         void runBlendingSweep(nextSlots, true).then((completed) => {
+          if (activeExerciseIdRef.current !== capturedExerciseId) return;
           if (completed && exercise.type === "phoneme-segment") {
             onAttempt(true);
           }
@@ -288,9 +298,11 @@ export function PhonicsBuilderEngine({
     label: string
   ) => {
     if (exercise.type !== "cvc-blending") return;
-    playSfx("tap");
-    void playAudioKey(audioKey, label);
-    if (isSolved) return;
+    if (isSolved) {
+      playSfx("tap");
+      void playAudioKey(audioKey, label);
+      return;
+    }
 
     const isCorrect = optionId === exercise.correctOptionId;
     if (!isCorrect) {

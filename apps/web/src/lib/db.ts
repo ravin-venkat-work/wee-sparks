@@ -45,14 +45,21 @@ export interface SkillMasteryRecord {
   updatedAt: string;
 }
 
+export interface UnlockedStickerRecord {
+  learnerId: number;
+  stickerId: string;
+  unlockedAt: string;
+}
+
 /**
  * Local-only IndexedDB database (UK ICO Children's Code compliant).
- * All student profiles, attempts, and mastery records stay strictly on-device.
+ * All student profiles, attempts, mastery, and stickers stay strictly on-device.
  */
 export class WeeSparksDatabase extends Dexie {
   learners!: EntityTable<LearnerProfile, "id">;
   attempts!: EntityTable<ExerciseAttempt, "id">;
   skillMastery!: Dexie.Table<SkillMasteryRecord, [number, MicroSkillId]>;
+  stickers!: Dexie.Table<UnlockedStickerRecord, [number, string]>;
 
   constructor() {
     super("wee-sparks-local-db");
@@ -123,6 +130,14 @@ export class WeeSparksDatabase extends Dexie {
             }
           });
       });
+
+    this.version(3).stores({
+      learners: "++id, displayName, yearGroup, preferredTheme, createdAt",
+      attempts: "++id, learnerId, exerciseId, skillId, completedAt",
+      skillMastery:
+        "[learnerId+skillId], learnerId, skillId, status, nextReviewAt, updatedAt",
+      stickers: "[learnerId+stickerId], learnerId, stickerId, unlockedAt",
+    });
   }
 }
 

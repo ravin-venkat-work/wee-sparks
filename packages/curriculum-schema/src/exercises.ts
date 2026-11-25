@@ -102,9 +102,9 @@ export type PhonemeTile = z.infer<typeof PhonemeTileSchema>;
 export const CvcBlendingExerciseSchema = z.object({
   ...BaseExerciseFields,
   type: z.literal("cvc-blending"),
-  targetWord: z.string().min(3).max(5),
+  targetWord: z.string().min(3).max(7),
   wordAudioKey: AudioKeySchema,
-  phonemes: z.array(PhonemeTileSchema).length(3),
+  phonemes: z.array(PhonemeTileSchema).min(3).max(5),
   options: z.array(InteractiveCardSchema).min(3).max(4),
   correctOptionId: z.string().min(1),
 });
@@ -358,6 +358,13 @@ export const ExerciseSchema = RawExerciseUnionSchema.superRefine(
       }
 
       if (exercise.skillId === "ccea-p1-lit-cvc-blend-satpin") {
+        if (exercise.phonemes.length !== 3) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["phonemes"],
+            message: `Stage 1 CVC blending (${exercise.skillId}) requires exactly 3 phonemes`,
+          });
+        }
         for (const p of exercise.phonemes) {
           if (!SATPIN_SET.has(p.grapheme.toLowerCase())) {
             ctx.addIssue({

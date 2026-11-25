@@ -172,15 +172,68 @@ function renderSkillActivityBlock(skill: MicroSkill) {
         </div>
       );
 
+    case "ccea-p2-lit-digraphs-sh-ch-th-ng":
+      return (
+        <div className="mt-2 space-y-2">
+          <p className="text-xs font-bold text-slate-700">
+            Underline the two-letter team sound (sh, ch, th, ng) in each word, then read aloud:
+          </p>
+          <div className="grid grid-cols-4 gap-2 text-center text-lg font-black">
+            {["ship", "chip", "moth", "ring"].map((w) => (
+              <div key={w} className="rounded-lg border border-slate-300 py-2">
+                {w}
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+
+    case "ccea-p2-lit-cvcc-ccvc":
+      return (
+        <div className="mt-2 space-y-2">
+          <p className="text-xs font-bold text-slate-700">
+            Tap all 4 dots and blend each 4-sound Stage 2 word:
+          </p>
+          <div className="grid grid-cols-4 gap-2 text-center text-base font-black">
+            {["f·r·o·g", "s·t·o·p", "t·e·n·t", "s·t·e·p"].map((w) => (
+              <div key={w} className="rounded-lg border border-slate-300 py-2">
+                {w}
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+
+    case "ccea-p2-num-bonds-to-10":
+    case "ccea-p2-num-add-sub-within-20":
+      return (
+        <div className="mt-2 space-y-2 text-sm font-bold text-slate-800">
+          <p className="text-xs font-bold text-slate-700">
+            Complete the number bonds and 0–20 jumps:
+          </p>
+          <div className="grid grid-cols-2 gap-2">
+            <div>7 + ___ = 10</div>
+            <div>6 + ___ = 10</div>
+            <div>12 + ___ = 20</div>
+            <div>8 + 5 = ___</div>
+          </div>
+        </div>
+      );
+
     case "ccea-p1-num-coins-1p-5p":
     case "ccea-p2-num-coins-to-20p":
       return (
         <div className="mt-2 space-y-1.5 text-sm font-semibold text-slate-800">
           <p className="text-xs font-bold text-slate-700">
-            Circle UK coins that add up to 5p (use real 1p, 2p, 5p coins at home!):
+            {skill.yearGroup === "P2"
+              ? "Circle UK coins that add up to 15p (use real 1p, 2p, 5p, 10p, 20p coins at home!):"
+              : "Circle UK coins that add up to 5p (use real 1p, 2p, 5p coins at home!):"}
           </p>
           <div className="flex flex-wrap gap-2">
-            {["2p", "2p", "1p", "1p", "5p"].map((coin, i) => (
+            {(skill.yearGroup === "P2"
+              ? ["10p", "5p", "2p", "2p", "1p", "20p"]
+              : ["2p", "2p", "1p", "1p", "5p"]
+            ).map((coin, i) => (
               <span
                 key={`${coin}-${i}`}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-slate-700 text-xs font-black"
@@ -223,7 +276,7 @@ export function PrintablePracticeSheet({
   });
 
   return (
-    <article className="rounded-2xl border-2 border-slate-300 bg-white p-6 text-slate-900">
+    <article className="rounded-2xl border-2 border-slate-300 bg-white p-6 text-slate-900 print:rounded-none print:border-0 print:p-0">
       <header className="flex flex-wrap items-start justify-between gap-4 border-b-2 border-slate-900 pb-3">
         <div>
           <p className="text-[11px] font-bold uppercase tracking-wider text-slate-600">

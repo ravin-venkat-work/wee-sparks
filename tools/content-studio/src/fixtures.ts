@@ -5,6 +5,8 @@ import type {
   Theme,
   YearGroup,
 } from "@wee-sparks/curriculum-schema";
+import { P1_CORE_EXPANSION_EXERCISES } from "./fixturesP1Core";
+import { P2_FOUNDATION_EXERCISES } from "./fixturesP2";
 
 /**
  * Curated offline NI CCEA P1 expansion fixture bank (16 exercises):
@@ -916,6 +918,12 @@ const P2_FIXTURE_EXERCISES: readonly Exercise[] = [
   },
 ];
 
+export type FixturePreset =
+  | "default"
+  | "p1-themed-expansion"
+  | "p1-core-expansion"
+  | "p2-foundation";
+
 export interface FixtureRequest {
   yearGroup: YearGroup;
   skillIds: readonly MicroSkillId[];
@@ -923,21 +931,27 @@ export interface FixtureRequest {
   count: number;
   packId: string;
   title: string;
+  preset?: FixturePreset;
 }
 
 /**
  * Produces a deterministic offline ContentPack from curated NI CCEA fixtures,
- * respecting yearGroup, skillId filter, theme filter, and requested count.
+ * respecting preset, yearGroup, skillId filter, theme filter, and requested count.
  */
 export function buildFixtureContentPack(request: FixtureRequest): ContentPack {
-  const bank =
-    request.yearGroup === "P1" ? P1_FIXTURE_EXERCISES : P2_FIXTURE_EXERCISES;
+  let bank: readonly Exercise[];
+  if (request.preset === "p1-core-expansion") {
+    bank = P1_CORE_EXPANSION_EXERCISES;
+  } else if (request.preset === "p2-foundation" || request.yearGroup === "P2") {
+    bank = P2_FOUNDATION_EXERCISES;
+  } else {
+    bank = P1_FIXTURE_EXERCISES;
+  }
 
   const skillSet = new Set(request.skillIds);
   let filtered = bank.filter((ex) => {
     const skillMatch = skillSet.size === 0 || skillSet.has(ex.skillId);
-    const themeMatch =
-      request.theme === "all" || ex.theme === request.theme;
+    const themeMatch = request.theme === "all" || ex.theme === request.theme;
     return skillMatch && themeMatch;
   });
 
@@ -958,7 +972,7 @@ export function buildFixtureContentPack(request: FixtureRequest): ContentPack {
     packId: request.packId,
     version: "1.0.0",
     title: request.title,
-    description: `Northern Ireland CCEA Foundation Stage ${request.yearGroup} themed expansion pack (${selected.length} exercises across ${Array.from(
+    description: `Northern Ireland CCEA Foundation Stage ${request.yearGroup} exercise pack (${selected.length} exercises across ${Array.from(
       new Set(selected.map((e) => e.theme))
     ).join(", ")}).`,
     yearGroup: request.yearGroup,

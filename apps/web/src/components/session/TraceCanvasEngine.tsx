@@ -12,12 +12,11 @@ interface TraceCanvasEngineProps {
 
 type Stroke = TracePoint[];
 
-const CHECKPOINT_RADIUS = 14; // Generous radius in 0..100 space for ages 4–6
+const CHECKPOINT_RADIUS = 14;
+const HESITATION_MS = 9000;
 
 function distance(a: TracePoint, b: TracePoint): number {
-  const dx = a.x - b.x;
-  const dy = a.y - b.y;
-  return Math.hypot(dx, dy);
+  return Math.hypot(a.x - b.x, a.y - b.y);
 }
 
 function computeHitCheckpoints(
@@ -39,10 +38,10 @@ function computeHitCheckpoints(
 
 /**
  * Guided letter/numeral tracing engine on an HTML5 canvas with:
- * - High-DPI pointer tracing (touch-action: none for tablets)
+ * - Smooth quadratic-curve ink rendering for touchscreens & mouse/trackpads
  * - Pulsing green Start Beacon + ordered stroke checkpoints
  * - Anti-reversal left-anchor stripe & audio cue
- * - Undo, Clear, and generous Foundation Stage checkpoint verification
+ * - Hesitation / 2-miss next-checkpoint visual glow beacon
  */
 export function TraceCanvasEngine({
   exercise,
@@ -59,55 +58,90 @@ export function TraceCanvasEngine({
   );
   const [startedNearStart, setStartedNearStart] = useState(false);
   const [shakePad, setShakePad] = useState(false);
+  const [misses, setMisses] = useState(0);
+  const [isHesitating, setIsHesitating] = useState(false);
+  const [activityTick, setActivityTick] = useState(0);
 
-  const redrawCanvas = useCallback((allStrokes: readonly Stroke[], current?: Stroke) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+  const redrawCanvas = useCallback(
+    (allStrokes: readonly Stroke[], current?: Stroke) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
 
-    const width = canvas.width;
-    const height = canvas.height;
-    ctx.clearRect(0, 0, width, height);
+      const width = canvas.width;
+      const height = canvas.height;
+      ctx.clearRect(0, 0, width, height);
 
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.strokeStyle = "#0284C7";
-    ctx.lineWidth = Math.max(12, width * 0.048);
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = "#0284C7";
+      ctx.lineWidth = Math.max(12, width * 0.048);
 
-    const drawStroke = (stroke: readonly TracePoint[]) => {
-      if (stroke.length === 0) return;
-      ctx.beginPath();
-      const first = stroke[0]!;
-      ctx.moveTo((first.x / 100) * width, (first.y / 100) * height);
-      if (stroke.length === 1) {
-        ctx.lineTo((first.x / 100) * width + 0.5, (first.y / 100) * height + 0.5);
-      } else {
-        for (let i = 1; i < stroke.length; i += 1) {
-          const p = stroke[i]!;
-          ctx.lineTo((p.x / 100) * width, (p.y / 100) * height);
+      const drawStroke = (stroke: readonly TracePoint[]) => {
+        if (stroke.length === 0) return;
+        ctx.beginPath();
+        const first = stroke[0]!;
+        ctx.moveTo((first.x / 100) * width, (first.y / 100) * height);
+
+        if (stroke.length === 1) {
+          ctx.lineTo(
+            (first.x / 100) * width + 0.5,
+            (first.y / 100) * height + 0.5
+          );
+        } else {
+          for (let i = 1; i < stroke.length - 1; i += 1) {
+            const curr = stroke[i]!;
+            const next = stroke[i + 1]!;
+            const cx = (curr.x / 100) * width;
+            const cy = (curr.y / 100) * height;
+            const mx = (((curr.x + next.x) / 2) / 100) * width;
+            const my = (((curr.y + next.y) / 2) / 100) * height;
+            ctx.quadraticCurveTo(cx, cy, mx, my);
+          }
+          const last = stroke[stroke.length - 1]!;
+          ctx.lineTo((last.x / 100) * width, (last.y / 100) * height);
         }
-      }
-      ctx.stroke();
-    };
+        ctx.stroke();
+      };
 
-    for (const s of allStrokes) drawStroke(s);
-    if (current && current.length > 0) drawStroke(current);
-  }, []);
+      for (const s of allStrokes) drawStroke(s);
+      if (current && current.length > 0) drawStroke(current);
+    },
+    []
+  );
 
   useEffect(() => {
     setStrokes([]);
     setHitCheckpoints(new Set());
     setStartedNearStart(false);
     setShakePad(false);
+    setMisses(0);
+    setIsHesitating(false);
+    setActivityTick(0);
     activeStrokeRef.current = [];
     drawingRef.current = false;
     redrawCanvas([]);
   }, [exercise, redrawCanvas]);
 
   useEffect(() => {
+    if (isSolved) {
+      setIsHesitating(false);
+      return;
+    }
+    setIsHesitating(false);
+    const id = window.setTimeout(() => setIsHesitating(true), HESITATION_MS);
+    return () => window.clearTimeout(id);
+  }, [exercise, activityTick, isSolved]);
+
+  useEffect(() => {
     redrawCanvas(strokes);
   }, [strokes, redrawCanvas]);
+
+  const showVisualHint = !isSolved && (misses >= 2 || isHesitating);
+  const nextUnhitIndex = exercise.checkpoints.findIndex(
+    (_, idx) => !hitCheckpoints.has(idx)
+  );
 
   const toNormalisedPoint = (
     e: React.PointerEvent<HTMLCanvasElement>
@@ -123,6 +157,7 @@ export function TraceCanvasEngine({
 
   const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
     if (isSolved) return;
+    setActivityTick((t) => t + 1);
     e.currentTarget.setPointerCapture(e.pointerId);
     const pt = toNormalisedPoint(e);
     drawingRef.current = true;
@@ -133,7 +168,6 @@ export function TraceCanvasEngine({
       playSfx("tap");
     }
 
-    // Check immediate checkpoint hits
     setHitCheckpoints((prev) => {
       const next = new Set(prev);
       let added = false;
@@ -174,6 +208,7 @@ export function TraceCanvasEngine({
   const finishStroke = () => {
     if (!drawingRef.current) return;
     drawingRef.current = false;
+    setActivityTick((t) => t + 1);
     const finished = activeStrokeRef.current;
     activeStrokeRef.current = [];
     if (finished.length > 0) {
@@ -183,6 +218,7 @@ export function TraceCanvasEngine({
 
   const handleUndo = () => {
     if (isSolved || strokes.length === 0) return;
+    setActivityTick((t) => t + 1);
     playSfx("tap");
     const nextStrokes = strokes.slice(0, -1);
     setStrokes(nextStrokes);
@@ -193,6 +229,7 @@ export function TraceCanvasEngine({
 
   const handleClear = () => {
     if (isSolved) return;
+    setActivityTick((t) => t + 1);
     playSfx("tap");
     setStrokes([]);
     setHitCheckpoints(new Set());
@@ -202,6 +239,7 @@ export function TraceCanvasEngine({
 
   const handleCheck = () => {
     if (isSolved) return;
+    setActivityTick((t) => t + 1);
     const coverage =
       exercise.checkpoints.length > 0
         ? hitCheckpoints.size / exercise.checkpoints.length
@@ -211,6 +249,7 @@ export function TraceCanvasEngine({
       (startedNearStart || hitCheckpoints.has(0));
 
     if (!isCorrect) {
+      setMisses((m) => m + 1);
       setShakePad(true);
       window.setTimeout(() => setShakePad(false), 450);
     } else if (exercise.glyphKind === "letter") {
@@ -232,6 +271,7 @@ export function TraceCanvasEngine({
         <button
           type="button"
           onClick={() => {
+            setActivityTick((t) => t + 1);
             playSfx("tap");
             void playAudioKey(
               exercise.antiReversalAudioKey,
@@ -251,32 +291,41 @@ export function TraceCanvasEngine({
         </span>
       </div>
 
+      {showVisualHint && (
+        <div className="mx-auto max-w-md rounded-2xl bg-amber-100 px-4 py-2 text-center text-sm font-extrabold text-amber-950 ring-2 ring-amber-300">
+          💡{" "}
+          {nextUnhitIndex === 0
+            ? "Put your finger on the glowing green 1 dot to begin!"
+            : nextUnhitIndex > 0
+            ? "Follow the pulsing golden dot along the dashed path!"
+            : "Great trace! Tap ✅ Check Trace!"}
+        </div>
+      )}
+
       {/* Guided Tracing Pad with Left Anti-Reversal Anchor Stripe */}
       <div
         className={`relative mx-auto aspect-square w-full max-w-[340px] overflow-hidden rounded-3xl border-4 bg-white shadow-inner ${
           isSolved
             ? "border-emerald-500 ring-4 ring-emerald-200"
+            : showVisualHint
+            ? "border-amber-400 ring-4 ring-amber-200"
             : "border-sky-300"
         } ${shakePad ? "animate-gentle-shake" : ""}`}
       >
-        {/* Left-margin anti-reversal anchor bar */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-y-0 left-0 flex w-3 flex-col items-center justify-center bg-gradient-to-b from-emerald-400 via-sky-300 to-amber-300 opacity-70"
         />
 
-        {/* SVG Guide Layer (baselines, dashed path, start beacon, checkpoints) */}
         <svg
           viewBox="0 0 100 100"
           className="pointer-events-none absolute inset-0 h-full w-full"
           aria-hidden="true"
         >
-          {/* Foundation Stage handwriting guidelines */}
           <line x1="8" y1="22" x2="94" y2="22" stroke="#E2E8F0" strokeWidth="0.8" strokeDasharray="3 3" />
           <line x1="8" y1="50" x2="94" y2="50" stroke="#CBD5E1" strokeWidth="0.9" strokeDasharray="3 3" />
           <line x1="8" y1="78" x2="94" y2="78" stroke="#94A3B8" strokeWidth="1.2" />
 
-          {/* Wide soft stencil backdrop */}
           <path
             d={exercise.strokeGuidePath}
             fill="none"
@@ -285,8 +334,6 @@ export function TraceCanvasEngine({
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-
-          {/* Dashed centre guide */}
           <path
             d={exercise.strokeGuidePath}
             fill="none"
@@ -297,16 +344,27 @@ export function TraceCanvasEngine({
             strokeLinejoin="round"
           />
 
-          {/* Ordered Checkpoints */}
           {exercise.checkpoints.map((cp, idx) => {
             const isHit = hitCheckpoints.has(idx);
             const isFirst = idx === 0;
+            const isNextBeacon = showVisualHint && idx === nextUnhitIndex;
+
             return (
               <g key={idx}>
+                {isNextBeacon && (
+                  <circle
+                    cx={cp.x}
+                    cy={cp.y}
+                    r="8.5"
+                    fill="#F59E0B"
+                    opacity="0.35"
+                    className="animate-ping"
+                  />
+                )}
                 <circle
                   cx={cp.x}
                   cy={cp.y}
-                  r={isFirst ? 5.2 : 3.6}
+                  r={isFirst ? 5.2 : isNextBeacon ? 4.8 : 3.6}
                   fill={isHit ? "#10B981" : isFirst ? "#22C55E" : "#F59E0B"}
                   stroke="#FFFFFF"
                   strokeWidth="1.4"
@@ -328,7 +386,6 @@ export function TraceCanvasEngine({
           })}
         </svg>
 
-        {/* Interactive HTML5 Canvas */}
         <canvas
           ref={canvasRef}
           width={600}
@@ -367,7 +424,9 @@ export function TraceCanvasEngine({
           type="button"
           disabled={isSolved || strokes.length === 0}
           onClick={handleCheck}
-          className="touch-card rounded-2xl bg-emerald-600 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-500 disabled:opacity-50"
+          className={`touch-card rounded-2xl bg-emerald-600 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-500 disabled:opacity-50 ${
+            showVisualHint && nextUnhitIndex === -1 ? "animate-hint-glow" : ""
+          }`}
         >
           ✅ Check Trace!
         </button>
