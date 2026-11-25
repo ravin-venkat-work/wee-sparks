@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "validate": "tsx src/validate.ts",
+    "generate": "tsx src/generate.ts",
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit"
   },
   "dependencies": {
+    "@google/genai": "^3.6.1",
     "@wee-sparks/curriculum-schema": "workspace:*"
   },
   "devDependencies": {

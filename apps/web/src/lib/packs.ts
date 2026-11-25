@@ -1,14 +1,63 @@
 import {
   ContentPackSchema,
   type ContentPack,
+  type Exercise,
+  type MicroSkillId,
+  type YearGroup,
 } from "@wee-sparks/curriculum-schema";
 import p1StarterPackRaw from "@/data/packs/p1-starter-pack.json";
+import p1ThemedExpansionRaw from "@/data/packs/p1-themed-expansion.json";
 
 /**
- * Validated starter pack for CCEA Foundation Stage Primary 1.
+ * Validated offline JSON content packs.
  * Parsing at module load guarantees strict Zod schema conformance.
  */
 export const P1_STARTER_PACK: ContentPack =
   ContentPackSchema.parse(p1StarterPackRaw);
 
-export const ALL_CONTENT_PACKS: readonly ContentPack[] = [P1_STARTER_PACK];
+export const P1_THEMED_EXPANSION_PACK: ContentPack =
+  ContentPackSchema.parse(p1ThemedExpansionRaw);
+
+export const ALL_CONTENT_PACKS: readonly ContentPack[] = [
+  P1_STARTER_PACK,
+  P1_THEMED_EXPANSION_PACK,
+];
+
+/**
+ * Merges all validated content packs for a given CCEA year group into a single
+ * deduplicated pool for the adaptive session composer.
+ */
+export function getCombinedPackForYear(yearGroup: YearGroup): ContentPack {
+  const matchingPacks = ALL_CONTENT_PACKS.filter(
+    (pack) => pack.yearGroup === yearGroup
+  );
+
+  const skillIdSet = new Set<MicroSkillId>();
+  const seenExerciseIds = new Set<string>();
+  const exercises: Exercise[] = [];
+
+  for (const pack of matchingPacks) {
+    for (const skillId of pack.skillIds) {
+      skillIdSet.add(skillId);
+    }
+    for (const ex of pack.exercises) {
+      if (!seenExerciseIds.has(ex.id)) {
+        seenExerciseIds.add(ex.id);
+        exercises.push(ex);
+      }
+    }
+  }
+
+  return ContentPackSchema.parse({
+    packId: `ccea-${yearGroup.toLowerCase()}-combined`,
+    version: "1.0.0",
+    title: `CCEA ${yearGroup} Complete Quest Pool`,
+    description: `Combined validated ${yearGroup} exercise pool across ${matchingPacks.length} offline packs.`,
+    yearGroup,
+    locale: "en-GB-NI",
+    skillIds: Array.from(skillIdSet),
+    exercises,
+  });
+}
+
+export const COMBINED_P1_PACK: ContentPack = getCombinedPackForYear("P1");

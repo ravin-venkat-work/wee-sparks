@@ -136,6 +136,48 @@ export type PhonemeSegmentExercise = z.infer<
 >;
 
 /**
+ * 3b. High-Frequency Word Recognition (CCEA P1–P2 sight/context words)
+ */
+export const HighFrequencyWordExerciseSchema = z.object({
+  ...BaseExerciseFields,
+  type: z.literal("high-frequency-word"),
+  targetWord: z.string().min(1).max(12),
+  targetWordAudioKey: AudioKeySchema,
+  contextSentence: z.string().min(3),
+  contextAudioKey: AudioKeySchema,
+  stimulusEmoji: z.string().min(1),
+  options: z.array(InteractiveCardSchema).min(3).max(4),
+  correctOptionId: z.string().min(1),
+});
+export type HighFrequencyWordExercise = z.infer<
+  typeof HighFrequencyWordExerciseSchema
+>;
+
+/**
+ * 3c. Guided Letter / Numeral Tracing Canvas with Anti-Reversal Cues
+ */
+export const TracePointSchema = z.object({
+  x: z.number().min(0).max(100),
+  y: z.number().min(0).max(100),
+});
+export type TracePoint = z.infer<typeof TracePointSchema>;
+
+export const TraceGlyphExerciseSchema = z.object({
+  ...BaseExerciseFields,
+  type: z.literal("trace-glyph"),
+  glyph: z.string().min(1).max(2),
+  glyphKind: z.enum(["letter", "numeral"]),
+  glyphAudioKey: AudioKeySchema,
+  antiReversalCue: z.string().min(5),
+  antiReversalAudioKey: AudioKeySchema,
+  startPoint: TracePointSchema,
+  checkpoints: z.array(TracePointSchema).min(3).max(12),
+  strokeGuidePath: z.string().min(4),
+  requiredCoverage: z.number().min(0.6).max(1).default(0.8),
+});
+export type TraceGlyphExercise = z.infer<typeof TraceGlyphExerciseSchema>;
+
+/**
  * 4. Ten-Frame Count & Build (CCEA Numeracy 1–10 and 11–20)
  * Supports:
  *  - "count-to-numeral": Counters are shown on the Ten-Frame; child subitises/counts and taps the matching numeral.
@@ -153,6 +195,26 @@ export const TenFrameCountExerciseSchema = z.object({
   correctOptionId: z.string().min(1).optional(),
 });
 export type TenFrameCountExercise = z.infer<typeof TenFrameCountExerciseSchema>;
+
+/**
+ * 4b. Number Line Hop (CCEA Numeracy 0–10 & 0–20)
+ */
+export const NumberLineHopExerciseSchema = z.object({
+  ...BaseExerciseFields,
+  type: z.literal("number-line-hop"),
+  min: z.number().int().min(0).max(10).default(0),
+  max: z.union([z.literal(10), z.literal(20)]).default(10),
+  startNumber: z.number().int().min(0).max(20),
+  operation: z.enum(["add", "subtract", "count-to"]),
+  hops: z.number().int().min(1).max(10),
+  targetNumber: z.number().int().min(0).max(20),
+  hopperVisual: z.object({
+    emoji: z.string().min(1),
+    label: z.string().min(1),
+    audioKey: AudioKeySchema,
+  }),
+});
+export type NumberLineHopExercise = z.infer<typeof NumberLineHopExerciseSchema>;
 
 /**
  * 5. Number Bonds (Make 5, Make 10, Part-Whole)
@@ -207,7 +269,10 @@ const RawExerciseUnionSchema = z.discriminatedUnion("type", [
   InitialSoundMatchExerciseSchema,
   CvcBlendingExerciseSchema,
   PhonemeSegmentExerciseSchema,
+  HighFrequencyWordExerciseSchema,
+  TraceGlyphExerciseSchema,
   TenFrameCountExerciseSchema,
+  NumberLineHopExerciseSchema,
   NumberBondExerciseSchema,
   UkCoinMatchExerciseSchema,
   ShapeSortExerciseSchema,
@@ -341,6 +406,49 @@ export const ExerciseSchema = RawExerciseUnionSchema.superRefine(
           path: ["initialCounters"],
           message:
             "build-on-frame mode requires initialCounters to be strictly less than targetNumber",
+        });
+      }
+    }
+
+    if (exercise.type === "number-line-hop") {
+      if (
+        exercise.startNumber < exercise.min ||
+        exercise.startNumber > exercise.max
+      ) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["startNumber"],
+          message: `startNumber (${exercise.startNumber}) must lie within [${exercise.min}, ${exercise.max}]`,
+        });
+      }
+      if (
+        exercise.targetNumber < exercise.min ||
+        exercise.targetNumber > exercise.max
+      ) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["targetNumber"],
+          message: `targetNumber (${exercise.targetNumber}) must lie within [${exercise.min}, ${exercise.max}]`,
+        });
+      }
+      if (
+        exercise.operation === "add" &&
+        exercise.startNumber + exercise.hops !== exercise.targetNumber
+      ) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["targetNumber"],
+          message: `For add, startNumber (${exercise.startNumber}) + hops (${exercise.hops}) must equal targetNumber (${exercise.targetNumber})`,
+        });
+      }
+      if (
+        exercise.operation === "subtract" &&
+        exercise.startNumber - exercise.hops !== exercise.targetNumber
+      ) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["targetNumber"],
+          message: `For subtract, startNumber (${exercise.startNumber}) - hops (${exercise.hops}) must equal targetNumber (${exercise.targetNumber})`,
         });
       }
     }

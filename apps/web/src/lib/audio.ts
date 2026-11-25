@@ -1,43 +1,119 @@
 "use client";
 
+export { playSfx, type SfxCue } from "./sfx";
+
 /**
- * NI Linguistic Phonics pure-sound approximations for Web Speech API fallback.
- * Prevents TTS from reading letter names ("ess", "tee") when MP3 recordings
- * are not yet bundled in /public/audio/.
+ * Northern Ireland Linguistic Phonics phonetic approximations for Web Speech API
+ * fallback when static MP3 files are not yet bundled.
+ *
+ * IMPORTANT: Isolated single letters (e.g. "s", "a", "t") must NEVER be sent
+ * directly to speechSynthesis, otherwise browsers speak letter names ("ess",
+ * "ay", "tee") instead of phonemes.
  */
-const PHONEME_SPEECH_MAP: Record<string, string> = {
-  "phoneme/s": "sss",
-  "phoneme/a": "a",
-  "phoneme/t": "t",
-  "phoneme/p": "p",
-  "phoneme/i": "ih",
-  "phoneme/n": "nnn",
-  "phoneme/c": "k",
-  "phoneme/k": "k",
-  "phoneme/e": "eh",
-  "phoneme/h": "h",
-  "phoneme/r": "rrr",
-  "phoneme/m": "mmm",
-  "phoneme/d": "d",
-  "phoneme/g": "g",
-  "phoneme/o": "oh",
-  "phoneme/u": "uh",
-  "phoneme/l": "lll",
-  "phoneme/f": "fff",
-  "phoneme/b": "b",
-  "phoneme/sh": "shh",
-  "phoneme/ch": "ch",
-  "phoneme/th": "thh",
-  "phoneme/ng": "ng",
+const PHONEME_FALLBACK_MAP: Record<string, string> = {
+  // Stage 1 starter set (s, a, t, p, i, n)
+  s: "ssss",
+  a: "aah",
+  t: "tuh",
+  p: "puh",
+  i: "ih",
+  n: "nnnn",
+  // Stage 1 remaining single-letter graphemes
+  c: "kuh",
+  k: "kuh",
+  e: "eh",
+  h: "huh",
+  r: "rrrr",
+  m: "mmmm",
+  d: "duh",
+  g: "guh",
+  o: "aw",
+  u: "uh",
+  l: "llll",
+  f: "ffff",
+  b: "buh",
+  j: "juh",
+  v: "vvvv",
+  w: "wuh",
+  x: "ks",
+  y: "yuh",
+  z: "zzzz",
+  q: "kwuh",
+  // Stage 3/4 digraphs & double letters
+  sh: "shhh",
+  ch: "chuh",
+  th: "thhh",
+  ng: "ngg",
+  ff: "ffff",
+  ll: "llll",
+  ss: "ssss",
+  zz: "zzzz",
+  ee: "eee",
+  ea: "eee",
+  ai: "ay",
+  ay: "ay",
+  oa: "oh",
+  ow: "oh",
 };
 
 /**
- * Cache audioKeys whose static MP3 returned 404/error during this session so
- * repeat taps fall back to Web Speech API with zero network delay.
+ * Cached HTMLAudioElement pool keyed by resolved static asset URL.
+ * Tracks URLs that failed to load so subsequent taps fall back immediately.
  */
-const missingAudioKeys = new Set<string>();
+const audioElementCache = new Map<string, HTMLAudioElement>();
+const missingAudioUrls = new Set<string>();
 
 let activeHtmlAudio: HTMLAudioElement | null = null;
+let playbackGeneration = 0;
+
+/**
+ * Resolves an exercise audioKey to its static public asset path.
+ * Phoneme keys ("phoneme/s", "phonemes/s") resolve under /audio/phonemes/.
+ */
+export function resolveAudioUrl(audioKey: string): string {
+  const normalized = audioKey.replace(/^\/+/, "");
+  if (normalized.startsWith("phoneme/")) {
+    const slug = normalized.slice("phoneme/".length);
+    return `/audio/phonemes/${slug}.mp3`;
+  }
+  if (normalized.startsWith("phonemes/")) {
+    const slug = normalized.slice("phonemes/".length);
+    return `/audio/phonemes/${slug}.mp3`;
+  }
+  return `/audio/${normalized}.mp3`;
+}
+
+function getCachedAudioElement(url: string): HTMLAudioElement {
+  const existing = audioElementCache.get(url);
+  if (existing) return existing;
+
+  const audio = new Audio(url);
+  audio.preload = "auto";
+  audioElementCache.set(url, audio);
+  return audio;
+}
+
+/**
+ * Optionally pre-warms static HTMLAudioElement instances for a set of audio keys.
+ */
+export function preloadAudioKeys(audioKeys: readonly string[]): void {
+  if (typeof window === "undefined") return;
+
+  for (const key of audioKeys) {
+    const url = resolveAudioUrl(key);
+    if (missingAudioUrls.has(url) || audioElementCache.has(url)) continue;
+
+    const audio = getCachedAudioElement(url);
+    audio.addEventListener(
+      "error",
+      () => {
+        missingAudioUrls.add(url);
+        audioElementCache.delete(url);
+      },
+      { once: true }
+    );
+  }
+}
 
 function pickUkVoice(): SpeechSynthesisVoice | null {
   if (typeof window === "undefined" || !("speechSynthesis" in window)) {
@@ -48,7 +124,11 @@ function pickUkVoice(): SpeechSynthesisVoice | null {
   if (voices.length === 0) return null;
 
   return (
-    voices.find((v) => v.lang === "en-GB" && /google|natural|libby|sonia|serena|kate/i.test(v.name)) ??
+    voices.find(
+      (v) =>
+        v.lang === "en-GB" &&
+        /google|natural|libby|sonia|serena|kate/i.test(v.name)
+    ) ??
     voices.find((v) => v.lang === "en-GB") ??
     voices.find((v) => v.lang.startsWith("en-")) ??
     null
@@ -56,11 +136,17 @@ function pickUkVoice(): SpeechSynthesisVoice | null {
 }
 
 export function stopAudio(): void {
+  playbackGeneration += 1;
+
   if (typeof window === "undefined") return;
 
   if (activeHtmlAudio) {
     activeHtmlAudio.pause();
-    activeHtmlAudio.currentTime = 0;
+    try {
+      activeHtmlAudio.currentTime = 0;
+    } catch {
+      // Ignore if media is not seekable yet.
+    }
     activeHtmlAudio = null;
   }
 
@@ -73,23 +159,52 @@ export function stopAudio(): void {
   }
 }
 
-function deriveSpeechText(audioKey: string, fallbackText?: string): string {
-  if (PHONEME_SPEECH_MAP[audioKey]) {
-    return PHONEME_SPEECH_MAP[audioKey];
+/**
+ * Derives speechSynthesis fallback text while guaranteeing that isolated
+ * single letters are NEVER sent as raw letter names.
+ */
+function deriveSafeSpeechText(audioKey: string, fallbackText?: string): string {
+  const normalizedKey = audioKey.replace(/^\/+/, "").toLowerCase();
+
+  // Always map phoneme/* or phonemes/* keys through the phonetic approximation map
+  if (
+    normalizedKey.startsWith("phoneme/") ||
+    normalizedKey.startsWith("phonemes/")
+  ) {
+    const slug = normalizedKey.split("/").pop() ?? "";
+    if (PHONEME_FALLBACK_MAP[slug]) {
+      return PHONEME_FALLBACK_MAP[slug];
+    }
   }
-  if (fallbackText && fallbackText.trim().length > 0) {
-    return fallbackText.trim();
+
+  const trimmedFallback = fallbackText?.trim();
+  if (trimmedFallback) {
+    // Guard: never pass an isolated single letter (e.g. "s", "a", "t") to speechSynthesis
+    if (/^[a-z]$/i.test(trimmedFallback)) {
+      const lower = trimmedFallback.toLowerCase();
+      return PHONEME_FALLBACK_MAP[lower] ?? `${lower}uh`;
+    }
+    return trimmedFallback;
   }
-  const lastSegment = audioKey.split("/").pop() ?? audioKey;
+
+  const lastSegment = normalizedKey.split("/").pop() ?? normalizedKey;
+  if (/^[a-z]$/i.test(lastSegment)) {
+    return PHONEME_FALLBACK_MAP[lastSegment] ?? `${lastSegment}uh`;
+  }
   return lastSegment.replace(/[-_]+/g, " ");
 }
 
 function speakWithWebSpeech(
   text: string,
-  rate = 0.88
+  rate: number,
+  generation: number
 ): Promise<void> {
   return new Promise((resolve) => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+    if (
+      typeof window === "undefined" ||
+      !("speechSynthesis" in window) ||
+      generation !== playbackGeneration
+    ) {
       resolve();
       return;
     }
@@ -99,7 +214,7 @@ function speakWithWebSpeech(
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "en-GB";
       utterance.rate = rate;
-      utterance.pitch = 1.05;
+      utterance.pitch = 1.04;
 
       const ukVoice = pickUkVoice();
       if (ukVoice) {
@@ -117,11 +232,60 @@ function speakWithWebSpeech(
       utterance.onend = done;
       utterance.onerror = done;
 
-      // Safety timeout in case a browser swallows onend
-      window.setTimeout(done, Math.max(1200, text.length * 110));
+      window.setTimeout(done, Math.max(950, text.length * 115));
       window.speechSynthesis.speak(utterance);
     } catch {
       resolve();
+    }
+  });
+}
+
+function playCachedHtmlAudio(
+  url: string,
+  generation: number
+): Promise<boolean> {
+  if (missingAudioUrls.has(url) || generation !== playbackGeneration) {
+    return Promise.resolve(false);
+  }
+
+  return new Promise<boolean>((resolve) => {
+    try {
+      const audio = getCachedAudioElement(url);
+      activeHtmlAudio = audio;
+
+      let settled = false;
+      const finish = (ok: boolean) => {
+        if (settled) return;
+        settled = true;
+        audio.onended = null;
+        audio.onerror = null;
+        if (activeHtmlAudio === audio) {
+          activeHtmlAudio = null;
+        }
+        if (!ok) {
+          missingAudioUrls.add(url);
+          audioElementCache.delete(url);
+        }
+        resolve(ok);
+      };
+
+      audio.onended = () => finish(true);
+      audio.onerror = () => finish(false);
+
+      try {
+        audio.currentTime = 0;
+      } catch {
+        // Seek will succeed once metadata loads.
+      }
+
+      const playPromise = audio.play();
+      if (playPromise) {
+        void playPromise.catch(() => finish(false));
+      }
+    } catch {
+      missingAudioUrls.add(url);
+      audioElementCache.delete(url);
+      resolve(false);
     }
   });
 }
@@ -133,9 +297,10 @@ export interface PlayAudioOptions {
 }
 
 /**
- * Offline-first audio playback helper.
- * 1. Tries static MP3 at /audio/<audioKey>.mp3 (unless already known missing).
- * 2. Falls back seamlessly to the browser's Web Speech API (en-GB).
+ * Offline-first audio playback helper:
+ * 1. Resolves phoneme keys under /audio/phonemes/ and plays via cached HTMLAudioElement.
+ * 2. Falls back seamlessly to en-GB Web Speech API with phonetic approximations
+ *    (never passing raw isolated single letters as letter names).
  */
 export async function playAudioKey(
   audioKey: string,
@@ -147,67 +312,78 @@ export async function playAudioKey(
   }
 
   stopAudio();
+  const generation = playbackGeneration;
   options?.onStart?.();
 
-  const speechText = deriveSpeechText(audioKey, fallbackText);
-  const rate =
-    options?.rate ?? (audioKey.startsWith("phoneme/") ? 0.78 : 0.9);
+  const isPhoneme =
+    audioKey.startsWith("phoneme/") || audioKey.startsWith("phonemes/");
+  const url = resolveAudioUrl(audioKey);
+  const speechText = deriveSafeSpeechText(audioKey, fallbackText);
+  const rate = options?.rate ?? (isPhoneme ? 0.8 : 0.9);
 
-  if (missingAudioKeys.has(audioKey)) {
-    await speakWithWebSpeech(speechText, rate);
+  const playedStatic = await playCachedHtmlAudio(url, generation);
+
+  if (!playedStatic && generation === playbackGeneration) {
+    await speakWithWebSpeech(speechText, rate, generation);
+  }
+
+  if (generation === playbackGeneration) {
     options?.onEnd?.();
-    return;
   }
-
-  const audioUrl = `/audio/${audioKey}.mp3`;
-
-  const playedMp3 = await new Promise<boolean>((resolve) => {
-    try {
-      const audio = new Audio(audioUrl);
-      activeHtmlAudio = audio;
-
-      audio.onended = () => {
-        if (activeHtmlAudio === audio) activeHtmlAudio = null;
-        resolve(true);
-      };
-
-      audio.onerror = () => {
-        if (activeHtmlAudio === audio) activeHtmlAudio = null;
-        missingAudioKeys.add(audioKey);
-        resolve(false);
-      };
-
-      void audio.play().catch(() => {
-        if (activeHtmlAudio === audio) activeHtmlAudio = null;
-        missingAudioKeys.add(audioKey);
-        resolve(false);
-      });
-    } catch {
-      missingAudioKeys.add(audioKey);
-      resolve(false);
-    }
-  });
-
-  if (!playedMp3) {
-    await speakWithWebSpeech(speechText, rate);
-  }
-
-  options?.onEnd?.();
 }
 
 /**
- * Plays a sequence of audioKeys one after another (used for left-to-right
- * Elkonin sound-box blending sweeps).
+ * Convenience helper for playing an isolated phoneme grapheme sound.
+ */
+export function playPhoneme(
+  grapheme: string,
+  audioKey?: string,
+  options?: PlayAudioOptions
+): Promise<void> {
+  const key = audioKey ?? `phoneme/${grapheme.toLowerCase()}`;
+  return playAudioKey(key, grapheme, { rate: 0.8, ...options });
+}
+
+/**
+ * Plays a sequence of audioKeys in order (used for left-to-right Elkonin
+ * sound-box blending sweeps followed by the full blended word).
+ * Cancels cleanly if another audio cue interrupts mid-sweep.
  */
 export async function playAudioSequence(
-  items: ReadonlyArray<{ audioKey: string; fallbackText?: string; rate?: number }>,
+  items: ReadonlyArray<{
+    audioKey: string;
+    fallbackText?: string;
+    rate?: number;
+    pauseAfterMs?: number;
+  }>,
   onStep?: (index: number) => void
-): Promise<void> {
+): Promise<boolean> {
+  stopAudio();
+  const sequenceStartGen = playbackGeneration;
+
   for (let i = 0; i < items.length; i += 1) {
     const item = items[i]!;
     onStep?.(i);
+
+    const expectedGen = sequenceStartGen + i + 1;
     await playAudioKey(item.audioKey, item.fallbackText, { rate: item.rate });
-    await new Promise((r) => window.setTimeout(r, 120));
+
+    // If an external stopAudio/playAudioKey interrupted this sequence, abort cleanly
+    if (playbackGeneration !== expectedGen) {
+      onStep?.(-1);
+      return false;
+    }
+
+    const pauseMs = item.pauseAfterMs ?? 110;
+    if (pauseMs > 0) {
+      await new Promise((r) => window.setTimeout(r, pauseMs));
+    }
+    if (playbackGeneration !== expectedGen) {
+      onStep?.(-1);
+      return false;
+    }
   }
+
   onStep?.(-1);
+  return true;
 }

@@ -38,13 +38,18 @@ function validateCatalog(): boolean {
 }
 
 function validatePacks(): boolean {
-  const files = readdirSync(packsDir).filter((file) => file.endsWith(".json"));
+  const files = readdirSync(packsDir)
+    .filter((file) => file.endsWith(".json"))
+    .sort();
   if (files.length === 0) {
     console.error(`No JSON pack files found in ${packsDir}`);
     return false;
   }
 
   let allValid = true;
+  const globalExerciseIds = new Map<string, string>();
+  const globalPackIds = new Map<string, string>();
+  let totalExercises = 0;
 
   for (const file of files) {
     const fullPath = path.join(packsDir, file);
@@ -54,15 +59,59 @@ function validatePacks(): boolean {
     if (!parsed.success) {
       allValid = false;
       console.error(`✗ Schema errors in ${file}:`);
+      const rawExercises =
+        typeof raw === "object" &&
+        raw !== null &&
+        "exercises" in raw &&
+        Array.isArray((raw as { exercises?: unknown }).exercises)
+          ? ((raw as { exercises: Array<{ id?: string }> }).exercises ?? [])
+          : [];
+
       for (const issue of parsed.error.issues) {
-        console.error(`  - [${issue.path.join(".")}] ${issue.message}`);
+        if (issue.path[0] === "exercises" && typeof issue.path[1] === "number") {
+          const idx = issue.path[1];
+          const exId = rawExercises[idx]?.id ?? "<missing-id>";
+          const subPath = issue.path.slice(2).join(".") || "(root)";
+          console.error(
+            `  - Exercise #${idx + 1} (${exId}) [${subPath}]: ${issue.message}`
+          );
+        } else {
+          console.error(`  - [${issue.path.join(".")}] ${issue.message}`);
+        }
       }
-    } else {
-      const pack = parsed.data;
-      console.log(
-        `✓ ${file}: "${pack.title}" (${pack.yearGroup}, ${pack.exercises.length} exercises, skills: ${pack.skillIds.join(", ")})`
+      continue;
+    }
+
+    const pack = parsed.data;
+    totalExercises += pack.exercises.length;
+
+    if (globalPackIds.has(pack.packId)) {
+      allValid = false;
+      console.error(
+        `✗ Duplicate packId "${pack.packId}" in ${file} (already defined in ${globalPackIds.get(pack.packId)})`
       );
     }
+    globalPackIds.set(pack.packId, file);
+
+    for (const ex of pack.exercises) {
+      if (globalExerciseIds.has(ex.id)) {
+        allValid = false;
+        console.error(
+          `✗ Duplicate exercise id "${ex.id}" in ${file} (already defined in ${globalExerciseIds.get(ex.id)})`
+        );
+      }
+      globalExerciseIds.set(ex.id, file);
+    }
+
+    console.log(
+      `✓ ${file}: "${pack.title}" (${pack.yearGroup}, ${pack.exercises.length} exercises, skills: ${pack.skillIds.join(", ")})`
+    );
+  }
+
+  if (allValid) {
+    console.log(
+      `✓ Validated ${files.length} pack files (${totalExercises} unique exercises total).`
+    );
   }
 
   return allValid;
