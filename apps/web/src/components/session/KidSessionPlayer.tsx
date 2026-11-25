@@ -451,6 +451,15 @@ export function KidSessionPlayer({
       if (isCorrect) {
         const result = await syncAndUnlockStickers(learner.id, false);
         setLifetimeStars(result.totalStars);
+        if (result.newlyUnlocked.length > 0) {
+          setNewlyUnlockedStickers((prev) => {
+            const seen = new Set(prev.map((s) => s.id));
+            return [
+              ...prev,
+              ...result.newlyUnlocked.filter((s) => !seen.has(s.id)),
+            ];
+          });
+        }
       }
     }
   };
@@ -466,9 +475,20 @@ export function KidSessionPlayer({
     } else {
       playSfx("success");
       if (learner?.id !== undefined) {
-        const reward = await syncAndUnlockStickers(learner.id, true);
+        const reward = await syncAndUnlockStickers(
+          learner.id,
+          newlyUnlockedStickers.length === 0
+        );
         setLifetimeStars(reward.totalStars);
-        setNewlyUnlockedStickers(reward.newlyUnlocked);
+        if (reward.newlyUnlocked.length > 0) {
+          setNewlyUnlockedStickers((prev) => {
+            const seen = new Set(prev.map((s) => s.id));
+            return [
+              ...prev,
+              ...reward.newlyUnlocked.filter((s) => !seen.has(s.id)),
+            ];
+          });
+        }
       }
       setShowCompleteScreen(true);
       void playAudioKey(

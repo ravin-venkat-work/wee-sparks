@@ -192,10 +192,17 @@
     margin: 12mm;
   }
 
+  * {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
   html,
   body {
     background: #ffffff !important;
     color: #0f172a !important;
+    font-size: 11pt;
+    line-height: 1.4;
   }
 
   .no-print {
@@ -211,5 +218,11 @@
     padding: 0 !important;
     box-shadow: none !important;
     border: none !important;
+  }
+
+  .print-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border-color: #334155 !important;
   }
 }

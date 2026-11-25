@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   STICKER_CATALOG,
   type StickerDefinition,
@@ -42,6 +42,10 @@ export function CelebrationStickerChest({
   const [chestOpened, setChestOpened] = useState(
     mode === "chest-modal" || newlyUnlocked.length === 0
   );
+
+  useEffect(() => {
+    setChestOpened(mode === "chest-modal" || newlyUnlocked.length === 0);
+  }, [mode, newlyUnlocked.length]);
 
   const unlockedSet = new Set(unlockedRecords.map((r) => r.stickerId));
 

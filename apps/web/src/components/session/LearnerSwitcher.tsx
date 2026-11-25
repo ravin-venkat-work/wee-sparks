@@ -109,7 +109,9 @@ export function LearnerSwitcher({
               aria-pressed={isCurrent}
               onClick={() => {
                 playSfx("tap");
-                onSelectLearner(profile);
+                if (!isCurrent) {
+                  onSelectLearner(profile);
+                }
               }}
               className={`touch-card flex items-center gap-2.5 rounded-2xl px-4 py-3 text-left transition-all ${
                 isCurrent
@@ -225,7 +227,7 @@ export function LearnerSwitcher({
                     playSfx("tap");
                     setPreferredTheme(opt.id);
                   }}
-                  className={`min-h-[48px] rounded-xl px-3.5 py-2 text-sm font-extrabold ${
+                  className={`touch-card rounded-xl px-4 py-3 text-sm font-extrabold ${
                     preferredTheme === opt.id
                       ? "bg-indigo-600 text-white"
                       : "bg-slate-100 text-slate-700 hover:bg-slate-200"

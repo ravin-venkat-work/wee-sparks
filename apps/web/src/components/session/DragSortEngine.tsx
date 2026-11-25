@@ -148,6 +148,12 @@ export function DragSortEngine({
     }
   };
 
+  const cancelPointerDrag = () => {
+    setActiveDrag(null);
+    setIsOverDropZone(false);
+    pointerStartRef.current = null;
+  };
+
   const endPointerDrag = (
     e: React.PointerEvent<HTMLButtonElement>,
     onDropOrTap: (payload: string) => void
@@ -270,6 +276,7 @@ export function DragSortEngine({
             }
             onPointerMove={movePointerDrag}
             onPointerUp={(e) => endPointerDrag(e, () => addCounter())}
+            onPointerCancel={cancelPointerDrag}
             disabled={isSolved || tenFrameCount >= exercise.frameSize}
             className={`touch-card flex cursor-grab items-center gap-3 rounded-2xl border-b-4 border-amber-500 bg-amber-200 px-6 py-3.5 text-lg font-black text-slate-900 shadow-sm hover:bg-amber-300 active:cursor-grabbing disabled:opacity-50 ${
               showVisualHint && needsMore ? "animate-hint-glow" : ""
@@ -407,6 +414,7 @@ export function DragSortEngine({
                 onPointerUp={(e) =>
                   endPointerDrag(e, (id) => placeIntoTargetBucket(id))
                 }
+                onPointerCancel={cancelPointerDrag}
                 aria-label={`Sort ${option.label} into ${exercise.targetShape} bucket`}
                 className={`touch-card flex min-h-[128px] cursor-grab flex-col items-center justify-center gap-2 rounded-3xl border-4 p-4 shadow-sm active:cursor-grabbing ${
                   isCorrectCard
@@ -552,6 +560,7 @@ export function DragSortEngine({
               onPointerUp={(e) =>
                 endPointerDrag(e, (c) => addCoinToJar(c as UkCoin))
               }
+              onPointerCancel={cancelPointerDrag}
               disabled={isSolved}
               aria-label={`Add UK ${coin} coin`}
               className={`touch-card flex h-20 w-20 cursor-grab items-center justify-center rounded-full p-1 transition-transform hover:scale-105 active:cursor-grabbing disabled:opacity-50 ${

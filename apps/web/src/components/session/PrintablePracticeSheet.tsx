@@ -32,10 +32,11 @@ export function selectLowestMasterySkills(
   );
 
   const uniqueSkillIds = Array.from(
-    new Set<MicroSkillId>([
-      ...packSkillIds,
-      ...masteryRecords.map((r) => r.skillId),
-    ])
+    new Set<MicroSkillId>(
+      packSkillIds.length > 0
+        ? packSkillIds
+        : masteryRecords.map((r) => r.skillId)
+    )
   );
 
   return uniqueSkillIds
@@ -296,31 +297,37 @@ export function PrintablePracticeSheet({
       </header>
 
       <div className="mt-4 space-y-4">
-        {prioritySkills.map(({ skill, record }, idx) => {
-          const masteryPct = record ? Math.round(record.masteryScore * 100) : 0;
-          return (
-            <section
-              key={skill.id}
-              className="break-inside-avoid rounded-xl border border-slate-300 p-4"
-            >
-              <div className="flex items-baseline justify-between gap-2">
-                <h3 className="text-base font-black text-slate-950">
-                  {idx + 1}. {skill.code} — {skill.title}
-                </h3>
-                <span className="text-xs font-bold text-slate-600">
-                  Current Mastery: {masteryPct}%
-                </span>
-              </div>
+        {prioritySkills.length === 0 ? (
+          <p className="rounded-xl border border-dashed border-slate-400 p-4 text-sm font-semibold text-slate-700">
+            Complete an activity first to generate personalised skill practice.
+          </p>
+        ) : (
+          prioritySkills.map(({ skill, record }, idx) => {
+            const masteryPct = record ? Math.round(record.masteryScore * 100) : 0;
+            return (
+              <section
+                key={skill.id}
+                className="print-card break-inside-avoid rounded-xl border border-slate-300 p-4"
+              >
+                <div className="flex items-baseline justify-between gap-2">
+                  <h3 className="text-base font-black text-slate-950">
+                    {idx + 1}. {skill.code} — {skill.title}
+                  </h3>
+                  <span className="text-xs font-bold text-slate-600">
+                    Current Mastery: {masteryPct}%
+                  </span>
+                </div>
 
-              <p className="mt-1 rounded-lg bg-slate-100 px-3 py-2 text-xs leading-relaxed text-slate-800">
-                <span className="font-black">Parent Tip:</span>{" "}
-                {skill.offlineParentTip}
-              </p>
+                <p className="mt-1 rounded-lg bg-slate-100 px-3 py-2 text-xs leading-relaxed text-slate-800 print:border print:border-slate-300 print:bg-slate-50">
+                  <span className="font-black">Parent Tip:</span>{" "}
+                  {skill.offlineParentTip}
+                </p>
 
-              {renderSkillActivityBlock(skill)}
-            </section>
-          );
-        })}
+                {renderSkillActivityBlock(skill)}
+              </section>
+            );
+          })
+        )}
       </div>
 
       <footer className="mt-4 flex items-center justify-between border-t border-slate-300 pt-3 text-xs font-bold text-slate-700">

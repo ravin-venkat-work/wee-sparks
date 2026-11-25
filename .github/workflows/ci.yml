@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    name: Typecheck, Unit Tests, Pack Validation & Web Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Audit zero runtime LLM SDKs or analytics in apps/web
+        run: |
+          if grep -rnE "@google/genai|openai|anthropic|gtag|mixpanel|posthog" apps/web/src apps/web/package.json; then
+            echo "Forbidden runtime LLM SDK or third-party analytics detected in apps/web"
+            exit 1
+          fi
+
+      - name: Typecheck all workspaces
+        run: pnpm typecheck
+
+      - name: Run adaptive unit tests
+        run: pnpm test
+
+      - name: Validate CCEA curriculum catalog and JSON packs
+        run: pnpm --filter content-studio validate
+
+      - name: Build Next.js web application
+        run: pnpm --filter @wee-sparks/web build
