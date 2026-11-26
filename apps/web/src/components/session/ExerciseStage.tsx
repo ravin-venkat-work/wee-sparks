@@ -18,6 +18,7 @@ interface ExerciseStageProps {
   isFinalStep: boolean;
   isPromptSpeaking: boolean;
   hintPulseActive: boolean;
+  skipAvailable: boolean;
   feedbackPhase: FeedbackPhase;
   retriesCount: number;
   onPlayPrompt: () => void;
@@ -26,6 +27,7 @@ interface ExerciseStageProps {
   onThinkingChange: (isThinking: boolean) => void;
   onUserInteraction: () => void;
   onNext: () => void;
+  onSkip: () => void;
 }
 
 /**
@@ -33,7 +35,8 @@ interface ExerciseStageProps {
  * - Zero settings, zero skill codes, zero slot-role badges, zero Previous button.
  * - Keeps only: Question + big Audio button + icon-only 💡 hint (pulses gently
  *   after 8s of inactivity), Answer area, RewardBurst celebration overlay,
- *   polite aria-live feedback announcements, and an optional big icon-only Next (➡️).
+ *   polite aria-live feedback announcements, Next (hidden until solved), and a
+ *   gentle Skip unlocked after 3 wrong tries or 25s of inactivity.
  */
 export function ExerciseStage({
   exercise,
@@ -42,6 +45,7 @@ export function ExerciseStage({
   isFinalStep,
   isPromptSpeaking,
   hintPulseActive,
+  skipAvailable,
   feedbackPhase,
   retriesCount,
   onPlayPrompt,
@@ -50,6 +54,7 @@ export function ExerciseStage({
   onThinkingChange,
   onUserInteraction,
   onNext,
+  onSkip,
 }: ExerciseStageProps) {
   const prefersReducedMotion = Boolean(useReducedMotion());
 
@@ -170,8 +175,8 @@ export function ExerciseStage({
         </div>
       </div>
 
-      {/* Minimal Visual Feedback + Optional Big Icon-Only Next Button (No Previous) */}
-      <div className="flex items-center justify-between gap-4 border-t-2 border-slate-100 pt-4">
+      {/* Minimal Visual Feedback + Solved-Only Next / Gentle Skip (No Previous) */}
+      <div className="flex min-h-[80px] items-center justify-between gap-4 border-t-2 border-slate-100 pt-4">
         <div className="flex min-h-[64px] items-center">
           {(feedbackPhase === "correct" || feedbackPhase === "advancing") && (
             <div
@@ -194,18 +199,31 @@ export function ExerciseStage({
           )}
         </div>
 
-        <button
-          type="button"
-          onClick={onNext}
-          aria-label="Next"
-          className={`touch-card flex h-20 w-24 items-center justify-center rounded-3xl text-4xl shadow-md focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-700 focus-visible:ring-offset-2 ${
-            isSolved
-              ? "animate-hint-glow bg-emerald-700 text-white hover:bg-emerald-800"
-              : "bg-sky-700 text-white hover:bg-sky-800"
-          }`}
-        >
-          <span aria-hidden="true">➡️</span>
-        </button>
+        <div className="flex items-center gap-3">
+          {!isSolved && skipAvailable && (
+            <button
+              type="button"
+              onClick={onSkip}
+              aria-label="Skip this question"
+              className="touch-card flex h-16 items-center justify-center gap-2 rounded-2xl bg-slate-100 px-5 text-base font-extrabold text-slate-700 ring-2 ring-slate-200 hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-700 focus-visible:ring-offset-2"
+            >
+              <span className="text-2xl" aria-hidden="true">
+                ⏭️
+              </span>
+            </button>
+          )}
+
+          {isSolved && (
+            <button
+              type="button"
+              onClick={onNext}
+              aria-label="Next"
+              className="touch-card animate-hint-glow flex h-20 w-24 items-center justify-center rounded-3xl bg-emerald-700 text-4xl text-white shadow-md hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-700 focus-visible:ring-offset-2"
+            >
+              <span aria-hidden="true">➡️</span>
+            </button>
+          )}
+        </div>
       </div>
     </section>
   );

@@ -5,6 +5,10 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { AnimatePresence, motion } from "motion/react";
 import {
   getMicroSkillById,
+  pickPraiseAudioKey,
+  pickTryAgainAudioKey,
+  PRAISE_AUDIO_SCRIPTS,
+  TRY_AGAIN_AUDIO_SCRIPTS,
   type Exercise,
   type MicroSkillId,
 } from "@wee-sparks/curriculum-schema";
@@ -48,11 +52,17 @@ import {
 import {
   AUTO_ADVANCE_DELAY_MS,
   canAutoAdvance,
+  canInteractionPauseAutoAdvance,
   createInitialSessionState,
   deriveMascotMood,
   HINT_PULSE_INACTIVITY_MS,
+  isSkipAvailable,
+  isWithinPostSolveWindow,
   sessionStateReducer,
+  shouldCelebrateQuest,
   shouldTrackHintInactivity,
+  shouldTrackSkipInactivity,
+  SKIP_UNLOCK_INACTIVITY_MS,
 } from "@/lib/sessionStateMachine";
 import { StarProgressBar } from "./StarProgressBar";
 import { ExerciseStage } from "./ExerciseStage";
@@ -248,12 +258,15 @@ export function KidSessionPlayer({
     stopAudio();
   }, [clearAutoAdvanceTimer, state.currentIndex, state.session]);
 
+  const trackHintInactivity = shouldTrackHintInactivity(state);
+  const trackSkipInactivity = shouldTrackSkipInactivity(state);
+
   // 8-second inactivity detector to gently pulse the icon-only 💡 hint button
   useEffect(() => {
     if (
       parentGateUnlocked ||
       showParentGateChallenge ||
-      !shouldTrackHintInactivity(state)
+      !trackHintInactivity
     ) {
       return;
     }
@@ -264,7 +277,34 @@ export function KidSessionPlayer({
 
     return () => window.clearTimeout(timer);
   }, [
-    state,
+    trackHintInactivity,
+    state.currentIndex,
+    state.session,
+    activityNonce,
+    parentGateUnlocked,
+    showParentGateChallenge,
+  ]);
+
+  // 25-second inactivity detector to reveal the gentle Skip button
+  // (intentionally decoupled from hintPulseActive so the 8s hint pulse never resets the 25s clock)
+  useEffect(() => {
+    if (
+      parentGateUnlocked ||
+      showParentGateChallenge ||
+      !trackSkipInactivity
+    ) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      dispatch({ type: "SKIP_INACTIVITY_ELAPSED" });
+    }, SKIP_UNLOCK_INACTIVITY_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [
+    trackSkipInactivity,
+    state.currentIndex,
+    state.session,
     activityNonce,
     parentGateUnlocked,
     showParentGateChallenge,
@@ -290,18 +330,30 @@ export function KidSessionPlayer({
 
   const handleUserInteraction = useCallback(() => {
     setActivityNonce((n) => n + 1);
-    if (
-      stateRef.current.phase === "correct" ||
-      stateRef.current.phase === "advancing"
-    ) {
-      clearAutoAdvanceTimer();
-    }
-    dispatch({ type: "USER_ACTIVITY" });
-  }, [clearAutoAdvanceTimer]);
+    // General pointer taps (including double-taps on a just-solved card) never pause auto-advance
+    dispatch({ type: "USER_ACTIVITY", source: "pointer", nowMs: Date.now() });
+  }, []);
 
   const handlePlayPrompt = useCallback(() => {
     if (!currentExercise) return;
-    handleUserInteraction();
+    const nowMs = Date.now();
+    // Ignore stray taps during the 1s post-solve double-tap grace window
+    if (isWithinPostSolveWindow(stateRef.current, nowMs)) {
+      return;
+    }
+
+    setActivityNonce((n) => n + 1);
+    if (canInteractionPauseAutoAdvance(stateRef.current, "audio-replay", nowMs)) {
+      clearAutoAdvanceTimer();
+      dispatch({
+        type: "PAUSE_AUTO_ADVANCE",
+        source: "audio-replay",
+        nowMs,
+      });
+    } else {
+      dispatch({ type: "USER_ACTIVITY", source: "audio-replay", nowMs });
+    }
+
     playSfx("tap");
     void playAudioKey(
       currentExercise.prompt.audioKey,
@@ -311,14 +363,22 @@ export function KidSessionPlayer({
         onEnd: () => dispatch({ type: "SET_SPEAKING", speaking: false }),
       }
     );
-  }, [currentExercise, handleUserInteraction]);
+  }, [clearAutoAdvanceTimer, currentExercise]);
 
   const handlePlayHint = useCallback(() => {
     if (!currentExercise) return;
+    const nowMs = Date.now();
+    // Ignore stray taps during the 1s post-solve double-tap grace window
+    if (isWithinPostSolveWindow(stateRef.current, nowMs)) {
+      return;
+    }
+
     setActivityNonce((n) => n + 1);
-    clearAutoAdvanceTimer();
+    if (canInteractionPauseAutoAdvance(stateRef.current, "hint", nowMs)) {
+      clearAutoAdvanceTimer();
+    }
     playSfx("tap");
-    dispatch({ type: "USE_HINT" });
+    dispatch({ type: "USE_HINT", nowMs });
     void playAudioKey(
       currentExercise.hint.audioKey,
       currentExercise.hint.text,
@@ -421,16 +481,21 @@ export function KidSessionPlayer({
 
   const advanceToNextOrCelebrate = useCallback(
     async (playTapCue: boolean) => {
-      if (advancingRef.current) return;
+      const snapshot = stateRef.current;
+      if (
+        advancingRef.current ||
+        !snapshot.earnedIndices.has(snapshot.currentIndex)
+      ) {
+        return;
+      }
       advancingRef.current = true;
       clearAutoAdvanceTimer();
       if (playTapCue) playSfx("tap");
       stopAudio();
 
-      const snapshot = stateRef.current;
       if (snapshot.currentIndex + 1 < snapshot.session.items.length) {
         dispatch({ type: "ADVANCE_STEP" });
-      } else {
+      } else if (shouldCelebrateQuest(snapshot)) {
         if (learner?.id !== undefined) {
           const reward = await syncAndUnlockStickers(
             learner.id,
@@ -447,10 +512,48 @@ export function KidSessionPlayer({
           "feedback/quest-complete",
           "Amazing work! You earned stars for your sticker chest!"
         );
+      } else {
+        dispatch({ type: "FINISH_QUEST" });
       }
     },
     [clearAutoAdvanceTimer, learner?.id]
   );
+
+  const handleSkipStep = useCallback(async () => {
+    const snapshot = stateRef.current;
+    if (advancingRef.current || !isSkipAvailable(snapshot)) return;
+
+    advancingRef.current = true;
+    clearAutoAdvanceTimer();
+    stopAudio();
+
+    const isLastStep =
+      snapshot.currentIndex + 1 >= snapshot.session.items.length;
+
+    // Gentle skip: awards NO star and plays NO praise on skipped steps.
+    // On the final step, only celebrate if at least one earlier step was solved.
+    if (isLastStep && shouldCelebrateQuest(snapshot)) {
+      if (learner?.id !== undefined) {
+        const reward = await syncAndUnlockStickers(
+          learner.id,
+          snapshot.newlyUnlockedStickers.length === 0
+        );
+        dispatch({
+          type: "MERGE_STICKERS",
+          totalStars: reward.totalStars,
+          unlocked: reward.newlyUnlocked,
+        });
+      }
+      dispatch({ type: "SKIP_STEP" });
+      void playSuccessThenPraise(
+        "feedback/quest-complete",
+        "Amazing work! You earned stars for your sticker chest!"
+      );
+      return;
+    }
+
+    dispatch({ type: "SKIP_STEP" });
+  }, [clearAutoAdvanceTimer, learner?.id]);
 
   const handleAttempt = async (isCorrect: boolean) => {
     if (!currentExercise) return;
@@ -470,10 +573,10 @@ export function KidSessionPlayer({
     if (!isCorrect) {
       dispatch({ type: "RECORD_RETRY" });
       playSfx("retry");
-      void playAudioKey(
-        currentExercise.feedback.encourageAudioKey,
-        currentExercise.feedback.encourageText
+      const tryAgainKey = pickTryAgainAudioKey(
+        `${state.currentIndex}:${currentExercise.id}:${retriesCount}`
       );
+      void playAudioKey(tryAgainKey, TRY_AGAIN_AUDIO_SCRIPTS[tryAgainKey]);
       if (learner?.id !== undefined) {
         await recordAdaptiveAttempt({
           learnerId: learner.id,
@@ -489,7 +592,7 @@ export function KidSessionPlayer({
     }
 
     solvedStepLockRef.current = stepKey;
-    dispatch({ type: "RECORD_CORRECT" });
+    dispatch({ type: "RECORD_CORRECT", nowMs: Date.now() });
 
     // Persist progress + stickers in parallel with the non-overlapping jingle -> praise audio
     const persistPromise = (async () => {
@@ -511,9 +614,12 @@ export function KidSessionPlayer({
       });
     })();
 
+    const praiseKey = pickPraiseAudioKey(
+      `${state.currentIndex}:${currentExercise.id}`
+    );
     const praiseCompleted = await playSuccessThenPraise(
-      currentExercise.feedback.correctAudioKey,
-      currentExercise.feedback.correctText
+      praiseKey,
+      PRAISE_AUDIO_SCRIPTS[praiseKey]
     );
     await persistPromise;
 
@@ -526,9 +632,8 @@ export function KidSessionPlayer({
       return;
     }
 
-    // If audio was interrupted (e.g., child tapped to replay/linger), pause auto-advance
+    // Only pause auto-advance if an explicit replay/hint tap paused it
     if (!praiseCompleted || !canAutoAdvance(stateRef.current)) {
-      dispatch({ type: "PAUSE_AUTO_ADVANCE" });
       return;
     }
 
@@ -660,6 +765,7 @@ export function KidSessionPlayer({
                     }
                     isPromptSpeaking={state.isPromptSpeaking}
                     hintPulseActive={state.hintPulseActive}
+                    skipAvailable={isSkipAvailable(state)}
                     feedbackPhase={state.phase}
                     retriesCount={state.retriesOnCurrent}
                     onPlayPrompt={handlePlayPrompt}
@@ -670,6 +776,7 @@ export function KidSessionPlayer({
                     }
                     onUserInteraction={handleUserInteraction}
                     onNext={() => void advanceToNextOrCelebrate(true)}
+                    onSkip={() => void handleSkipStep()}
                   />
                 </motion.div>
               ) : (

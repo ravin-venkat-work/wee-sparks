@@ -39,9 +39,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Ahoy! sh-i-p blends to ship!",
-      correctAudioKey: "feedback/correct-p2-dig-01",
+      correctAudioKey: "feedback/praise-11",
       encourageText: "Remember 'sh' works together as one sound in the first box.",
-      encourageAudioKey: "feedback/encourage-cvc-blending",
+      encourageAudioKey: "feedback/try-again-11",
     },
     offlineParentTip:
       "Remind your child that 's' and 'h' share ONE Elkonin sound box because together they represent one single sound: /sh/.",
@@ -79,9 +79,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Yum! ch-i-p makes chip!",
-      correctAudioKey: "feedback/correct-p2-dig-02",
+      correctAudioKey: "feedback/praise-12",
       encourageText: "Tap the Slide & Blend button to hear ch-i-p together.",
-      encourageAudioKey: "feedback/encourage-cvc-blending",
+      encourageAudioKey: "feedback/try-again-12",
     },
     offlineParentTip:
       "Compare 'ship' and 'chip' side by side—swap only the first digraph tile to see how one team sound changes the whole word.",
@@ -119,9 +119,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Brilliant! m-o-th makes moth!",
-      correctAudioKey: "feedback/correct-p2-dig-03",
+      correctAudioKey: "feedback/praise-01",
       encourageText: "Put 'th' together in the last sound box and blend again.",
-      encourageAudioKey: "feedback/encourage-cvc-blending",
+      encourageAudioKey: "feedback/try-again-01",
     },
     offlineParentTip:
       "Practise gently poking the tip of the tongue between teeth for the 'th' sound in words like moth, bath, and path.",
@@ -159,9 +159,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Out of this world! r-i-ng makes ring!",
-      correctAudioKey: "feedback/correct-p2-dig-04",
+      correctAudioKey: "feedback/praise-06",
       encourageText: "Remember 'ng' shares the final sound box as one sound.",
-      encourageAudioKey: "feedback/encourage-cvc-blending",
+      encourageAudioKey: "feedback/try-again-06",
     },
     offlineParentTip:
       "Play an 'ng' rhyme game together: ring, sing, wing, king—pointing out that 'n' and 'g' team up for one sound at the end.",
@@ -204,9 +204,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Ribbit! f-r-o-g blends to frog!",
-      correctAudioKey: "feedback/correct-p2-ccvc-01",
+      correctAudioKey: "feedback/praise-10",
       encourageText: "Check that you heard both /f/ and /r/ at the start!",
-      encourageAudioKey: "feedback/encourage-cvc-blending",
+      encourageAudioKey: "feedback/try-again-10",
     },
     offlineParentTip:
       "In Stage 2 Linguistic Phonics, adjacent consonants like 'f' and 'r' each get their own sound box because you can hear both sounds.",
@@ -245,9 +245,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Safe driving! s-t-o-p makes stop!",
-      correctAudioKey: "feedback/correct-p2-ccvc-02",
+      correctAudioKey: "feedback/praise-01",
       encourageText: "Tap each sound box to hear all 4 sounds in order.",
-      encourageAudioKey: "feedback/encourage-cvc-blending",
+      encourageAudioKey: "feedback/try-again-01",
     },
     offlineParentTip:
       "Spot 'STOP' signs on walks and count the 4 individual sounds together (s-t-o-p) on four fingers.",
@@ -286,9 +286,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Camp ready! t-e-n-t makes tent!",
-      correctAudioKey: "feedback/correct-p2-ccvc-03",
+      correctAudioKey: "feedback/praise-12",
       encourageText: "Check the two ending sounds /n/ and /t/ and try again.",
-      encourageAudioKey: "feedback/encourage-cvc-blending",
+      encourageAudioKey: "feedback/try-again-12",
     },
     offlineParentTip:
       "Children often drop the sneaky 'n' in CVCC words like 'tent' or 'hand'—stretch 'tennn-t' slowly so they hear all 4 sounds.",
@@ -327,9 +327,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Moonwalk complete! s-t-e-p makes step!",
-      correctAudioKey: "feedback/correct-p2-ccvc-04",
+      correctAudioKey: "feedback/praise-07",
       encourageText: "Tap Slide & Blend to hear all 4 sounds flow into step.",
-      encourageAudioKey: "feedback/encourage-cvc-blending",
+      encourageAudioKey: "feedback/try-again-07",
     },
     offlineParentTip:
       "Swap the vowel in 'stop' to 'e' ('step') on a mini whiteboard or notepad to practise rapid P2 vowel switching.",
@@ -368,9 +368,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Brilliant bond to 10! 7 and 3 make 10!",
-      correctAudioKey: "feedback/correct-p2-bond-01",
+      correctAudioKey: "feedback/praise-10",
       encourageText: "Hold up 7 fingers and count how many are still folded down.",
-      encourageAudioKey: "feedback/encourage-number-bond",
+      encourageAudioKey: "feedback/try-again-10",
     },
     offlineParentTip:
       "Practise quick-fire 'Make 10' pairs on the school run: 'I say 7, you say 3!'",
@@ -405,9 +405,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Roar-some! 6 and 4 make 10!",
-      correctAudioKey: "feedback/correct-p2-bond-02",
+      correctAudioKey: "feedback/praise-01",
       encourageText: "Think of a Ten-Frame with 6 eggs — how many empty spaces remain?",
-      encourageAudioKey: "feedback/encourage-number-bond",
+      encourageAudioKey: "feedback/try-again-01",
     },
     offlineParentTip:
       "Use 10 dried pasta shapes hidden under two cups: show 6 under one cup and ask how many must be hiding under the other.",
@@ -442,9 +442,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Clever switcher! 4 and 6 make 10!",
-      correctAudioKey: "feedback/correct-p2-bond-03",
+      correctAudioKey: "feedback/praise-12",
       encourageText: "Count on from 4 up to 10 and try again.",
-      encourageAudioKey: "feedback/encourage-number-bond",
+      encourageAudioKey: "feedback/try-again-12",
     },
     offlineParentTip:
       "Show how number bonds work both ways (6 + 4 = 10 and 4 + 6 = 10) by flipping a row of 10 coloured pegs around.",
@@ -479,9 +479,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Super bond to 20! 12 and 8 make 20!",
-      correctAudioKey: "feedback/correct-p2-bond-04",
+      correctAudioKey: "feedback/praise-03",
       encourageText: "Remember 2 + 8 = 10 — now add one extra ten for 20!",
-      encourageAudioKey: "feedback/encourage-number-bond",
+      encourageAudioKey: "feedback/try-again-03",
     },
     offlineParentTip:
       "Connect bonds to 10 with bonds to 20: 'If 2 + 8 = 10, what must 12 + 8 equal?'",
@@ -523,9 +523,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Cosmic bridging through 10! 8 + 5 = 13!",
-      correctAudioKey: "feedback/correct-p2-nl-01",
+      correctAudioKey: "feedback/praise-01",
       encourageText: "Start at 8 and count 5 hops forward: 9, 10, 11, 12, 13.",
-      encourageAudioKey: "feedback/encourage-number-line",
+      encourageAudioKey: "feedback/try-again-01",
     },
     offlineParentTip:
       "Encourage 'bridging through 10': for 8 + 5, jump 2 to hit friendly 10 first, then jump the remaining 3 to 13.",
@@ -556,9 +556,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Spot on! 14 take away 4 lands neatly on 10!",
-      correctAudioKey: "feedback/correct-p2-nl-02",
+      correctAudioKey: "feedback/praise-10",
       encourageText: "Tap Hop Back (-1) four times starting from 14.",
-      encourageAudioKey: "feedback/encourage-number-line",
+      encourageAudioKey: "feedback/try-again-10",
     },
     offlineParentTip:
       "Highlight place value in teen numbers: 14 minus 4 leaves the full ten (10) straight away!",
@@ -589,9 +589,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Super frog leaps! 9 + 6 = 15!",
-      correctAudioKey: "feedback/correct-p2-nl-03",
+      correctAudioKey: "feedback/praise-11",
       encourageText: "Count 6 hops forward from 9 and try again.",
-      encourageAudioKey: "feedback/encourage-number-line",
+      encourageAudioKey: "feedback/try-again-11",
     },
     offlineParentTip:
       "Practise adding to 9 by turning 9 into 10 first: '9 + 6 is the same as 10 + 5 = 15!'",
@@ -622,9 +622,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Great navigating! 18 − 5 = 13!",
-      correctAudioKey: "feedback/correct-p2-nl-04",
+      correctAudioKey: "feedback/praise-08",
       encourageText: "Count 5 hops backwards from 18: 17, 16, 15, 14, 13.",
-      encourageAudioKey: "feedback/encourage-number-line",
+      encourageAudioKey: "feedback/try-again-08",
     },
     offlineParentTip:
       "Show how knowing 8 − 5 = 3 unlocks 18 − 5 = 13 without needing to count backwards one by one.",
@@ -654,9 +654,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Ticket paid! 10p and 2p makes 12p!",
-      correctAudioKey: "feedback/correct-p2-coin-01",
+      correctAudioKey: "feedback/praise-10",
       encourageText: "Check the total in your coin jar — we need 12p.",
-      encourageAudioKey: "feedback/encourage-coins",
+      encourageAudioKey: "feedback/try-again-10",
     },
     offlineParentTip:
       "Lay out real 10p, 5p, 2p, and 1p coins on the table and ask your child to build 12p starting with the largest coin first.",
@@ -688,9 +688,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Space badge unlocked! That makes 15p!",
-      correctAudioKey: "feedback/correct-p2-coin-02",
+      correctAudioKey: "feedback/praise-01",
       encourageText: "Count the coins in your jar—can you make exactly 15p?",
-      encourageAudioKey: "feedback/encourage-coins",
+      encourageAudioKey: "feedback/try-again-01",
     },
     offlineParentTip:
       "Challenge your child to make 15p in two ways using real UK coins: 10p + 5p, and 5p + 5p + 5p.",
@@ -722,9 +722,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Museum ticket ready! That totals 20p!",
-      correctAudioKey: "feedback/correct-p2-coin-03",
+      correctAudioKey: "feedback/praise-12",
       encourageText: "Try adding 10p + 10p or one silver 20p coin!",
-      encourageAudioKey: "feedback/encourage-coins",
+      encourageAudioKey: "feedback/try-again-12",
     },
     offlineParentTip:
       "Let your child feel the 7-sided edge of a real UK 20p coin and compare it with a round 10p coin.",
@@ -756,9 +756,9 @@ export const P2_FOUNDATION_EXERCISES: readonly Exercise[] = [
     },
     feedback: {
       correctText: "Hungry animals fed! 5p + 2p + 1p makes 8p!",
-      correctAudioKey: "feedback/correct-p2-coin-04",
+      correctAudioKey: "feedback/praise-07",
       encourageText: "There is no 8p coin—combine 5p, 2p, and 1p coins to make 8p!",
-      encourageAudioKey: "feedback/encourage-coins",
+      encourageAudioKey: "feedback/try-again-07",
     },
     offlineParentTip:
       "Remind your child that UK coins don't include 3p, 4p, 6p, 7p, 8p, or 9p—practise building those amounts by starting with 5p and counting on.",

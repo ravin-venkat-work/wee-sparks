@@ -51,6 +51,8 @@ function validatePacks(): boolean {
   const globalPackIds = new Map<string, string>();
   let totalExercises = 0;
 
+  const usedFeedbackKeys = new Set<string>();
+
   for (const file of files) {
     const fullPath = path.join(packsDir, file);
     const raw = JSON.parse(readFileSync(fullPath, "utf8")) as unknown;
@@ -101,6 +103,8 @@ function validatePacks(): boolean {
         );
       }
       globalExerciseIds.set(ex.id, file);
+      usedFeedbackKeys.add(ex.feedback.correctAudioKey);
+      usedFeedbackKeys.add(ex.feedback.encourageAudioKey);
     }
 
     console.log(
@@ -110,7 +114,7 @@ function validatePacks(): boolean {
 
   if (allValid) {
     console.log(
-      `✓ Validated ${files.length} pack files (${totalExercises} unique exercises total).`
+      `✓ Validated ${files.length} pack files (${totalExercises} unique exercises total, ${usedFeedbackKeys.size} shared feedback audioKeys).`
     );
   }
 

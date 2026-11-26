@@ -4,6 +4,8 @@ import { fileURLToPath } from "node:url";
 import {
   ContentPackSchema,
   getMicroSkillById,
+  pickPraiseAudioKey,
+  pickTryAgainAudioKey,
   type DifficultyTier,
   type Exercise,
   type MicroSkillId,
@@ -202,9 +204,9 @@ function buildInitialSoundBatch(
       },
       feedback: {
         correctText: `Brilliant! "${item.word}" starts with /${item.sound}/!`,
-        correctAudioKey: `feedback/correct-${id}`,
+        correctAudioKey: pickPraiseAudioKey(id),
         encourageText: `Good try! Listen closely to the start of "${item.word}".`,
-        encourageAudioKey: `feedback/encourage-${id}`,
+        encourageAudioKey: pickTryAgainAudioKey(id),
       },
       offlineParentTip: skill.offlineParentTip,
     };
@@ -275,9 +277,9 @@ function buildBlendingBatch(
       },
       feedback: {
         correctText: `Super blending! ${item.phonemes.join("-")} makes "${item.word}"!`,
-        correctAudioKey: `feedback/correct-${id}`,
+        correctAudioKey: pickPraiseAudioKey(id),
         encourageText: `Almost! Slide your finger across the sounds and listen again.`,
-        encourageAudioKey: `feedback/encourage-${id}`,
+        encourageAudioKey: pickTryAgainAudioKey(id),
       },
       offlineParentTip: skill.offlineParentTip,
     };
@@ -334,9 +336,9 @@ function buildSegmentBatch(
       },
       feedback: {
         correctText: `Spot on! You spelled "${item.word}" sound by sound!`,
-        correctAudioKey: `feedback/correct-${id}`,
+        correctAudioKey: pickPraiseAudioKey(id),
         encourageText: `Have another go — tap each box to listen to the sounds in "${item.word}".`,
-        encourageAudioKey: `feedback/encourage-${id}`,
+        encourageAudioKey: pickTryAgainAudioKey(id),
       },
       offlineParentTip: skill.offlineParentTip,
     };
@@ -393,9 +395,9 @@ function buildHfwOrCaptionBatch(
       },
       feedback: {
         correctText: `Well done! "${item.sentence.replace("___", item.targetWord)}"`,
-        correctAudioKey: `feedback/correct-${id}`,
+        correctAudioKey: pickPraiseAudioKey(id),
         encourageText: `Good try! Listen to the sentence again and spot the matching word.`,
-        encourageAudioKey: `feedback/encourage-${id}`,
+        encourageAudioKey: pickTryAgainAudioKey(id),
       },
       offlineParentTip: skill.offlineParentTip,
     };
@@ -457,9 +459,9 @@ function buildTenFrameBatch(
         },
         feedback: {
           correctText: `Brilliant counting! There are ${spec.target} ${counter.label}!`,
-          correctAudioKey: `feedback/correct-${id}`,
+          correctAudioKey: pickPraiseAudioKey(id),
           encourageText: `Almost! Tap each ${counter.label.slice(0, -1)} to count one by one.`,
-          encourageAudioKey: `feedback/encourage-${id}`,
+          encourageAudioKey: pickTryAgainAudioKey(id),
         },
         offlineParentTip: skill.offlineParentTip,
       };
@@ -489,9 +491,9 @@ function buildTenFrameBatch(
       },
       feedback: {
         correctText: `Fantastic! You built ${spec.target} on the frame!`,
-        correctAudioKey: `feedback/correct-${id}`,
+        correctAudioKey: pickPraiseAudioKey(id),
         encourageText: `Not quite ${spec.target} yet — count your counters and try again!`,
-        encourageAudioKey: `feedback/encourage-${id}`,
+        encourageAudioKey: pickTryAgainAudioKey(id),
       },
       offlineParentTip: skill.offlineParentTip,
     };
@@ -543,9 +545,9 @@ function buildNumberBondBatch(
       },
       feedback: {
         correctText: `Yes! ${spec.givenPart} + ${missingPart} = ${spec.whole}!`,
-        correctAudioKey: `feedback/correct-${id}`,
+        correctAudioKey: pickPraiseAudioKey(id),
         encourageText: `Have another go — count up from ${spec.givenPart} to ${spec.whole}.`,
-        encourageAudioKey: `feedback/encourage-${id}`,
+        encourageAudioKey: pickTryAgainAudioKey(id),
       },
       offlineParentTip: skill.offlineParentTip,
     };
@@ -606,9 +608,9 @@ function buildNumberLineBatch(
       },
       feedback: {
         correctText: `Super hopping! ${spec.start} ${spec.op === "add" ? "+" : "−"} ${spec.hops} = ${target}!`,
-        correctAudioKey: `feedback/correct-${id}`,
+        correctAudioKey: pickPraiseAudioKey(id),
         encourageText: `Almost there! Count each hop carefully from ${spec.start}.`,
-        encourageAudioKey: `feedback/encourage-${id}`,
+        encourageAudioKey: pickTryAgainAudioKey(id),
       },
       offlineParentTip: skill.offlineParentTip,
     };
@@ -669,9 +671,9 @@ function buildShapeSortBatch(
       },
       feedback: {
         correctText: `Brilliant shape spotting! That is a ${story.target}!`,
-        correctAudioKey: `feedback/correct-${id}`,
+        correctAudioKey: pickPraiseAudioKey(id),
         encourageText: `Good try! Check the shape name and have another look.`,
-        encourageAudioKey: `feedback/encourage-${id}`,
+        encourageAudioKey: pickTryAgainAudioKey(id),
       },
       offlineParentTip: skill.offlineParentTip,
     };
@@ -730,9 +732,9 @@ function buildCoinBatch(
       },
       feedback: {
         correctText: `Lovely! You made ${spec.targetPence}p with UK coins!`,
-        correctAudioKey: `feedback/correct-${id}`,
+        correctAudioKey: pickPraiseAudioKey(id),
         encourageText: `Check the total in your coin jar — we need ${spec.targetPence}p.`,
-        encourageAudioKey: `feedback/encourage-${id}`,
+        encourageAudioKey: pickTryAgainAudioKey(id),
       },
       offlineParentTip: skill.offlineParentTip,
     };

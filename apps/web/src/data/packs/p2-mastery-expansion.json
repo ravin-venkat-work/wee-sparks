@@ -36,9 +36,9 @@
       },
       "feedback": {
         "correctText": "Super blending! f-r-o-g makes \"frog\"!",
-        "correctAudioKey": "feedback/correct-p2m-ccvc-01",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-ccvc-01"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
       "type": "cvc-blending",
@@ -105,9 +105,9 @@
       },
       "feedback": {
         "correctText": "Super blending! s-t-o-p makes \"stop\"!",
-        "correctAudioKey": "feedback/correct-p2m-ccvc-02",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-ccvc-02"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
       "type": "cvc-blending",
@@ -174,9 +174,9 @@
       },
       "feedback": {
         "correctText": "Super blending! t-e-n-t makes \"tent\"!",
-        "correctAudioKey": "feedback/correct-p2m-ccvc-03",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-ccvc-03"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
       "type": "cvc-blending",
@@ -243,9 +243,9 @@
       },
       "feedback": {
         "correctText": "Super blending! l-a-m-p makes \"lamp\"!",
-        "correctAudioKey": "feedback/correct-p2m-ccvc-04",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-ccvc-04"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
       "type": "cvc-blending",
@@ -312,9 +312,9 @@
       },
       "feedback": {
         "correctText": "Super blending! d-r-u-m makes \"drum\"!",
-        "correctAudioKey": "feedback/correct-p2m-ccvc-05",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-ccvc-05"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
       "type": "cvc-blending",
@@ -381,9 +381,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"crab\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-ccvc-06",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"crab\".",
-        "encourageAudioKey": "feedback/encourage-p2m-ccvc-06"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
       "type": "phoneme-segment",
@@ -447,9 +447,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"nest\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-ccvc-07",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"nest\".",
-        "encourageAudioKey": "feedback/encourage-p2m-ccvc-07"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
       "type": "phoneme-segment",
@@ -513,9 +513,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"hand\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-ccvc-08",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"hand\".",
-        "encourageAudioKey": "feedback/encourage-p2m-ccvc-08"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
       "type": "phoneme-segment",
@@ -579,9 +579,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"milk\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-ccvc-09",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"milk\".",
-        "encourageAudioKey": "feedback/encourage-p2m-ccvc-09"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
       "type": "phoneme-segment",
@@ -645,9 +645,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"desk\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-ccvc-10",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"desk\".",
-        "encourageAudioKey": "feedback/encourage-p2m-ccvc-10"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
       "type": "phoneme-segment",
@@ -711,9 +711,9 @@
       },
       "feedback": {
         "correctText": "Super blending! sh-i-p makes \"ship\"!",
-        "correctAudioKey": "feedback/correct-p2m-dig-01",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-dig-01"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
       "type": "cvc-blending",
@@ -776,9 +776,9 @@
       },
       "feedback": {
         "correctText": "Super blending! f-i-sh makes \"fish\"!",
-        "correctAudioKey": "feedback/correct-p2m-dig-02",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-dig-02"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
       "type": "cvc-blending",
@@ -841,9 +841,9 @@
       },
       "feedback": {
         "correctText": "Super blending! ch-i-p makes \"chip\"!",
-        "correctAudioKey": "feedback/correct-p2m-dig-03",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-dig-03"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
       "type": "cvc-blending",
@@ -906,9 +906,9 @@
       },
       "feedback": {
         "correctText": "Super blending! m-o-th makes \"moth\"!",
-        "correctAudioKey": "feedback/correct-p2m-dig-04",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-dig-04"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
       "type": "cvc-blending",
@@ -971,9 +971,9 @@
       },
       "feedback": {
         "correctText": "Super blending! r-i-ng makes \"ring\"!",
-        "correctAudioKey": "feedback/correct-p2m-dig-05",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-dig-05"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
       "type": "cvc-blending",
@@ -1036,9 +1036,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"shop\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-dig-06",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"shop\".",
-        "encourageAudioKey": "feedback/encourage-p2m-dig-06"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
       "type": "phoneme-segment",
@@ -1096,9 +1096,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"chin\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-dig-07",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"chin\".",
-        "encourageAudioKey": "feedback/encourage-p2m-dig-07"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
       "type": "phoneme-segment",
@@ -1156,9 +1156,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"chat\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-dig-08",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"chat\".",
-        "encourageAudioKey": "feedback/encourage-p2m-dig-08"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
       "type": "phoneme-segment",
@@ -1216,9 +1216,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"path\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-dig-09",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"path\".",
-        "encourageAudioKey": "feedback/encourage-p2m-dig-09"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
       "type": "phoneme-segment",
@@ -1276,9 +1276,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"king\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-dig-10",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"king\".",
-        "encourageAudioKey": "feedback/encourage-p2m-dig-10"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
       "type": "phoneme-segment",
@@ -1336,9 +1336,9 @@
       },
       "feedback": {
         "correctText": "Super blending! b-e-ll makes \"bell\"!",
-        "correctAudioKey": "feedback/correct-p2m-dbl-01",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-dbl-01"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
       "type": "cvc-blending",
@@ -1401,9 +1401,9 @@
       },
       "feedback": {
         "correctText": "Super blending! h-i-ll makes \"hill\"!",
-        "correctAudioKey": "feedback/correct-p2m-dbl-02",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-dbl-02"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
       "type": "cvc-blending",
@@ -1466,9 +1466,9 @@
       },
       "feedback": {
         "correctText": "Super blending! p-u-ff makes \"puff\"!",
-        "correctAudioKey": "feedback/correct-p2m-dbl-03",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-dbl-03"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
       "type": "cvc-blending",
@@ -1531,9 +1531,9 @@
       },
       "feedback": {
         "correctText": "Super blending! m-o-ss makes \"moss\"!",
-        "correctAudioKey": "feedback/correct-p2m-dbl-04",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-dbl-04"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
       "type": "cvc-blending",
@@ -1596,9 +1596,9 @@
       },
       "feedback": {
         "correctText": "Super blending! b-u-zz makes \"buzz\"!",
-        "correctAudioKey": "feedback/correct-p2m-dbl-05",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-dbl-05"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
       "type": "cvc-blending",
@@ -1661,9 +1661,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"doll\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-dbl-06",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"doll\".",
-        "encourageAudioKey": "feedback/encourage-p2m-dbl-06"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
       "type": "phoneme-segment",
@@ -1721,9 +1721,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"cuff\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-dbl-07",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"cuff\".",
-        "encourageAudioKey": "feedback/encourage-p2m-dbl-07"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
       "type": "phoneme-segment",
@@ -1781,9 +1781,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"hiss\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-dbl-08",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"hiss\".",
-        "encourageAudioKey": "feedback/encourage-p2m-dbl-08"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
       "type": "phoneme-segment",
@@ -1841,9 +1841,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"kiss\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-dbl-09",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"kiss\".",
-        "encourageAudioKey": "feedback/encourage-p2m-dbl-09"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
       "type": "phoneme-segment",
@@ -1901,9 +1901,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"fizz\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-dbl-10",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"fizz\".",
-        "encourageAudioKey": "feedback/encourage-p2m-dbl-10"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
       "type": "phoneme-segment",
@@ -1961,9 +1961,9 @@
       },
       "feedback": {
         "correctText": "Super blending! t-r-ee makes \"tree\"!",
-        "correctAudioKey": "feedback/correct-p2m-vow-01",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-vow-01"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
       "type": "cvc-blending",
@@ -2026,9 +2026,9 @@
       },
       "feedback": {
         "correctText": "Super blending! l-ea-f makes \"leaf\"!",
-        "correctAudioKey": "feedback/correct-p2m-vow-02",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-vow-02"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
       "type": "cvc-blending",
@@ -2091,9 +2091,9 @@
       },
       "feedback": {
         "correctText": "Super blending! r-ai-n makes \"rain\"!",
-        "correctAudioKey": "feedback/correct-p2m-vow-03",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-vow-03"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
       "type": "cvc-blending",
@@ -2156,9 +2156,9 @@
       },
       "feedback": {
         "correctText": "Super blending! b-oa-t makes \"boat\"!",
-        "correctAudioKey": "feedback/correct-p2m-vow-04",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-vow-04"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
       "type": "cvc-blending",
@@ -2221,9 +2221,9 @@
       },
       "feedback": {
         "correctText": "Super blending! s-n-ow makes \"snow\"!",
-        "correctAudioKey": "feedback/correct-p2m-vow-05",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p2m-vow-05"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
       "type": "cvc-blending",
@@ -2286,9 +2286,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"feet\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-vow-06",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"feet\".",
-        "encourageAudioKey": "feedback/encourage-p2m-vow-06"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
       "type": "phoneme-segment",
@@ -2346,9 +2346,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"bean\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-vow-07",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"bean\".",
-        "encourageAudioKey": "feedback/encourage-p2m-vow-07"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
       "type": "phoneme-segment",
@@ -2406,9 +2406,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"tail\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-vow-08",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"tail\".",
-        "encourageAudioKey": "feedback/encourage-p2m-vow-08"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
       "type": "phoneme-segment",
@@ -2466,9 +2466,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"play\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-vow-09",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"play\".",
-        "encourageAudioKey": "feedback/encourage-p2m-vow-09"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
       "type": "phoneme-segment",
@@ -2526,9 +2526,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"goat\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p2m-vow-10",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"goat\".",
-        "encourageAudioKey": "feedback/encourage-p2m-vow-10"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
       "type": "phoneme-segment",
@@ -2586,9 +2586,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"The silver rocket landed on the moon.\"",
-        "correctAudioKey": "feedback/correct-p2m-cap-01",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p2m-cap-01"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
       "type": "high-frequency-word",
@@ -2643,9 +2643,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"A tiny baby dino hatched from an egg.\"",
-        "correctAudioKey": "feedback/correct-p2m-cap-02",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p2m-cap-02"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
       "type": "high-frequency-word",
@@ -2700,9 +2700,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"The puffin dived down to catch a fish.\"",
-        "correctAudioKey": "feedback/correct-p2m-cap-03",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p2m-cap-03"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
       "type": "high-frequency-word",
@@ -2757,9 +2757,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"The red tractor chugged up the green hill.\"",
-        "correctAudioKey": "feedback/correct-p2m-cap-04",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p2m-cap-04"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
       "type": "high-frequency-word",
@@ -2814,9 +2814,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"We sailed across Belfast Lough in a boat.\"",
-        "correctAudioKey": "feedback/correct-p2m-cap-05",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p2m-cap-05"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
       "type": "high-frequency-word",
@@ -2871,9 +2871,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"Three speckled eggs sat safely in a nest.\"",
-        "correctAudioKey": "feedback/correct-p2m-cap-06",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p2m-cap-06"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
       "type": "high-frequency-word",
@@ -2928,9 +2928,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"Put your yellow coat on in the rain.\"",
-        "correctAudioKey": "feedback/correct-p2m-cap-07",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p2m-cap-07"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
       "type": "high-frequency-word",
@@ -2985,9 +2985,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"We slept under the stars inside a tent.\"",
-        "correctAudioKey": "feedback/correct-p2m-cap-08",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p2m-cap-08"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
       "type": "high-frequency-word",
@@ -3042,9 +3042,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"Ding dong went the shiny brass bell.\"",
-        "correctAudioKey": "feedback/correct-p2m-cap-09",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p2m-cap-09"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
       "type": "high-frequency-word",
@@ -3099,9 +3099,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"Sparky left paw prints in the white snow.\"",
-        "correctAudioKey": "feedback/correct-p2m-cap-10",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p2m-cap-10"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
       "type": "high-frequency-word",
@@ -3156,9 +3156,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 11 stars!",
-        "correctAudioKey": "feedback/correct-p2m-tf20-01",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Almost! Tap each star to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p2m-tf20-01"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
       "type": "ten-frame-count",
@@ -3218,9 +3218,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 13 dinosaurs!",
-        "correctAudioKey": "feedback/correct-p2m-tf20-02",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Almost! Tap each dinosaur to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p2m-tf20-02"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
       "type": "ten-frame-count",
@@ -3280,9 +3280,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 15 foxes!",
-        "correctAudioKey": "feedback/correct-p2m-tf20-03",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Almost! Tap each foxe to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p2m-tf20-03"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
       "type": "ten-frame-count",
@@ -3342,9 +3342,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 17 rockets!",
-        "correctAudioKey": "feedback/correct-p2m-tf20-04",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Almost! Tap each rocket to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p2m-tf20-04"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
       "type": "ten-frame-count",
@@ -3404,9 +3404,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 19 stars!",
-        "correctAudioKey": "feedback/correct-p2m-tf20-05",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Almost! Tap each star to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p2m-tf20-05"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
       "type": "ten-frame-count",
@@ -3466,9 +3466,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 12 on the frame!",
-        "correctAudioKey": "feedback/correct-p2m-tf20-06",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Not quite 12 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p2m-tf20-06"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
       "type": "ten-frame-count",
@@ -3501,9 +3501,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 14 on the frame!",
-        "correctAudioKey": "feedback/correct-p2m-tf20-07",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Not quite 14 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p2m-tf20-07"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
       "type": "ten-frame-count",
@@ -3536,9 +3536,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 16 on the frame!",
-        "correctAudioKey": "feedback/correct-p2m-tf20-08",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Not quite 16 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p2m-tf20-08"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
       "type": "ten-frame-count",
@@ -3571,9 +3571,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 18 on the frame!",
-        "correctAudioKey": "feedback/correct-p2m-tf20-09",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Not quite 18 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p2m-tf20-09"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
       "type": "ten-frame-count",
@@ -3606,9 +3606,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 20 on the frame!",
-        "correctAudioKey": "feedback/correct-p2m-tf20-10",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Not quite 20 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p2m-tf20-10"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
       "type": "ten-frame-count",
@@ -3641,9 +3641,9 @@
       },
       "feedback": {
         "correctText": "Yes! 1 + 9 = 10!",
-        "correctAudioKey": "feedback/correct-p2m-b10-01",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Have another go — count up from 1 to 10.",
-        "encourageAudioKey": "feedback/encourage-p2m-b10-01"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
       "type": "number-bond",
@@ -3702,9 +3702,9 @@
       },
       "feedback": {
         "correctText": "Yes! 2 + 8 = 10!",
-        "correctAudioKey": "feedback/correct-p2m-b10-02",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Have another go — count up from 2 to 10.",
-        "encourageAudioKey": "feedback/encourage-p2m-b10-02"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
       "type": "number-bond",
@@ -3763,9 +3763,9 @@
       },
       "feedback": {
         "correctText": "Yes! 3 + 7 = 10!",
-        "correctAudioKey": "feedback/correct-p2m-b10-03",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Have another go — count up from 3 to 10.",
-        "encourageAudioKey": "feedback/encourage-p2m-b10-03"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
       "type": "number-bond",
@@ -3824,9 +3824,9 @@
       },
       "feedback": {
         "correctText": "Yes! 4 + 6 = 10!",
-        "correctAudioKey": "feedback/correct-p2m-b10-04",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Have another go — count up from 4 to 10.",
-        "encourageAudioKey": "feedback/encourage-p2m-b10-04"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
       "type": "number-bond",
@@ -3885,9 +3885,9 @@
       },
       "feedback": {
         "correctText": "Yes! 5 + 5 = 10!",
-        "correctAudioKey": "feedback/correct-p2m-b10-05",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Have another go — count up from 5 to 10.",
-        "encourageAudioKey": "feedback/encourage-p2m-b10-05"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
       "type": "number-bond",
@@ -3946,9 +3946,9 @@
       },
       "feedback": {
         "correctText": "Yes! 6 + 4 = 10!",
-        "correctAudioKey": "feedback/correct-p2m-b10-06",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Have another go — count up from 6 to 10.",
-        "encourageAudioKey": "feedback/encourage-p2m-b10-06"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
       "type": "number-bond",
@@ -4007,9 +4007,9 @@
       },
       "feedback": {
         "correctText": "Yes! 7 + 3 = 10!",
-        "correctAudioKey": "feedback/correct-p2m-b10-07",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Have another go — count up from 7 to 10.",
-        "encourageAudioKey": "feedback/encourage-p2m-b10-07"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
       "type": "number-bond",
@@ -4068,9 +4068,9 @@
       },
       "feedback": {
         "correctText": "Yes! 8 + 2 = 10!",
-        "correctAudioKey": "feedback/correct-p2m-b10-08",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Have another go — count up from 8 to 10.",
-        "encourageAudioKey": "feedback/encourage-p2m-b10-08"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
       "type": "number-bond",
@@ -4129,9 +4129,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 9 + 1 = 10!",
-        "correctAudioKey": "feedback/correct-p2m-b10-09",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Almost there! Count each hop carefully from 9.",
-        "encourageAudioKey": "feedback/encourage-p2m-b10-09"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
       "type": "number-line-hop",
@@ -4165,9 +4165,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 4 + 6 = 10!",
-        "correctAudioKey": "feedback/correct-p2m-b10-10",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Almost there! Count each hop carefully from 4.",
-        "encourageAudioKey": "feedback/encourage-p2m-b10-10"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
       "type": "number-line-hop",
@@ -4201,9 +4201,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 8 + 5 = 13!",
-        "correctAudioKey": "feedback/correct-p2m-as20-01",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Almost there! Count each hop carefully from 8.",
-        "encourageAudioKey": "feedback/encourage-p2m-as20-01"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
       "type": "number-line-hop",
@@ -4237,9 +4237,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 11 + 6 = 17!",
-        "correctAudioKey": "feedback/correct-p2m-as20-02",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Almost there! Count each hop carefully from 11.",
-        "encourageAudioKey": "feedback/encourage-p2m-as20-02"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
       "type": "number-line-hop",
@@ -4273,9 +4273,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 12 + 7 = 19!",
-        "correctAudioKey": "feedback/correct-p2m-as20-03",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Almost there! Count each hop carefully from 12.",
-        "encourageAudioKey": "feedback/encourage-p2m-as20-03"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
       "type": "number-line-hop",
@@ -4309,9 +4309,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 15 − 4 = 11!",
-        "correctAudioKey": "feedback/correct-p2m-as20-04",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Almost there! Count each hop carefully from 15.",
-        "encourageAudioKey": "feedback/encourage-p2m-as20-04"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
       "type": "number-line-hop",
@@ -4345,9 +4345,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 18 − 6 = 12!",
-        "correctAudioKey": "feedback/correct-p2m-as20-05",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Almost there! Count each hop carefully from 18.",
-        "encourageAudioKey": "feedback/encourage-p2m-as20-05"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
       "type": "number-line-hop",
@@ -4381,9 +4381,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 20 − 5 = 15!",
-        "correctAudioKey": "feedback/correct-p2m-as20-06",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Almost there! Count each hop carefully from 20.",
-        "encourageAudioKey": "feedback/encourage-p2m-as20-06"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
       "type": "number-line-hop",
@@ -4417,9 +4417,9 @@
       },
       "feedback": {
         "correctText": "Yes! 9 + 5 = 14!",
-        "correctAudioKey": "feedback/correct-p2m-as20-07",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Have another go — count up from 9 to 14.",
-        "encourageAudioKey": "feedback/encourage-p2m-as20-07"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
       "type": "number-bond",
@@ -4478,9 +4478,9 @@
       },
       "feedback": {
         "correctText": "Yes! 10 + 6 = 16!",
-        "correctAudioKey": "feedback/correct-p2m-as20-08",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Have another go — count up from 10 to 16.",
-        "encourageAudioKey": "feedback/encourage-p2m-as20-08"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
       "type": "number-bond",
@@ -4539,9 +4539,9 @@
       },
       "feedback": {
         "correctText": "Yes! 12 + 6 = 18!",
-        "correctAudioKey": "feedback/correct-p2m-as20-09",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Have another go — count up from 12 to 18.",
-        "encourageAudioKey": "feedback/encourage-p2m-as20-09"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
       "type": "number-bond",
@@ -4600,9 +4600,9 @@
       },
       "feedback": {
         "correctText": "Yes! 13 + 7 = 20!",
-        "correctAudioKey": "feedback/correct-p2m-as20-10",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Have another go — count up from 13 to 20.",
-        "encourageAudioKey": "feedback/encourage-p2m-as20-10"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
       "type": "number-bond",
@@ -4661,9 +4661,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 6p with UK coins!",
-        "correctAudioKey": "feedback/correct-p2m-c20-01",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Check the total in your coin jar — we need 6p.",
-        "encourageAudioKey": "feedback/encourage-p2m-c20-01"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
       "type": "uk-coin-match",
@@ -4718,9 +4718,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 7p with UK coins!",
-        "correctAudioKey": "feedback/correct-p2m-c20-02",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Check the total in your coin jar — we need 7p.",
-        "encourageAudioKey": "feedback/encourage-p2m-c20-02"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
       "type": "uk-coin-match",
@@ -4775,9 +4775,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 8p with UK coins!",
-        "correctAudioKey": "feedback/correct-p2m-c20-03",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Check the total in your coin jar — we need 8p.",
-        "encourageAudioKey": "feedback/encourage-p2m-c20-03"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
       "type": "uk-coin-match",
@@ -4833,9 +4833,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 10p with UK coins!",
-        "correctAudioKey": "feedback/correct-p2m-c20-04",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Check the total in your coin jar — we need 10p.",
-        "encourageAudioKey": "feedback/encourage-p2m-c20-04"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
       "type": "uk-coin-match",
@@ -4890,9 +4890,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 11p with UK coins!",
-        "correctAudioKey": "feedback/correct-p2m-c20-05",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Check the total in your coin jar — we need 11p.",
-        "encourageAudioKey": "feedback/encourage-p2m-c20-05"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
       "type": "uk-coin-match",
@@ -4947,9 +4947,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 12p with UK coins!",
-        "correctAudioKey": "feedback/correct-p2m-c20-06",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Check the total in your coin jar — we need 12p.",
-        "encourageAudioKey": "feedback/encourage-p2m-c20-06"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
       "type": "uk-coin-match",
@@ -5004,9 +5004,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 14p with UK coins!",
-        "correctAudioKey": "feedback/correct-p2m-c20-07",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Check the total in your coin jar — we need 14p.",
-        "encourageAudioKey": "feedback/encourage-p2m-c20-07"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
       "type": "uk-coin-match",
@@ -5062,9 +5062,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 15p with UK coins!",
-        "correctAudioKey": "feedback/correct-p2m-c20-08",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Check the total in your coin jar — we need 15p.",
-        "encourageAudioKey": "feedback/encourage-p2m-c20-08"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
       "type": "uk-coin-match",
@@ -5119,9 +5119,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 17p with UK coins!",
-        "correctAudioKey": "feedback/correct-p2m-c20-09",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Check the total in your coin jar — we need 17p.",
-        "encourageAudioKey": "feedback/encourage-p2m-c20-09"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
       "type": "uk-coin-match",
@@ -5177,9 +5177,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 20p with UK coins!",
-        "correctAudioKey": "feedback/correct-p2m-c20-10",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Check the total in your coin jar — we need 20p.",
-        "encourageAudioKey": "feedback/encourage-p2m-c20-10"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
       "type": "uk-coin-match",
@@ -5234,9 +5234,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a cube!",
-        "correctAudioKey": "feedback/correct-p2m-3d-01",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p2m-3d-01"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
       "type": "shape-sort",
@@ -5287,9 +5287,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a sphere!",
-        "correctAudioKey": "feedback/correct-p2m-3d-02",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p2m-3d-02"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
       "type": "shape-sort",
@@ -5340,9 +5340,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a cylinder!",
-        "correctAudioKey": "feedback/correct-p2m-3d-03",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p2m-3d-03"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
       "type": "shape-sort",
@@ -5393,9 +5393,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a cone!",
-        "correctAudioKey": "feedback/correct-p2m-3d-04",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p2m-3d-04"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
       "type": "shape-sort",
@@ -5446,9 +5446,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a cube!",
-        "correctAudioKey": "feedback/correct-p2m-3d-05",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p2m-3d-05"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
       "type": "shape-sort",
@@ -5499,9 +5499,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a sphere!",
-        "correctAudioKey": "feedback/correct-p2m-3d-06",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p2m-3d-06"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
       "type": "shape-sort",
@@ -5552,9 +5552,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a cylinder!",
-        "correctAudioKey": "feedback/correct-p2m-3d-07",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p2m-3d-07"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
       "type": "shape-sort",
@@ -5605,9 +5605,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a cone!",
-        "correctAudioKey": "feedback/correct-p2m-3d-08",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p2m-3d-08"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
       "type": "shape-sort",
@@ -5658,9 +5658,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a cube!",
-        "correctAudioKey": "feedback/correct-p2m-3d-09",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p2m-3d-09"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
       "type": "shape-sort",
@@ -5711,9 +5711,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a cylinder!",
-        "correctAudioKey": "feedback/correct-p2m-3d-10",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p2m-3d-10"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
       "type": "shape-sort",

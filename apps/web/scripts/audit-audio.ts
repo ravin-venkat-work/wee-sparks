@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -49,6 +50,7 @@ const stickerExtras = STICKER_CATALOG.map((sticker) => ({
 
 const entries = extractAudioEntriesFromPacks(parsedPacks, {
   includeCoreUiKeys: true,
+  includeSharedFeedbackPool: true,
   extraEntries: stickerExtras,
 });
 
@@ -73,11 +75,24 @@ if (writeManifest) {
   };
   walkAudioDir(AUDIO_DIR);
 
+  const sortedUrls = Array.from(discoveredUrls).sort();
+  const hasher = crypto.createHash("sha256");
+  hasher.update(`total:${report.totalUnique}\n`);
+  for (const url of sortedUrls) {
+    const filePath = path.join(PUBLIC_DIR, url.replace(/^\/+/, ""));
+    hasher.update(`${url}\n`);
+    if (fs.existsSync(filePath)) {
+      hasher.update(fs.readFileSync(filePath));
+    }
+  }
+  const contentHash = hasher.digest("hex").slice(0, 12);
+
   const manifestPayload = {
     version: 1,
     generatedAt: new Date().toISOString(),
+    contentHash,
     totalExpected: report.totalUnique,
-    cachedAudioUrls: Array.from(discoveredUrls).sort(),
+    cachedAudioUrls: sortedUrls,
   };
 
   fs.writeFileSync(
@@ -90,34 +105,44 @@ if (writeManifest) {
 if (jsonOutput) {
   console.log(JSON.stringify(report, null, 2));
 } else {
-  console.log("=== Wee Sparks Audio Asset Audit ===");
+  console.log("=== Wee Sparks Prioritised Audio Recording Audit ===");
   console.log(`Scanned packs: ${packFiles.join(", ")}`);
   console.log(
     `Audio assets: ${report.presentCount} present / ${report.missingCount} missing (${report.totalUnique} total unique MP3s)\n`
   );
 
-  console.log("Summary by folder (apps/web/public/audio/<folder>/):");
-  for (const category of Object.keys(report.byCategory).sort()) {
-    const stats = report.byCategory[category]!;
-    const statusIcon = stats.missing === 0 ? "✓" : "○";
+  console.log(
+    "Prioritised recording tiers (phonemes -> words -> numbers -> coins -> shapes -> prompts -> ...):"
+  );
+  for (const tier of report.prioritisedTiers) {
+    const statusIcon = tier.missing === 0 ? "✓" : "○";
     console.log(
-      `  ${statusIcon} ${category.padEnd(10)} ${String(stats.present).padStart(3)}/${String(stats.total).padEnd(3)} present (${stats.missing} missing)`
+      `  P${String(tier.priority).padEnd(2)} ${statusIcon} ${tier.category.padEnd(10)} ${String(tier.present).padStart(3)}/${String(tier.total).padEnd(3)} present (${tier.missing} missing) — ${tier.label}`
     );
   }
 
-  const listToPrint = missingOnly ? report.missing : entries;
   console.log(
-    `\n${missingOnly ? "Missing MP3 files" : "All expected MP3 files"} (${listToPrint.length}):`
+    `\nPrioritised recording list (${missingOnly ? "missing only" : "all entries"}):`
   );
+  const presentUrls = new Set(report.present.map((p) => p.url));
 
-  for (const item of listToPrint) {
-    const exists = report.present.some((p) => p.url === item.url);
-    const mark = exists ? "[OK]     " : "[MISSING]";
-    const hint =
-      item.sampleTexts.length > 0 ? ` — "${item.sampleTexts[0]}"` : "";
+  for (const tier of report.prioritisedTiers) {
+    const tierItems = missingOnly
+      ? tier.missingEntries
+      : entries.filter((e) => e.category === tier.category);
+    if (tierItems.length === 0) continue;
+
     console.log(
-      `  ${mark} ${item.audioKey.padEnd(36)} -> public/${item.relativePublicPath}${hint}`
+      `\n[Priority ${tier.priority}] ${tier.category.toUpperCase()} — ${tier.label} (${tierItems.length} files)`
     );
+    for (const item of tierItems) {
+      const mark = presentUrls.has(item.url) ? "[OK]     " : "[MISSING]";
+      const hint =
+        item.sampleTexts.length > 0 ? ` — "${item.sampleTexts[0]}"` : "";
+      console.log(
+        `  ${mark} ${item.audioKey.padEnd(32)} -> public/${item.relativePublicPath}${hint}`
+      );
+    }
   }
 
   if (writeManifest) {

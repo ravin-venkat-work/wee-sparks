@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type {
   HighFrequencyWordExercise,
   InitialSoundMatchExercise,
@@ -11,6 +11,7 @@ import type {
   UkCoinMatchExercise,
 } from "@wee-sparks/curriculum-schema";
 import { playAudioKey, playPhoneme, playSfx } from "@/lib/audio";
+import { POST_SOLVE_DOUBLE_TAP_WINDOW_MS } from "@/lib/sessionStateMachine";
 import { SeedItemArt } from "./SeedItemArt";
 import { TenFrameBoard } from "./TenFrameBoard";
 import { RewardPopCard } from "./RewardBurst";
@@ -52,15 +53,25 @@ export function TapChoiceEngine({
     exercise.type === "ten-frame-count" ? exercise.initialCounters : 0
   );
   const [shakeFrame, setShakeFrame] = useState(false);
+  const solvedAtRef = useRef<number | null>(null);
 
   useEffect(() => {
     setSelectedOptionId(null);
     setWrongOptionId(null);
     setShakeFrame(false);
+    solvedAtRef.current = null;
     setBuiltCounters(
       exercise.type === "ten-frame-count" ? exercise.initialCounters : 0
     );
   }, [exercise]);
+
+  useEffect(() => {
+    if (isSolved && solvedAtRef.current === null) {
+      solvedAtRef.current = Date.now();
+    } else if (!isSolved) {
+      solvedAtRef.current = null;
+    }
+  }, [isSolved]);
 
   const handleOptionTap = (
     optionId: string,
@@ -69,6 +80,14 @@ export function TapChoiceEngine({
     label: string
   ) => {
     if (isSolved) {
+      // Ignore double-taps on the just-solved answer card (and 1s post-solve window)
+      if (
+        optionId === correctOptionId ||
+        (solvedAtRef.current !== null &&
+          Date.now() - solvedAtRef.current < POST_SOLVE_DOUBLE_TAP_WINDOW_MS)
+      ) {
+        return;
+      }
       playSfx("tap");
       if (audioKey.startsWith("phoneme/")) {
         void playPhoneme(label, audioKey);

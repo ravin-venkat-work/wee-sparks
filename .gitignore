@@ -8,6 +8,8 @@ out/
 dist/
 build/
 *.tsbuildinfo
+playwright-report/
+test-results/
 
 # Environment files
 .env

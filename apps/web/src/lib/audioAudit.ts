@@ -1,4 +1,47 @@
+import {
+  PRAISE_AUDIO_SCRIPTS,
+  TRY_AGAIN_AUDIO_SCRIPTS,
+} from "@wee-sparks/curriculum-schema";
 import { CORE_UI_AUDIO_KEYS, resolveAudioUrl } from "./audioUrls";
+
+/**
+ * Prioritised recording order for Northern Ireland voice talent:
+ * 1. phonemes  — highest impact (pure Linguistic Phonics sounds, zero schwa)
+ * 2. word      — target words & sight words
+ * 3. number    — spoken numbers 0–20
+ * 4. coin      — UK coins & pence totals
+ * 5. shape     — 2D & 3D shapes
+ * 6. prompt    — exercise instructions & welcome prompt
+ * 7. feedback  — shared 24-clip praise/try-again pool + quest-complete
+ * 8+           — objects, sentences, hints, stickers
+ */
+export const RECORDING_PRIORITY_ORDER = [
+  "phonemes",
+  "word",
+  "number",
+  "coin",
+  "shape",
+  "prompt",
+  "feedback",
+  "object",
+  "sentence",
+  "hint",
+  "sticker",
+] as const;
+
+export const RECORDING_PRIORITY_LABELS: Record<string, string> = {
+  phonemes: "Pure NI Linguistic Phonics phonemes (zero 'uh' schwa)",
+  word: "Target phonics & high-frequency words",
+  number: "Spoken numbers (0–20)",
+  coin: "UK coins & pence totals (1p–20p)",
+  shape: "2D & 3D shape names",
+  prompt: "Exercise prompts & welcome screen",
+  feedback: "Shared praise (01–12), try-again (01–12) & quest-complete pool",
+  object: "Visual item & counter names",
+  sentence: "High-frequency word & caption sentences",
+  hint: "Gentle audio hints",
+  sticker: "Sticker chest cheer lines",
+};
 
 export interface ExtractedAudioEntry {
   audioKey: string;
@@ -7,6 +50,16 @@ export interface ExtractedAudioEntry {
   category: string;
   sampleTexts: string[];
   sources: string[];
+}
+
+export interface PrioritisedRecordingTier {
+  priority: number;
+  category: string;
+  label: string;
+  total: number;
+  present: number;
+  missing: number;
+  missingEntries: ExtractedAudioEntry[];
 }
 
 export interface AudioAuditReport {
@@ -19,6 +72,7 @@ export interface AudioAuditReport {
     string,
     { total: number; present: number; missing: number }
   >;
+  prioritisedTiers: PrioritisedRecordingTier[];
 }
 
 interface MutableEntry {
@@ -28,6 +82,24 @@ interface MutableEntry {
   category: string;
   sampleTexts: Set<string>;
   sources: Set<string>;
+}
+
+export function getRecordingPriority(category: string): number {
+  const idx = RECORDING_PRIORITY_ORDER.indexOf(
+    category as (typeof RECORDING_PRIORITY_ORDER)[number]
+  );
+  return idx === -1 ? RECORDING_PRIORITY_ORDER.length : idx;
+}
+
+export function sortEntriesByRecordingPriority(
+  entries: readonly ExtractedAudioEntry[]
+): ExtractedAudioEntry[] {
+  return [...entries].sort((a, b) => {
+    const pa = getRecordingPriority(a.category);
+    const pb = getRecordingPriority(b.category);
+    if (pa !== pb) return pa - pb;
+    return a.url.localeCompare(b.url);
+  });
 }
 
 function getCategoryFromUrl(url: string): string {
@@ -51,14 +123,25 @@ function inferCompanionText(
       return parent.label.trim();
     }
   }
-  if (keyName === "correctAudioKey" && typeof parent.correctText === "string") {
-    return parent.correctText.trim();
+  if (keyName === "correctAudioKey") {
+    const val = parent.correctAudioKey;
+    if (typeof val === "string" && val in PRAISE_AUDIO_SCRIPTS) {
+      return PRAISE_AUDIO_SCRIPTS[val as keyof typeof PRAISE_AUDIO_SCRIPTS];
+    }
+    if (typeof parent.correctText === "string") {
+      return parent.correctText.trim();
+    }
   }
-  if (
-    keyName === "encourageAudioKey" &&
-    typeof parent.encourageText === "string"
-  ) {
-    return parent.encourageText.trim();
+  if (keyName === "encourageAudioKey") {
+    const val = parent.encourageAudioKey;
+    if (typeof val === "string" && val in TRY_AGAIN_AUDIO_SCRIPTS) {
+      return TRY_AGAIN_AUDIO_SCRIPTS[
+        val as keyof typeof TRY_AGAIN_AUDIO_SCRIPTS
+      ];
+    }
+    if (typeof parent.encourageText === "string") {
+      return parent.encourageText.trim();
+    }
   }
   if (keyName === "wordAudioKey" && typeof parent.targetWord === "string") {
     return parent.targetWord.trim();
@@ -96,11 +179,19 @@ function inferCompanionText(
 /**
  * Recursively collects every `*audioKey` / `audioKey` string from any number
  * of parsed JSON pack objects, keyed by resolved `/audio/.../*.mp3` URL so
- * `phoneme/s` and `phonemes/s` deduplicate cleanly.
+ * `phoneme/s` and `phonemes/s` deduplicate cleanly, sorted by recording priority.
  */
 export function extractAudioEntriesFromPacks(
   packs: ReadonlyArray<{ sourceName: string; data: unknown }>,
-  options?: { includeCoreUiKeys?: boolean; extraEntries?: ReadonlyArray<{ audioKey: string; scriptText: string; sourceName?: string }> }
+  options?: {
+    includeCoreUiKeys?: boolean;
+    includeSharedFeedbackPool?: boolean;
+    extraEntries?: ReadonlyArray<{
+      audioKey: string;
+      scriptText: string;
+      sourceName?: string;
+    }>;
+  }
 ): ExtractedAudioEntry[] {
   const byUrl = new Map<string, MutableEntry>();
 
@@ -158,6 +249,15 @@ export function extractAudioEntriesFromPacks(
     }
   }
 
+  if (options?.includeSharedFeedbackPool !== false) {
+    for (const [key, script] of Object.entries(PRAISE_AUDIO_SCRIPTS)) {
+      register(key, "shared-feedback-pool", script);
+    }
+    for (const [key, script] of Object.entries(TRY_AGAIN_AUDIO_SCRIPTS)) {
+      register(key, "shared-feedback-pool", script);
+    }
+  }
+
   if (options?.extraEntries) {
     for (const extra of options.extraEntries) {
       register(
@@ -168,8 +268,8 @@ export function extractAudioEntriesFromPacks(
     }
   }
 
-  return Array.from(byUrl.values())
-    .map((entry) => ({
+  return sortEntriesByRecordingPriority(
+    Array.from(byUrl.values()).map((entry) => ({
       audioKey: entry.audioKey,
       url: entry.url,
       relativePublicPath: entry.relativePublicPath,
@@ -177,17 +277,58 @@ export function extractAudioEntriesFromPacks(
       sampleTexts: Array.from(entry.sampleTexts),
       sources: Array.from(entry.sources).sort(),
     }))
-    .sort((a, b) => a.url.localeCompare(b.url));
+  );
+}
+
+/**
+ * Groups missing & present audio entries into a prioritised recording plan
+ * (phonemes -> words -> numbers -> coins -> shapes -> prompts -> feedback -> ...).
+ */
+export function buildPrioritisedRecordingList(
+  entries: readonly ExtractedAudioEntry[],
+  fileExists: (relativePublicPath: string) => boolean
+): PrioritisedRecordingTier[] {
+  const sorted = sortEntriesByRecordingPriority(entries);
+  const tierMap = new Map<string, PrioritisedRecordingTier>();
+
+  for (const entry of sorted) {
+    let tier = tierMap.get(entry.category);
+    if (!tier) {
+      tier = {
+        priority: getRecordingPriority(entry.category) + 1,
+        category: entry.category,
+        label:
+          RECORDING_PRIORITY_LABELS[entry.category] ??
+          `${entry.category} audio clips`,
+        total: 0,
+        present: 0,
+        missing: 0,
+        missingEntries: [],
+      };
+      tierMap.set(entry.category, tier);
+    }
+
+    tier.total += 1;
+    if (fileExists(entry.relativePublicPath)) {
+      tier.present += 1;
+    } else {
+      tier.missing += 1;
+      tier.missingEntries.push(entry);
+    }
+  }
+
+  return Array.from(tierMap.values()).sort((a, b) => a.priority - b.priority);
 }
 
 /**
  * Evaluates which extracted audio entries already have MP3 files on disk
- * versus which are still missing.
+ * versus which are still missing, including a prioritised recording plan.
  */
 export function buildAudioAuditReport(
   entries: readonly ExtractedAudioEntry[],
   fileExists: (relativePublicPath: string) => boolean
 ): AudioAuditReport {
+  const sorted = sortEntriesByRecordingPriority(entries);
   const present: ExtractedAudioEntry[] = [];
   const missing: ExtractedAudioEntry[] = [];
   const byCategory: Record<
@@ -195,7 +336,7 @@ export function buildAudioAuditReport(
     { total: number; present: number; missing: number }
   > = {};
 
-  for (const entry of entries) {
+  for (const entry of sorted) {
     if (!byCategory[entry.category]) {
       byCategory[entry.category] = { total: 0, present: 0, missing: 0 };
     }
@@ -211,12 +352,15 @@ export function buildAudioAuditReport(
     }
   }
 
+  const prioritisedTiers = buildPrioritisedRecordingList(sorted, fileExists);
+
   return {
-    totalUnique: entries.length,
+    totalUnique: sorted.length,
     presentCount: present.length,
     missingCount: missing.length,
     present,
     missing,
     byCategory,
+    prioritisedTiers,
   };
 }

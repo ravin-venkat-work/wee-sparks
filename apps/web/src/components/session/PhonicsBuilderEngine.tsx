@@ -12,6 +12,7 @@ import {
   playPhoneme,
   playSfx,
 } from "@/lib/audio";
+import { POST_SOLVE_DOUBLE_TAP_WINDOW_MS } from "@/lib/sessionStateMachine";
 import { ElkoninSoundBoxes, type ElkoninTile } from "./ElkoninSoundBoxes";
 import { SeedItemArt } from "./SeedItemArt";
 import { RewardPopCard } from "./RewardBurst";
@@ -104,6 +105,7 @@ export function PhonicsBuilderEngine({
   const [shakeBoxes, setShakeBoxes] = useState(false);
   const [wrongOptionId, setWrongOptionId] = useState<string | null>(null);
   const autoSweptRef = useRef(false);
+  const solvedAtRef = useRef<number | null>(null);
   const activeExerciseIdRef = useRef(exercise.id);
   activeExerciseIdRef.current = exercise.id;
 
@@ -115,7 +117,16 @@ export function PhonicsBuilderEngine({
     setShakeBoxes(false);
     setWrongOptionId(null);
     autoSweptRef.current = false;
+    solvedAtRef.current = null;
   }, [exercise, expectedGraphemes.length]);
+
+  useEffect(() => {
+    if (isSolved && solvedAtRef.current === null) {
+      solvedAtRef.current = Date.now();
+    } else if (!isSolved) {
+      solvedAtRef.current = null;
+    }
+  }, [isSolved]);
 
   const placedTileIds = useMemo(
     () =>
@@ -300,6 +311,13 @@ export function PhonicsBuilderEngine({
   ) => {
     if (exercise.type !== "cvc-blending") return;
     if (isSolved) {
+      if (
+        optionId === exercise.correctOptionId ||
+        (solvedAtRef.current !== null &&
+          Date.now() - solvedAtRef.current < POST_SOLVE_DOUBLE_TAP_WINDOW_MS)
+      ) {
+        return;
+      }
       playSfx("tap");
       void playAudioKey(audioKey, label);
       return;

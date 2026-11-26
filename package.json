@@ -12,6 +12,7 @@
     "dev": "pnpm --filter @wee-sparks/web dev",
     "build": "pnpm -r build",
     "test": "pnpm --filter @wee-sparks/web test",
+    "test:e2e": "pnpm --filter @wee-sparks/web test:e2e",
     "typecheck": "pnpm -r typecheck",
     "validate:packs": "pnpm --filter content-studio validate",
     "audit:audio": "pnpm --filter @wee-sparks/web audio:audit"

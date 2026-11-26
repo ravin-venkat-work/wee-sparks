@@ -17,7 +17,7 @@ apps/web/public/audio/
 ├── word/        # Target CVC/CCVC words & high-frequency sight words (sat, pin, ship, the...)
 ├── prompt/      # Spoken instructions for each exercise & welcome screen
 ├── hint/        # Gentle audio hints when a child taps 💡
-├── feedback/    # Warm praise & gentle encouragement cues
+├── feedback/    # Shared 24-clip pool (praise-01..12, try-again-01..12) + quest-complete
 ├── object/      # Picture vocabulary & visual item labels (rocket, puffin, digger...)
 ├── number/      # Spoken numbers 0–20 for ten-frames, bonds & number lines
 ├── shape/       # 2D shapes (circle, square, triangle, rectangle, hexagon...)

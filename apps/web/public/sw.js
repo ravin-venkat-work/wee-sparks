@@ -1,11 +1,17 @@
-const CACHE_VERSION = "v1";
-const SHELL_CACHE = `wee-sparks-shell-${CACHE_VERSION}`;
-const ASSET_CACHE = `wee-sparks-assets-${CACHE_VERSION}`;
-const AUDIO_CACHE = `wee-sparks-audio-${CACHE_VERSION}`;
-const ACTIVE_CACHES = new Set([SHELL_CACHE, ASSET_CACHE, AUDIO_CACHE]);
+importScripts("/sw-helpers.js");
+
+const { extractNextStaticUrls, deriveAudioCacheName } =
+  self.WeeSparksSwHelpers;
+
+const SHELL_CACHE_VERSION = "v2";
+const SHELL_CACHE = `wee-sparks-shell-${SHELL_CACHE_VERSION}`;
+const ASSET_CACHE = `wee-sparks-assets-${SHELL_CACHE_VERSION}`;
+const DEFAULT_AUDIO_CACHE = "wee-sparks-audio-v1";
+const AUDIO_MANIFEST_URL = "/audio/precache-manifest.json";
 
 const CORE_SHELL_URLS = [
   "/",
+  "/sw-helpers.js",
   "/manifest.webmanifest",
   "/icons/icon-192.png",
   "/icons/icon-512.png",
@@ -15,22 +21,7 @@ const CORE_SHELL_URLS = [
   "/icons/icon-maskable.svg",
 ];
 
-const AUDIO_MANIFEST_URL = "/audio/precache-manifest.json";
-
-/**
- * Extracts all same-origin `/_next/static/...` asset URLs referenced in the
- * rendered app shell HTML so the full client bundle is cached on SW install.
- */
-function extractNextStaticUrls(htmlText) {
-  const urls = new Set();
-  const regex = /\/_next\/static\/[^"'\\s<>)]+/g;
-  let match = regex.exec(htmlText);
-  while (match) {
-    urls.add(match[0]);
-    match = regex.exec(htmlText);
-  }
-  return Array.from(urls);
-}
+let activeAudioCacheName = DEFAULT_AUDIO_CACHE;
 
 async function safeCacheUrl(cache, url) {
   try {
@@ -44,6 +35,20 @@ async function safeCacheUrl(cache, url) {
     // Fault-tolerant precaching: ignore unavailable optional files
   }
   return null;
+}
+
+async function resolveActiveAudioCacheName() {
+  try {
+    const shellCache = await caches.open(SHELL_CACHE);
+    const cachedManifest = await shellCache.match(AUDIO_MANIFEST_URL);
+    if (cachedManifest) {
+      const manifest = await cachedManifest.json();
+      activeAudioCacheName = deriveAudioCacheName(manifest);
+    }
+  } catch {
+    // Keep current activeAudioCacheName
+  }
+  return activeAudioCacheName;
 }
 
 async function precacheShellAndAssets() {
@@ -71,15 +76,20 @@ async function precacheShellAndAssets() {
 }
 
 async function precacheAllAudio() {
-  const audioCache = await caches.open(AUDIO_CACHE);
   try {
     const manifestRes = await fetch(
       new Request(AUDIO_MANIFEST_URL, { cache: "no-store" })
     );
     if (!manifestRes || !manifestRes.ok) return;
 
-    await audioCache.put(AUDIO_MANIFEST_URL, manifestRes.clone());
-    const manifest = await manifestRes.json();
+    const manifest = await manifestRes.clone().json();
+    const audioCacheName = deriveAudioCacheName(manifest);
+    activeAudioCacheName = audioCacheName;
+
+    const shellCache = await caches.open(SHELL_CACHE);
+    await shellCache.put(AUDIO_MANIFEST_URL, manifestRes.clone());
+
+    const audioCache = await caches.open(audioCacheName);
     const urls = Array.isArray(manifest?.cachedAudioUrls)
       ? manifest.cachedAudioUrls.filter(
           (u) => typeof u === "string" && u.startsWith("/audio/")
@@ -102,17 +112,19 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches
-      .keys()
-      .then((keys) =>
-        Promise.all(
-          keys
-            .filter(
-              (key) => key.startsWith("wee-sparks-") && !ACTIVE_CACHES.has(key)
+    resolveActiveAudioCacheName()
+      .then((currentAudioCache) => {
+        const keep = new Set([SHELL_CACHE, ASSET_CACHE, currentAudioCache]);
+        return caches
+          .keys()
+          .then((keys) =>
+            Promise.all(
+              keys
+                .filter((key) => key.startsWith("wee-sparks-") && !keep.has(key))
+                .map((key) => caches.delete(key))
             )
-            .map((key) => caches.delete(key))
-        )
-      )
+          );
+      })
       .then(() => self.clients.claim())
   );
 });
@@ -123,18 +135,17 @@ self.addEventListener("message", (event) => {
 
   if (data.type === "SKIP_WAITING") {
     self.skipWaiting();
-  } else if (
-    data.type === "PRECACHE_AUDIO_URLS" &&
-    Array.isArray(data.urls)
-  ) {
+  } else if (data.type === "PRECACHE_AUDIO_URLS" && Array.isArray(data.urls)) {
     event.waitUntil(
-      caches.open(AUDIO_CACHE).then((cache) =>
-        Promise.allSettled(
-          data.urls
-            .filter((u) => typeof u === "string" && u.startsWith("/audio/"))
-            .map((url) => safeCacheUrl(cache, url))
+      resolveActiveAudioCacheName()
+        .then((cacheName) => caches.open(cacheName))
+        .then((cache) =>
+          Promise.allSettled(
+            data.urls
+              .filter((u) => typeof u === "string" && u.startsWith("/audio/"))
+              .map((url) => safeCacheUrl(cache, url))
+          )
         )
-      )
     );
   }
 });
@@ -146,31 +157,37 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
-  // 1. Offline audio files: Cache-First with network populate
+  // 1. Offline audio files: Cache-First in the manifest-versioned audio cache
   if (url.pathname.startsWith("/audio/")) {
     event.respondWith(
-      caches.open(AUDIO_CACHE).then(async (cache) => {
-        const cached = await cache.match(url.pathname);
-        if (cached) return cached;
-        try {
-          const networkRes = await fetch(request);
-          if (networkRes && networkRes.ok) {
-            cache.put(url.pathname, networkRes.clone());
+      resolveActiveAudioCacheName()
+        .then((cacheName) => caches.open(cacheName))
+        .then(async (cache) => {
+          const cached = await cache.match(url.pathname);
+          if (cached) return cached;
+          try {
+            const networkRes = await fetch(request);
+            if (networkRes && networkRes.ok) {
+              cache.put(url.pathname, networkRes.clone());
+            }
+            return networkRes;
+          } catch {
+            return new Response("", {
+              status: 404,
+              statusText: "Offline Audio Missing",
+            });
           }
-          return networkRes;
-        } catch {
-          return new Response("", { status: 404, statusText: "Offline Audio Missing" });
-        }
-      })
+        })
     );
     return;
   }
 
-  // 2. Immutable static bundles, icons, and web manifest: Cache-First
+  // 2. Immutable static bundles, icons, SW helpers, and web manifest: Cache-First
   if (
     url.pathname.startsWith("/_next/static/") ||
     url.pathname.startsWith("/icons/") ||
-    url.pathname === "/manifest.webmanifest"
+    url.pathname === "/manifest.webmanifest" ||
+    url.pathname === "/sw-helpers.js"
   ) {
     const targetCache = url.pathname.startsWith("/_next/static/")
       ? ASSET_CACHE

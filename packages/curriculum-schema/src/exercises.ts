@@ -3,8 +3,10 @@ import {
   AudioKeySchema,
   DifficultyTierSchema,
   LINGUISTIC_PHONICS_SATPIN,
+  PraiseAudioKeySchema,
   SubjectSchema,
   ThemeSchema,
+  TryAgainAudioKeySchema,
   UkCoinSchema,
   YearGroupSchema,
 } from "./enums";
@@ -32,9 +34,9 @@ export type Prompt = z.infer<typeof PromptSchema>;
 
 export const FeedbackSchema = z.object({
   correctText: z.string().min(1),
-  correctAudioKey: AudioKeySchema,
+  correctAudioKey: PraiseAudioKeySchema,
   encourageText: z.string().min(1),
-  encourageAudioKey: AudioKeySchema,
+  encourageAudioKey: TryAgainAudioKeySchema,
 });
 export type Feedback = z.infer<typeof FeedbackSchema>;
 

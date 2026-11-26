@@ -37,9 +37,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"star\" starts with /s/!",
-        "correctAudioKey": "feedback/correct-p1m-satpin-01",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Good try! Listen closely to the start of \"star\".",
-        "encourageAudioKey": "feedback/encourage-p1m-satpin-01"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Play 'I Spy with my little ear' on the walk to school using pure letter sounds (say 'ssss' rather than 'ess'). Spot things starting with s, a, t, p, i, or n.",
       "type": "initial-sound-match",
@@ -101,9 +101,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"astronaut\" starts with /a/!",
-        "correctAudioKey": "feedback/correct-p1m-satpin-02",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Good try! Listen closely to the start of \"astronaut\".",
-        "encourageAudioKey": "feedback/encourage-p1m-satpin-02"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Play 'I Spy with my little ear' on the walk to school using pure letter sounds (say 'ssss' rather than 'ess'). Spot things starting with s, a, t, p, i, or n.",
       "type": "initial-sound-match",
@@ -161,9 +161,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"tractor\" starts with /t/!",
-        "correctAudioKey": "feedback/correct-p1m-satpin-03",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Good try! Listen closely to the start of \"tractor\".",
-        "encourageAudioKey": "feedback/encourage-p1m-satpin-03"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Play 'I Spy with my little ear' on the walk to school using pure letter sounds (say 'ssss' rather than 'ess'). Spot things starting with s, a, t, p, i, or n.",
       "type": "initial-sound-match",
@@ -225,9 +225,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"puffin\" starts with /p/!",
-        "correctAudioKey": "feedback/correct-p1m-satpin-04",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Good try! Listen closely to the start of \"puffin\".",
-        "encourageAudioKey": "feedback/encourage-p1m-satpin-04"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Play 'I Spy with my little ear' on the walk to school using pure letter sounds (say 'ssss' rather than 'ess'). Spot things starting with s, a, t, p, i, or n.",
       "type": "initial-sound-match",
@@ -285,9 +285,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"igloo\" starts with /i/!",
-        "correctAudioKey": "feedback/correct-p1m-satpin-05",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Good try! Listen closely to the start of \"igloo\".",
-        "encourageAudioKey": "feedback/encourage-p1m-satpin-05"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Play 'I Spy with my little ear' on the walk to school using pure letter sounds (say 'ssss' rather than 'ess'). Spot things starting with s, a, t, p, i, or n.",
       "type": "initial-sound-match",
@@ -349,9 +349,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"nest\" starts with /n/!",
-        "correctAudioKey": "feedback/correct-p1m-satpin-06",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Good try! Listen closely to the start of \"nest\".",
-        "encourageAudioKey": "feedback/encourage-p1m-satpin-06"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Play 'I Spy with my little ear' on the walk to school using pure letter sounds (say 'ssss' rather than 'ess'). Spot things starting with s, a, t, p, i, or n.",
       "type": "initial-sound-match",
@@ -409,9 +409,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"snail\" starts with /s/!",
-        "correctAudioKey": "feedback/correct-p1m-satpin-07",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Good try! Listen closely to the start of \"snail\".",
-        "encourageAudioKey": "feedback/encourage-p1m-satpin-07"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Play 'I Spy with my little ear' on the walk to school using pure letter sounds (say 'ssss' rather than 'ess'). Spot things starting with s, a, t, p, i, or n.",
       "type": "initial-sound-match",
@@ -473,9 +473,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"planet\" starts with /p/!",
-        "correctAudioKey": "feedback/correct-p1m-satpin-08",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Good try! Listen closely to the start of \"planet\".",
-        "encourageAudioKey": "feedback/encourage-p1m-satpin-08"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Play 'I Spy with my little ear' on the walk to school using pure letter sounds (say 'ssss' rather than 'ess'). Spot things starting with s, a, t, p, i, or n.",
       "type": "initial-sound-match",
@@ -533,9 +533,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"turtle\" starts with /t/!",
-        "correctAudioKey": "feedback/correct-p1m-satpin-09",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Good try! Listen closely to the start of \"turtle\".",
-        "encourageAudioKey": "feedback/encourage-p1m-satpin-09"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Play 'I Spy with my little ear' on the walk to school using pure letter sounds (say 'ssss' rather than 'ess'). Spot things starting with s, a, t, p, i, or n.",
       "type": "initial-sound-match",
@@ -597,9 +597,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"nut\" starts with /n/!",
-        "correctAudioKey": "feedback/correct-p1m-satpin-10",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Good try! Listen closely to the start of \"nut\".",
-        "encourageAudioKey": "feedback/encourage-p1m-satpin-10"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Play 'I Spy with my little ear' on the walk to school using pure letter sounds (say 'ssss' rather than 'ess'). Spot things starting with s, a, t, p, i, or n.",
       "type": "initial-sound-match",
@@ -657,9 +657,9 @@
       },
       "feedback": {
         "correctText": "Super blending! s-a-t makes \"sat\"!",
-        "correctAudioKey": "feedback/correct-p1m-blend-01",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p1m-blend-01"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Write s, a, t, p, i, n on sticky notes and place three in a row on the fridge. Slide a finger underneath as you say each sound slowly, then sweep faster to hear the whole word.",
       "type": "cvc-blending",
@@ -722,9 +722,9 @@
       },
       "feedback": {
         "correctText": "Super blending! p-i-n makes \"pin\"!",
-        "correctAudioKey": "feedback/correct-p1m-blend-02",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p1m-blend-02"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Write s, a, t, p, i, n on sticky notes and place three in a row on the fridge. Slide a finger underneath as you say each sound slowly, then sweep faster to hear the whole word.",
       "type": "cvc-blending",
@@ -787,9 +787,9 @@
       },
       "feedback": {
         "correctText": "Super blending! t-a-p makes \"tap\"!",
-        "correctAudioKey": "feedback/correct-p1m-blend-03",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p1m-blend-03"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Write s, a, t, p, i, n on sticky notes and place three in a row on the fridge. Slide a finger underneath as you say each sound slowly, then sweep faster to hear the whole word.",
       "type": "cvc-blending",
@@ -852,9 +852,9 @@
       },
       "feedback": {
         "correctText": "Super blending! p-a-n makes \"pan\"!",
-        "correctAudioKey": "feedback/correct-p1m-blend-04",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p1m-blend-04"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Write s, a, t, p, i, n on sticky notes and place three in a row on the fridge. Slide a finger underneath as you say each sound slowly, then sweep faster to hear the whole word.",
       "type": "cvc-blending",
@@ -917,9 +917,9 @@
       },
       "feedback": {
         "correctText": "Super blending! t-i-n makes \"tin\"!",
-        "correctAudioKey": "feedback/correct-p1m-blend-05",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p1m-blend-05"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Write s, a, t, p, i, n on sticky notes and place three in a row on the fridge. Slide a finger underneath as you say each sound slowly, then sweep faster to hear the whole word.",
       "type": "cvc-blending",
@@ -982,9 +982,9 @@
       },
       "feedback": {
         "correctText": "Super blending! p-i-t makes \"pit\"!",
-        "correctAudioKey": "feedback/correct-p1m-blend-06",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p1m-blend-06"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Write s, a, t, p, i, n on sticky notes and place three in a row on the fridge. Slide a finger underneath as you say each sound slowly, then sweep faster to hear the whole word.",
       "type": "cvc-blending",
@@ -1047,9 +1047,9 @@
       },
       "feedback": {
         "correctText": "Super blending! n-a-p makes \"nap\"!",
-        "correctAudioKey": "feedback/correct-p1m-blend-07",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p1m-blend-07"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Write s, a, t, p, i, n on sticky notes and place three in a row on the fridge. Slide a finger underneath as you say each sound slowly, then sweep faster to hear the whole word.",
       "type": "cvc-blending",
@@ -1112,9 +1112,9 @@
       },
       "feedback": {
         "correctText": "Super blending! s-i-p makes \"sip\"!",
-        "correctAudioKey": "feedback/correct-p1m-blend-08",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p1m-blend-08"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Write s, a, t, p, i, n on sticky notes and place three in a row on the fridge. Slide a finger underneath as you say each sound slowly, then sweep faster to hear the whole word.",
       "type": "cvc-blending",
@@ -1177,9 +1177,9 @@
       },
       "feedback": {
         "correctText": "Super blending! p-a-t makes \"pat\"!",
-        "correctAudioKey": "feedback/correct-p1m-blend-09",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p1m-blend-09"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Write s, a, t, p, i, n on sticky notes and place three in a row on the fridge. Slide a finger underneath as you say each sound slowly, then sweep faster to hear the whole word.",
       "type": "cvc-blending",
@@ -1242,9 +1242,9 @@
       },
       "feedback": {
         "correctText": "Super blending! a-n-t makes \"ant\"!",
-        "correctAudioKey": "feedback/correct-p1m-blend-10",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Almost! Slide your finger across the sounds and listen again.",
-        "encourageAudioKey": "feedback/encourage-p1m-blend-10"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Write s, a, t, p, i, n on sticky notes and place three in a row on the fridge. Slide a finger underneath as you say each sound slowly, then sweep faster to hear the whole word.",
       "type": "cvc-blending",
@@ -1307,9 +1307,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"comet\" starts with /c/!",
-        "correctAudioKey": "feedback/correct-p1m-ckehrmd-01",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Good try! Listen closely to the start of \"comet\".",
-        "encourageAudioKey": "feedback/encourage-p1m-ckehrmd-01"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Gather four kitchen items (e.g. cup, mug, egg, dish) and ask your child to group them by their starting sound.",
       "type": "initial-sound-match",
@@ -1371,9 +1371,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"kite\" starts with /k/!",
-        "correctAudioKey": "feedback/correct-p1m-ckehrmd-02",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Good try! Listen closely to the start of \"kite\".",
-        "encourageAudioKey": "feedback/encourage-p1m-ckehrmd-02"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Gather four kitchen items (e.g. cup, mug, egg, dish) and ask your child to group them by their starting sound.",
       "type": "initial-sound-match",
@@ -1431,9 +1431,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"egg\" starts with /e/!",
-        "correctAudioKey": "feedback/correct-p1m-ckehrmd-03",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Good try! Listen closely to the start of \"egg\".",
-        "encourageAudioKey": "feedback/encourage-p1m-ckehrmd-03"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "Gather four kitchen items (e.g. cup, mug, egg, dish) and ask your child to group them by their starting sound.",
       "type": "initial-sound-match",
@@ -1495,9 +1495,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"helicopter\" starts with /h/!",
-        "correctAudioKey": "feedback/correct-p1m-ckehrmd-04",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Good try! Listen closely to the start of \"helicopter\".",
-        "encourageAudioKey": "feedback/encourage-p1m-ckehrmd-04"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Gather four kitchen items (e.g. cup, mug, egg, dish) and ask your child to group them by their starting sound.",
       "type": "initial-sound-match",
@@ -1555,9 +1555,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"rocket\" starts with /r/!",
-        "correctAudioKey": "feedback/correct-p1m-ckehrmd-05",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Good try! Listen closely to the start of \"rocket\".",
-        "encourageAudioKey": "feedback/encourage-p1m-ckehrmd-05"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Gather four kitchen items (e.g. cup, mug, egg, dish) and ask your child to group them by their starting sound.",
       "type": "initial-sound-match",
@@ -1619,9 +1619,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"moon\" starts with /m/!",
-        "correctAudioKey": "feedback/correct-p1m-ckehrmd-06",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Good try! Listen closely to the start of \"moon\".",
-        "encourageAudioKey": "feedback/encourage-p1m-ckehrmd-06"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Gather four kitchen items (e.g. cup, mug, egg, dish) and ask your child to group them by their starting sound.",
       "type": "initial-sound-match",
@@ -1679,9 +1679,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"dinosaur\" starts with /d/!",
-        "correctAudioKey": "feedback/correct-p1m-ckehrmd-07",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Good try! Listen closely to the start of \"dinosaur\".",
-        "encourageAudioKey": "feedback/encourage-p1m-ckehrmd-07"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Gather four kitchen items (e.g. cup, mug, egg, dish) and ask your child to group them by their starting sound.",
       "type": "initial-sound-match",
@@ -1743,9 +1743,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"car\" starts with /c/!",
-        "correctAudioKey": "feedback/correct-p1m-ckehrmd-08",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Good try! Listen closely to the start of \"car\".",
-        "encourageAudioKey": "feedback/encourage-p1m-ckehrmd-08"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Gather four kitchen items (e.g. cup, mug, egg, dish) and ask your child to group them by their starting sound.",
       "type": "initial-sound-match",
@@ -1803,9 +1803,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"rhino\" starts with /r/!",
-        "correctAudioKey": "feedback/correct-p1m-ckehrmd-09",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Good try! Listen closely to the start of \"rhino\".",
-        "encourageAudioKey": "feedback/encourage-p1m-ckehrmd-09"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Gather four kitchen items (e.g. cup, mug, egg, dish) and ask your child to group them by their starting sound.",
       "type": "initial-sound-match",
@@ -1867,9 +1867,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"monkey\" starts with /m/!",
-        "correctAudioKey": "feedback/correct-p1m-ckehrmd-10",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Good try! Listen closely to the start of \"monkey\".",
-        "encourageAudioKey": "feedback/encourage-p1m-ckehrmd-10"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Gather four kitchen items (e.g. cup, mug, egg, dish) and ask your child to group them by their starting sound.",
       "type": "initial-sound-match",
@@ -1927,9 +1927,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"cat\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p1m-seg-01",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"cat\".",
-        "encourageAudioKey": "feedback/encourage-p1m-seg-01"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Draw three boxes on paper and give your child three buttons. Say a short word like 'mat' and have them push one button into a box for each sound they hear.",
       "type": "phoneme-segment",
@@ -1987,9 +1987,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"hat\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p1m-seg-02",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"hat\".",
-        "encourageAudioKey": "feedback/encourage-p1m-seg-02"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Draw three boxes on paper and give your child three buttons. Say a short word like 'mat' and have them push one button into a box for each sound they hear.",
       "type": "phoneme-segment",
@@ -2047,9 +2047,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"mat\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p1m-seg-03",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"mat\".",
-        "encourageAudioKey": "feedback/encourage-p1m-seg-03"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Draw three boxes on paper and give your child three buttons. Say a short word like 'mat' and have them push one button into a box for each sound they hear.",
       "type": "phoneme-segment",
@@ -2107,9 +2107,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"rat\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p1m-seg-04",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"rat\".",
-        "encourageAudioKey": "feedback/encourage-p1m-seg-04"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Draw three boxes on paper and give your child three buttons. Say a short word like 'mat' and have them push one button into a box for each sound they hear.",
       "type": "phoneme-segment",
@@ -2167,9 +2167,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"map\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p1m-seg-05",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"map\".",
-        "encourageAudioKey": "feedback/encourage-p1m-seg-05"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Draw three boxes on paper and give your child three buttons. Say a short word like 'mat' and have them push one button into a box for each sound they hear.",
       "type": "phoneme-segment",
@@ -2227,9 +2227,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"cap\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p1m-seg-06",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"cap\".",
-        "encourageAudioKey": "feedback/encourage-p1m-seg-06"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Draw three boxes on paper and give your child three buttons. Say a short word like 'mat' and have them push one button into a box for each sound they hear.",
       "type": "phoneme-segment",
@@ -2287,9 +2287,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"red\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p1m-seg-07",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"red\".",
-        "encourageAudioKey": "feedback/encourage-p1m-seg-07"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Draw three boxes on paper and give your child three buttons. Say a short word like 'mat' and have them push one button into a box for each sound they hear.",
       "type": "phoneme-segment",
@@ -2347,9 +2347,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"hen\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p1m-seg-08",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"hen\".",
-        "encourageAudioKey": "feedback/encourage-p1m-seg-08"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "Draw three boxes on paper and give your child three buttons. Say a short word like 'mat' and have them push one button into a box for each sound they hear.",
       "type": "phoneme-segment",
@@ -2407,9 +2407,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"pen\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p1m-seg-09",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"pen\".",
-        "encourageAudioKey": "feedback/encourage-p1m-seg-09"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Draw three boxes on paper and give your child three buttons. Say a short word like 'mat' and have them push one button into a box for each sound they hear.",
       "type": "phoneme-segment",
@@ -2467,9 +2467,9 @@
       },
       "feedback": {
         "correctText": "Spot on! You spelled \"net\" sound by sound!",
-        "correctAudioKey": "feedback/correct-p1m-seg-10",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Have another go — tap each box to listen to the sounds in \"net\".",
-        "encourageAudioKey": "feedback/encourage-p1m-seg-10"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Draw three boxes on paper and give your child three buttons. Say a short word like 'mat' and have them push one button into a box for each sound they hear.",
       "type": "phoneme-segment",
@@ -2527,9 +2527,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"galaxy\" starts with /g/!",
-        "correctAudioKey": "feedback/correct-p1m-goulfb-01",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Good try! Listen closely to the start of \"galaxy\".",
-        "encourageAudioKey": "feedback/encourage-p1m-goulfb-01"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Use magnetic letters or letter cards during tidy-up time: pick a letter card and race to find one toy that starts with that sound.",
       "type": "initial-sound-match",
@@ -2591,9 +2591,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"octopus\" starts with /o/!",
-        "correctAudioKey": "feedback/correct-p1m-goulfb-02",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Good try! Listen closely to the start of \"octopus\".",
-        "encourageAudioKey": "feedback/encourage-p1m-goulfb-02"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Use magnetic letters or letter cards during tidy-up time: pick a letter card and race to find one toy that starts with that sound.",
       "type": "initial-sound-match",
@@ -2651,9 +2651,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"umbrella\" starts with /u/!",
-        "correctAudioKey": "feedback/correct-p1m-goulfb-03",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Good try! Listen closely to the start of \"umbrella\".",
-        "encourageAudioKey": "feedback/encourage-p1m-goulfb-03"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Use magnetic letters or letter cards during tidy-up time: pick a letter card and race to find one toy that starts with that sound.",
       "type": "initial-sound-match",
@@ -2715,9 +2715,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"lorry\" starts with /l/!",
-        "correctAudioKey": "feedback/correct-p1m-goulfb-04",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Good try! Listen closely to the start of \"lorry\".",
-        "encourageAudioKey": "feedback/encourage-p1m-goulfb-04"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Use magnetic letters or letter cards during tidy-up time: pick a letter card and race to find one toy that starts with that sound.",
       "type": "initial-sound-match",
@@ -2775,9 +2775,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"fox\" starts with /f/!",
-        "correctAudioKey": "feedback/correct-p1m-goulfb-05",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Good try! Listen closely to the start of \"fox\".",
-        "encourageAudioKey": "feedback/encourage-p1m-goulfb-05"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Use magnetic letters or letter cards during tidy-up time: pick a letter card and race to find one toy that starts with that sound.",
       "type": "initial-sound-match",
@@ -2839,9 +2839,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"bus\" starts with /b/!",
-        "correctAudioKey": "feedback/correct-p1m-goulfb-06",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Good try! Listen closely to the start of \"bus\".",
-        "encourageAudioKey": "feedback/encourage-p1m-goulfb-06"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "Use magnetic letters or letter cards during tidy-up time: pick a letter card and race to find one toy that starts with that sound.",
       "type": "initial-sound-match",
@@ -2899,9 +2899,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"van\" starts with /v/!",
-        "correctAudioKey": "feedback/correct-p1m-goulfb-07",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Good try! Listen closely to the start of \"van\".",
-        "encourageAudioKey": "feedback/encourage-p1m-goulfb-07"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Use magnetic letters or letter cards during tidy-up time: pick a letter card and race to find one toy that starts with that sound.",
       "type": "initial-sound-match",
@@ -2963,9 +2963,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"whale\" starts with /w/!",
-        "correctAudioKey": "feedback/correct-p1m-goulfb-08",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Good try! Listen closely to the start of \"whale\".",
-        "encourageAudioKey": "feedback/encourage-p1m-goulfb-08"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Use magnetic letters or letter cards during tidy-up time: pick a letter card and race to find one toy that starts with that sound.",
       "type": "initial-sound-match",
@@ -3023,9 +3023,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"zebra\" starts with /z/!",
-        "correctAudioKey": "feedback/correct-p1m-goulfb-09",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Good try! Listen closely to the start of \"zebra\".",
-        "encourageAudioKey": "feedback/encourage-p1m-goulfb-09"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Use magnetic letters or letter cards during tidy-up time: pick a letter card and race to find one toy that starts with that sound.",
       "type": "initial-sound-match",
@@ -3087,9 +3087,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! \"jet\" starts with /j/!",
-        "correctAudioKey": "feedback/correct-p1m-goulfb-10",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Good try! Listen closely to the start of \"jet\".",
-        "encourageAudioKey": "feedback/encourage-p1m-goulfb-10"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Use magnetic letters or letter cards during tidy-up time: pick a letter card and race to find one toy that starts with that sound.",
       "type": "initial-sound-match",
@@ -3147,9 +3147,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"Look at the big rocket.\"",
-        "correctAudioKey": "feedback/correct-p1m-hfw-01",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p1m-hfw-01"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "When reading a bedtime picture book together, pause when you reach 'the' or 'and' so your child can jump in and read that word aloud.",
       "type": "high-frequency-word",
@@ -3204,9 +3204,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"A fox and a puffin play.\"",
-        "correctAudioKey": "feedback/correct-p1m-hfw-02",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p1m-hfw-02"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "When reading a bedtime picture book together, pause when you reach 'the' or 'and' so your child can jump in and read that word aloud.",
       "type": "high-frequency-word",
@@ -3261,9 +3261,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"That dino is very tall.\"",
-        "correctAudioKey": "feedback/correct-p1m-hfw-03",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p1m-hfw-03"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "When reading a bedtime picture book together, pause when you reach 'the' or 'and' so your child can jump in and read that word aloud.",
       "type": "high-frequency-word",
@@ -3318,9 +3318,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"The pup sits in the van.\"",
-        "correctAudioKey": "feedback/correct-p1m-hfw-04",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p1m-hfw-04"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "When reading a bedtime picture book together, pause when you reach 'the' or 'and' so your child can jump in and read that word aloud.",
       "type": "high-frequency-word",
@@ -3375,9 +3375,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"Look at the star, it shines!\"",
-        "correctAudioKey": "feedback/correct-p1m-hfw-05",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p1m-hfw-05"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "When reading a bedtime picture book together, pause when you reach 'the' or 'and' so your child can jump in and read that word aloud.",
       "type": "high-frequency-word",
@@ -3432,9 +3432,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"Let us zoom to the moon.\"",
-        "correctAudioKey": "feedback/correct-p1m-hfw-06",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p1m-hfw-06"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "When reading a bedtime picture book together, pause when you reach 'the' or 'and' so your child can jump in and read that word aloud.",
       "type": "high-frequency-word",
@@ -3489,9 +3489,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"A frog hops on the bus.\"",
-        "correctAudioKey": "feedback/correct-p1m-hfw-07",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p1m-hfw-07"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "When reading a bedtime picture book together, pause when you reach 'the' or 'and' so your child can jump in and read that word aloud.",
       "type": "high-frequency-word",
@@ -3546,9 +3546,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"Wave at the cheeky fox!\"",
-        "correctAudioKey": "feedback/correct-p1m-hfw-08",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p1m-hfw-08"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "When reading a bedtime picture book together, pause when you reach 'the' or 'and' so your child can jump in and read that word aloud.",
       "type": "high-frequency-word",
@@ -3603,9 +3603,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"A big dino can stomp fast.\"",
-        "correctAudioKey": "feedback/correct-p1m-hfw-09",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p1m-hfw-09"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "When reading a bedtime picture book together, pause when you reach 'the' or 'and' so your child can jump in and read that word aloud.",
       "type": "high-frequency-word",
@@ -3660,9 +3660,9 @@
       },
       "feedback": {
         "correctText": "Well done! \"we love going to space!\"",
-        "correctAudioKey": "feedback/correct-p1m-hfw-10",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
-        "encourageAudioKey": "feedback/encourage-p1m-hfw-10"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "When reading a bedtime picture book together, pause when you reach 'the' or 'and' so your child can jump in and read that word aloud.",
       "type": "high-frequency-word",
@@ -3717,9 +3717,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 1 stars!",
-        "correctAudioKey": "feedback/correct-p1m-sub-01",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Almost! Tap each star to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p1m-sub-01"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Roll a standard dot dice together and call out the number as quickly as you can without pointing to count each dot.",
       "type": "ten-frame-count",
@@ -3779,9 +3779,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 2 dinosaurs!",
-        "correctAudioKey": "feedback/correct-p1m-sub-02",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Almost! Tap each dinosaur to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p1m-sub-02"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Roll a standard dot dice together and call out the number as quickly as you can without pointing to count each dot.",
       "type": "ten-frame-count",
@@ -3841,9 +3841,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 3 foxes!",
-        "correctAudioKey": "feedback/correct-p1m-sub-03",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Almost! Tap each foxe to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p1m-sub-03"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Roll a standard dot dice together and call out the number as quickly as you can without pointing to count each dot.",
       "type": "ten-frame-count",
@@ -3903,9 +3903,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 4 rockets!",
-        "correctAudioKey": "feedback/correct-p1m-sub-04",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Almost! Tap each rocket to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p1m-sub-04"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Roll a standard dot dice together and call out the number as quickly as you can without pointing to count each dot.",
       "type": "ten-frame-count",
@@ -3965,9 +3965,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 5 stars!",
-        "correctAudioKey": "feedback/correct-p1m-sub-05",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Almost! Tap each star to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p1m-sub-05"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Roll a standard dot dice together and call out the number as quickly as you can without pointing to count each dot.",
       "type": "ten-frame-count",
@@ -4027,9 +4027,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 2 on the frame!",
-        "correctAudioKey": "feedback/correct-p1m-sub-06",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Not quite 2 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p1m-sub-06"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Roll a standard dot dice together and call out the number as quickly as you can without pointing to count each dot.",
       "type": "ten-frame-count",
@@ -4062,9 +4062,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 3 on the frame!",
-        "correctAudioKey": "feedback/correct-p1m-sub-07",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Not quite 3 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p1m-sub-07"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Roll a standard dot dice together and call out the number as quickly as you can without pointing to count each dot.",
       "type": "ten-frame-count",
@@ -4097,9 +4097,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 4 on the frame!",
-        "correctAudioKey": "feedback/correct-p1m-sub-08",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Not quite 4 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p1m-sub-08"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Roll a standard dot dice together and call out the number as quickly as you can without pointing to count each dot.",
       "type": "ten-frame-count",
@@ -4132,9 +4132,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 5 on the frame!",
-        "correctAudioKey": "feedback/correct-p1m-sub-09",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Not quite 5 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p1m-sub-09"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Roll a standard dot dice together and call out the number as quickly as you can without pointing to count each dot.",
       "type": "ten-frame-count",
@@ -4167,9 +4167,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 5 on the frame!",
-        "correctAudioKey": "feedback/correct-p1m-sub-10",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Not quite 5 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p1m-sub-10"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Roll a standard dot dice together and call out the number as quickly as you can without pointing to count each dot.",
       "type": "ten-frame-count",
@@ -4202,9 +4202,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 6 stars!",
-        "correctAudioKey": "feedback/correct-p1m-tf10-01",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Almost! Tap each star to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p1m-tf10-01"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Cut an egg box down to 10 cups (two rows of 5) to make a real Ten-Frame. Ask your child to place grapes or pasta shapes inside to show 7, then ask how many empty spaces are left.",
       "type": "ten-frame-count",
@@ -4264,9 +4264,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 7 dinosaurs!",
-        "correctAudioKey": "feedback/correct-p1m-tf10-02",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Almost! Tap each dinosaur to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p1m-tf10-02"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Cut an egg box down to 10 cups (two rows of 5) to make a real Ten-Frame. Ask your child to place grapes or pasta shapes inside to show 7, then ask how many empty spaces are left.",
       "type": "ten-frame-count",
@@ -4326,9 +4326,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 8 foxes!",
-        "correctAudioKey": "feedback/correct-p1m-tf10-03",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Almost! Tap each foxe to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p1m-tf10-03"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Cut an egg box down to 10 cups (two rows of 5) to make a real Ten-Frame. Ask your child to place grapes or pasta shapes inside to show 7, then ask how many empty spaces are left.",
       "type": "ten-frame-count",
@@ -4388,9 +4388,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 9 rockets!",
-        "correctAudioKey": "feedback/correct-p1m-tf10-04",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Almost! Tap each rocket to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p1m-tf10-04"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Cut an egg box down to 10 cups (two rows of 5) to make a real Ten-Frame. Ask your child to place grapes or pasta shapes inside to show 7, then ask how many empty spaces are left.",
       "type": "ten-frame-count",
@@ -4450,9 +4450,9 @@
       },
       "feedback": {
         "correctText": "Brilliant counting! There are 10 stars!",
-        "correctAudioKey": "feedback/correct-p1m-tf10-05",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Almost! Tap each star to count one by one.",
-        "encourageAudioKey": "feedback/encourage-p1m-tf10-05"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Cut an egg box down to 10 cups (two rows of 5) to make a real Ten-Frame. Ask your child to place grapes or pasta shapes inside to show 7, then ask how many empty spaces are left.",
       "type": "ten-frame-count",
@@ -4512,9 +4512,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 6 on the frame!",
-        "correctAudioKey": "feedback/correct-p1m-tf10-06",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Not quite 6 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p1m-tf10-06"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Cut an egg box down to 10 cups (two rows of 5) to make a real Ten-Frame. Ask your child to place grapes or pasta shapes inside to show 7, then ask how many empty spaces are left.",
       "type": "ten-frame-count",
@@ -4547,9 +4547,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 7 on the frame!",
-        "correctAudioKey": "feedback/correct-p1m-tf10-07",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Not quite 7 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p1m-tf10-07"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Cut an egg box down to 10 cups (two rows of 5) to make a real Ten-Frame. Ask your child to place grapes or pasta shapes inside to show 7, then ask how many empty spaces are left.",
       "type": "ten-frame-count",
@@ -4582,9 +4582,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 8 on the frame!",
-        "correctAudioKey": "feedback/correct-p1m-tf10-08",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Not quite 8 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p1m-tf10-08"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Cut an egg box down to 10 cups (two rows of 5) to make a real Ten-Frame. Ask your child to place grapes or pasta shapes inside to show 7, then ask how many empty spaces are left.",
       "type": "ten-frame-count",
@@ -4617,9 +4617,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 9 on the frame!",
-        "correctAudioKey": "feedback/correct-p1m-tf10-09",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Not quite 9 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p1m-tf10-09"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Cut an egg box down to 10 cups (two rows of 5) to make a real Ten-Frame. Ask your child to place grapes or pasta shapes inside to show 7, then ask how many empty spaces are left.",
       "type": "ten-frame-count",
@@ -4652,9 +4652,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! You built 10 on the frame!",
-        "correctAudioKey": "feedback/correct-p1m-tf10-10",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Not quite 10 yet — count your counters and try again!",
-        "encourageAudioKey": "feedback/encourage-p1m-tf10-10"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Cut an egg box down to 10 cups (two rows of 5) to make a real Ten-Frame. Ask your child to place grapes or pasta shapes inside to show 7, then ask how many empty spaces are left.",
       "type": "ten-frame-count",
@@ -4687,9 +4687,9 @@
       },
       "feedback": {
         "correctText": "Yes! 1 + 4 = 5!",
-        "correctAudioKey": "feedback/correct-p1m-b5-01",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Have another go — count up from 1 to 5.",
-        "encourageAudioKey": "feedback/encourage-p1m-b5-01"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Hold up 5 fingers and fold some down behind your back. Ask your child to count the fingers showing and figure out how many are hiding.",
       "type": "number-bond",
@@ -4748,9 +4748,9 @@
       },
       "feedback": {
         "correctText": "Yes! 2 + 3 = 5!",
-        "correctAudioKey": "feedback/correct-p1m-b5-02",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Have another go — count up from 2 to 5.",
-        "encourageAudioKey": "feedback/encourage-p1m-b5-02"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Hold up 5 fingers and fold some down behind your back. Ask your child to count the fingers showing and figure out how many are hiding.",
       "type": "number-bond",
@@ -4809,9 +4809,9 @@
       },
       "feedback": {
         "correctText": "Yes! 3 + 2 = 5!",
-        "correctAudioKey": "feedback/correct-p1m-b5-03",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Have another go — count up from 3 to 5.",
-        "encourageAudioKey": "feedback/encourage-p1m-b5-03"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Hold up 5 fingers and fold some down behind your back. Ask your child to count the fingers showing and figure out how many are hiding.",
       "type": "number-bond",
@@ -4870,9 +4870,9 @@
       },
       "feedback": {
         "correctText": "Yes! 4 + 1 = 5!",
-        "correctAudioKey": "feedback/correct-p1m-b5-04",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Have another go — count up from 4 to 5.",
-        "encourageAudioKey": "feedback/encourage-p1m-b5-04"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Hold up 5 fingers and fold some down behind your back. Ask your child to count the fingers showing and figure out how many are hiding.",
       "type": "number-bond",
@@ -4931,9 +4931,9 @@
       },
       "feedback": {
         "correctText": "Yes! 0 + 5 = 5!",
-        "correctAudioKey": "feedback/correct-p1m-b5-05",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Have another go — count up from 0 to 5.",
-        "encourageAudioKey": "feedback/encourage-p1m-b5-05"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Hold up 5 fingers and fold some down behind your back. Ask your child to count the fingers showing and figure out how many are hiding.",
       "type": "number-bond",
@@ -4992,9 +4992,9 @@
       },
       "feedback": {
         "correctText": "Yes! 5 + 0 = 5!",
-        "correctAudioKey": "feedback/correct-p1m-b5-06",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Have another go — count up from 5 to 5.",
-        "encourageAudioKey": "feedback/encourage-p1m-b5-06"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Hold up 5 fingers and fold some down behind your back. Ask your child to count the fingers showing and figure out how many are hiding.",
       "type": "number-bond",
@@ -5053,9 +5053,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 2 + 3 = 5!",
-        "correctAudioKey": "feedback/correct-p1m-b5-07",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Almost there! Count each hop carefully from 2.",
-        "encourageAudioKey": "feedback/encourage-p1m-b5-07"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Hold up 5 fingers and fold some down behind your back. Ask your child to count the fingers showing and figure out how many are hiding.",
       "type": "number-line-hop",
@@ -5089,9 +5089,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 1 + 4 = 5!",
-        "correctAudioKey": "feedback/correct-p1m-b5-08",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Almost there! Count each hop carefully from 1.",
-        "encourageAudioKey": "feedback/encourage-p1m-b5-08"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Hold up 5 fingers and fold some down behind your back. Ask your child to count the fingers showing and figure out how many are hiding.",
       "type": "number-line-hop",
@@ -5125,9 +5125,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 5 − 2 = 3!",
-        "correctAudioKey": "feedback/correct-p1m-b5-09",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Almost there! Count each hop carefully from 5.",
-        "encourageAudioKey": "feedback/encourage-p1m-b5-09"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Hold up 5 fingers and fold some down behind your back. Ask your child to count the fingers showing and figure out how many are hiding.",
       "type": "number-line-hop",
@@ -5161,9 +5161,9 @@
       },
       "feedback": {
         "correctText": "Super hopping! 5 − 3 = 2!",
-        "correctAudioKey": "feedback/correct-p1m-b5-10",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Almost there! Count each hop carefully from 5.",
-        "encourageAudioKey": "feedback/encourage-p1m-b5-10"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Hold up 5 fingers and fold some down behind your back. Ask your child to count the fingers showing and figure out how many are hiding.",
       "type": "number-line-hop",
@@ -5197,9 +5197,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a circle!",
-        "correctAudioKey": "feedback/correct-p1m-2d-01",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p1m-2d-01"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Go on a shape hunt around the living room: count how many rectangles (doors, books, cushions) and circles (clocks, plates, wheels) you can find.",
       "type": "shape-sort",
@@ -5250,9 +5250,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a square!",
-        "correctAudioKey": "feedback/correct-p1m-2d-02",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p1m-2d-02"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Go on a shape hunt around the living room: count how many rectangles (doors, books, cushions) and circles (clocks, plates, wheels) you can find.",
       "type": "shape-sort",
@@ -5303,9 +5303,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a triangle!",
-        "correctAudioKey": "feedback/correct-p1m-2d-03",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p1m-2d-03"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Go on a shape hunt around the living room: count how many rectangles (doors, books, cushions) and circles (clocks, plates, wheels) you can find.",
       "type": "shape-sort",
@@ -5356,9 +5356,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a rectangle!",
-        "correctAudioKey": "feedback/correct-p1m-2d-04",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p1m-2d-04"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Go on a shape hunt around the living room: count how many rectangles (doors, books, cushions) and circles (clocks, plates, wheels) you can find.",
       "type": "shape-sort",
@@ -5409,9 +5409,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a circle!",
-        "correctAudioKey": "feedback/correct-p1m-2d-05",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p1m-2d-05"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Go on a shape hunt around the living room: count how many rectangles (doors, books, cushions) and circles (clocks, plates, wheels) you can find.",
       "type": "shape-sort",
@@ -5462,9 +5462,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a square!",
-        "correctAudioKey": "feedback/correct-p1m-2d-06",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p1m-2d-06"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Go on a shape hunt around the living room: count how many rectangles (doors, books, cushions) and circles (clocks, plates, wheels) you can find.",
       "type": "shape-sort",
@@ -5515,9 +5515,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a triangle!",
-        "correctAudioKey": "feedback/correct-p1m-2d-07",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p1m-2d-07"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "Go on a shape hunt around the living room: count how many rectangles (doors, books, cushions) and circles (clocks, plates, wheels) you can find.",
       "type": "shape-sort",
@@ -5568,9 +5568,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a rectangle!",
-        "correctAudioKey": "feedback/correct-p1m-2d-08",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p1m-2d-08"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Go on a shape hunt around the living room: count how many rectangles (doors, books, cushions) and circles (clocks, plates, wheels) you can find.",
       "type": "shape-sort",
@@ -5621,9 +5621,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a circle!",
-        "correctAudioKey": "feedback/correct-p1m-2d-09",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p1m-2d-09"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Go on a shape hunt around the living room: count how many rectangles (doors, books, cushions) and circles (clocks, plates, wheels) you can find.",
       "type": "shape-sort",
@@ -5674,9 +5674,9 @@
       },
       "feedback": {
         "correctText": "Brilliant shape spotting! That is a triangle!",
-        "correctAudioKey": "feedback/correct-p1m-2d-10",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Good try! Check the shape name and have another look.",
-        "encourageAudioKey": "feedback/encourage-p1m-2d-10"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Go on a shape hunt around the living room: count how many rectangles (doors, books, cushions) and circles (clocks, plates, wheels) you can find.",
       "type": "shape-sort",
@@ -5727,9 +5727,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 1p with UK coins!",
-        "correctAudioKey": "feedback/correct-p1m-c5-01",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Check the total in your coin jar — we need 1p.",
-        "encourageAudioKey": "feedback/encourage-p1m-c5-01"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Set up a pretend shop with toys priced at 1p, 2p, and 5p. Let your child pay using real 1p, 2p, and 5p coins and talk about the copper vs silver colour.",
       "type": "uk-coin-match",
@@ -5783,9 +5783,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 2p with UK coins!",
-        "correctAudioKey": "feedback/correct-p1m-c5-02",
+        "correctAudioKey": "feedback/praise-06",
         "encourageText": "Check the total in your coin jar — we need 2p.",
-        "encourageAudioKey": "feedback/encourage-p1m-c5-02"
+        "encourageAudioKey": "feedback/try-again-06"
       },
       "offlineParentTip": "Set up a pretend shop with toys priced at 1p, 2p, and 5p. Let your child pay using real 1p, 2p, and 5p coins and talk about the copper vs silver colour.",
       "type": "uk-coin-match",
@@ -5839,9 +5839,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 2p with UK coins!",
-        "correctAudioKey": "feedback/correct-p1m-c5-03",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Check the total in your coin jar — we need 2p.",
-        "encourageAudioKey": "feedback/encourage-p1m-c5-03"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Set up a pretend shop with toys priced at 1p, 2p, and 5p. Let your child pay using real 1p, 2p, and 5p coins and talk about the copper vs silver colour.",
       "type": "uk-coin-match",
@@ -5896,9 +5896,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 3p with UK coins!",
-        "correctAudioKey": "feedback/correct-p1m-c5-04",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Check the total in your coin jar — we need 3p.",
-        "encourageAudioKey": "feedback/encourage-p1m-c5-04"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Set up a pretend shop with toys priced at 1p, 2p, and 5p. Let your child pay using real 1p, 2p, and 5p coins and talk about the copper vs silver colour.",
       "type": "uk-coin-match",
@@ -5953,9 +5953,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 3p with UK coins!",
-        "correctAudioKey": "feedback/correct-p1m-c5-05",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Check the total in your coin jar — we need 3p.",
-        "encourageAudioKey": "feedback/encourage-p1m-c5-05"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "Set up a pretend shop with toys priced at 1p, 2p, and 5p. Let your child pay using real 1p, 2p, and 5p coins and talk about the copper vs silver colour.",
       "type": "uk-coin-match",
@@ -6011,9 +6011,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 4p with UK coins!",
-        "correctAudioKey": "feedback/correct-p1m-c5-06",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Check the total in your coin jar — we need 4p.",
-        "encourageAudioKey": "feedback/encourage-p1m-c5-06"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Set up a pretend shop with toys priced at 1p, 2p, and 5p. Let your child pay using real 1p, 2p, and 5p coins and talk about the copper vs silver colour.",
       "type": "uk-coin-match",
@@ -6068,9 +6068,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 4p with UK coins!",
-        "correctAudioKey": "feedback/correct-p1m-c5-07",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Check the total in your coin jar — we need 4p.",
-        "encourageAudioKey": "feedback/encourage-p1m-c5-07"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Set up a pretend shop with toys priced at 1p, 2p, and 5p. Let your child pay using real 1p, 2p, and 5p coins and talk about the copper vs silver colour.",
       "type": "uk-coin-match",
@@ -6126,9 +6126,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 5p with UK coins!",
-        "correctAudioKey": "feedback/correct-p1m-c5-08",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Check the total in your coin jar — we need 5p.",
-        "encourageAudioKey": "feedback/encourage-p1m-c5-08"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Set up a pretend shop with toys priced at 1p, 2p, and 5p. Let your child pay using real 1p, 2p, and 5p coins and talk about the copper vs silver colour.",
       "type": "uk-coin-match",
@@ -6182,9 +6182,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 5p with UK coins!",
-        "correctAudioKey": "feedback/correct-p1m-c5-09",
+        "correctAudioKey": "feedback/praise-05",
         "encourageText": "Check the total in your coin jar — we need 5p.",
-        "encourageAudioKey": "feedback/encourage-p1m-c5-09"
+        "encourageAudioKey": "feedback/try-again-05"
       },
       "offlineParentTip": "Set up a pretend shop with toys priced at 1p, 2p, and 5p. Let your child pay using real 1p, 2p, and 5p coins and talk about the copper vs silver colour.",
       "type": "uk-coin-match",
@@ -6240,9 +6240,9 @@
       },
       "feedback": {
         "correctText": "Lovely! You made 5p with UK coins!",
-        "correctAudioKey": "feedback/correct-p1m-c5-10",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Check the total in your coin jar — we need 5p.",
-        "encourageAudioKey": "feedback/encourage-p1m-c5-10"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Set up a pretend shop with toys priced at 1p, 2p, and 5p. Let your child pay using real 1p, 2p, and 5p coins and talk about the copper vs silver colour.",
       "type": "uk-coin-match",

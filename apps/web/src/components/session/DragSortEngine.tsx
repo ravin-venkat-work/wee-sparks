@@ -8,6 +8,7 @@ import type {
   UkCoinMatchExercise,
 } from "@wee-sparks/curriculum-schema";
 import { playAudioKey, playSfx } from "@/lib/audio";
+import { POST_SOLVE_DOUBLE_TAP_WINDOW_MS } from "@/lib/sessionStateMachine";
 import { SeedItemArt } from "./SeedItemArt";
 import { ShapeSvg } from "./art/ShapeSvg";
 import { UkCoinSvg } from "./art/UkCoinSvg";
@@ -57,6 +58,7 @@ export function DragSortEngine({
 }: DragSortEngineProps) {
   const dropZoneRef = useRef<HTMLDivElement | null>(null);
   const pointerStartRef = useRef<{ x: number; y: number } | null>(null);
+  const solvedAtRef = useRef<number | null>(null);
 
   const [tenFrameCount, setTenFrameCount] = useState<number>(
     exercise.type === "ten-frame-count" ? exercise.initialCounters : 0
@@ -87,9 +89,11 @@ export function DragSortEngine({
   // Hesitation cue timer (resets on every interaction)
   useEffect(() => {
     if (isSolved) {
+      if (solvedAtRef.current === null) solvedAtRef.current = Date.now();
       setIsHesitating(false);
       return;
     }
+    solvedAtRef.current = null;
     setIsHesitating(false);
     const id = window.setTimeout(() => setIsHesitating(true), HESITATION_MS);
     return () => window.clearTimeout(id);
@@ -342,6 +346,13 @@ export function DragSortEngine({
       const picked = exercise.options.find((o) => o.id === optionId);
       if (!picked) return;
       if (isSolved) {
+        if (
+          optionId === exercise.correctOptionId ||
+          (solvedAtRef.current !== null &&
+            Date.now() - solvedAtRef.current < POST_SOLVE_DOUBLE_TAP_WINDOW_MS)
+        ) {
+          return;
+        }
         playSfx("tap");
         void playAudioKey(picked.audioKey, picked.label);
         return;

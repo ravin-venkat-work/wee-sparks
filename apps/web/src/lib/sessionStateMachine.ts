@@ -2,6 +2,9 @@ import type { ComposedSession } from "./adaptive/sessionComposer";
 import type { StickerDefinition } from "./stickers";
 
 export const HINT_PULSE_INACTIVITY_MS = 8000;
+export const SKIP_UNLOCK_RETRIES = 3;
+export const SKIP_UNLOCK_INACTIVITY_MS = 25000;
+export const POST_SOLVE_DOUBLE_TAP_WINDOW_MS = 1000;
 export const AUTO_ADVANCE_DELAY_MS = 700;
 
 export type PlayerScreen = "welcome" | "playing" | "celebrating";
@@ -19,15 +22,23 @@ export type SessionMascotMood =
   | "encouraging"
   | "celebrating";
 
+export type InteractionSource =
+  | "pointer"
+  | "answer-card"
+  | "audio-replay"
+  | "hint";
+
 export interface SessionState {
   screen: PlayerScreen;
   session: ComposedSession;
   currentIndex: number;
   earnedIndices: Set<number>;
   phase: FeedbackPhase;
+  solvedAtMs: number | null;
   retriesOnCurrent: number;
   hintUsedOnCurrent: boolean;
   hintPulseActive: boolean;
+  skipInactivityElapsed: boolean;
   autoAdvancePaused: boolean;
   isPromptSpeaking: boolean;
   newlyUnlockedStickers: StickerDefinition[];
@@ -44,14 +55,24 @@ export type SessionAction =
   | { type: "GO_WELCOME" }
   | { type: "SET_SPEAKING"; speaking: boolean }
   | { type: "SET_THINKING"; thinking: boolean }
-  | { type: "USER_ACTIVITY" }
+  | {
+      type: "USER_ACTIVITY";
+      source?: InteractionSource;
+      nowMs?: number;
+    }
   | { type: "HINT_INACTIVITY_ELAPSED" }
-  | { type: "USE_HINT" }
+  | { type: "SKIP_INACTIVITY_ELAPSED" }
+  | { type: "USE_HINT"; nowMs?: number }
   | { type: "RECORD_RETRY" }
-  | { type: "RECORD_CORRECT" }
-  | { type: "PAUSE_AUTO_ADVANCE" }
+  | { type: "RECORD_CORRECT"; nowMs?: number }
+  | {
+      type: "PAUSE_AUTO_ADVANCE";
+      source: InteractionSource;
+      nowMs?: number;
+    }
   | { type: "BEGIN_ADVANCE" }
   | { type: "ADVANCE_STEP" }
+  | { type: "SKIP_STEP" }
   | { type: "FINISH_QUEST" }
   | {
       type: "MERGE_STICKERS";
@@ -68,9 +89,11 @@ export function createInitialSessionState(
     currentIndex: 0,
     earnedIndices: new Set(),
     phase: "idle",
+    solvedAtMs: null,
     retriesOnCurrent: 0,
     hintUsedOnCurrent: false,
     hintPulseActive: false,
+    skipInactivityElapsed: false,
     autoAdvancePaused: false,
     isPromptSpeaking: false,
     newlyUnlockedStickers: [],
@@ -79,13 +102,87 @@ export function createInitialSessionState(
 }
 
 /**
+ * True during the 1-second grace window immediately after solving a step,
+ * so rapid double-taps never interrupt praise or pause auto-advance.
+ */
+export function isWithinPostSolveWindow(
+  state: Pick<SessionState, "phase" | "solvedAtMs">,
+  nowMs: number = Date.now()
+): boolean {
+  if (
+    (state.phase !== "correct" && state.phase !== "advancing") ||
+    state.solvedAtMs === null
+  ) {
+    return false;
+  }
+  return nowMs - state.solvedAtMs < POST_SOLVE_DOUBLE_TAP_WINDOW_MS;
+}
+
+/**
+ * Only explicit audio replay or hint taps — and only after the 1s post-solve
+ * double-tap grace window — may pause auto-advance. Pointer taps on the
+ * just-solved answer card or general stage never pause auto-advance.
+ */
+export function canInteractionPauseAutoAdvance(
+  state: Pick<SessionState, "phase" | "solvedAtMs">,
+  source: InteractionSource | undefined,
+  nowMs: number = Date.now()
+): boolean {
+  if (state.phase !== "correct" && state.phase !== "advancing") {
+    return false;
+  }
+  if (source !== "audio-replay" && source !== "hint") {
+    return false;
+  }
+  if (isWithinPostSolveWindow(state, nowMs)) {
+    return false;
+  }
+  return true;
+}
+
+/**
+ * True only when the child has earned at least one star in the session.
+ * Prevents celebrating or playing quest-complete praise when every step was skipped.
+ */
+export function shouldCelebrateQuest(
+  state: Pick<SessionState, "earnedIndices">
+): boolean {
+  return state.earnedIndices.size > 0;
+}
+
+/**
+ * True once the child has had 3 wrong tries OR 25s of inactivity on an unsolved step.
+ */
+export function isSkipAvailable(
+  state: Pick<
+    SessionState,
+    | "screen"
+    | "phase"
+    | "currentIndex"
+    | "earnedIndices"
+    | "retriesOnCurrent"
+    | "skipInactivityElapsed"
+  >
+): boolean {
+  if (state.screen !== "playing") return false;
+  if (state.earnedIndices.has(state.currentIndex)) return false;
+  if (state.phase === "correct" || state.phase === "advancing") return false;
+  return (
+    state.retriesOnCurrent >= SKIP_UNLOCK_RETRIES ||
+    state.skipInactivityElapsed
+  );
+}
+
+/**
  * Pure finite state machine reducer for KidSessionPlayer:
  *   idle -> thinking / encourage -> correct -> advancing -> (next idle | celebrating)
  *
  * Also manages:
  * - 8-second inactivity hint pulse (`hintPulseActive`)
- * - linger / pause override (`autoAdvancePaused`) so children who replay audio
- *   or linger on a solved step can advance at their own pace with the big Next button.
+ * - 3-retry or 25-second inactivity gentle skip (`SKIP_STEP`, awarding no star)
+ * - solved-only quest celebration (`shouldCelebrateQuest`)
+ * - double-tap immunity on just-solved cards + 1s post-solve grace window
+ * - explicit audio-replay / hint linger override (`autoAdvancePaused`)
  */
 export function sessionStateReducer(
   state: SessionState,
@@ -100,9 +197,11 @@ export function sessionStateReducer(
         currentIndex: 0,
         earnedIndices: new Set(),
         phase: "idle",
+        solvedAtMs: null,
         retriesOnCurrent: 0,
         hintUsedOnCurrent: false,
         hintPulseActive: false,
+        skipInactivityElapsed: false,
         autoAdvancePaused: false,
         isPromptSpeaking: false,
         newlyUnlockedStickers: [],
@@ -114,7 +213,9 @@ export function sessionStateReducer(
         ...state,
         screen: "welcome",
         phase: "idle",
+        solvedAtMs: null,
         hintPulseActive: false,
+        skipInactivityElapsed: false,
         autoAdvancePaused: false,
         isPromptSpeaking: false,
       };
@@ -142,22 +243,28 @@ export function sessionStateReducer(
     }
 
     case "USER_ACTIVITY": {
-      const shouldPauseAuto =
-        state.phase === "correct" || state.phase === "advancing";
+      const nowMs = action.nowMs ?? Date.now();
+      const shouldPause = canInteractionPauseAutoAdvance(
+        state,
+        action.source,
+        nowMs
+      );
       const nextPhase =
-        state.phase === "advancing" ? "correct" : state.phase;
+        shouldPause && state.phase === "advancing" ? "correct" : state.phase;
+
       if (
         !state.hintPulseActive &&
-        (!shouldPauseAuto || state.autoAdvancePaused) &&
+        (!shouldPause || state.autoAdvancePaused) &&
         nextPhase === state.phase
       ) {
         return state;
       }
+
       return {
         ...state,
         phase: nextPhase,
         hintPulseActive: false,
-        autoAdvancePaused: shouldPauseAuto ? true : state.autoAdvancePaused,
+        autoAdvancePaused: shouldPause ? true : state.autoAdvancePaused,
       };
     }
 
@@ -171,8 +278,22 @@ export function sessionStateReducer(
       };
     }
 
+    case "SKIP_INACTIVITY_ELAPSED": {
+      if (!shouldTrackSkipInactivity(state)) {
+        return state;
+      }
+      return {
+        ...state,
+        skipInactivityElapsed: true,
+      };
+    }
+
     case "USE_HINT": {
+      const nowMs = action.nowMs ?? Date.now();
       if (state.phase === "correct" || state.phase === "advancing") {
+        if (!canInteractionPauseAutoAdvance(state, "hint", nowMs)) {
+          return state;
+        }
         return {
           ...state,
           hintPulseActive: false,
@@ -206,14 +327,17 @@ export function sessionStateReducer(
       return {
         ...state,
         earnedIndices: nextEarned,
+        solvedAtMs: action.nowMs ?? Date.now(),
         hintPulseActive: false,
+        skipInactivityElapsed: false,
         autoAdvancePaused: false,
         phase: "correct",
       };
     }
 
     case "PAUSE_AUTO_ADVANCE": {
-      if (state.phase !== "correct" && state.phase !== "advancing") {
+      const nowMs = action.nowMs ?? Date.now();
+      if (!canInteractionPauseAutoAdvance(state, action.source, nowMs)) {
         return state;
       }
       return {
@@ -239,13 +363,31 @@ export function sessionStateReducer(
     }
 
     case "ADVANCE_STEP": {
+      // Next is only permitted once the current step is solved
+      if (!state.earnedIndices.has(state.currentIndex)) {
+        return state;
+      }
       const nextIndex = state.currentIndex + 1;
       if (nextIndex >= state.session.items.length) {
+        if (!shouldCelebrateQuest(state)) {
+          return {
+            ...state,
+            screen: "welcome",
+            phase: "idle",
+            solvedAtMs: null,
+            hintPulseActive: false,
+            skipInactivityElapsed: false,
+            autoAdvancePaused: false,
+            isPromptSpeaking: false,
+          };
+        }
         return {
           ...state,
           screen: "celebrating",
           phase: "correct",
+          solvedAtMs: null,
           hintPulseActive: false,
+          skipInactivityElapsed: false,
           autoAdvancePaused: false,
           isPromptSpeaking: false,
         };
@@ -254,20 +396,83 @@ export function sessionStateReducer(
         ...state,
         currentIndex: nextIndex,
         phase: state.earnedIndices.has(nextIndex) ? "correct" : "idle",
+        solvedAtMs: null,
         retriesOnCurrent: 0,
         hintUsedOnCurrent: false,
         hintPulseActive: false,
+        skipInactivityElapsed: false,
+        autoAdvancePaused: false,
+        isPromptSpeaking: false,
+      };
+    }
+
+    case "SKIP_STEP": {
+      if (!isSkipAvailable(state)) {
+        return state;
+      }
+      const nextIndex = state.currentIndex + 1;
+      if (nextIndex >= state.session.items.length) {
+        if (shouldCelebrateQuest(state)) {
+          return {
+            ...state,
+            screen: "celebrating",
+            phase: "correct",
+            solvedAtMs: null,
+            retriesOnCurrent: 0,
+            hintUsedOnCurrent: false,
+            hintPulseActive: false,
+            skipInactivityElapsed: false,
+            autoAdvancePaused: false,
+            isPromptSpeaking: false,
+          };
+        }
+        return {
+          ...state,
+          screen: "welcome",
+          phase: "idle",
+          solvedAtMs: null,
+          retriesOnCurrent: 0,
+          hintUsedOnCurrent: false,
+          hintPulseActive: false,
+          skipInactivityElapsed: false,
+          autoAdvancePaused: false,
+          isPromptSpeaking: false,
+        };
+      }
+      return {
+        ...state,
+        currentIndex: nextIndex,
+        phase: state.earnedIndices.has(nextIndex) ? "correct" : "idle",
+        solvedAtMs: null,
+        retriesOnCurrent: 0,
+        hintUsedOnCurrent: false,
+        hintPulseActive: false,
+        skipInactivityElapsed: false,
         autoAdvancePaused: false,
         isPromptSpeaking: false,
       };
     }
 
     case "FINISH_QUEST":
+      if (!shouldCelebrateQuest(state)) {
+        return {
+          ...state,
+          screen: "welcome",
+          phase: "idle",
+          solvedAtMs: null,
+          hintPulseActive: false,
+          skipInactivityElapsed: false,
+          autoAdvancePaused: false,
+          isPromptSpeaking: false,
+        };
+      }
       return {
         ...state,
         screen: "celebrating",
         phase: "correct",
+        solvedAtMs: null,
         hintPulseActive: false,
+        skipInactivityElapsed: false,
         autoAdvancePaused: false,
         isPromptSpeaking: false,
       };
@@ -315,6 +520,27 @@ export function shouldTrackHintInactivity(
     state.screen === "playing" &&
     !state.isPromptSpeaking &&
     !state.hintPulseActive &&
+    (state.phase === "idle" ||
+      state.phase === "thinking" ||
+      state.phase === "encourage")
+  );
+}
+
+export function shouldTrackSkipInactivity(
+  state: Pick<
+    SessionState,
+    | "screen"
+    | "phase"
+    | "currentIndex"
+    | "earnedIndices"
+    | "retriesOnCurrent"
+    | "skipInactivityElapsed"
+  >
+): boolean {
+  return (
+    state.screen === "playing" &&
+    !state.earnedIndices.has(state.currentIndex) &&
+    !isSkipAvailable(state) &&
     (state.phase === "idle" ||
       state.phase === "thinking" ||
       state.phase === "encourage")

@@ -2,8 +2,10 @@ import {
   CCEA_MICRO_SKILL_IDS,
   DifficultyTierSchema,
   ExerciseTypeSchema,
+  PRAISE_AUDIO_KEYS,
   SubjectSchema,
   ThemeSchema,
+  TRY_AGAIN_AUDIO_KEYS,
   YearGroupSchema,
 } from "@wee-sparks/curriculum-schema";
 
@@ -104,9 +106,15 @@ export function buildContentPackJsonSchema(): Record<string, unknown> {
               ],
               properties: {
                 correctText: { type: "string" },
-                correctAudioKey: { type: "string" },
+                correctAudioKey: {
+                  type: "string",
+                  enum: [...PRAISE_AUDIO_KEYS],
+                },
                 encourageText: { type: "string" },
-                encourageAudioKey: { type: "string" },
+                encourageAudioKey: {
+                  type: "string",
+                  enum: [...TRY_AGAIN_AUDIO_KEYS],
+                },
               },
             },
             // Template-specific fields

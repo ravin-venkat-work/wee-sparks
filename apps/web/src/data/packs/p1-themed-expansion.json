@@ -2,7 +2,7 @@
   "packId": "ccea-p1-themed-expansion",
   "version": "1.0.0",
   "title": "P1 Themed Expansion: Phonics, Maths, Sorting & Tracing",
-  "description": "Northern Ireland CCEA Foundation Stage P1 themed expansion pack (20 exercises across space, dinosaurs, animals, vehicles).",
+  "description": "Northern Ireland CCEA Foundation Stage P1 exercise pack (20 exercises across space, dinosaurs, animals, vehicles).",
   "yearGroup": "P1",
   "locale": "en-GB-NI",
   "skillIds": [
@@ -33,9 +33,9 @@
       },
       "feedback": {
         "correctText": "Super space spotting! Satellite starts with /s/!",
-        "correctAudioKey": "feedback/correct-p1-exp-init-01",
+        "correctAudioKey": "feedback/praise-04",
         "encourageText": "Good try! Listen carefully to the very first sound.",
-        "encourageAudioKey": "feedback/encourage-initial-sound"
+        "encourageAudioKey": "feedback/try-again-04"
       },
       "offlineParentTip": "Make a space-themed sound basket: name real or pretend space things and cheer whenever a word starts with a pure 'ssss' sound.",
       "type": "initial-sound-match",
@@ -93,9 +93,9 @@
       },
       "feedback": {
         "correctText": "Roar-some! Tail starts with /t/!",
-        "correctAudioKey": "feedback/correct-p1-exp-init-02",
+        "correctAudioKey": "feedback/praise-03",
         "encourageText": "Have another go! Say tail quietly and feel your tongue tap for /t/.",
-        "encourageAudioKey": "feedback/encourage-initial-sound"
+        "encourageAudioKey": "feedback/try-again-03"
       },
       "offlineParentTip": "Play 'Dinosaur Stomp': say words aloud and let your child stomp like a dinosaur only when they hear a word starting with /t/.",
       "type": "initial-sound-match",
@@ -153,9 +153,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! Newt starts with /n/!",
-        "correctAudioKey": "feedback/correct-p1-exp-init-03",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Almost! Tap the letter cards to listen to each sound.",
-        "encourageAudioKey": "feedback/encourage-initial-sound"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "On a nature walk, play 'Pond Sound Hunt'—spot things starting with /n/ (net, nest, nut) and contrast them with /p/ (pond, pebble).",
       "type": "initial-sound-match",
@@ -213,9 +213,9 @@
       },
       "feedback": {
         "correctText": "Splendid! Paddle starts with /p/!",
-        "correctAudioKey": "feedback/correct-p1-exp-init-04",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Try again! Listen to the first sound of each vehicle card.",
-        "encourageAudioKey": "feedback/encourage-initial-sound"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "While drawing boats or cars together, ask your child to label parts that start with /p/ (paddle) or /t/ (tyre) using pure letter sounds.",
       "type": "initial-sound-match",
@@ -273,9 +273,9 @@
       },
       "feedback": {
         "correctText": "Marvellous blending! p-a-n makes pan!",
-        "correctAudioKey": "feedback/correct-p1-exp-cvc-01",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Tap each sound box from left to right and blend again.",
-        "encourageAudioKey": "feedback/encourage-cvc-blending"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Swap the middle vowel between 'pan' and 'pin' on scrap paper so your child hears how changing /a/ to /i/ makes a new word.",
       "type": "cvc-blending",
@@ -345,9 +345,9 @@
       },
       "feedback": {
         "correctText": "Lift-off! t-i-n blends to tin!",
-        "correctAudioKey": "feedback/correct-p1-exp-cvc-02",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Tap Slide & Blend to listen to all three sounds flowing together.",
-        "encourageAudioKey": "feedback/encourage-cvc-blending"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Use food cupboard tins as props: write 'tin' on a label and have your child point underneath each letter as they blend t-i-n.",
       "type": "cvc-blending",
@@ -417,9 +417,9 @@
       },
       "feedback": {
         "correctText": "Dino-mite! s-i-t makes sit!",
-        "correctAudioKey": "feedback/correct-p1-exp-cvc-03",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Listen to the middle /i/ sound and have another go!",
-        "encourageAudioKey": "feedback/encourage-cvc-blending"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Act out Stage 1 action words like 'sit' and 'tap' whenever your child blends them from three letter cards.",
       "type": "cvc-blending",
@@ -489,9 +489,9 @@
       },
       "feedback": {
         "correctText": "Wonderful reading! n-a-p makes nap!",
-        "correctAudioKey": "feedback/correct-p1-exp-cvc-04",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Check the starting sound /n/ and try blending again.",
-        "encourageAudioKey": "feedback/encourage-cvc-blending"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Notice rhyming pairs built from s, a, t, p, i, n—like 'nap' and 'tap'—by keeping 'ap' still and swapping only the first sound.",
       "type": "cvc-blending",
@@ -561,9 +561,9 @@
       },
       "feedback": {
         "correctText": "Brilliant! Look at the moon!",
-        "correctAudioKey": "feedback/correct-p1-exp-hfw-01",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Good try! Tap the sentence card to hear the missing word again.",
-        "encourageAudioKey": "feedback/encourage-hfw"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "Spot 'the' together on cereal boxes and bedtime books—it appears on almost every page!",
       "type": "high-frequency-word",
@@ -618,9 +618,9 @@
       },
       "feedback": {
         "correctText": "Spot on! The egg is in the nest!",
-        "correctAudioKey": "feedback/correct-p1-exp-hfw-02",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Almost! Listen for the short word 'in'.",
-        "encourageAudioKey": "feedback/encourage-hfw"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Notice that 'in' is completely decodable with Stage 1 sounds (/i/ + /n/). Practise finding 'in' in storybooks.",
       "type": "high-frequency-word",
@@ -675,9 +675,9 @@
       },
       "feedback": {
         "correctText": "Super reading! A pig and an ant!",
-        "correctAudioKey": "feedback/correct-p1-exp-hfw-03",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Have another try! Listen to the sentence again.",
-        "encourageAudioKey": "feedback/encourage-hfw"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Make quick two-item shopping lists ('milk and apples') and let your child circle the joining word 'and'.",
       "type": "high-frequency-word",
@@ -732,9 +732,9 @@
       },
       "feedback": {
         "correctText": "Beep beep! Drive the bus to the park!",
-        "correctAudioKey": "feedback/correct-p1-exp-hfw-04",
+        "correctAudioKey": "feedback/praise-02",
         "encourageText": "Nice try! Look for the two-letter word 'to'.",
-        "encourageAudioKey": "feedback/encourage-hfw"
+        "encourageAudioKey": "feedback/try-again-02"
       },
       "offlineParentTip": "Write 'to' and 'the' on two sticky notes and challenge your child to spot both words on local street or park signs.",
       "type": "high-frequency-word",
@@ -789,9 +789,9 @@
       },
       "feedback": {
         "correctText": "Stellar work! 5 and 1 more makes 6 stars!",
-        "correctAudioKey": "feedback/correct-p1-exp-tf-01",
+        "correctAudioKey": "feedback/praise-12",
         "encourageText": "Count on from 5 on the top row and try again.",
-        "encourageAudioKey": "feedback/encourage-ten-frame"
+        "encourageAudioKey": "feedback/try-again-12"
       },
       "offlineParentTip": "Show 5 fingers on one hand and 1 on the other—help your child see 6 straight away as '5 and 1 more'.",
       "type": "ten-frame-count",
@@ -851,9 +851,9 @@
       },
       "feedback": {
         "correctText": "Fantastic! 5 and 3 more makes 8 dinosaur eggs!",
-        "correctAudioKey": "feedback/correct-p1-exp-tf-02",
+        "correctAudioKey": "feedback/praise-11",
         "encourageText": "Count the eggs on your Ten-Frame—we want 8 in total!",
-        "encourageAudioKey": "feedback/encourage-ten-frame"
+        "encourageAudioKey": "feedback/try-again-11"
       },
       "offlineParentTip": "In an egg-box Ten-Frame with 8 items, ask 'How many more to fill the box?' to naturally plant early bonds to 10 (8 and 2).",
       "type": "ten-frame-count",
@@ -907,9 +907,9 @@
       },
       "feedback": {
         "correctText": "Well done! There are 3 busy ants!",
-        "correctAudioKey": "feedback/correct-p1-exp-tf-03",
+        "correctAudioKey": "feedback/praise-10",
         "encourageText": "Tap each ant on the frame to count carefully.",
-        "encourageAudioKey": "feedback/encourage-ten-frame"
+        "encourageAudioKey": "feedback/try-again-10"
       },
       "offlineParentTip": "Practise subitising 3 at breakfast—spot 3 berries or 3 spoons at a glance without counting one by one.",
       "type": "ten-frame-count",
@@ -969,9 +969,9 @@
       },
       "feedback": {
         "correctText": "Full depot! 6 and 4 more fills the whole Ten-Frame — 10!",
-        "correctAudioKey": "feedback/correct-p1-exp-tf-04",
+        "correctAudioKey": "feedback/praise-09",
         "encourageText": "Look for any empty white squares left on the Ten-Frame!",
-        "encourageAudioKey": "feedback/encourage-ten-frame"
+        "encourageAudioKey": "feedback/try-again-09"
       },
       "offlineParentTip": "Celebrate discovering that a full Ten-Frame is always 10—and ask how many extra buses were needed from 6 to reach 10 (4!).",
       "type": "ten-frame-count",
@@ -1025,9 +1025,9 @@
       },
       "feedback": {
         "correctText": "Blast off! 2 plus 3 hops lands right on 5!",
-        "correctAudioKey": "feedback/correct-p1-exp-nl-01",
+        "correctAudioKey": "feedback/praise-08",
         "encourageText": "Check your hops from 2 — hop forward 3 spaces!",
-        "encourageAudioKey": "feedback/encourage-number-line"
+        "encourageAudioKey": "feedback/try-again-08"
       },
       "offlineParentTip": "Draw a chalk number line from 0 to 10 on the garden path and let your child physically jump 2 steps then 3 more steps to feel 2 + 3 = 5.",
       "type": "number-line-hop",
@@ -1061,9 +1061,9 @@
       },
       "feedback": {
         "correctText": "Brilliant sorting! That is a 3-sided triangle!",
-        "correctAudioKey": "feedback/correct-p1-exp-shape-01",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Count the sides — look for the shape with 3 straight sides.",
-        "encourageAudioKey": "feedback/encourage-shapes"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Cut sandwiches into triangles and squares at lunch and count the straight sides and corners together.",
       "type": "shape-sort",
@@ -1114,9 +1114,9 @@
       },
       "feedback": {
         "correctText": "All aboard! That makes exactly 5p!",
-        "correctAudioKey": "feedback/correct-p1-exp-coin-01",
+        "correctAudioKey": "feedback/praise-07",
         "encourageText": "Check the total in the jar — we need 5p altogether.",
-        "encourageAudioKey": "feedback/encourage-coins"
+        "encourageAudioKey": "feedback/try-again-07"
       },
       "offlineParentTip": "Show your child how one silver 5p coin has the same value as five copper 1p coins, or 2p + 2p + 1p.",
       "type": "uk-coin-match",
@@ -1166,9 +1166,9 @@
       },
       "feedback": {
         "correctText": "Super tracing! You wrote the /s/ sound!",
-        "correctAudioKey": "feedback/correct-p1-exp-trace-01",
+        "correctAudioKey": "feedback/praise-01",
         "encourageText": "Try starting at the green 1 dot and touching every golden dot along the snake!",
-        "encourageAudioKey": "feedback/encourage-tracing"
+        "encourageAudioKey": "feedback/try-again-01"
       },
       "offlineParentTip": "Pour a thin layer of flour or salt onto a baking tray so your child can practise tracing 's' starting from the top right and curving left first.",
       "type": "trace-glyph",

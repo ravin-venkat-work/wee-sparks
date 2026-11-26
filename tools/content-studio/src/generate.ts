@@ -7,7 +7,11 @@ import {
   ContentPackSchema,
   getMicroSkillById,
   MicroSkillIdSchema,
+  pickPraiseAudioKey,
+  pickTryAgainAudioKey,
+  PRAISE_AUDIO_KEYS,
   ThemeSchema,
+  TRY_AGAIN_AUDIO_KEYS,
   YearGroupSchema,
   type ContentPack,
   type MicroSkillId,
@@ -128,9 +132,10 @@ async function generateWithGemini(params: {
     "Strict curriculum rules:",
     "1. Use UK/NI English spelling throughout (colour, recognise, practise, tyre) and UK coins (1p, 2p, 5p, 10p, 20p).",
     "2. For ccea-p1-lit-initial-satpin and ccea-p1-lit-cvc-blend-satpin, ONLY use single-letter Stage 1 sounds from {s, a, t, p, i, n}. Never introduce digraphs or initial consonant clusters.",
-    "3. Every prompt, hint, feedback, stimulus, phoneme tile, and option card MUST include a lowercase audioKey matching /^[a-z0-9][a-z0-9._/-]*$/.",
-    "4. Every exercise must include an age-appropriate offlineParentTip (>= 15 characters).",
-    "5. Keep prompt text short and friendly for ages 4–6.",
+    "3. Every prompt, hint, stimulus, phoneme tile, and option card MUST include a lowercase audioKey matching /^[a-z0-9][a-z0-9._/-]*$/.",
+    "4. For feedback.correctAudioKey ONLY use the shared praise pool feedback/praise-01 through feedback/praise-12; for feedback.encourageAudioKey ONLY use the shared pool feedback/try-again-01 through feedback/try-again-12 (never per-exercise feedback audioKeys).",
+    "5. Every exercise must include an age-appropriate offlineParentTip (>= 15 characters).",
+    "6. Keep prompt text short and friendly for ages 4–6.",
   ].join("\n\n");
 
   const response = await ai.models.generateContent({
@@ -279,6 +284,29 @@ async function main(): Promise<void> {
       packId,
       title,
     });
+  }
+
+  // Normalise feedback audioKeys onto the shared praise/try-again pools if needed
+  const praiseSet = new Set<string>(PRAISE_AUDIO_KEYS);
+  const tryAgainSet = new Set<string>(TRY_AGAIN_AUDIO_KEYS);
+  if (
+    candidate &&
+    typeof candidate === "object" &&
+    "exercises" in candidate &&
+    Array.isArray((candidate as { exercises?: unknown }).exercises)
+  ) {
+    for (const ex of (candidate as { exercises: Array<Record<string, unknown>> }).exercises) {
+      const fb = ex.feedback as Record<string, unknown> | undefined;
+      const exId = typeof ex.id === "string" ? ex.id : "exercise";
+      if (fb && typeof fb === "object") {
+        if (typeof fb.correctAudioKey !== "string" || !praiseSet.has(fb.correctAudioKey)) {
+          fb.correctAudioKey = pickPraiseAudioKey(exId);
+        }
+        if (typeof fb.encourageAudioKey !== "string" || !tryAgainSet.has(fb.encourageAudioKey)) {
+          fb.encourageAudioKey = pickTryAgainAudioKey(exId);
+        }
+      }
+    }
   }
 
   // Mandatory strict Zod validation before writing any file

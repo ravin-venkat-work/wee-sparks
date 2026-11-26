@@ -19,6 +19,15 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/sw-helpers.js",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-cache, no-store, must-revalidate",
+          },
+        ],
+      },
+      {
         source: "/audio/precache-manifest.json",
         headers: [
           {
