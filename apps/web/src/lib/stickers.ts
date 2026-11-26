@@ -161,3 +161,32 @@ export async function syncAndUnlockStickers(
 
   return { totalStars, allUnlocked, newlyUnlocked };
 }
+
+/**
+ * Parent-gated sticker management: manually unlock or lock a sticker for a child
+ * (for example, rewarding an offline real-world parent-tip activity).
+ */
+export async function toggleStickerForLearner(
+  learnerId: number,
+  stickerId: string
+): Promise<boolean> {
+  const existing = await db.stickers.get([learnerId, stickerId]);
+  if (existing) {
+    await db.stickers.delete([learnerId, stickerId]);
+    return false;
+  }
+
+  await db.stickers.put({
+    learnerId,
+    stickerId,
+    unlockedAt: new Date().toISOString(),
+  });
+  return true;
+}
+
+/**
+ * Parent-gated sticker reset for a specific child profile.
+ */
+export async function resetStickersForLearner(learnerId: number): Promise<void> {
+  await db.stickers.where("learnerId").equals(learnerId).delete();
+}

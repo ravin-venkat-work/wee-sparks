@@ -30,7 +30,7 @@ export function AudioReplayButton({
       onClick={onClick}
       aria-label={ariaLabel}
       aria-pressed={isPlaying}
-      className={`touch-card relative inline-flex items-center justify-center gap-3 bg-amber-400 font-extrabold text-slate-900 shadow-md ring-4 transition-all hover:bg-amber-300 focus:outline-none focus:ring-sky-500 ${sizeClasses} ${
+      className={`touch-card relative inline-flex items-center justify-center gap-3 bg-amber-400 font-extrabold text-slate-900 shadow-md ring-4 transition-all hover:bg-amber-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-700 focus-visible:ring-offset-2 ${sizeClasses} ${
         isPlaying
           ? "scale-105 ring-amber-200 shadow-amber-300/70"
           : "ring-amber-200/80"

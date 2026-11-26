@@ -424,7 +424,7 @@ export function TraceCanvasEngine({
           type="button"
           disabled={isSolved || strokes.length === 0}
           onClick={handleCheck}
-          className={`touch-card rounded-2xl bg-emerald-600 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-500 disabled:opacity-50 ${
+          className={`touch-card rounded-2xl bg-emerald-700 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-800 disabled:opacity-50 ${
             showVisualHint && nextUnhitIndex === -1 ? "animate-hint-glow" : ""
           }`}
         >

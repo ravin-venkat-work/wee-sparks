@@ -14,6 +14,7 @@ import {
 } from "@/lib/audio";
 import { ElkoninSoundBoxes, type ElkoninTile } from "./ElkoninSoundBoxes";
 import { SeedItemArt } from "./SeedItemArt";
+import { RewardPopCard } from "./RewardBurst";
 
 export type PhonicsBuilderExercise =
   | CvcBlendingExercise
@@ -388,7 +389,7 @@ export function PhonicsBuilderEngine({
             type="button"
             onClick={handleSegmentCheck}
             disabled={!isAllBoxesFilled || isSolved || isBlending}
-            className="touch-card rounded-2xl bg-emerald-600 px-7 py-4 text-lg font-extrabold text-white shadow-md hover:bg-emerald-500 disabled:opacity-50"
+            className="touch-card rounded-2xl bg-emerald-700 px-7 py-4 text-lg font-extrabold text-white shadow-md hover:bg-emerald-800 disabled:opacity-50"
           >
             ✅ Check Word
           </button>
@@ -411,7 +412,7 @@ export function PhonicsBuilderEngine({
                 aria-label={`Letter sound ${tile.grapheme}`}
                 className={`touch-card flex h-20 w-20 items-center justify-center rounded-2xl border-b-4 text-4xl font-black shadow-sm sm:h-24 sm:w-24 sm:text-5xl ${
                   isPlaced
-                    ? "border-slate-300 bg-slate-200/80 text-slate-500"
+                    ? "border-slate-300 bg-slate-200 text-slate-700"
                     : "border-amber-500 bg-amber-200 text-slate-900 hover:bg-amber-300"
                 }`}
               >
@@ -450,35 +451,36 @@ export function PhonicsBuilderEngine({
               const isWrongFlash = wrongOptionId === option.id;
 
               return (
-                <button
-                  key={option.id}
-                  type="button"
-                  disabled={!builtWordMatchesTarget && !isSolved}
-                  onClick={() =>
-                    handleCvcPictureChoice(
-                      option.id,
-                      option.audioKey,
-                      option.label
-                    )
-                  }
-                  aria-label={`Match picture ${option.label}`}
-                  className={`touch-card flex min-h-[124px] flex-col items-center justify-center gap-2 rounded-3xl border-4 p-4 shadow-sm ${
-                    isCorrectCard
-                      ? "border-emerald-500 bg-emerald-100 text-emerald-950"
-                      : isWrongFlash
-                      ? "animate-gentle-shake border-amber-400 bg-amber-100 text-amber-950"
-                      : "border-slate-200 bg-white text-slate-900 hover:border-indigo-400 hover:bg-indigo-50 disabled:cursor-not-allowed"
-                  }`}
-                >
-                  <SeedItemArt
-                    itemKey={option.audioKey}
-                    fallbackEmoji={option.emoji}
-                    className="h-14 w-14 sm:h-16 sm:w-16"
-                  />
-                  <span className="text-xl font-black">
-                    {option.displayText ?? option.label}
-                  </span>
-                </button>
+                <RewardPopCard key={option.id} isPopped={isCorrectCard}>
+                  <button
+                    type="button"
+                    disabled={!builtWordMatchesTarget && !isSolved}
+                    onClick={() =>
+                      handleCvcPictureChoice(
+                        option.id,
+                        option.audioKey,
+                        option.label
+                      )
+                    }
+                    aria-label={`Match picture ${option.label}`}
+                    className={`touch-card flex min-h-[124px] w-full flex-col items-center justify-center gap-2 rounded-3xl border-4 p-4 shadow-sm ${
+                      isCorrectCard
+                        ? "border-emerald-500 bg-emerald-100 text-emerald-950"
+                        : isWrongFlash
+                        ? "animate-gentle-shake border-amber-400 bg-amber-100 text-amber-950"
+                        : "border-slate-200 bg-white text-slate-900 hover:border-indigo-400 hover:bg-indigo-50 disabled:cursor-not-allowed"
+                    }`}
+                  >
+                    <SeedItemArt
+                      itemKey={option.audioKey}
+                      fallbackEmoji={option.emoji}
+                      className="h-14 w-14 sm:h-16 sm:w-16"
+                    />
+                    <span className="text-xl font-black">
+                      {option.displayText ?? option.label}
+                    </span>
+                  </button>
+                </RewardPopCard>
               );
             })}
           </div>

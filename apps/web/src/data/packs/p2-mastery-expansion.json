@@ -1,0 +1,5750 @@
+{
+  "packId": "ccea-p2-mastery-expansion",
+  "version": "1.0.0",
+  "title": "P2 Mastery Expansion: Complete 10-Skill Foundation Stage Pool",
+  "description": "100 themed Primary 2 exercises (10 per CCEA Foundation Stage skill) spanning CCVC/CVCC, digraphs, double letters, target vowels, decodable captions, Double Ten-Frames 11–20, bonds to 10, +/- within 20, UK coins to 20p, and 3D shapes.",
+  "yearGroup": "P2",
+  "locale": "en-GB-NI",
+  "skillIds": [
+    "ccea-p2-lit-cvcc-ccvc",
+    "ccea-p2-lit-digraphs-sh-ch-th-ng",
+    "ccea-p2-lit-double-letters",
+    "ccea-p2-lit-vowel-sounds",
+    "ccea-p2-lit-captions-comprehension",
+    "ccea-p2-num-ten-frames-11-20",
+    "ccea-p2-num-bonds-to-10",
+    "ccea-p2-num-add-sub-within-20",
+    "ccea-p2-num-coins-to-20p",
+    "ccea-p2-num-shapes-3d"
+  ],
+  "exercises": [
+    {
+      "id": "p2m-ccvc-01",
+      "skillId": "ccea-p2-lit-cvcc-ccvc",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"frog\"!",
+        "audioKey": "prompt/p2m-ccvc-01",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: f - r - o - g.",
+        "audioKey": "hint/p2m-ccvc-01"
+      },
+      "feedback": {
+        "correctText": "Super blending! f-r-o-g makes \"frog\"!",
+        "correctAudioKey": "feedback/correct-p2m-ccvc-01",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-ccvc-01"
+      },
+      "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
+      "type": "cvc-blending",
+      "targetWord": "frog",
+      "wordAudioKey": "word/frog",
+      "phonemes": [
+        {
+          "grapheme": "f",
+          "audioKey": "phoneme/f"
+        },
+        {
+          "grapheme": "r",
+          "audioKey": "phoneme/r"
+        },
+        {
+          "grapheme": "o",
+          "audioKey": "phoneme/o"
+        },
+        {
+          "grapheme": "g",
+          "audioKey": "phoneme/g"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-frog",
+          "label": "frog",
+          "displayText": "frog",
+          "emoji": "🐸",
+          "audioKey": "word/frog"
+        },
+        {
+          "id": "opt-crab",
+          "label": "crab",
+          "displayText": "crab",
+          "emoji": "🦀",
+          "audioKey": "word/crab"
+        },
+        {
+          "id": "opt-drum",
+          "label": "drum",
+          "displayText": "drum",
+          "emoji": "🥁",
+          "audioKey": "word/drum"
+        }
+      ],
+      "correctOptionId": "opt-frog"
+    },
+    {
+      "id": "p2m-ccvc-02",
+      "skillId": "ccea-p2-lit-cvcc-ccvc",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"stop\"!",
+        "audioKey": "prompt/p2m-ccvc-02",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: s - t - o - p.",
+        "audioKey": "hint/p2m-ccvc-02"
+      },
+      "feedback": {
+        "correctText": "Super blending! s-t-o-p makes \"stop\"!",
+        "correctAudioKey": "feedback/correct-p2m-ccvc-02",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-ccvc-02"
+      },
+      "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
+      "type": "cvc-blending",
+      "targetWord": "stop",
+      "wordAudioKey": "word/stop",
+      "phonemes": [
+        {
+          "grapheme": "s",
+          "audioKey": "phoneme/s"
+        },
+        {
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "grapheme": "o",
+          "audioKey": "phoneme/o"
+        },
+        {
+          "grapheme": "p",
+          "audioKey": "phoneme/p"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-tent",
+          "label": "tent",
+          "displayText": "tent",
+          "emoji": "⛺",
+          "audioKey": "word/tent"
+        },
+        {
+          "id": "opt-lamp",
+          "label": "lamp",
+          "displayText": "lamp",
+          "emoji": "💡",
+          "audioKey": "word/lamp"
+        },
+        {
+          "id": "opt-stop",
+          "label": "stop",
+          "displayText": "stop",
+          "emoji": "🛑",
+          "audioKey": "word/stop"
+        }
+      ],
+      "correctOptionId": "opt-stop"
+    },
+    {
+      "id": "p2m-ccvc-03",
+      "skillId": "ccea-p2-lit-cvcc-ccvc",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"tent\"!",
+        "audioKey": "prompt/p2m-ccvc-03",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: t - e - n - t.",
+        "audioKey": "hint/p2m-ccvc-03"
+      },
+      "feedback": {
+        "correctText": "Super blending! t-e-n-t makes \"tent\"!",
+        "correctAudioKey": "feedback/correct-p2m-ccvc-03",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-ccvc-03"
+      },
+      "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
+      "type": "cvc-blending",
+      "targetWord": "tent",
+      "wordAudioKey": "word/tent",
+      "phonemes": [
+        {
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "grapheme": "e",
+          "audioKey": "phoneme/e"
+        },
+        {
+          "grapheme": "n",
+          "audioKey": "phoneme/n"
+        },
+        {
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-desk",
+          "label": "desk",
+          "displayText": "desk",
+          "emoji": "🪑",
+          "audioKey": "word/desk"
+        },
+        {
+          "id": "opt-tent",
+          "label": "tent",
+          "displayText": "tent",
+          "emoji": "⛺",
+          "audioKey": "word/tent"
+        },
+        {
+          "id": "opt-nest",
+          "label": "nest",
+          "displayText": "nest",
+          "emoji": "🪺",
+          "audioKey": "word/nest"
+        }
+      ],
+      "correctOptionId": "opt-tent"
+    },
+    {
+      "id": "p2m-ccvc-04",
+      "skillId": "ccea-p2-lit-cvcc-ccvc",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Blend the sounds together to find \"lamp\"!",
+        "audioKey": "prompt/p2m-ccvc-04",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: l - a - m - p.",
+        "audioKey": "hint/p2m-ccvc-04"
+      },
+      "feedback": {
+        "correctText": "Super blending! l-a-m-p makes \"lamp\"!",
+        "correctAudioKey": "feedback/correct-p2m-ccvc-04",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-ccvc-04"
+      },
+      "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
+      "type": "cvc-blending",
+      "targetWord": "lamp",
+      "wordAudioKey": "word/lamp",
+      "phonemes": [
+        {
+          "grapheme": "l",
+          "audioKey": "phoneme/l"
+        },
+        {
+          "grapheme": "a",
+          "audioKey": "phoneme/a"
+        },
+        {
+          "grapheme": "m",
+          "audioKey": "phoneme/m"
+        },
+        {
+          "grapheme": "p",
+          "audioKey": "phoneme/p"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-lamp",
+          "label": "lamp",
+          "displayText": "lamp",
+          "emoji": "💡",
+          "audioKey": "word/lamp"
+        },
+        {
+          "id": "opt-hand",
+          "label": "hand",
+          "displayText": "hand",
+          "emoji": "✋",
+          "audioKey": "word/hand"
+        },
+        {
+          "id": "opt-milk",
+          "label": "milk",
+          "displayText": "milk",
+          "emoji": "🥛",
+          "audioKey": "word/milk"
+        }
+      ],
+      "correctOptionId": "opt-lamp"
+    },
+    {
+      "id": "p2m-ccvc-05",
+      "skillId": "ccea-p2-lit-cvcc-ccvc",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Blend the sounds together to find \"drum\"!",
+        "audioKey": "prompt/p2m-ccvc-05",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: d - r - u - m.",
+        "audioKey": "hint/p2m-ccvc-05"
+      },
+      "feedback": {
+        "correctText": "Super blending! d-r-u-m makes \"drum\"!",
+        "correctAudioKey": "feedback/correct-p2m-ccvc-05",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-ccvc-05"
+      },
+      "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
+      "type": "cvc-blending",
+      "targetWord": "drum",
+      "wordAudioKey": "word/drum",
+      "phonemes": [
+        {
+          "grapheme": "d",
+          "audioKey": "phoneme/d"
+        },
+        {
+          "grapheme": "r",
+          "audioKey": "phoneme/r"
+        },
+        {
+          "grapheme": "u",
+          "audioKey": "phoneme/u"
+        },
+        {
+          "grapheme": "m",
+          "audioKey": "phoneme/m"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-frog",
+          "label": "frog",
+          "displayText": "frog",
+          "emoji": "🐸",
+          "audioKey": "word/frog"
+        },
+        {
+          "id": "opt-stop",
+          "label": "stop",
+          "displayText": "stop",
+          "emoji": "🛑",
+          "audioKey": "word/stop"
+        },
+        {
+          "id": "opt-drum",
+          "label": "drum",
+          "displayText": "drum",
+          "emoji": "🥁",
+          "audioKey": "word/drum"
+        }
+      ],
+      "correctOptionId": "opt-drum"
+    },
+    {
+      "id": "p2m-ccvc-06",
+      "skillId": "ccea-p2-lit-cvcc-ccvc",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Build the word \"crab\" in the sound boxes!",
+        "audioKey": "prompt/p2m-ccvc-06",
+        "visualCueEmoji": "🦀"
+      },
+      "hint": {
+        "text": "Stretch \"crab\" slowly — the first sound is /c/.",
+        "audioKey": "hint/p2m-ccvc-06"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"crab\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-ccvc-06",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"crab\".",
+        "encourageAudioKey": "feedback/encourage-p2m-ccvc-06"
+      },
+      "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
+      "type": "phoneme-segment",
+      "targetWord": "crab",
+      "wordAudioKey": "word/crab",
+      "stimulusEmoji": "🦀",
+      "correctGraphemes": [
+        "c",
+        "r",
+        "a",
+        "b"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-ccvc-06-tile-0-c",
+          "grapheme": "c",
+          "audioKey": "phoneme/c"
+        },
+        {
+          "id": "p2m-ccvc-06-tile-1-r",
+          "grapheme": "r",
+          "audioKey": "phoneme/r"
+        },
+        {
+          "id": "p2m-ccvc-06-tile-2-a",
+          "grapheme": "a",
+          "audioKey": "phoneme/a"
+        },
+        {
+          "id": "p2m-ccvc-06-tile-3-b",
+          "grapheme": "b",
+          "audioKey": "phoneme/b"
+        },
+        {
+          "id": "p2m-ccvc-06-tile-4-s",
+          "grapheme": "s",
+          "audioKey": "phoneme/s"
+        },
+        {
+          "id": "p2m-ccvc-06-tile-5-p",
+          "grapheme": "p",
+          "audioKey": "phoneme/p"
+        }
+      ]
+    },
+    {
+      "id": "p2m-ccvc-07",
+      "skillId": "ccea-p2-lit-cvcc-ccvc",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Build the word \"nest\" in the sound boxes!",
+        "audioKey": "prompt/p2m-ccvc-07",
+        "visualCueEmoji": "🪺"
+      },
+      "hint": {
+        "text": "Stretch \"nest\" slowly — the first sound is /n/.",
+        "audioKey": "hint/p2m-ccvc-07"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"nest\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-ccvc-07",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"nest\".",
+        "encourageAudioKey": "feedback/encourage-p2m-ccvc-07"
+      },
+      "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
+      "type": "phoneme-segment",
+      "targetWord": "nest",
+      "wordAudioKey": "word/nest",
+      "stimulusEmoji": "🪺",
+      "correctGraphemes": [
+        "n",
+        "e",
+        "s",
+        "t"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-ccvc-07-tile-1-e",
+          "grapheme": "e",
+          "audioKey": "phoneme/e"
+        },
+        {
+          "id": "p2m-ccvc-07-tile-2-s",
+          "grapheme": "s",
+          "audioKey": "phoneme/s"
+        },
+        {
+          "id": "p2m-ccvc-07-tile-3-t",
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "id": "p2m-ccvc-07-tile-4-m",
+          "grapheme": "m",
+          "audioKey": "phoneme/m"
+        },
+        {
+          "id": "p2m-ccvc-07-tile-5-p",
+          "grapheme": "p",
+          "audioKey": "phoneme/p"
+        },
+        {
+          "id": "p2m-ccvc-07-tile-0-n",
+          "grapheme": "n",
+          "audioKey": "phoneme/n"
+        }
+      ]
+    },
+    {
+      "id": "p2m-ccvc-08",
+      "skillId": "ccea-p2-lit-cvcc-ccvc",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"hand\" in the sound boxes!",
+        "audioKey": "prompt/p2m-ccvc-08",
+        "visualCueEmoji": "✋"
+      },
+      "hint": {
+        "text": "Stretch \"hand\" slowly — the first sound is /h/.",
+        "audioKey": "hint/p2m-ccvc-08"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"hand\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-ccvc-08",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"hand\".",
+        "encourageAudioKey": "feedback/encourage-p2m-ccvc-08"
+      },
+      "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
+      "type": "phoneme-segment",
+      "targetWord": "hand",
+      "wordAudioKey": "word/hand",
+      "stimulusEmoji": "✋",
+      "correctGraphemes": [
+        "h",
+        "a",
+        "n",
+        "d"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-ccvc-08-tile-2-n",
+          "grapheme": "n",
+          "audioKey": "phoneme/n"
+        },
+        {
+          "id": "p2m-ccvc-08-tile-3-d",
+          "grapheme": "d",
+          "audioKey": "phoneme/d"
+        },
+        {
+          "id": "p2m-ccvc-08-tile-4-t",
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "id": "p2m-ccvc-08-tile-5-l",
+          "grapheme": "l",
+          "audioKey": "phoneme/l"
+        },
+        {
+          "id": "p2m-ccvc-08-tile-0-h",
+          "grapheme": "h",
+          "audioKey": "phoneme/h"
+        },
+        {
+          "id": "p2m-ccvc-08-tile-1-a",
+          "grapheme": "a",
+          "audioKey": "phoneme/a"
+        }
+      ]
+    },
+    {
+      "id": "p2m-ccvc-09",
+      "skillId": "ccea-p2-lit-cvcc-ccvc",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"milk\" in the sound boxes!",
+        "audioKey": "prompt/p2m-ccvc-09",
+        "visualCueEmoji": "🥛"
+      },
+      "hint": {
+        "text": "Stretch \"milk\" slowly — the first sound is /m/.",
+        "audioKey": "hint/p2m-ccvc-09"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"milk\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-ccvc-09",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"milk\".",
+        "encourageAudioKey": "feedback/encourage-p2m-ccvc-09"
+      },
+      "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
+      "type": "phoneme-segment",
+      "targetWord": "milk",
+      "wordAudioKey": "word/milk",
+      "stimulusEmoji": "🥛",
+      "correctGraphemes": [
+        "m",
+        "i",
+        "l",
+        "k"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-ccvc-09-tile-3-k",
+          "grapheme": "k",
+          "audioKey": "phoneme/k"
+        },
+        {
+          "id": "p2m-ccvc-09-tile-4-s",
+          "grapheme": "s",
+          "audioKey": "phoneme/s"
+        },
+        {
+          "id": "p2m-ccvc-09-tile-5-t",
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "id": "p2m-ccvc-09-tile-0-m",
+          "grapheme": "m",
+          "audioKey": "phoneme/m"
+        },
+        {
+          "id": "p2m-ccvc-09-tile-1-i",
+          "grapheme": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "id": "p2m-ccvc-09-tile-2-l",
+          "grapheme": "l",
+          "audioKey": "phoneme/l"
+        }
+      ]
+    },
+    {
+      "id": "p2m-ccvc-10",
+      "skillId": "ccea-p2-lit-cvcc-ccvc",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"desk\" in the sound boxes!",
+        "audioKey": "prompt/p2m-ccvc-10",
+        "visualCueEmoji": "🪑"
+      },
+      "hint": {
+        "text": "Stretch \"desk\" slowly — the first sound is /d/.",
+        "audioKey": "hint/p2m-ccvc-10"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"desk\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-ccvc-10",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"desk\".",
+        "encourageAudioKey": "feedback/encourage-p2m-ccvc-10"
+      },
+      "offlineParentTip": "Practise 'robot talk' with 4-sound words at dinner (e.g. 'f-o-r-k' or 'm-i-l-k') and let your child blend the robot's sounds into the real word.",
+      "type": "phoneme-segment",
+      "targetWord": "desk",
+      "wordAudioKey": "word/desk",
+      "stimulusEmoji": "🪑",
+      "correctGraphemes": [
+        "d",
+        "e",
+        "s",
+        "k"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-ccvc-10-tile-4-r",
+          "grapheme": "r",
+          "audioKey": "phoneme/r"
+        },
+        {
+          "id": "p2m-ccvc-10-tile-5-n",
+          "grapheme": "n",
+          "audioKey": "phoneme/n"
+        },
+        {
+          "id": "p2m-ccvc-10-tile-0-d",
+          "grapheme": "d",
+          "audioKey": "phoneme/d"
+        },
+        {
+          "id": "p2m-ccvc-10-tile-1-e",
+          "grapheme": "e",
+          "audioKey": "phoneme/e"
+        },
+        {
+          "id": "p2m-ccvc-10-tile-2-s",
+          "grapheme": "s",
+          "audioKey": "phoneme/s"
+        },
+        {
+          "id": "p2m-ccvc-10-tile-3-k",
+          "grapheme": "k",
+          "audioKey": "phoneme/k"
+        }
+      ]
+    },
+    {
+      "id": "p2m-dig-01",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"ship\"!",
+        "audioKey": "prompt/p2m-dig-01",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: sh - i - p.",
+        "audioKey": "hint/p2m-dig-01"
+      },
+      "feedback": {
+        "correctText": "Super blending! sh-i-p makes \"ship\"!",
+        "correctAudioKey": "feedback/correct-p2m-dig-01",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-dig-01"
+      },
+      "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
+      "type": "cvc-blending",
+      "targetWord": "ship",
+      "wordAudioKey": "word/ship",
+      "phonemes": [
+        {
+          "grapheme": "sh",
+          "audioKey": "phoneme/sh"
+        },
+        {
+          "grapheme": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "grapheme": "p",
+          "audioKey": "phoneme/p"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-ship",
+          "label": "ship",
+          "displayText": "ship",
+          "emoji": "🚢",
+          "audioKey": "word/ship"
+        },
+        {
+          "id": "opt-shop",
+          "label": "shop",
+          "displayText": "shop",
+          "emoji": "🏪",
+          "audioKey": "word/shop"
+        },
+        {
+          "id": "opt-fish",
+          "label": "fish",
+          "displayText": "fish",
+          "emoji": "🐟",
+          "audioKey": "word/fish"
+        }
+      ],
+      "correctOptionId": "opt-ship"
+    },
+    {
+      "id": "p2m-dig-02",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"fish\"!",
+        "audioKey": "prompt/p2m-dig-02",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: f - i - sh.",
+        "audioKey": "hint/p2m-dig-02"
+      },
+      "feedback": {
+        "correctText": "Super blending! f-i-sh makes \"fish\"!",
+        "correctAudioKey": "feedback/correct-p2m-dig-02",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-dig-02"
+      },
+      "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
+      "type": "cvc-blending",
+      "targetWord": "fish",
+      "wordAudioKey": "word/fish",
+      "phonemes": [
+        {
+          "grapheme": "f",
+          "audioKey": "phoneme/f"
+        },
+        {
+          "grapheme": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "grapheme": "sh",
+          "audioKey": "phoneme/sh"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-moth",
+          "label": "moth",
+          "displayText": "moth",
+          "emoji": "🦋",
+          "audioKey": "word/moth"
+        },
+        {
+          "id": "opt-ring",
+          "label": "ring",
+          "displayText": "ring",
+          "emoji": "💍",
+          "audioKey": "word/ring"
+        },
+        {
+          "id": "opt-fish",
+          "label": "fish",
+          "displayText": "fish",
+          "emoji": "🐟",
+          "audioKey": "word/fish"
+        }
+      ],
+      "correctOptionId": "opt-fish"
+    },
+    {
+      "id": "p2m-dig-03",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"chip\"!",
+        "audioKey": "prompt/p2m-dig-03",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: ch - i - p.",
+        "audioKey": "hint/p2m-dig-03"
+      },
+      "feedback": {
+        "correctText": "Super blending! ch-i-p makes \"chip\"!",
+        "correctAudioKey": "feedback/correct-p2m-dig-03",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-dig-03"
+      },
+      "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
+      "type": "cvc-blending",
+      "targetWord": "chip",
+      "wordAudioKey": "word/chip",
+      "phonemes": [
+        {
+          "grapheme": "ch",
+          "audioKey": "phoneme/ch"
+        },
+        {
+          "grapheme": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "grapheme": "p",
+          "audioKey": "phoneme/p"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-ship",
+          "label": "ship",
+          "displayText": "ship",
+          "emoji": "🚢",
+          "audioKey": "word/ship"
+        },
+        {
+          "id": "opt-chip",
+          "label": "chip",
+          "displayText": "chip",
+          "emoji": "🍟",
+          "audioKey": "word/chip"
+        },
+        {
+          "id": "opt-chin",
+          "label": "chin",
+          "displayText": "chin",
+          "emoji": "😊",
+          "audioKey": "word/chin"
+        }
+      ],
+      "correctOptionId": "opt-chip"
+    },
+    {
+      "id": "p2m-dig-04",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Blend the sounds together to find \"moth\"!",
+        "audioKey": "prompt/p2m-dig-04",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: m - o - th.",
+        "audioKey": "hint/p2m-dig-04"
+      },
+      "feedback": {
+        "correctText": "Super blending! m-o-th makes \"moth\"!",
+        "correctAudioKey": "feedback/correct-p2m-dig-04",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-dig-04"
+      },
+      "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
+      "type": "cvc-blending",
+      "targetWord": "moth",
+      "wordAudioKey": "word/moth",
+      "phonemes": [
+        {
+          "grapheme": "m",
+          "audioKey": "phoneme/m"
+        },
+        {
+          "grapheme": "o",
+          "audioKey": "phoneme/o"
+        },
+        {
+          "grapheme": "th",
+          "audioKey": "phoneme/th"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-moth",
+          "label": "moth",
+          "displayText": "moth",
+          "emoji": "🦋",
+          "audioKey": "word/moth"
+        },
+        {
+          "id": "opt-path",
+          "label": "path",
+          "displayText": "path",
+          "emoji": "🛤️",
+          "audioKey": "word/path"
+        },
+        {
+          "id": "opt-king",
+          "label": "king",
+          "displayText": "king",
+          "emoji": "👑",
+          "audioKey": "word/king"
+        }
+      ],
+      "correctOptionId": "opt-moth"
+    },
+    {
+      "id": "p2m-dig-05",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Blend the sounds together to find \"ring\"!",
+        "audioKey": "prompt/p2m-dig-05",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: r - i - ng.",
+        "audioKey": "hint/p2m-dig-05"
+      },
+      "feedback": {
+        "correctText": "Super blending! r-i-ng makes \"ring\"!",
+        "correctAudioKey": "feedback/correct-p2m-dig-05",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-dig-05"
+      },
+      "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
+      "type": "cvc-blending",
+      "targetWord": "ring",
+      "wordAudioKey": "word/ring",
+      "phonemes": [
+        {
+          "grapheme": "r",
+          "audioKey": "phoneme/r"
+        },
+        {
+          "grapheme": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "grapheme": "ng",
+          "audioKey": "phoneme/ng"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-wing",
+          "label": "wing",
+          "displayText": "wing",
+          "emoji": "🪶",
+          "audioKey": "word/wing"
+        },
+        {
+          "id": "opt-fish",
+          "label": "fish",
+          "displayText": "fish",
+          "emoji": "🐟",
+          "audioKey": "word/fish"
+        },
+        {
+          "id": "opt-ring",
+          "label": "ring",
+          "displayText": "ring",
+          "emoji": "💍",
+          "audioKey": "word/ring"
+        }
+      ],
+      "correctOptionId": "opt-ring"
+    },
+    {
+      "id": "p2m-dig-06",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Build the word \"shop\" in the sound boxes!",
+        "audioKey": "prompt/p2m-dig-06",
+        "visualCueEmoji": "🏪"
+      },
+      "hint": {
+        "text": "Stretch \"shop\" slowly — the first sound is /sh/.",
+        "audioKey": "hint/p2m-dig-06"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"shop\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-dig-06",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"shop\".",
+        "encourageAudioKey": "feedback/encourage-p2m-dig-06"
+      },
+      "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
+      "type": "phoneme-segment",
+      "targetWord": "shop",
+      "wordAudioKey": "word/shop",
+      "stimulusEmoji": "🏪",
+      "correctGraphemes": [
+        "sh",
+        "o",
+        "p"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-dig-06-tile-1-o",
+          "grapheme": "o",
+          "audioKey": "phoneme/o"
+        },
+        {
+          "id": "p2m-dig-06-tile-2-p",
+          "grapheme": "p",
+          "audioKey": "phoneme/p"
+        },
+        {
+          "id": "p2m-dig-06-tile-3-ch",
+          "grapheme": "ch",
+          "audioKey": "phoneme/ch"
+        },
+        {
+          "id": "p2m-dig-06-tile-4-t",
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "id": "p2m-dig-06-tile-0-sh",
+          "grapheme": "sh",
+          "audioKey": "phoneme/sh"
+        }
+      ]
+    },
+    {
+      "id": "p2m-dig-07",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Build the word \"chin\" in the sound boxes!",
+        "audioKey": "prompt/p2m-dig-07",
+        "visualCueEmoji": "😊"
+      },
+      "hint": {
+        "text": "Stretch \"chin\" slowly — the first sound is /ch/.",
+        "audioKey": "hint/p2m-dig-07"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"chin\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-dig-07",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"chin\".",
+        "encourageAudioKey": "feedback/encourage-p2m-dig-07"
+      },
+      "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
+      "type": "phoneme-segment",
+      "targetWord": "chin",
+      "wordAudioKey": "word/chin",
+      "stimulusEmoji": "😊",
+      "correctGraphemes": [
+        "ch",
+        "i",
+        "n"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-dig-07-tile-2-n",
+          "grapheme": "n",
+          "audioKey": "phoneme/n"
+        },
+        {
+          "id": "p2m-dig-07-tile-3-sh",
+          "grapheme": "sh",
+          "audioKey": "phoneme/sh"
+        },
+        {
+          "id": "p2m-dig-07-tile-4-p",
+          "grapheme": "p",
+          "audioKey": "phoneme/p"
+        },
+        {
+          "id": "p2m-dig-07-tile-0-ch",
+          "grapheme": "ch",
+          "audioKey": "phoneme/ch"
+        },
+        {
+          "id": "p2m-dig-07-tile-1-i",
+          "grapheme": "i",
+          "audioKey": "phoneme/i"
+        }
+      ]
+    },
+    {
+      "id": "p2m-dig-08",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"chat\" in the sound boxes!",
+        "audioKey": "prompt/p2m-dig-08",
+        "visualCueEmoji": "💬"
+      },
+      "hint": {
+        "text": "Stretch \"chat\" slowly — the first sound is /ch/.",
+        "audioKey": "hint/p2m-dig-08"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"chat\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-dig-08",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"chat\".",
+        "encourageAudioKey": "feedback/encourage-p2m-dig-08"
+      },
+      "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
+      "type": "phoneme-segment",
+      "targetWord": "chat",
+      "wordAudioKey": "word/chat",
+      "stimulusEmoji": "💬",
+      "correctGraphemes": [
+        "ch",
+        "a",
+        "t"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-dig-08-tile-3-th",
+          "grapheme": "th",
+          "audioKey": "phoneme/th"
+        },
+        {
+          "id": "p2m-dig-08-tile-4-m",
+          "grapheme": "m",
+          "audioKey": "phoneme/m"
+        },
+        {
+          "id": "p2m-dig-08-tile-0-ch",
+          "grapheme": "ch",
+          "audioKey": "phoneme/ch"
+        },
+        {
+          "id": "p2m-dig-08-tile-1-a",
+          "grapheme": "a",
+          "audioKey": "phoneme/a"
+        },
+        {
+          "id": "p2m-dig-08-tile-2-t",
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        }
+      ]
+    },
+    {
+      "id": "p2m-dig-09",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"path\" in the sound boxes!",
+        "audioKey": "prompt/p2m-dig-09",
+        "visualCueEmoji": "🛤️"
+      },
+      "hint": {
+        "text": "Stretch \"path\" slowly — the first sound is /p/.",
+        "audioKey": "hint/p2m-dig-09"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"path\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-dig-09",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"path\".",
+        "encourageAudioKey": "feedback/encourage-p2m-dig-09"
+      },
+      "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
+      "type": "phoneme-segment",
+      "targetWord": "path",
+      "wordAudioKey": "word/path",
+      "stimulusEmoji": "🛤️",
+      "correctGraphemes": [
+        "p",
+        "a",
+        "th"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-dig-09-tile-4-n",
+          "grapheme": "n",
+          "audioKey": "phoneme/n"
+        },
+        {
+          "id": "p2m-dig-09-tile-0-p",
+          "grapheme": "p",
+          "audioKey": "phoneme/p"
+        },
+        {
+          "id": "p2m-dig-09-tile-1-a",
+          "grapheme": "a",
+          "audioKey": "phoneme/a"
+        },
+        {
+          "id": "p2m-dig-09-tile-2-th",
+          "grapheme": "th",
+          "audioKey": "phoneme/th"
+        },
+        {
+          "id": "p2m-dig-09-tile-3-sh",
+          "grapheme": "sh",
+          "audioKey": "phoneme/sh"
+        }
+      ]
+    },
+    {
+      "id": "p2m-dig-10",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"king\" in the sound boxes!",
+        "audioKey": "prompt/p2m-dig-10",
+        "visualCueEmoji": "👑"
+      },
+      "hint": {
+        "text": "Stretch \"king\" slowly — the first sound is /k/.",
+        "audioKey": "hint/p2m-dig-10"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"king\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-dig-10",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"king\".",
+        "encourageAudioKey": "feedback/encourage-p2m-dig-10"
+      },
+      "offlineParentTip": "Spot 'sh', 'ch', 'th', and 'ng' on road signs and shop labels (like 'Shop', 'Fish', 'Chips', 'Ring') and remind your child those two letters make one team sound.",
+      "type": "phoneme-segment",
+      "targetWord": "king",
+      "wordAudioKey": "word/king",
+      "stimulusEmoji": "👑",
+      "correctGraphemes": [
+        "k",
+        "i",
+        "ng"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-dig-10-tile-0-k",
+          "grapheme": "k",
+          "audioKey": "phoneme/k"
+        },
+        {
+          "id": "p2m-dig-10-tile-1-i",
+          "grapheme": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "id": "p2m-dig-10-tile-2-ng",
+          "grapheme": "ng",
+          "audioKey": "phoneme/ng"
+        },
+        {
+          "id": "p2m-dig-10-tile-3-ch",
+          "grapheme": "ch",
+          "audioKey": "phoneme/ch"
+        },
+        {
+          "id": "p2m-dig-10-tile-4-s",
+          "grapheme": "s",
+          "audioKey": "phoneme/s"
+        }
+      ]
+    },
+    {
+      "id": "p2m-dbl-01",
+      "skillId": "ccea-p2-lit-double-letters",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"bell\"!",
+        "audioKey": "prompt/p2m-dbl-01",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: b - e - ll.",
+        "audioKey": "hint/p2m-dbl-01"
+      },
+      "feedback": {
+        "correctText": "Super blending! b-e-ll makes \"bell\"!",
+        "correctAudioKey": "feedback/correct-p2m-dbl-01",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-dbl-01"
+      },
+      "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
+      "type": "cvc-blending",
+      "targetWord": "bell",
+      "wordAudioKey": "word/bell",
+      "phonemes": [
+        {
+          "grapheme": "b",
+          "audioKey": "phoneme/b"
+        },
+        {
+          "grapheme": "e",
+          "audioKey": "phoneme/e"
+        },
+        {
+          "grapheme": "ll",
+          "audioKey": "phoneme/ll"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-bell",
+          "label": "bell",
+          "displayText": "bell",
+          "emoji": "🔔",
+          "audioKey": "word/bell"
+        },
+        {
+          "id": "opt-hill",
+          "label": "hill",
+          "displayText": "hill",
+          "emoji": "⛰️",
+          "audioKey": "word/hill"
+        },
+        {
+          "id": "opt-doll",
+          "label": "doll",
+          "displayText": "doll",
+          "emoji": "🪆",
+          "audioKey": "word/doll"
+        }
+      ],
+      "correctOptionId": "opt-bell"
+    },
+    {
+      "id": "p2m-dbl-02",
+      "skillId": "ccea-p2-lit-double-letters",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"hill\"!",
+        "audioKey": "prompt/p2m-dbl-02",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: h - i - ll.",
+        "audioKey": "hint/p2m-dbl-02"
+      },
+      "feedback": {
+        "correctText": "Super blending! h-i-ll makes \"hill\"!",
+        "correctAudioKey": "feedback/correct-p2m-dbl-02",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-dbl-02"
+      },
+      "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
+      "type": "cvc-blending",
+      "targetWord": "hill",
+      "wordAudioKey": "word/hill",
+      "phonemes": [
+        {
+          "grapheme": "h",
+          "audioKey": "phoneme/h"
+        },
+        {
+          "grapheme": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "grapheme": "ll",
+          "audioKey": "phoneme/ll"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-moss",
+          "label": "moss",
+          "displayText": "moss",
+          "emoji": "🌿",
+          "audioKey": "word/moss"
+        },
+        {
+          "id": "opt-bell",
+          "label": "bell",
+          "displayText": "bell",
+          "emoji": "🔔",
+          "audioKey": "word/bell"
+        },
+        {
+          "id": "opt-hill",
+          "label": "hill",
+          "displayText": "hill",
+          "emoji": "⛰️",
+          "audioKey": "word/hill"
+        }
+      ],
+      "correctOptionId": "opt-hill"
+    },
+    {
+      "id": "p2m-dbl-03",
+      "skillId": "ccea-p2-lit-double-letters",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"puff\"!",
+        "audioKey": "prompt/p2m-dbl-03",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: p - u - ff.",
+        "audioKey": "hint/p2m-dbl-03"
+      },
+      "feedback": {
+        "correctText": "Super blending! p-u-ff makes \"puff\"!",
+        "correctAudioKey": "feedback/correct-p2m-dbl-03",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-dbl-03"
+      },
+      "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
+      "type": "cvc-blending",
+      "targetWord": "puff",
+      "wordAudioKey": "word/puff",
+      "phonemes": [
+        {
+          "grapheme": "p",
+          "audioKey": "phoneme/p"
+        },
+        {
+          "grapheme": "u",
+          "audioKey": "phoneme/u"
+        },
+        {
+          "grapheme": "ff",
+          "audioKey": "phoneme/ff"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-buzz",
+          "label": "buzz",
+          "displayText": "buzz",
+          "emoji": "🐝",
+          "audioKey": "word/buzz"
+        },
+        {
+          "id": "opt-puff",
+          "label": "puff",
+          "displayText": "puff",
+          "emoji": "💨",
+          "audioKey": "word/puff"
+        },
+        {
+          "id": "opt-hiss",
+          "label": "hiss",
+          "displayText": "hiss",
+          "emoji": "🐍",
+          "audioKey": "word/hiss"
+        }
+      ],
+      "correctOptionId": "opt-puff"
+    },
+    {
+      "id": "p2m-dbl-04",
+      "skillId": "ccea-p2-lit-double-letters",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Blend the sounds together to find \"moss\"!",
+        "audioKey": "prompt/p2m-dbl-04",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: m - o - ss.",
+        "audioKey": "hint/p2m-dbl-04"
+      },
+      "feedback": {
+        "correctText": "Super blending! m-o-ss makes \"moss\"!",
+        "correctAudioKey": "feedback/correct-p2m-dbl-04",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-dbl-04"
+      },
+      "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
+      "type": "cvc-blending",
+      "targetWord": "moss",
+      "wordAudioKey": "word/moss",
+      "phonemes": [
+        {
+          "grapheme": "m",
+          "audioKey": "phoneme/m"
+        },
+        {
+          "grapheme": "o",
+          "audioKey": "phoneme/o"
+        },
+        {
+          "grapheme": "ss",
+          "audioKey": "phoneme/ss"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-moss",
+          "label": "moss",
+          "displayText": "moss",
+          "emoji": "🌿",
+          "audioKey": "word/moss"
+        },
+        {
+          "id": "opt-fizz",
+          "label": "fizz",
+          "displayText": "fizz",
+          "emoji": "🫧",
+          "audioKey": "word/fizz"
+        },
+        {
+          "id": "opt-hill",
+          "label": "hill",
+          "displayText": "hill",
+          "emoji": "⛰️",
+          "audioKey": "word/hill"
+        }
+      ],
+      "correctOptionId": "opt-moss"
+    },
+    {
+      "id": "p2m-dbl-05",
+      "skillId": "ccea-p2-lit-double-letters",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Blend the sounds together to find \"buzz\"!",
+        "audioKey": "prompt/p2m-dbl-05",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: b - u - zz.",
+        "audioKey": "hint/p2m-dbl-05"
+      },
+      "feedback": {
+        "correctText": "Super blending! b-u-zz makes \"buzz\"!",
+        "correctAudioKey": "feedback/correct-p2m-dbl-05",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-dbl-05"
+      },
+      "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
+      "type": "cvc-blending",
+      "targetWord": "buzz",
+      "wordAudioKey": "word/buzz",
+      "phonemes": [
+        {
+          "grapheme": "b",
+          "audioKey": "phoneme/b"
+        },
+        {
+          "grapheme": "u",
+          "audioKey": "phoneme/u"
+        },
+        {
+          "grapheme": "zz",
+          "audioKey": "phoneme/zz"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-puff",
+          "label": "puff",
+          "displayText": "puff",
+          "emoji": "💨",
+          "audioKey": "word/puff"
+        },
+        {
+          "id": "opt-bell",
+          "label": "bell",
+          "displayText": "bell",
+          "emoji": "🔔",
+          "audioKey": "word/bell"
+        },
+        {
+          "id": "opt-buzz",
+          "label": "buzz",
+          "displayText": "buzz",
+          "emoji": "🐝",
+          "audioKey": "word/buzz"
+        }
+      ],
+      "correctOptionId": "opt-buzz"
+    },
+    {
+      "id": "p2m-dbl-06",
+      "skillId": "ccea-p2-lit-double-letters",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Build the word \"doll\" in the sound boxes!",
+        "audioKey": "prompt/p2m-dbl-06",
+        "visualCueEmoji": "🪆"
+      },
+      "hint": {
+        "text": "Stretch \"doll\" slowly — the first sound is /d/.",
+        "audioKey": "hint/p2m-dbl-06"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"doll\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-dbl-06",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"doll\".",
+        "encourageAudioKey": "feedback/encourage-p2m-dbl-06"
+      },
+      "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
+      "type": "phoneme-segment",
+      "targetWord": "doll",
+      "wordAudioKey": "word/doll",
+      "stimulusEmoji": "🪆",
+      "correctGraphemes": [
+        "d",
+        "o",
+        "ll"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-dbl-06-tile-1-o",
+          "grapheme": "o",
+          "audioKey": "phoneme/o"
+        },
+        {
+          "id": "p2m-dbl-06-tile-2-ll",
+          "grapheme": "ll",
+          "audioKey": "phoneme/ll"
+        },
+        {
+          "id": "p2m-dbl-06-tile-3-ff",
+          "grapheme": "ff",
+          "audioKey": "phoneme/ff"
+        },
+        {
+          "id": "p2m-dbl-06-tile-4-ss",
+          "grapheme": "ss",
+          "audioKey": "phoneme/ss"
+        },
+        {
+          "id": "p2m-dbl-06-tile-0-d",
+          "grapheme": "d",
+          "audioKey": "phoneme/d"
+        }
+      ]
+    },
+    {
+      "id": "p2m-dbl-07",
+      "skillId": "ccea-p2-lit-double-letters",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Build the word \"cuff\" in the sound boxes!",
+        "audioKey": "prompt/p2m-dbl-07",
+        "visualCueEmoji": "🧥"
+      },
+      "hint": {
+        "text": "Stretch \"cuff\" slowly — the first sound is /c/.",
+        "audioKey": "hint/p2m-dbl-07"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"cuff\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-dbl-07",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"cuff\".",
+        "encourageAudioKey": "feedback/encourage-p2m-dbl-07"
+      },
+      "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
+      "type": "phoneme-segment",
+      "targetWord": "cuff",
+      "wordAudioKey": "word/cuff",
+      "stimulusEmoji": "🧥",
+      "correctGraphemes": [
+        "c",
+        "u",
+        "ff"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-dbl-07-tile-2-ff",
+          "grapheme": "ff",
+          "audioKey": "phoneme/ff"
+        },
+        {
+          "id": "p2m-dbl-07-tile-3-ll",
+          "grapheme": "ll",
+          "audioKey": "phoneme/ll"
+        },
+        {
+          "id": "p2m-dbl-07-tile-4-zz",
+          "grapheme": "zz",
+          "audioKey": "phoneme/zz"
+        },
+        {
+          "id": "p2m-dbl-07-tile-0-c",
+          "grapheme": "c",
+          "audioKey": "phoneme/c"
+        },
+        {
+          "id": "p2m-dbl-07-tile-1-u",
+          "grapheme": "u",
+          "audioKey": "phoneme/u"
+        }
+      ]
+    },
+    {
+      "id": "p2m-dbl-08",
+      "skillId": "ccea-p2-lit-double-letters",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"hiss\" in the sound boxes!",
+        "audioKey": "prompt/p2m-dbl-08",
+        "visualCueEmoji": "🐍"
+      },
+      "hint": {
+        "text": "Stretch \"hiss\" slowly — the first sound is /h/.",
+        "audioKey": "hint/p2m-dbl-08"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"hiss\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-dbl-08",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"hiss\".",
+        "encourageAudioKey": "feedback/encourage-p2m-dbl-08"
+      },
+      "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
+      "type": "phoneme-segment",
+      "targetWord": "hiss",
+      "wordAudioKey": "word/hiss",
+      "stimulusEmoji": "🐍",
+      "correctGraphemes": [
+        "h",
+        "i",
+        "ss"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-dbl-08-tile-3-ll",
+          "grapheme": "ll",
+          "audioKey": "phoneme/ll"
+        },
+        {
+          "id": "p2m-dbl-08-tile-4-ff",
+          "grapheme": "ff",
+          "audioKey": "phoneme/ff"
+        },
+        {
+          "id": "p2m-dbl-08-tile-0-h",
+          "grapheme": "h",
+          "audioKey": "phoneme/h"
+        },
+        {
+          "id": "p2m-dbl-08-tile-1-i",
+          "grapheme": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "id": "p2m-dbl-08-tile-2-ss",
+          "grapheme": "ss",
+          "audioKey": "phoneme/ss"
+        }
+      ]
+    },
+    {
+      "id": "p2m-dbl-09",
+      "skillId": "ccea-p2-lit-double-letters",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"kiss\" in the sound boxes!",
+        "audioKey": "prompt/p2m-dbl-09",
+        "visualCueEmoji": "💛"
+      },
+      "hint": {
+        "text": "Stretch \"kiss\" slowly — the first sound is /k/.",
+        "audioKey": "hint/p2m-dbl-09"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"kiss\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-dbl-09",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"kiss\".",
+        "encourageAudioKey": "feedback/encourage-p2m-dbl-09"
+      },
+      "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
+      "type": "phoneme-segment",
+      "targetWord": "kiss",
+      "wordAudioKey": "word/kiss",
+      "stimulusEmoji": "💛",
+      "correctGraphemes": [
+        "k",
+        "i",
+        "ss"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-dbl-09-tile-4-ll",
+          "grapheme": "ll",
+          "audioKey": "phoneme/ll"
+        },
+        {
+          "id": "p2m-dbl-09-tile-0-k",
+          "grapheme": "k",
+          "audioKey": "phoneme/k"
+        },
+        {
+          "id": "p2m-dbl-09-tile-1-i",
+          "grapheme": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "id": "p2m-dbl-09-tile-2-ss",
+          "grapheme": "ss",
+          "audioKey": "phoneme/ss"
+        },
+        {
+          "id": "p2m-dbl-09-tile-3-zz",
+          "grapheme": "zz",
+          "audioKey": "phoneme/zz"
+        }
+      ]
+    },
+    {
+      "id": "p2m-dbl-10",
+      "skillId": "ccea-p2-lit-double-letters",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"fizz\" in the sound boxes!",
+        "audioKey": "prompt/p2m-dbl-10",
+        "visualCueEmoji": "🫧"
+      },
+      "hint": {
+        "text": "Stretch \"fizz\" slowly — the first sound is /f/.",
+        "audioKey": "hint/p2m-dbl-10"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"fizz\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-dbl-10",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"fizz\".",
+        "encourageAudioKey": "feedback/encourage-p2m-dbl-10"
+      },
+      "offlineParentTip": "Make a rhyme chain together with double-letter words like 'bell, fell, shell, well' or 'hiss, miss, kiss' while tidying up.",
+      "type": "phoneme-segment",
+      "targetWord": "fizz",
+      "wordAudioKey": "word/fizz",
+      "stimulusEmoji": "🫧",
+      "correctGraphemes": [
+        "f",
+        "i",
+        "zz"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-dbl-10-tile-0-f",
+          "grapheme": "f",
+          "audioKey": "phoneme/f"
+        },
+        {
+          "id": "p2m-dbl-10-tile-1-i",
+          "grapheme": "i",
+          "audioKey": "phoneme/i"
+        },
+        {
+          "id": "p2m-dbl-10-tile-2-zz",
+          "grapheme": "zz",
+          "audioKey": "phoneme/zz"
+        },
+        {
+          "id": "p2m-dbl-10-tile-3-ss",
+          "grapheme": "ss",
+          "audioKey": "phoneme/ss"
+        },
+        {
+          "id": "p2m-dbl-10-tile-4-ff",
+          "grapheme": "ff",
+          "audioKey": "phoneme/ff"
+        }
+      ]
+    },
+    {
+      "id": "p2m-vow-01",
+      "skillId": "ccea-p2-lit-vowel-sounds",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"tree\"!",
+        "audioKey": "prompt/p2m-vow-01",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: t - r - ee.",
+        "audioKey": "hint/p2m-vow-01"
+      },
+      "feedback": {
+        "correctText": "Super blending! t-r-ee makes \"tree\"!",
+        "correctAudioKey": "feedback/correct-p2m-vow-01",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-vow-01"
+      },
+      "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
+      "type": "cvc-blending",
+      "targetWord": "tree",
+      "wordAudioKey": "word/tree",
+      "phonemes": [
+        {
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "grapheme": "r",
+          "audioKey": "phoneme/r"
+        },
+        {
+          "grapheme": "ee",
+          "audioKey": "phoneme/ee"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-tree",
+          "label": "tree",
+          "displayText": "tree",
+          "emoji": "🌳",
+          "audioKey": "word/tree"
+        },
+        {
+          "id": "opt-leaf",
+          "label": "leaf",
+          "displayText": "leaf",
+          "emoji": "🍃",
+          "audioKey": "word/leaf"
+        },
+        {
+          "id": "opt-boat",
+          "label": "boat",
+          "displayText": "boat",
+          "emoji": "⛵",
+          "audioKey": "word/boat"
+        }
+      ],
+      "correctOptionId": "opt-tree"
+    },
+    {
+      "id": "p2m-vow-02",
+      "skillId": "ccea-p2-lit-vowel-sounds",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"leaf\"!",
+        "audioKey": "prompt/p2m-vow-02",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: l - ea - f.",
+        "audioKey": "hint/p2m-vow-02"
+      },
+      "feedback": {
+        "correctText": "Super blending! l-ea-f makes \"leaf\"!",
+        "correctAudioKey": "feedback/correct-p2m-vow-02",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-vow-02"
+      },
+      "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
+      "type": "cvc-blending",
+      "targetWord": "leaf",
+      "wordAudioKey": "word/leaf",
+      "phonemes": [
+        {
+          "grapheme": "l",
+          "audioKey": "phoneme/l"
+        },
+        {
+          "grapheme": "ea",
+          "audioKey": "phoneme/ea"
+        },
+        {
+          "grapheme": "f",
+          "audioKey": "phoneme/f"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-rain",
+          "label": "rain",
+          "displayText": "rain",
+          "emoji": "🌧️",
+          "audioKey": "word/rain"
+        },
+        {
+          "id": "opt-goat",
+          "label": "goat",
+          "displayText": "goat",
+          "emoji": "🐐",
+          "audioKey": "word/goat"
+        },
+        {
+          "id": "opt-leaf",
+          "label": "leaf",
+          "displayText": "leaf",
+          "emoji": "🍃",
+          "audioKey": "word/leaf"
+        }
+      ],
+      "correctOptionId": "opt-leaf"
+    },
+    {
+      "id": "p2m-vow-03",
+      "skillId": "ccea-p2-lit-vowel-sounds",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Blend the sounds together to find \"rain\"!",
+        "audioKey": "prompt/p2m-vow-03",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: r - ai - n.",
+        "audioKey": "hint/p2m-vow-03"
+      },
+      "feedback": {
+        "correctText": "Super blending! r-ai-n makes \"rain\"!",
+        "correctAudioKey": "feedback/correct-p2m-vow-03",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-vow-03"
+      },
+      "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
+      "type": "cvc-blending",
+      "targetWord": "rain",
+      "wordAudioKey": "word/rain",
+      "phonemes": [
+        {
+          "grapheme": "r",
+          "audioKey": "phoneme/r"
+        },
+        {
+          "grapheme": "ai",
+          "audioKey": "phoneme/ai"
+        },
+        {
+          "grapheme": "n",
+          "audioKey": "phoneme/n"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-tree",
+          "label": "tree",
+          "displayText": "tree",
+          "emoji": "🌳",
+          "audioKey": "word/tree"
+        },
+        {
+          "id": "opt-rain",
+          "label": "rain",
+          "displayText": "rain",
+          "emoji": "🌧️",
+          "audioKey": "word/rain"
+        },
+        {
+          "id": "opt-tail",
+          "label": "tail",
+          "displayText": "tail",
+          "emoji": "🦊",
+          "audioKey": "word/tail"
+        }
+      ],
+      "correctOptionId": "opt-rain"
+    },
+    {
+      "id": "p2m-vow-04",
+      "skillId": "ccea-p2-lit-vowel-sounds",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Blend the sounds together to find \"boat\"!",
+        "audioKey": "prompt/p2m-vow-04",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: b - oa - t.",
+        "audioKey": "hint/p2m-vow-04"
+      },
+      "feedback": {
+        "correctText": "Super blending! b-oa-t makes \"boat\"!",
+        "correctAudioKey": "feedback/correct-p2m-vow-04",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-vow-04"
+      },
+      "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
+      "type": "cvc-blending",
+      "targetWord": "boat",
+      "wordAudioKey": "word/boat",
+      "phonemes": [
+        {
+          "grapheme": "b",
+          "audioKey": "phoneme/b"
+        },
+        {
+          "grapheme": "oa",
+          "audioKey": "phoneme/oa"
+        },
+        {
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-boat",
+          "label": "boat",
+          "displayText": "boat",
+          "emoji": "⛵",
+          "audioKey": "word/boat"
+        },
+        {
+          "id": "opt-snow",
+          "label": "snow",
+          "displayText": "snow",
+          "emoji": "❄️",
+          "audioKey": "word/snow"
+        },
+        {
+          "id": "opt-play",
+          "label": "play",
+          "displayText": "play",
+          "emoji": "🎈",
+          "audioKey": "word/play"
+        }
+      ],
+      "correctOptionId": "opt-boat"
+    },
+    {
+      "id": "p2m-vow-05",
+      "skillId": "ccea-p2-lit-vowel-sounds",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Blend the sounds together to find \"snow\"!",
+        "audioKey": "prompt/p2m-vow-05",
+        "visualCueEmoji": "🔤"
+      },
+      "hint": {
+        "text": "Tap each sound box from left to right: s - n - ow.",
+        "audioKey": "hint/p2m-vow-05"
+      },
+      "feedback": {
+        "correctText": "Super blending! s-n-ow makes \"snow\"!",
+        "correctAudioKey": "feedback/correct-p2m-vow-05",
+        "encourageText": "Almost! Slide your finger across the sounds and listen again.",
+        "encourageAudioKey": "feedback/encourage-p2m-vow-05"
+      },
+      "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
+      "type": "cvc-blending",
+      "targetWord": "snow",
+      "wordAudioKey": "word/snow",
+      "phonemes": [
+        {
+          "grapheme": "s",
+          "audioKey": "phoneme/s"
+        },
+        {
+          "grapheme": "n",
+          "audioKey": "phoneme/n"
+        },
+        {
+          "grapheme": "ow",
+          "audioKey": "phoneme/ow"
+        }
+      ],
+      "options": [
+        {
+          "id": "opt-boat",
+          "label": "boat",
+          "displayText": "boat",
+          "emoji": "⛵",
+          "audioKey": "word/boat"
+        },
+        {
+          "id": "opt-rain",
+          "label": "rain",
+          "displayText": "rain",
+          "emoji": "🌧️",
+          "audioKey": "word/rain"
+        },
+        {
+          "id": "opt-snow",
+          "label": "snow",
+          "displayText": "snow",
+          "emoji": "❄️",
+          "audioKey": "word/snow"
+        }
+      ],
+      "correctOptionId": "opt-snow"
+    },
+    {
+      "id": "p2m-vow-06",
+      "skillId": "ccea-p2-lit-vowel-sounds",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Build the word \"feet\" in the sound boxes!",
+        "audioKey": "prompt/p2m-vow-06",
+        "visualCueEmoji": "🦶"
+      },
+      "hint": {
+        "text": "Stretch \"feet\" slowly — the first sound is /f/.",
+        "audioKey": "hint/p2m-vow-06"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"feet\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-vow-06",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"feet\".",
+        "encourageAudioKey": "feedback/encourage-p2m-vow-06"
+      },
+      "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
+      "type": "phoneme-segment",
+      "targetWord": "feet",
+      "wordAudioKey": "word/feet",
+      "stimulusEmoji": "🦶",
+      "correctGraphemes": [
+        "f",
+        "ee",
+        "t"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-vow-06-tile-1-ee",
+          "grapheme": "ee",
+          "audioKey": "phoneme/ee"
+        },
+        {
+          "id": "p2m-vow-06-tile-2-t",
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "id": "p2m-vow-06-tile-3-ai",
+          "grapheme": "ai",
+          "audioKey": "phoneme/ai"
+        },
+        {
+          "id": "p2m-vow-06-tile-4-oa",
+          "grapheme": "oa",
+          "audioKey": "phoneme/oa"
+        },
+        {
+          "id": "p2m-vow-06-tile-0-f",
+          "grapheme": "f",
+          "audioKey": "phoneme/f"
+        }
+      ]
+    },
+    {
+      "id": "p2m-vow-07",
+      "skillId": "ccea-p2-lit-vowel-sounds",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Build the word \"bean\" in the sound boxes!",
+        "audioKey": "prompt/p2m-vow-07",
+        "visualCueEmoji": "🫘"
+      },
+      "hint": {
+        "text": "Stretch \"bean\" slowly — the first sound is /b/.",
+        "audioKey": "hint/p2m-vow-07"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"bean\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-vow-07",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"bean\".",
+        "encourageAudioKey": "feedback/encourage-p2m-vow-07"
+      },
+      "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
+      "type": "phoneme-segment",
+      "targetWord": "bean",
+      "wordAudioKey": "word/bean",
+      "stimulusEmoji": "🫘",
+      "correctGraphemes": [
+        "b",
+        "ea",
+        "n"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-vow-07-tile-2-n",
+          "grapheme": "n",
+          "audioKey": "phoneme/n"
+        },
+        {
+          "id": "p2m-vow-07-tile-3-ee",
+          "grapheme": "ee",
+          "audioKey": "phoneme/ee"
+        },
+        {
+          "id": "p2m-vow-07-tile-4-ow",
+          "grapheme": "ow",
+          "audioKey": "phoneme/ow"
+        },
+        {
+          "id": "p2m-vow-07-tile-0-b",
+          "grapheme": "b",
+          "audioKey": "phoneme/b"
+        },
+        {
+          "id": "p2m-vow-07-tile-1-ea",
+          "grapheme": "ea",
+          "audioKey": "phoneme/ea"
+        }
+      ]
+    },
+    {
+      "id": "p2m-vow-08",
+      "skillId": "ccea-p2-lit-vowel-sounds",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"tail\" in the sound boxes!",
+        "audioKey": "prompt/p2m-vow-08",
+        "visualCueEmoji": "🦊"
+      },
+      "hint": {
+        "text": "Stretch \"tail\" slowly — the first sound is /t/.",
+        "audioKey": "hint/p2m-vow-08"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"tail\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-vow-08",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"tail\".",
+        "encourageAudioKey": "feedback/encourage-p2m-vow-08"
+      },
+      "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
+      "type": "phoneme-segment",
+      "targetWord": "tail",
+      "wordAudioKey": "word/tail",
+      "stimulusEmoji": "🦊",
+      "correctGraphemes": [
+        "t",
+        "ai",
+        "l"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-vow-08-tile-3-ay",
+          "grapheme": "ay",
+          "audioKey": "phoneme/ay"
+        },
+        {
+          "id": "p2m-vow-08-tile-4-oa",
+          "grapheme": "oa",
+          "audioKey": "phoneme/oa"
+        },
+        {
+          "id": "p2m-vow-08-tile-0-t",
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "id": "p2m-vow-08-tile-1-ai",
+          "grapheme": "ai",
+          "audioKey": "phoneme/ai"
+        },
+        {
+          "id": "p2m-vow-08-tile-2-l",
+          "grapheme": "l",
+          "audioKey": "phoneme/l"
+        }
+      ]
+    },
+    {
+      "id": "p2m-vow-09",
+      "skillId": "ccea-p2-lit-vowel-sounds",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"play\" in the sound boxes!",
+        "audioKey": "prompt/p2m-vow-09",
+        "visualCueEmoji": "🎈"
+      },
+      "hint": {
+        "text": "Stretch \"play\" slowly — the first sound is /p/.",
+        "audioKey": "hint/p2m-vow-09"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"play\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-vow-09",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"play\".",
+        "encourageAudioKey": "feedback/encourage-p2m-vow-09"
+      },
+      "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
+      "type": "phoneme-segment",
+      "targetWord": "play",
+      "wordAudioKey": "word/play",
+      "stimulusEmoji": "🎈",
+      "correctGraphemes": [
+        "p",
+        "l",
+        "ay"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-vow-09-tile-4-ee",
+          "grapheme": "ee",
+          "audioKey": "phoneme/ee"
+        },
+        {
+          "id": "p2m-vow-09-tile-0-p",
+          "grapheme": "p",
+          "audioKey": "phoneme/p"
+        },
+        {
+          "id": "p2m-vow-09-tile-1-l",
+          "grapheme": "l",
+          "audioKey": "phoneme/l"
+        },
+        {
+          "id": "p2m-vow-09-tile-2-ay",
+          "grapheme": "ay",
+          "audioKey": "phoneme/ay"
+        },
+        {
+          "id": "p2m-vow-09-tile-3-ai",
+          "grapheme": "ai",
+          "audioKey": "phoneme/ai"
+        }
+      ]
+    },
+    {
+      "id": "p2m-vow-10",
+      "skillId": "ccea-p2-lit-vowel-sounds",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Build the word \"goat\" in the sound boxes!",
+        "audioKey": "prompt/p2m-vow-10",
+        "visualCueEmoji": "🐐"
+      },
+      "hint": {
+        "text": "Stretch \"goat\" slowly — the first sound is /g/.",
+        "audioKey": "hint/p2m-vow-10"
+      },
+      "feedback": {
+        "correctText": "Spot on! You spelled \"goat\" sound by sound!",
+        "correctAudioKey": "feedback/correct-p2m-vow-10",
+        "encourageText": "Have another go — tap each box to listen to the sounds in \"goat\".",
+        "encourageAudioKey": "feedback/encourage-p2m-vow-10"
+      },
+      "offlineParentTip": "Pick one sound of the week (like the 'ee' sound) and keep a little tally on the fridge every time you spot a word with that sound in a storybook.",
+      "type": "phoneme-segment",
+      "targetWord": "goat",
+      "wordAudioKey": "word/goat",
+      "stimulusEmoji": "🐐",
+      "correctGraphemes": [
+        "g",
+        "oa",
+        "t"
+      ],
+      "tileBank": [
+        {
+          "id": "p2m-vow-10-tile-0-g",
+          "grapheme": "g",
+          "audioKey": "phoneme/g"
+        },
+        {
+          "id": "p2m-vow-10-tile-1-oa",
+          "grapheme": "oa",
+          "audioKey": "phoneme/oa"
+        },
+        {
+          "id": "p2m-vow-10-tile-2-t",
+          "grapheme": "t",
+          "audioKey": "phoneme/t"
+        },
+        {
+          "id": "p2m-vow-10-tile-3-ow",
+          "grapheme": "ow",
+          "audioKey": "phoneme/ow"
+        },
+        {
+          "id": "p2m-vow-10-tile-4-ea",
+          "grapheme": "ea",
+          "audioKey": "phoneme/ea"
+        }
+      ]
+    },
+    {
+      "id": "p2m-cap-01",
+      "skillId": "ccea-p2-lit-captions-comprehension",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Tap the missing word to complete the sentence!",
+        "audioKey": "prompt/p2m-cap-01",
+        "visualCueEmoji": "🌙"
+      },
+      "hint": {
+        "text": "Tap the sentence card to hear it read aloud, then find \"moon\".",
+        "audioKey": "hint/p2m-cap-01"
+      },
+      "feedback": {
+        "correctText": "Well done! \"The silver rocket landed on the moon.\"",
+        "correctAudioKey": "feedback/correct-p2m-cap-01",
+        "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
+        "encourageAudioKey": "feedback/encourage-p2m-cap-01"
+      },
+      "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
+      "type": "high-frequency-word",
+      "targetWord": "moon",
+      "targetWordAudioKey": "word/moon",
+      "contextSentence": "The silver rocket landed on the ___.",
+      "contextAudioKey": "sentence/p2m-cap-01",
+      "stimulusEmoji": "🌙",
+      "options": [
+        {
+          "id": "opt-moon",
+          "label": "moon",
+          "displayText": "moon",
+          "audioKey": "word/moon"
+        },
+        {
+          "id": "opt-mud",
+          "label": "mud",
+          "displayText": "mud",
+          "audioKey": "word/mud"
+        },
+        {
+          "id": "opt-tent",
+          "label": "tent",
+          "displayText": "tent",
+          "audioKey": "word/tent"
+        },
+        {
+          "id": "opt-milk",
+          "label": "milk",
+          "displayText": "milk",
+          "audioKey": "word/milk"
+        }
+      ],
+      "correctOptionId": "opt-moon"
+    },
+    {
+      "id": "p2m-cap-02",
+      "skillId": "ccea-p2-lit-captions-comprehension",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Tap the missing word to complete the sentence!",
+        "audioKey": "prompt/p2m-cap-02",
+        "visualCueEmoji": "🥚"
+      },
+      "hint": {
+        "text": "Tap the sentence card to hear it read aloud, then find \"egg\".",
+        "audioKey": "hint/p2m-cap-02"
+      },
+      "feedback": {
+        "correctText": "Well done! \"A tiny baby dino hatched from an egg.\"",
+        "correctAudioKey": "feedback/correct-p2m-cap-02",
+        "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
+        "encourageAudioKey": "feedback/encourage-p2m-cap-02"
+      },
+      "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
+      "type": "high-frequency-word",
+      "targetWord": "egg",
+      "targetWordAudioKey": "word/egg",
+      "contextSentence": "A tiny baby dino hatched from an ___.",
+      "contextAudioKey": "sentence/p2m-cap-02",
+      "stimulusEmoji": "🥚",
+      "options": [
+        {
+          "id": "opt-bus",
+          "label": "bus",
+          "displayText": "bus",
+          "audioKey": "word/bus"
+        },
+        {
+          "id": "opt-hat",
+          "label": "hat",
+          "displayText": "hat",
+          "audioKey": "word/hat"
+        },
+        {
+          "id": "opt-bell",
+          "label": "bell",
+          "displayText": "bell",
+          "audioKey": "word/bell"
+        },
+        {
+          "id": "opt-egg",
+          "label": "egg",
+          "displayText": "egg",
+          "audioKey": "word/egg"
+        }
+      ],
+      "correctOptionId": "opt-egg"
+    },
+    {
+      "id": "p2m-cap-03",
+      "skillId": "ccea-p2-lit-captions-comprehension",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Tap the missing word to complete the sentence!",
+        "audioKey": "prompt/p2m-cap-03",
+        "visualCueEmoji": "🐟"
+      },
+      "hint": {
+        "text": "Tap the sentence card to hear it read aloud, then find \"fish\".",
+        "audioKey": "hint/p2m-cap-03"
+      },
+      "feedback": {
+        "correctText": "Well done! \"The puffin dived down to catch a fish.\"",
+        "correctAudioKey": "feedback/correct-p2m-cap-03",
+        "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
+        "encourageAudioKey": "feedback/encourage-p2m-cap-03"
+      },
+      "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
+      "type": "high-frequency-word",
+      "targetWord": "fish",
+      "targetWordAudioKey": "word/fish",
+      "contextSentence": "The puffin dived down to catch a ___.",
+      "contextAudioKey": "sentence/p2m-cap-03",
+      "stimulusEmoji": "🐟",
+      "options": [
+        {
+          "id": "opt-ring",
+          "label": "ring",
+          "displayText": "ring",
+          "audioKey": "word/ring"
+        },
+        {
+          "id": "opt-snow",
+          "label": "snow",
+          "displayText": "snow",
+          "audioKey": "word/snow"
+        },
+        {
+          "id": "opt-fish",
+          "label": "fish",
+          "displayText": "fish",
+          "audioKey": "word/fish"
+        },
+        {
+          "id": "opt-desk",
+          "label": "desk",
+          "displayText": "desk",
+          "audioKey": "word/desk"
+        }
+      ],
+      "correctOptionId": "opt-fish"
+    },
+    {
+      "id": "p2m-cap-04",
+      "skillId": "ccea-p2-lit-captions-comprehension",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Tap the missing word to complete the sentence!",
+        "audioKey": "prompt/p2m-cap-04",
+        "visualCueEmoji": "🚜"
+      },
+      "hint": {
+        "text": "Tap the sentence card to hear it read aloud, then find \"hill\".",
+        "audioKey": "hint/p2m-cap-04"
+      },
+      "feedback": {
+        "correctText": "Well done! \"The red tractor chugged up the green hill.\"",
+        "correctAudioKey": "feedback/correct-p2m-cap-04",
+        "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
+        "encourageAudioKey": "feedback/encourage-p2m-cap-04"
+      },
+      "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
+      "type": "high-frequency-word",
+      "targetWord": "hill",
+      "targetWordAudioKey": "word/hill",
+      "contextSentence": "The red tractor chugged up the green ___.",
+      "contextAudioKey": "sentence/p2m-cap-04",
+      "stimulusEmoji": "🚜",
+      "options": [
+        {
+          "id": "opt-lamp",
+          "label": "lamp",
+          "displayText": "lamp",
+          "audioKey": "word/lamp"
+        },
+        {
+          "id": "opt-hill",
+          "label": "hill",
+          "displayText": "hill",
+          "audioKey": "word/hill"
+        },
+        {
+          "id": "opt-soup",
+          "label": "soup",
+          "displayText": "soup",
+          "audioKey": "word/soup"
+        },
+        {
+          "id": "opt-chin",
+          "label": "chin",
+          "displayText": "chin",
+          "audioKey": "word/chin"
+        }
+      ],
+      "correctOptionId": "opt-hill"
+    },
+    {
+      "id": "p2m-cap-05",
+      "skillId": "ccea-p2-lit-captions-comprehension",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Tap the missing word to complete the sentence!",
+        "audioKey": "prompt/p2m-cap-05",
+        "visualCueEmoji": "⛵"
+      },
+      "hint": {
+        "text": "Tap the sentence card to hear it read aloud, then find \"boat\".",
+        "audioKey": "hint/p2m-cap-05"
+      },
+      "feedback": {
+        "correctText": "Well done! \"We sailed across Belfast Lough in a boat.\"",
+        "correctAudioKey": "feedback/correct-p2m-cap-05",
+        "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
+        "encourageAudioKey": "feedback/encourage-p2m-cap-05"
+      },
+      "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
+      "type": "high-frequency-word",
+      "targetWord": "boat",
+      "targetWordAudioKey": "word/boat",
+      "contextSentence": "We sailed across Belfast Lough in a ___.",
+      "contextAudioKey": "sentence/p2m-cap-05",
+      "stimulusEmoji": "⛵",
+      "options": [
+        {
+          "id": "opt-boat",
+          "label": "boat",
+          "displayText": "boat",
+          "audioKey": "word/boat"
+        },
+        {
+          "id": "opt-crab",
+          "label": "crab",
+          "displayText": "crab",
+          "audioKey": "word/crab"
+        },
+        {
+          "id": "opt-tree",
+          "label": "tree",
+          "displayText": "tree",
+          "audioKey": "word/tree"
+        },
+        {
+          "id": "opt-goat",
+          "label": "goat",
+          "displayText": "goat",
+          "audioKey": "word/goat"
+        }
+      ],
+      "correctOptionId": "opt-boat"
+    },
+    {
+      "id": "p2m-cap-06",
+      "skillId": "ccea-p2-lit-captions-comprehension",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Tap the missing word to complete the sentence!",
+        "audioKey": "prompt/p2m-cap-06",
+        "visualCueEmoji": "🪺"
+      },
+      "hint": {
+        "text": "Tap the sentence card to hear it read aloud, then find \"nest\".",
+        "audioKey": "hint/p2m-cap-06"
+      },
+      "feedback": {
+        "correctText": "Well done! \"Three speckled eggs sat safely in a nest.\"",
+        "correctAudioKey": "feedback/correct-p2m-cap-06",
+        "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
+        "encourageAudioKey": "feedback/encourage-p2m-cap-06"
+      },
+      "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
+      "type": "high-frequency-word",
+      "targetWord": "nest",
+      "targetWordAudioKey": "word/nest",
+      "contextSentence": "Three speckled eggs sat safely in a ___.",
+      "contextAudioKey": "sentence/p2m-cap-06",
+      "stimulusEmoji": "🪺",
+      "options": [
+        {
+          "id": "opt-shop",
+          "label": "shop",
+          "displayText": "shop",
+          "audioKey": "word/shop"
+        },
+        {
+          "id": "opt-drum",
+          "label": "drum",
+          "displayText": "drum",
+          "audioKey": "word/drum"
+        },
+        {
+          "id": "opt-tail",
+          "label": "tail",
+          "displayText": "tail",
+          "audioKey": "word/tail"
+        },
+        {
+          "id": "opt-nest",
+          "label": "nest",
+          "displayText": "nest",
+          "audioKey": "word/nest"
+        }
+      ],
+      "correctOptionId": "opt-nest"
+    },
+    {
+      "id": "p2m-cap-07",
+      "skillId": "ccea-p2-lit-captions-comprehension",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Tap the missing word to complete the sentence!",
+        "audioKey": "prompt/p2m-cap-07",
+        "visualCueEmoji": "🌧️"
+      },
+      "hint": {
+        "text": "Tap the sentence card to hear it read aloud, then find \"rain\".",
+        "audioKey": "hint/p2m-cap-07"
+      },
+      "feedback": {
+        "correctText": "Well done! \"Put your yellow coat on in the rain.\"",
+        "correctAudioKey": "feedback/correct-p2m-cap-07",
+        "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
+        "encourageAudioKey": "feedback/encourage-p2m-cap-07"
+      },
+      "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
+      "type": "high-frequency-word",
+      "targetWord": "rain",
+      "targetWordAudioKey": "word/rain",
+      "contextSentence": "Put your yellow coat on in the ___.",
+      "contextAudioKey": "sentence/p2m-cap-07",
+      "stimulusEmoji": "🌧️",
+      "options": [
+        {
+          "id": "opt-star",
+          "label": "star",
+          "displayText": "star",
+          "audioKey": "word/star"
+        },
+        {
+          "id": "opt-king",
+          "label": "king",
+          "displayText": "king",
+          "audioKey": "word/king"
+        },
+        {
+          "id": "opt-rain",
+          "label": "rain",
+          "displayText": "rain",
+          "audioKey": "word/rain"
+        },
+        {
+          "id": "opt-frog",
+          "label": "frog",
+          "displayText": "frog",
+          "audioKey": "word/frog"
+        }
+      ],
+      "correctOptionId": "opt-rain"
+    },
+    {
+      "id": "p2m-cap-08",
+      "skillId": "ccea-p2-lit-captions-comprehension",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Tap the missing word to complete the sentence!",
+        "audioKey": "prompt/p2m-cap-08",
+        "visualCueEmoji": "⛺"
+      },
+      "hint": {
+        "text": "Tap the sentence card to hear it read aloud, then find \"tent\".",
+        "audioKey": "hint/p2m-cap-08"
+      },
+      "feedback": {
+        "correctText": "Well done! \"We slept under the stars inside a tent.\"",
+        "correctAudioKey": "feedback/correct-p2m-cap-08",
+        "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
+        "encourageAudioKey": "feedback/encourage-p2m-cap-08"
+      },
+      "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
+      "type": "high-frequency-word",
+      "targetWord": "tent",
+      "targetWordAudioKey": "word/tent",
+      "contextSentence": "We slept under the stars inside a ___.",
+      "contextAudioKey": "sentence/p2m-cap-08",
+      "stimulusEmoji": "⛺",
+      "options": [
+        {
+          "id": "opt-bell",
+          "label": "bell",
+          "displayText": "bell",
+          "audioKey": "word/bell"
+        },
+        {
+          "id": "opt-tent",
+          "label": "tent",
+          "displayText": "tent",
+          "audioKey": "word/tent"
+        },
+        {
+          "id": "opt-fish",
+          "label": "fish",
+          "displayText": "fish",
+          "audioKey": "word/fish"
+        },
+        {
+          "id": "opt-chip",
+          "label": "chip",
+          "displayText": "chip",
+          "audioKey": "word/chip"
+        }
+      ],
+      "correctOptionId": "opt-tent"
+    },
+    {
+      "id": "p2m-cap-09",
+      "skillId": "ccea-p2-lit-captions-comprehension",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "space",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Tap the missing word to complete the sentence!",
+        "audioKey": "prompt/p2m-cap-09",
+        "visualCueEmoji": "🔔"
+      },
+      "hint": {
+        "text": "Tap the sentence card to hear it read aloud, then find \"bell\".",
+        "audioKey": "hint/p2m-cap-09"
+      },
+      "feedback": {
+        "correctText": "Well done! \"Ding dong went the shiny brass bell.\"",
+        "correctAudioKey": "feedback/correct-p2m-cap-09",
+        "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
+        "encourageAudioKey": "feedback/encourage-p2m-cap-09"
+      },
+      "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
+      "type": "high-frequency-word",
+      "targetWord": "bell",
+      "targetWordAudioKey": "word/bell",
+      "contextSentence": "Ding dong went the shiny brass ___.",
+      "contextAudioKey": "sentence/p2m-cap-09",
+      "stimulusEmoji": "🔔",
+      "options": [
+        {
+          "id": "opt-bell",
+          "label": "bell",
+          "displayText": "bell",
+          "audioKey": "word/bell"
+        },
+        {
+          "id": "opt-leaf",
+          "label": "leaf",
+          "displayText": "leaf",
+          "audioKey": "word/leaf"
+        },
+        {
+          "id": "opt-moth",
+          "label": "moth",
+          "displayText": "moth",
+          "audioKey": "word/moth"
+        },
+        {
+          "id": "opt-van",
+          "label": "van",
+          "displayText": "van",
+          "audioKey": "word/van"
+        }
+      ],
+      "correctOptionId": "opt-bell"
+    },
+    {
+      "id": "p2m-cap-10",
+      "skillId": "ccea-p2-lit-captions-comprehension",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Tap the missing word to complete the sentence!",
+        "audioKey": "prompt/p2m-cap-10",
+        "visualCueEmoji": "❄️"
+      },
+      "hint": {
+        "text": "Tap the sentence card to hear it read aloud, then find \"snow\".",
+        "audioKey": "hint/p2m-cap-10"
+      },
+      "feedback": {
+        "correctText": "Well done! \"Sparky left paw prints in the white snow.\"",
+        "correctAudioKey": "feedback/correct-p2m-cap-10",
+        "encourageText": "Good try! Listen to the sentence again and spot the matching word.",
+        "encourageAudioKey": "feedback/encourage-p2m-cap-10"
+      },
+      "offlineParentTip": "After reading a short page together, ask your child to retell what happened in their own words before turning to the next page.",
+      "type": "high-frequency-word",
+      "targetWord": "snow",
+      "targetWordAudioKey": "word/snow",
+      "contextSentence": "Sparky left paw prints in the white ___.",
+      "contextAudioKey": "sentence/p2m-cap-10",
+      "stimulusEmoji": "❄️",
+      "options": [
+        {
+          "id": "opt-hand",
+          "label": "hand",
+          "displayText": "hand",
+          "audioKey": "word/hand"
+        },
+        {
+          "id": "opt-path",
+          "label": "path",
+          "displayText": "path",
+          "audioKey": "word/path"
+        },
+        {
+          "id": "opt-pan",
+          "label": "pan",
+          "displayText": "pan",
+          "audioKey": "word/pan"
+        },
+        {
+          "id": "opt-snow",
+          "label": "snow",
+          "displayText": "snow",
+          "audioKey": "word/snow"
+        }
+      ],
+      "correctOptionId": "opt-snow"
+    },
+    {
+      "id": "p2m-tf20-01",
+      "skillId": "ccea-p2-num-ten-frames-11-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "How many stars are on the double Ten-Frame?",
+        "audioKey": "prompt/p2m-tf20-01",
+        "visualCueEmoji": "⭐"
+      },
+      "hint": {
+        "text": "The first frame is a full 10 — count on from 10 to find the total.",
+        "audioKey": "hint/p2m-tf20-01"
+      },
+      "feedback": {
+        "correctText": "Brilliant counting! There are 11 stars!",
+        "correctAudioKey": "feedback/correct-p2m-tf20-01",
+        "encourageText": "Almost! Tap each star to count one by one.",
+        "encourageAudioKey": "feedback/encourage-p2m-tf20-01"
+      },
+      "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
+      "type": "ten-frame-count",
+      "mode": "count-to-numeral",
+      "frameSize": 20,
+      "targetNumber": 11,
+      "initialCounters": 11,
+      "counterVisual": {
+        "emoji": "⭐",
+        "label": "stars",
+        "colour": "#F59E0B",
+        "audioKey": "object/star"
+      },
+      "options": [
+        {
+          "id": "n-10",
+          "label": "10",
+          "displayText": "10",
+          "audioKey": "number/10"
+        },
+        {
+          "id": "n-11",
+          "label": "11",
+          "displayText": "11",
+          "audioKey": "number/11"
+        },
+        {
+          "id": "n-12",
+          "label": "12",
+          "displayText": "12",
+          "audioKey": "number/12"
+        },
+        {
+          "id": "n-13",
+          "label": "13",
+          "displayText": "13",
+          "audioKey": "number/13"
+        }
+      ],
+      "correctOptionId": "n-11"
+    },
+    {
+      "id": "p2m-tf20-02",
+      "skillId": "ccea-p2-num-ten-frames-11-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "How many dinosaurs are on the double Ten-Frame?",
+        "audioKey": "prompt/p2m-tf20-02",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "The first frame is a full 10 — count on from 10 to find the total.",
+        "audioKey": "hint/p2m-tf20-02"
+      },
+      "feedback": {
+        "correctText": "Brilliant counting! There are 13 dinosaurs!",
+        "correctAudioKey": "feedback/correct-p2m-tf20-02",
+        "encourageText": "Almost! Tap each dinosaur to count one by one.",
+        "encourageAudioKey": "feedback/encourage-p2m-tf20-02"
+      },
+      "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
+      "type": "ten-frame-count",
+      "mode": "count-to-numeral",
+      "frameSize": 20,
+      "targetNumber": 13,
+      "initialCounters": 13,
+      "counterVisual": {
+        "emoji": "🦕",
+        "label": "dinosaurs",
+        "colour": "#10B981",
+        "audioKey": "object/dino"
+      },
+      "options": [
+        {
+          "id": "n-11",
+          "label": "11",
+          "displayText": "11",
+          "audioKey": "number/11"
+        },
+        {
+          "id": "n-12",
+          "label": "12",
+          "displayText": "12",
+          "audioKey": "number/12"
+        },
+        {
+          "id": "n-13",
+          "label": "13",
+          "displayText": "13",
+          "audioKey": "number/13"
+        },
+        {
+          "id": "n-14",
+          "label": "14",
+          "displayText": "14",
+          "audioKey": "number/14"
+        }
+      ],
+      "correctOptionId": "n-13"
+    },
+    {
+      "id": "p2m-tf20-03",
+      "skillId": "ccea-p2-num-ten-frames-11-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "How many foxes are on the double Ten-Frame?",
+        "audioKey": "prompt/p2m-tf20-03",
+        "visualCueEmoji": "🦊"
+      },
+      "hint": {
+        "text": "The first frame is a full 10 — count on from 10 to find the total.",
+        "audioKey": "hint/p2m-tf20-03"
+      },
+      "feedback": {
+        "correctText": "Brilliant counting! There are 15 foxes!",
+        "correctAudioKey": "feedback/correct-p2m-tf20-03",
+        "encourageText": "Almost! Tap each foxe to count one by one.",
+        "encourageAudioKey": "feedback/encourage-p2m-tf20-03"
+      },
+      "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
+      "type": "ten-frame-count",
+      "mode": "count-to-numeral",
+      "frameSize": 20,
+      "targetNumber": 15,
+      "initialCounters": 15,
+      "counterVisual": {
+        "emoji": "🦊",
+        "label": "foxes",
+        "colour": "#F97316",
+        "audioKey": "object/fox"
+      },
+      "options": [
+        {
+          "id": "n-13",
+          "label": "13",
+          "displayText": "13",
+          "audioKey": "number/13"
+        },
+        {
+          "id": "n-14",
+          "label": "14",
+          "displayText": "14",
+          "audioKey": "number/14"
+        },
+        {
+          "id": "n-15",
+          "label": "15",
+          "displayText": "15",
+          "audioKey": "number/15"
+        },
+        {
+          "id": "n-16",
+          "label": "16",
+          "displayText": "16",
+          "audioKey": "number/16"
+        }
+      ],
+      "correctOptionId": "n-15"
+    },
+    {
+      "id": "p2m-tf20-04",
+      "skillId": "ccea-p2-num-ten-frames-11-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "How many rockets are on the double Ten-Frame?",
+        "audioKey": "prompt/p2m-tf20-04",
+        "visualCueEmoji": "🚀"
+      },
+      "hint": {
+        "text": "The first frame is a full 10 — count on from 10 to find the total.",
+        "audioKey": "hint/p2m-tf20-04"
+      },
+      "feedback": {
+        "correctText": "Brilliant counting! There are 17 rockets!",
+        "correctAudioKey": "feedback/correct-p2m-tf20-04",
+        "encourageText": "Almost! Tap each rocket to count one by one.",
+        "encourageAudioKey": "feedback/encourage-p2m-tf20-04"
+      },
+      "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
+      "type": "ten-frame-count",
+      "mode": "count-to-numeral",
+      "frameSize": 20,
+      "targetNumber": 17,
+      "initialCounters": 17,
+      "counterVisual": {
+        "emoji": "🚀",
+        "label": "rockets",
+        "colour": "#0284C7",
+        "audioKey": "object/rocket"
+      },
+      "options": [
+        {
+          "id": "n-15",
+          "label": "15",
+          "displayText": "15",
+          "audioKey": "number/15"
+        },
+        {
+          "id": "n-16",
+          "label": "16",
+          "displayText": "16",
+          "audioKey": "number/16"
+        },
+        {
+          "id": "n-17",
+          "label": "17",
+          "displayText": "17",
+          "audioKey": "number/17"
+        },
+        {
+          "id": "n-18",
+          "label": "18",
+          "displayText": "18",
+          "audioKey": "number/18"
+        }
+      ],
+      "correctOptionId": "n-17"
+    },
+    {
+      "id": "p2m-tf20-05",
+      "skillId": "ccea-p2-num-ten-frames-11-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "How many stars are on the double Ten-Frame?",
+        "audioKey": "prompt/p2m-tf20-05",
+        "visualCueEmoji": "⭐"
+      },
+      "hint": {
+        "text": "The first frame is a full 10 — count on from 10 to find the total.",
+        "audioKey": "hint/p2m-tf20-05"
+      },
+      "feedback": {
+        "correctText": "Brilliant counting! There are 19 stars!",
+        "correctAudioKey": "feedback/correct-p2m-tf20-05",
+        "encourageText": "Almost! Tap each star to count one by one.",
+        "encourageAudioKey": "feedback/encourage-p2m-tf20-05"
+      },
+      "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
+      "type": "ten-frame-count",
+      "mode": "count-to-numeral",
+      "frameSize": 20,
+      "targetNumber": 19,
+      "initialCounters": 19,
+      "counterVisual": {
+        "emoji": "⭐",
+        "label": "stars",
+        "colour": "#F59E0B",
+        "audioKey": "object/star"
+      },
+      "options": [
+        {
+          "id": "n-17",
+          "label": "17",
+          "displayText": "17",
+          "audioKey": "number/17"
+        },
+        {
+          "id": "n-18",
+          "label": "18",
+          "displayText": "18",
+          "audioKey": "number/18"
+        },
+        {
+          "id": "n-19",
+          "label": "19",
+          "displayText": "19",
+          "audioKey": "number/19"
+        },
+        {
+          "id": "n-20",
+          "label": "20",
+          "displayText": "20",
+          "audioKey": "number/20"
+        }
+      ],
+      "correctOptionId": "n-19"
+    },
+    {
+      "id": "p2m-tf20-06",
+      "skillId": "ccea-p2-num-ten-frames-11-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Put 12 dinosaurs on the double Ten-Frame!",
+        "audioKey": "prompt/p2m-tf20-06",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "You have 10 already — add 2 more to reach 12.",
+        "audioKey": "hint/p2m-tf20-06"
+      },
+      "feedback": {
+        "correctText": "Fantastic! You built 12 on the frame!",
+        "correctAudioKey": "feedback/correct-p2m-tf20-06",
+        "encourageText": "Not quite 12 yet — count your counters and try again!",
+        "encourageAudioKey": "feedback/encourage-p2m-tf20-06"
+      },
+      "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
+      "type": "ten-frame-count",
+      "mode": "build-on-frame",
+      "frameSize": 20,
+      "targetNumber": 12,
+      "initialCounters": 10,
+      "counterVisual": {
+        "emoji": "🦕",
+        "label": "dinosaurs",
+        "colour": "#10B981",
+        "audioKey": "object/dino"
+      }
+    },
+    {
+      "id": "p2m-tf20-07",
+      "skillId": "ccea-p2-num-ten-frames-11-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Put 14 foxes on the double Ten-Frame!",
+        "audioKey": "prompt/p2m-tf20-07",
+        "visualCueEmoji": "🦊"
+      },
+      "hint": {
+        "text": "You have 10 already — add 4 more to reach 14.",
+        "audioKey": "hint/p2m-tf20-07"
+      },
+      "feedback": {
+        "correctText": "Fantastic! You built 14 on the frame!",
+        "correctAudioKey": "feedback/correct-p2m-tf20-07",
+        "encourageText": "Not quite 14 yet — count your counters and try again!",
+        "encourageAudioKey": "feedback/encourage-p2m-tf20-07"
+      },
+      "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
+      "type": "ten-frame-count",
+      "mode": "build-on-frame",
+      "frameSize": 20,
+      "targetNumber": 14,
+      "initialCounters": 10,
+      "counterVisual": {
+        "emoji": "🦊",
+        "label": "foxes",
+        "colour": "#F97316",
+        "audioKey": "object/fox"
+      }
+    },
+    {
+      "id": "p2m-tf20-08",
+      "skillId": "ccea-p2-num-ten-frames-11-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Put 16 rockets on the double Ten-Frame!",
+        "audioKey": "prompt/p2m-tf20-08",
+        "visualCueEmoji": "🚀"
+      },
+      "hint": {
+        "text": "You have 10 already — add 6 more to reach 16.",
+        "audioKey": "hint/p2m-tf20-08"
+      },
+      "feedback": {
+        "correctText": "Fantastic! You built 16 on the frame!",
+        "correctAudioKey": "feedback/correct-p2m-tf20-08",
+        "encourageText": "Not quite 16 yet — count your counters and try again!",
+        "encourageAudioKey": "feedback/encourage-p2m-tf20-08"
+      },
+      "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
+      "type": "ten-frame-count",
+      "mode": "build-on-frame",
+      "frameSize": 20,
+      "targetNumber": 16,
+      "initialCounters": 10,
+      "counterVisual": {
+        "emoji": "🚀",
+        "label": "rockets",
+        "colour": "#0284C7",
+        "audioKey": "object/rocket"
+      }
+    },
+    {
+      "id": "p2m-tf20-09",
+      "skillId": "ccea-p2-num-ten-frames-11-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Put 18 stars on the double Ten-Frame!",
+        "audioKey": "prompt/p2m-tf20-09",
+        "visualCueEmoji": "⭐"
+      },
+      "hint": {
+        "text": "You have 10 already — add 8 more to reach 18.",
+        "audioKey": "hint/p2m-tf20-09"
+      },
+      "feedback": {
+        "correctText": "Fantastic! You built 18 on the frame!",
+        "correctAudioKey": "feedback/correct-p2m-tf20-09",
+        "encourageText": "Not quite 18 yet — count your counters and try again!",
+        "encourageAudioKey": "feedback/encourage-p2m-tf20-09"
+      },
+      "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
+      "type": "ten-frame-count",
+      "mode": "build-on-frame",
+      "frameSize": 20,
+      "targetNumber": 18,
+      "initialCounters": 10,
+      "counterVisual": {
+        "emoji": "⭐",
+        "label": "stars",
+        "colour": "#F59E0B",
+        "audioKey": "object/star"
+      }
+    },
+    {
+      "id": "p2m-tf20-10",
+      "skillId": "ccea-p2-num-ten-frames-11-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Put 20 dinosaurs on the double Ten-Frame!",
+        "audioKey": "prompt/p2m-tf20-10",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "You have 10 already — add 10 more to reach 20.",
+        "audioKey": "hint/p2m-tf20-10"
+      },
+      "feedback": {
+        "correctText": "Fantastic! You built 20 on the frame!",
+        "correctAudioKey": "feedback/correct-p2m-tf20-10",
+        "encourageText": "Not quite 20 yet — count your counters and try again!",
+        "encourageAudioKey": "feedback/encourage-p2m-tf20-10"
+      },
+      "offlineParentTip": "Bundle 10 lollipop sticks or straws with an elastic band to make '1 ten', then add loose ones beside it to build teen numbers like 14 (1 ten and 4 ones).",
+      "type": "ten-frame-count",
+      "mode": "build-on-frame",
+      "frameSize": 20,
+      "targetNumber": 20,
+      "initialCounters": 10,
+      "counterVisual": {
+        "emoji": "🦕",
+        "label": "dinosaurs",
+        "colour": "#10B981",
+        "audioKey": "object/dino"
+      }
+    },
+    {
+      "id": "p2m-b10-01",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "1 and how many more make 10?",
+        "audioKey": "prompt/p2m-b10-01",
+        "visualCueEmoji": "⭐"
+      },
+      "hint": {
+        "text": "Start at 1 and count on your fingers up to 10.",
+        "audioKey": "hint/p2m-b10-01"
+      },
+      "feedback": {
+        "correctText": "Yes! 1 + 9 = 10!",
+        "correctAudioKey": "feedback/correct-p2m-b10-01",
+        "encourageText": "Have another go — count up from 1 to 10.",
+        "encourageAudioKey": "feedback/encourage-p2m-b10-01"
+      },
+      "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
+      "type": "number-bond",
+      "whole": 10,
+      "givenPart": 1,
+      "missingPart": 9,
+      "counterVisual": {
+        "emoji": "⭐",
+        "label": "stars",
+        "colour": "#F59E0B",
+        "audioKey": "object/star"
+      },
+      "options": [
+        {
+          "id": "n-7",
+          "label": "7",
+          "displayText": "7",
+          "audioKey": "number/7"
+        },
+        {
+          "id": "n-8",
+          "label": "8",
+          "displayText": "8",
+          "audioKey": "number/8"
+        },
+        {
+          "id": "n-9",
+          "label": "9",
+          "displayText": "9",
+          "audioKey": "number/9"
+        },
+        {
+          "id": "n-10",
+          "label": "10",
+          "displayText": "10",
+          "audioKey": "number/10"
+        }
+      ],
+      "correctOptionId": "n-9"
+    },
+    {
+      "id": "p2m-b10-02",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "2 and how many more make 10?",
+        "audioKey": "prompt/p2m-b10-02",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "Start at 2 and count on your fingers up to 10.",
+        "audioKey": "hint/p2m-b10-02"
+      },
+      "feedback": {
+        "correctText": "Yes! 2 + 8 = 10!",
+        "correctAudioKey": "feedback/correct-p2m-b10-02",
+        "encourageText": "Have another go — count up from 2 to 10.",
+        "encourageAudioKey": "feedback/encourage-p2m-b10-02"
+      },
+      "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
+      "type": "number-bond",
+      "whole": 10,
+      "givenPart": 2,
+      "missingPart": 8,
+      "counterVisual": {
+        "emoji": "🦕",
+        "label": "dinosaurs",
+        "colour": "#10B981",
+        "audioKey": "object/dino"
+      },
+      "options": [
+        {
+          "id": "n-6",
+          "label": "6",
+          "displayText": "6",
+          "audioKey": "number/6"
+        },
+        {
+          "id": "n-7",
+          "label": "7",
+          "displayText": "7",
+          "audioKey": "number/7"
+        },
+        {
+          "id": "n-8",
+          "label": "8",
+          "displayText": "8",
+          "audioKey": "number/8"
+        },
+        {
+          "id": "n-9",
+          "label": "9",
+          "displayText": "9",
+          "audioKey": "number/9"
+        }
+      ],
+      "correctOptionId": "n-8"
+    },
+    {
+      "id": "p2m-b10-03",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "3 and how many more make 10?",
+        "audioKey": "prompt/p2m-b10-03",
+        "visualCueEmoji": "🦊"
+      },
+      "hint": {
+        "text": "Start at 3 and count on your fingers up to 10.",
+        "audioKey": "hint/p2m-b10-03"
+      },
+      "feedback": {
+        "correctText": "Yes! 3 + 7 = 10!",
+        "correctAudioKey": "feedback/correct-p2m-b10-03",
+        "encourageText": "Have another go — count up from 3 to 10.",
+        "encourageAudioKey": "feedback/encourage-p2m-b10-03"
+      },
+      "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
+      "type": "number-bond",
+      "whole": 10,
+      "givenPart": 3,
+      "missingPart": 7,
+      "counterVisual": {
+        "emoji": "🦊",
+        "label": "foxes",
+        "colour": "#F97316",
+        "audioKey": "object/fox"
+      },
+      "options": [
+        {
+          "id": "n-5",
+          "label": "5",
+          "displayText": "5",
+          "audioKey": "number/5"
+        },
+        {
+          "id": "n-6",
+          "label": "6",
+          "displayText": "6",
+          "audioKey": "number/6"
+        },
+        {
+          "id": "n-7",
+          "label": "7",
+          "displayText": "7",
+          "audioKey": "number/7"
+        },
+        {
+          "id": "n-8",
+          "label": "8",
+          "displayText": "8",
+          "audioKey": "number/8"
+        }
+      ],
+      "correctOptionId": "n-7"
+    },
+    {
+      "id": "p2m-b10-04",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "4 and how many more make 10?",
+        "audioKey": "prompt/p2m-b10-04",
+        "visualCueEmoji": "🚀"
+      },
+      "hint": {
+        "text": "Start at 4 and count on your fingers up to 10.",
+        "audioKey": "hint/p2m-b10-04"
+      },
+      "feedback": {
+        "correctText": "Yes! 4 + 6 = 10!",
+        "correctAudioKey": "feedback/correct-p2m-b10-04",
+        "encourageText": "Have another go — count up from 4 to 10.",
+        "encourageAudioKey": "feedback/encourage-p2m-b10-04"
+      },
+      "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
+      "type": "number-bond",
+      "whole": 10,
+      "givenPart": 4,
+      "missingPart": 6,
+      "counterVisual": {
+        "emoji": "🚀",
+        "label": "rockets",
+        "colour": "#0284C7",
+        "audioKey": "object/rocket"
+      },
+      "options": [
+        {
+          "id": "n-4",
+          "label": "4",
+          "displayText": "4",
+          "audioKey": "number/4"
+        },
+        {
+          "id": "n-5",
+          "label": "5",
+          "displayText": "5",
+          "audioKey": "number/5"
+        },
+        {
+          "id": "n-6",
+          "label": "6",
+          "displayText": "6",
+          "audioKey": "number/6"
+        },
+        {
+          "id": "n-7",
+          "label": "7",
+          "displayText": "7",
+          "audioKey": "number/7"
+        }
+      ],
+      "correctOptionId": "n-6"
+    },
+    {
+      "id": "p2m-b10-05",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "5 and how many more make 10?",
+        "audioKey": "prompt/p2m-b10-05",
+        "visualCueEmoji": "⭐"
+      },
+      "hint": {
+        "text": "Start at 5 and count on your fingers up to 10.",
+        "audioKey": "hint/p2m-b10-05"
+      },
+      "feedback": {
+        "correctText": "Yes! 5 + 5 = 10!",
+        "correctAudioKey": "feedback/correct-p2m-b10-05",
+        "encourageText": "Have another go — count up from 5 to 10.",
+        "encourageAudioKey": "feedback/encourage-p2m-b10-05"
+      },
+      "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
+      "type": "number-bond",
+      "whole": 10,
+      "givenPart": 5,
+      "missingPart": 5,
+      "counterVisual": {
+        "emoji": "⭐",
+        "label": "stars",
+        "colour": "#F59E0B",
+        "audioKey": "object/star"
+      },
+      "options": [
+        {
+          "id": "n-3",
+          "label": "3",
+          "displayText": "3",
+          "audioKey": "number/3"
+        },
+        {
+          "id": "n-4",
+          "label": "4",
+          "displayText": "4",
+          "audioKey": "number/4"
+        },
+        {
+          "id": "n-5",
+          "label": "5",
+          "displayText": "5",
+          "audioKey": "number/5"
+        },
+        {
+          "id": "n-6",
+          "label": "6",
+          "displayText": "6",
+          "audioKey": "number/6"
+        }
+      ],
+      "correctOptionId": "n-5"
+    },
+    {
+      "id": "p2m-b10-06",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "6 and how many more make 10?",
+        "audioKey": "prompt/p2m-b10-06",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "Start at 6 and count on your fingers up to 10.",
+        "audioKey": "hint/p2m-b10-06"
+      },
+      "feedback": {
+        "correctText": "Yes! 6 + 4 = 10!",
+        "correctAudioKey": "feedback/correct-p2m-b10-06",
+        "encourageText": "Have another go — count up from 6 to 10.",
+        "encourageAudioKey": "feedback/encourage-p2m-b10-06"
+      },
+      "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
+      "type": "number-bond",
+      "whole": 10,
+      "givenPart": 6,
+      "missingPart": 4,
+      "counterVisual": {
+        "emoji": "🦕",
+        "label": "dinosaurs",
+        "colour": "#10B981",
+        "audioKey": "object/dino"
+      },
+      "options": [
+        {
+          "id": "n-2",
+          "label": "2",
+          "displayText": "2",
+          "audioKey": "number/2"
+        },
+        {
+          "id": "n-3",
+          "label": "3",
+          "displayText": "3",
+          "audioKey": "number/3"
+        },
+        {
+          "id": "n-4",
+          "label": "4",
+          "displayText": "4",
+          "audioKey": "number/4"
+        },
+        {
+          "id": "n-5",
+          "label": "5",
+          "displayText": "5",
+          "audioKey": "number/5"
+        }
+      ],
+      "correctOptionId": "n-4"
+    },
+    {
+      "id": "p2m-b10-07",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "7 and how many more make 10?",
+        "audioKey": "prompt/p2m-b10-07",
+        "visualCueEmoji": "🦊"
+      },
+      "hint": {
+        "text": "Start at 7 and count on your fingers up to 10.",
+        "audioKey": "hint/p2m-b10-07"
+      },
+      "feedback": {
+        "correctText": "Yes! 7 + 3 = 10!",
+        "correctAudioKey": "feedback/correct-p2m-b10-07",
+        "encourageText": "Have another go — count up from 7 to 10.",
+        "encourageAudioKey": "feedback/encourage-p2m-b10-07"
+      },
+      "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
+      "type": "number-bond",
+      "whole": 10,
+      "givenPart": 7,
+      "missingPart": 3,
+      "counterVisual": {
+        "emoji": "🦊",
+        "label": "foxes",
+        "colour": "#F97316",
+        "audioKey": "object/fox"
+      },
+      "options": [
+        {
+          "id": "n-1",
+          "label": "1",
+          "displayText": "1",
+          "audioKey": "number/1"
+        },
+        {
+          "id": "n-2",
+          "label": "2",
+          "displayText": "2",
+          "audioKey": "number/2"
+        },
+        {
+          "id": "n-3",
+          "label": "3",
+          "displayText": "3",
+          "audioKey": "number/3"
+        },
+        {
+          "id": "n-4",
+          "label": "4",
+          "displayText": "4",
+          "audioKey": "number/4"
+        }
+      ],
+      "correctOptionId": "n-3"
+    },
+    {
+      "id": "p2m-b10-08",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "8 and how many more make 10?",
+        "audioKey": "prompt/p2m-b10-08",
+        "visualCueEmoji": "🚀"
+      },
+      "hint": {
+        "text": "Start at 8 and count on your fingers up to 10.",
+        "audioKey": "hint/p2m-b10-08"
+      },
+      "feedback": {
+        "correctText": "Yes! 8 + 2 = 10!",
+        "correctAudioKey": "feedback/correct-p2m-b10-08",
+        "encourageText": "Have another go — count up from 8 to 10.",
+        "encourageAudioKey": "feedback/encourage-p2m-b10-08"
+      },
+      "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
+      "type": "number-bond",
+      "whole": 10,
+      "givenPart": 8,
+      "missingPart": 2,
+      "counterVisual": {
+        "emoji": "🚀",
+        "label": "rockets",
+        "colour": "#0284C7",
+        "audioKey": "object/rocket"
+      },
+      "options": [
+        {
+          "id": "n-0",
+          "label": "0",
+          "displayText": "0",
+          "audioKey": "number/0"
+        },
+        {
+          "id": "n-1",
+          "label": "1",
+          "displayText": "1",
+          "audioKey": "number/1"
+        },
+        {
+          "id": "n-2",
+          "label": "2",
+          "displayText": "2",
+          "audioKey": "number/2"
+        },
+        {
+          "id": "n-3",
+          "label": "3",
+          "displayText": "3",
+          "audioKey": "number/3"
+        }
+      ],
+      "correctOptionId": "n-2"
+    },
+    {
+      "id": "p2m-b10-09",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Start on 9 and hop forward 1!",
+        "audioKey": "prompt/p2m-b10-09",
+        "visualCueEmoji": "⭐"
+      },
+      "hint": {
+        "text": "Count 1 hops forward from 9.",
+        "audioKey": "hint/p2m-b10-09"
+      },
+      "feedback": {
+        "correctText": "Super hopping! 9 + 1 = 10!",
+        "correctAudioKey": "feedback/correct-p2m-b10-09",
+        "encourageText": "Almost there! Count each hop carefully from 9.",
+        "encourageAudioKey": "feedback/encourage-p2m-b10-09"
+      },
+      "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
+      "type": "number-line-hop",
+      "min": 0,
+      "max": 10,
+      "startNumber": 9,
+      "operation": "add",
+      "hops": 1,
+      "targetNumber": 10,
+      "hopperVisual": {
+        "emoji": "⭐",
+        "label": "stars",
+        "audioKey": "object/star"
+      }
+    },
+    {
+      "id": "p2m-b10-10",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Start on 4 and hop forward 6!",
+        "audioKey": "prompt/p2m-b10-10",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "Count 6 hops forward from 4.",
+        "audioKey": "hint/p2m-b10-10"
+      },
+      "feedback": {
+        "correctText": "Super hopping! 4 + 6 = 10!",
+        "correctAudioKey": "feedback/correct-p2m-b10-10",
+        "encourageText": "Almost there! Count each hop carefully from 4.",
+        "encourageAudioKey": "feedback/encourage-p2m-b10-10"
+      },
+      "offlineParentTip": "Play 'Make 10 Snap' in the car: you say a number from 0 to 10 (e.g. '7!') and your child shouts back its partner to make 10 ('3!').",
+      "type": "number-line-hop",
+      "min": 0,
+      "max": 10,
+      "startNumber": 4,
+      "operation": "add",
+      "hops": 6,
+      "targetNumber": 10,
+      "hopperVisual": {
+        "emoji": "🦕",
+        "label": "dinosaurs",
+        "audioKey": "object/dino"
+      }
+    },
+    {
+      "id": "p2m-as20-01",
+      "skillId": "ccea-p2-num-add-sub-within-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Start on 8 and hop forward 5!",
+        "audioKey": "prompt/p2m-as20-01",
+        "visualCueEmoji": "⭐"
+      },
+      "hint": {
+        "text": "Count 5 hops forward from 8.",
+        "audioKey": "hint/p2m-as20-01"
+      },
+      "feedback": {
+        "correctText": "Super hopping! 8 + 5 = 13!",
+        "correctAudioKey": "feedback/correct-p2m-as20-01",
+        "encourageText": "Almost there! Count each hop carefully from 8.",
+        "encourageAudioKey": "feedback/encourage-p2m-as20-01"
+      },
+      "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
+      "type": "number-line-hop",
+      "min": 0,
+      "max": 20,
+      "startNumber": 8,
+      "operation": "add",
+      "hops": 5,
+      "targetNumber": 13,
+      "hopperVisual": {
+        "emoji": "⭐",
+        "label": "stars",
+        "audioKey": "object/star"
+      }
+    },
+    {
+      "id": "p2m-as20-02",
+      "skillId": "ccea-p2-num-add-sub-within-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Start on 11 and hop forward 6!",
+        "audioKey": "prompt/p2m-as20-02",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "Count 6 hops forward from 11.",
+        "audioKey": "hint/p2m-as20-02"
+      },
+      "feedback": {
+        "correctText": "Super hopping! 11 + 6 = 17!",
+        "correctAudioKey": "feedback/correct-p2m-as20-02",
+        "encourageText": "Almost there! Count each hop carefully from 11.",
+        "encourageAudioKey": "feedback/encourage-p2m-as20-02"
+      },
+      "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
+      "type": "number-line-hop",
+      "min": 0,
+      "max": 20,
+      "startNumber": 11,
+      "operation": "add",
+      "hops": 6,
+      "targetNumber": 17,
+      "hopperVisual": {
+        "emoji": "🦕",
+        "label": "dinosaurs",
+        "audioKey": "object/dino"
+      }
+    },
+    {
+      "id": "p2m-as20-03",
+      "skillId": "ccea-p2-num-add-sub-within-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Start on 12 and hop forward 7!",
+        "audioKey": "prompt/p2m-as20-03",
+        "visualCueEmoji": "🦊"
+      },
+      "hint": {
+        "text": "Count 7 hops forward from 12.",
+        "audioKey": "hint/p2m-as20-03"
+      },
+      "feedback": {
+        "correctText": "Super hopping! 12 + 7 = 19!",
+        "correctAudioKey": "feedback/correct-p2m-as20-03",
+        "encourageText": "Almost there! Count each hop carefully from 12.",
+        "encourageAudioKey": "feedback/encourage-p2m-as20-03"
+      },
+      "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
+      "type": "number-line-hop",
+      "min": 0,
+      "max": 20,
+      "startNumber": 12,
+      "operation": "add",
+      "hops": 7,
+      "targetNumber": 19,
+      "hopperVisual": {
+        "emoji": "🦊",
+        "label": "foxes",
+        "audioKey": "object/fox"
+      }
+    },
+    {
+      "id": "p2m-as20-04",
+      "skillId": "ccea-p2-num-add-sub-within-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Start on 15 and hop back 4!",
+        "audioKey": "prompt/p2m-as20-04",
+        "visualCueEmoji": "🚀"
+      },
+      "hint": {
+        "text": "Count 4 hops backwards from 15.",
+        "audioKey": "hint/p2m-as20-04"
+      },
+      "feedback": {
+        "correctText": "Super hopping! 15 − 4 = 11!",
+        "correctAudioKey": "feedback/correct-p2m-as20-04",
+        "encourageText": "Almost there! Count each hop carefully from 15.",
+        "encourageAudioKey": "feedback/encourage-p2m-as20-04"
+      },
+      "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
+      "type": "number-line-hop",
+      "min": 0,
+      "max": 20,
+      "startNumber": 15,
+      "operation": "subtract",
+      "hops": 4,
+      "targetNumber": 11,
+      "hopperVisual": {
+        "emoji": "🚀",
+        "label": "rockets",
+        "audioKey": "object/rocket"
+      }
+    },
+    {
+      "id": "p2m-as20-05",
+      "skillId": "ccea-p2-num-add-sub-within-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Start on 18 and hop back 6!",
+        "audioKey": "prompt/p2m-as20-05",
+        "visualCueEmoji": "⭐"
+      },
+      "hint": {
+        "text": "Count 6 hops backwards from 18.",
+        "audioKey": "hint/p2m-as20-05"
+      },
+      "feedback": {
+        "correctText": "Super hopping! 18 − 6 = 12!",
+        "correctAudioKey": "feedback/correct-p2m-as20-05",
+        "encourageText": "Almost there! Count each hop carefully from 18.",
+        "encourageAudioKey": "feedback/encourage-p2m-as20-05"
+      },
+      "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
+      "type": "number-line-hop",
+      "min": 0,
+      "max": 20,
+      "startNumber": 18,
+      "operation": "subtract",
+      "hops": 6,
+      "targetNumber": 12,
+      "hopperVisual": {
+        "emoji": "⭐",
+        "label": "stars",
+        "audioKey": "object/star"
+      }
+    },
+    {
+      "id": "p2m-as20-06",
+      "skillId": "ccea-p2-num-add-sub-within-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Start on 20 and hop back 5!",
+        "audioKey": "prompt/p2m-as20-06",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "Count 5 hops backwards from 20.",
+        "audioKey": "hint/p2m-as20-06"
+      },
+      "feedback": {
+        "correctText": "Super hopping! 20 − 5 = 15!",
+        "correctAudioKey": "feedback/correct-p2m-as20-06",
+        "encourageText": "Almost there! Count each hop carefully from 20.",
+        "encourageAudioKey": "feedback/encourage-p2m-as20-06"
+      },
+      "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
+      "type": "number-line-hop",
+      "min": 0,
+      "max": 20,
+      "startNumber": 20,
+      "operation": "subtract",
+      "hops": 5,
+      "targetNumber": 15,
+      "hopperVisual": {
+        "emoji": "🦕",
+        "label": "dinosaurs",
+        "audioKey": "object/dino"
+      }
+    },
+    {
+      "id": "p2m-as20-07",
+      "skillId": "ccea-p2-num-add-sub-within-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "9 and how many more make 14?",
+        "audioKey": "prompt/p2m-as20-07",
+        "visualCueEmoji": "🦊"
+      },
+      "hint": {
+        "text": "Start at 9 and count on your fingers up to 14.",
+        "audioKey": "hint/p2m-as20-07"
+      },
+      "feedback": {
+        "correctText": "Yes! 9 + 5 = 14!",
+        "correctAudioKey": "feedback/correct-p2m-as20-07",
+        "encourageText": "Have another go — count up from 9 to 14.",
+        "encourageAudioKey": "feedback/encourage-p2m-as20-07"
+      },
+      "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
+      "type": "number-bond",
+      "whole": 14,
+      "givenPart": 9,
+      "missingPart": 5,
+      "counterVisual": {
+        "emoji": "🦊",
+        "label": "foxes",
+        "colour": "#F97316",
+        "audioKey": "object/fox"
+      },
+      "options": [
+        {
+          "id": "n-3",
+          "label": "3",
+          "displayText": "3",
+          "audioKey": "number/3"
+        },
+        {
+          "id": "n-4",
+          "label": "4",
+          "displayText": "4",
+          "audioKey": "number/4"
+        },
+        {
+          "id": "n-5",
+          "label": "5",
+          "displayText": "5",
+          "audioKey": "number/5"
+        },
+        {
+          "id": "n-6",
+          "label": "6",
+          "displayText": "6",
+          "audioKey": "number/6"
+        }
+      ],
+      "correctOptionId": "n-5"
+    },
+    {
+      "id": "p2m-as20-08",
+      "skillId": "ccea-p2-num-add-sub-within-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "10 and how many more make 16?",
+        "audioKey": "prompt/p2m-as20-08",
+        "visualCueEmoji": "🚀"
+      },
+      "hint": {
+        "text": "Start at 10 and count on your fingers up to 16.",
+        "audioKey": "hint/p2m-as20-08"
+      },
+      "feedback": {
+        "correctText": "Yes! 10 + 6 = 16!",
+        "correctAudioKey": "feedback/correct-p2m-as20-08",
+        "encourageText": "Have another go — count up from 10 to 16.",
+        "encourageAudioKey": "feedback/encourage-p2m-as20-08"
+      },
+      "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
+      "type": "number-bond",
+      "whole": 16,
+      "givenPart": 10,
+      "missingPart": 6,
+      "counterVisual": {
+        "emoji": "🚀",
+        "label": "rockets",
+        "colour": "#0284C7",
+        "audioKey": "object/rocket"
+      },
+      "options": [
+        {
+          "id": "n-4",
+          "label": "4",
+          "displayText": "4",
+          "audioKey": "number/4"
+        },
+        {
+          "id": "n-5",
+          "label": "5",
+          "displayText": "5",
+          "audioKey": "number/5"
+        },
+        {
+          "id": "n-6",
+          "label": "6",
+          "displayText": "6",
+          "audioKey": "number/6"
+        },
+        {
+          "id": "n-7",
+          "label": "7",
+          "displayText": "7",
+          "audioKey": "number/7"
+        }
+      ],
+      "correctOptionId": "n-6"
+    },
+    {
+      "id": "p2m-as20-09",
+      "skillId": "ccea-p2-num-add-sub-within-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "12 and how many more make 18?",
+        "audioKey": "prompt/p2m-as20-09",
+        "visualCueEmoji": "⭐"
+      },
+      "hint": {
+        "text": "Start at 12 and count on your fingers up to 18.",
+        "audioKey": "hint/p2m-as20-09"
+      },
+      "feedback": {
+        "correctText": "Yes! 12 + 6 = 18!",
+        "correctAudioKey": "feedback/correct-p2m-as20-09",
+        "encourageText": "Have another go — count up from 12 to 18.",
+        "encourageAudioKey": "feedback/encourage-p2m-as20-09"
+      },
+      "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
+      "type": "number-bond",
+      "whole": 18,
+      "givenPart": 12,
+      "missingPart": 6,
+      "counterVisual": {
+        "emoji": "⭐",
+        "label": "stars",
+        "colour": "#F59E0B",
+        "audioKey": "object/star"
+      },
+      "options": [
+        {
+          "id": "n-4",
+          "label": "4",
+          "displayText": "4",
+          "audioKey": "number/4"
+        },
+        {
+          "id": "n-5",
+          "label": "5",
+          "displayText": "5",
+          "audioKey": "number/5"
+        },
+        {
+          "id": "n-6",
+          "label": "6",
+          "displayText": "6",
+          "audioKey": "number/6"
+        },
+        {
+          "id": "n-7",
+          "label": "7",
+          "displayText": "7",
+          "audioKey": "number/7"
+        }
+      ],
+      "correctOptionId": "n-6"
+    },
+    {
+      "id": "p2m-as20-10",
+      "skillId": "ccea-p2-num-add-sub-within-20",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "13 and how many more make 20?",
+        "audioKey": "prompt/p2m-as20-10",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "Start at 13 and count on your fingers up to 20.",
+        "audioKey": "hint/p2m-as20-10"
+      },
+      "feedback": {
+        "correctText": "Yes! 13 + 7 = 20!",
+        "correctAudioKey": "feedback/correct-p2m-as20-10",
+        "encourageText": "Have another go — count up from 13 to 20.",
+        "encourageAudioKey": "feedback/encourage-p2m-as20-10"
+      },
+      "offlineParentTip": "Use snack time for quick number stories: 'We have 12 blueberries and you ate 3 — how many are left on your plate?'",
+      "type": "number-bond",
+      "whole": 20,
+      "givenPart": 13,
+      "missingPart": 7,
+      "counterVisual": {
+        "emoji": "🦕",
+        "label": "dinosaurs",
+        "colour": "#10B981",
+        "audioKey": "object/dino"
+      },
+      "options": [
+        {
+          "id": "n-5",
+          "label": "5",
+          "displayText": "5",
+          "audioKey": "number/5"
+        },
+        {
+          "id": "n-6",
+          "label": "6",
+          "displayText": "6",
+          "audioKey": "number/6"
+        },
+        {
+          "id": "n-7",
+          "label": "7",
+          "displayText": "7",
+          "audioKey": "number/7"
+        },
+        {
+          "id": "n-8",
+          "label": "8",
+          "displayText": "8",
+          "audioKey": "number/8"
+        }
+      ],
+      "correctOptionId": "n-7"
+    },
+    {
+      "id": "p2m-c20-01",
+      "skillId": "ccea-p2-num-coins-to-20p",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Drop UK coins into the jar to pay 6p for the space sticker!",
+        "audioKey": "prompt/p2m-c20-01",
+        "visualCueEmoji": "🪙"
+      },
+      "hint": {
+        "text": "Try combining coins like 5p + 1p to make 6p.",
+        "audioKey": "hint/p2m-c20-01"
+      },
+      "feedback": {
+        "correctText": "Lovely! You made 6p with UK coins!",
+        "correctAudioKey": "feedback/correct-p2m-c20-01",
+        "encourageText": "Check the total in your coin jar — we need 6p.",
+        "encourageAudioKey": "feedback/encourage-p2m-c20-01"
+      },
+      "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
+      "type": "uk-coin-match",
+      "targetPence": 6,
+      "coinsShown": [
+        "5p",
+        "1p"
+      ],
+      "options": [
+        {
+          "id": "coin-4p",
+          "label": "4p",
+          "displayText": "4p",
+          "audioKey": "coin/4p"
+        },
+        {
+          "id": "coin-5p",
+          "label": "5p",
+          "displayText": "5p",
+          "audioKey": "coin/5p"
+        },
+        {
+          "id": "coin-6p",
+          "label": "6p",
+          "displayText": "6p",
+          "audioKey": "coin/6p"
+        },
+        {
+          "id": "coin-7p",
+          "label": "7p",
+          "displayText": "7p",
+          "audioKey": "coin/7p"
+        }
+      ],
+      "correctOptionId": "coin-6p"
+    },
+    {
+      "id": "p2m-c20-02",
+      "skillId": "ccea-p2-num-coins-to-20p",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Drop UK coins into the jar to pay 7p for the dino ruler!",
+        "audioKey": "prompt/p2m-c20-02",
+        "visualCueEmoji": "🪙"
+      },
+      "hint": {
+        "text": "Try combining coins like 5p + 2p to make 7p.",
+        "audioKey": "hint/p2m-c20-02"
+      },
+      "feedback": {
+        "correctText": "Lovely! You made 7p with UK coins!",
+        "correctAudioKey": "feedback/correct-p2m-c20-02",
+        "encourageText": "Check the total in your coin jar — we need 7p.",
+        "encourageAudioKey": "feedback/encourage-p2m-c20-02"
+      },
+      "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
+      "type": "uk-coin-match",
+      "targetPence": 7,
+      "coinsShown": [
+        "5p",
+        "2p"
+      ],
+      "options": [
+        {
+          "id": "coin-5p",
+          "label": "5p",
+          "displayText": "5p",
+          "audioKey": "coin/5p"
+        },
+        {
+          "id": "coin-6p",
+          "label": "6p",
+          "displayText": "6p",
+          "audioKey": "coin/6p"
+        },
+        {
+          "id": "coin-7p",
+          "label": "7p",
+          "displayText": "7p",
+          "audioKey": "coin/7p"
+        },
+        {
+          "id": "coin-8p",
+          "label": "8p",
+          "displayText": "8p",
+          "audioKey": "coin/8p"
+        }
+      ],
+      "correctOptionId": "coin-7p"
+    },
+    {
+      "id": "p2m-c20-03",
+      "skillId": "ccea-p2-num-coins-to-20p",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Drop UK coins into the jar to pay 8p for the puffin rubber!",
+        "audioKey": "prompt/p2m-c20-03",
+        "visualCueEmoji": "🪙"
+      },
+      "hint": {
+        "text": "Try combining coins like 5p + 2p + 1p to make 8p.",
+        "audioKey": "hint/p2m-c20-03"
+      },
+      "feedback": {
+        "correctText": "Lovely! You made 8p with UK coins!",
+        "correctAudioKey": "feedback/correct-p2m-c20-03",
+        "encourageText": "Check the total in your coin jar — we need 8p.",
+        "encourageAudioKey": "feedback/encourage-p2m-c20-03"
+      },
+      "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
+      "type": "uk-coin-match",
+      "targetPence": 8,
+      "coinsShown": [
+        "5p",
+        "2p",
+        "1p"
+      ],
+      "options": [
+        {
+          "id": "coin-6p",
+          "label": "6p",
+          "displayText": "6p",
+          "audioKey": "coin/6p"
+        },
+        {
+          "id": "coin-7p",
+          "label": "7p",
+          "displayText": "7p",
+          "audioKey": "coin/7p"
+        },
+        {
+          "id": "coin-8p",
+          "label": "8p",
+          "displayText": "8p",
+          "audioKey": "coin/8p"
+        },
+        {
+          "id": "coin-9p",
+          "label": "9p",
+          "displayText": "9p",
+          "audioKey": "coin/9p"
+        }
+      ],
+      "correctOptionId": "coin-8p"
+    },
+    {
+      "id": "p2m-c20-04",
+      "skillId": "ccea-p2-num-coins-to-20p",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Drop UK coins into the jar to pay 10p for the bus pass!",
+        "audioKey": "prompt/p2m-c20-04",
+        "visualCueEmoji": "🪙"
+      },
+      "hint": {
+        "text": "Try combining coins like 5p + 5p to make 10p.",
+        "audioKey": "hint/p2m-c20-04"
+      },
+      "feedback": {
+        "correctText": "Lovely! You made 10p with UK coins!",
+        "correctAudioKey": "feedback/correct-p2m-c20-04",
+        "encourageText": "Check the total in your coin jar — we need 10p.",
+        "encourageAudioKey": "feedback/encourage-p2m-c20-04"
+      },
+      "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
+      "type": "uk-coin-match",
+      "targetPence": 10,
+      "coinsShown": [
+        "5p",
+        "5p"
+      ],
+      "options": [
+        {
+          "id": "coin-8p",
+          "label": "8p",
+          "displayText": "8p",
+          "audioKey": "coin/8p"
+        },
+        {
+          "id": "coin-9p",
+          "label": "9p",
+          "displayText": "9p",
+          "audioKey": "coin/9p"
+        },
+        {
+          "id": "coin-10p",
+          "label": "10p",
+          "displayText": "10p",
+          "audioKey": "coin/10p"
+        },
+        {
+          "id": "coin-11p",
+          "label": "11p",
+          "displayText": "11p",
+          "audioKey": "coin/11p"
+        }
+      ],
+      "correctOptionId": "coin-10p"
+    },
+    {
+      "id": "p2m-c20-05",
+      "skillId": "ccea-p2-num-coins-to-20p",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Drop UK coins into the jar to pay 11p for the comet badge!",
+        "audioKey": "prompt/p2m-c20-05",
+        "visualCueEmoji": "🪙"
+      },
+      "hint": {
+        "text": "Try combining coins like 10p + 1p to make 11p.",
+        "audioKey": "hint/p2m-c20-05"
+      },
+      "feedback": {
+        "correctText": "Lovely! You made 11p with UK coins!",
+        "correctAudioKey": "feedback/correct-p2m-c20-05",
+        "encourageText": "Check the total in your coin jar — we need 11p.",
+        "encourageAudioKey": "feedback/encourage-p2m-c20-05"
+      },
+      "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
+      "type": "uk-coin-match",
+      "targetPence": 11,
+      "coinsShown": [
+        "10p",
+        "1p"
+      ],
+      "options": [
+        {
+          "id": "coin-9p",
+          "label": "9p",
+          "displayText": "9p",
+          "audioKey": "coin/9p"
+        },
+        {
+          "id": "coin-10p",
+          "label": "10p",
+          "displayText": "10p",
+          "audioKey": "coin/10p"
+        },
+        {
+          "id": "coin-11p",
+          "label": "11p",
+          "displayText": "11p",
+          "audioKey": "coin/11p"
+        },
+        {
+          "id": "coin-12p",
+          "label": "12p",
+          "displayText": "12p",
+          "audioKey": "coin/12p"
+        }
+      ],
+      "correctOptionId": "coin-11p"
+    },
+    {
+      "id": "p2m-c20-06",
+      "skillId": "ccea-p2-num-coins-to-20p",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Drop UK coins into the jar to pay 12p for the fossil kit!",
+        "audioKey": "prompt/p2m-c20-06",
+        "visualCueEmoji": "🪙"
+      },
+      "hint": {
+        "text": "Try combining coins like 10p + 2p to make 12p.",
+        "audioKey": "hint/p2m-c20-06"
+      },
+      "feedback": {
+        "correctText": "Lovely! You made 12p with UK coins!",
+        "correctAudioKey": "feedback/correct-p2m-c20-06",
+        "encourageText": "Check the total in your coin jar — we need 12p.",
+        "encourageAudioKey": "feedback/encourage-p2m-c20-06"
+      },
+      "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
+      "type": "uk-coin-match",
+      "targetPence": 12,
+      "coinsShown": [
+        "10p",
+        "2p"
+      ],
+      "options": [
+        {
+          "id": "coin-10p",
+          "label": "10p",
+          "displayText": "10p",
+          "audioKey": "coin/10p"
+        },
+        {
+          "id": "coin-11p",
+          "label": "11p",
+          "displayText": "11p",
+          "audioKey": "coin/11p"
+        },
+        {
+          "id": "coin-12p",
+          "label": "12p",
+          "displayText": "12p",
+          "audioKey": "coin/12p"
+        },
+        {
+          "id": "coin-13p",
+          "label": "13p",
+          "displayText": "13p",
+          "audioKey": "coin/13p"
+        }
+      ],
+      "correctOptionId": "coin-12p"
+    },
+    {
+      "id": "p2m-c20-07",
+      "skillId": "ccea-p2-num-coins-to-20p",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Drop UK coins into the jar to pay 14p for the fox notebook!",
+        "audioKey": "prompt/p2m-c20-07",
+        "visualCueEmoji": "🪙"
+      },
+      "hint": {
+        "text": "Try combining coins like 10p + 2p + 2p to make 14p.",
+        "audioKey": "hint/p2m-c20-07"
+      },
+      "feedback": {
+        "correctText": "Lovely! You made 14p with UK coins!",
+        "correctAudioKey": "feedback/correct-p2m-c20-07",
+        "encourageText": "Check the total in your coin jar — we need 14p.",
+        "encourageAudioKey": "feedback/encourage-p2m-c20-07"
+      },
+      "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
+      "type": "uk-coin-match",
+      "targetPence": 14,
+      "coinsShown": [
+        "10p",
+        "2p",
+        "2p"
+      ],
+      "options": [
+        {
+          "id": "coin-12p",
+          "label": "12p",
+          "displayText": "12p",
+          "audioKey": "coin/12p"
+        },
+        {
+          "id": "coin-13p",
+          "label": "13p",
+          "displayText": "13p",
+          "audioKey": "coin/13p"
+        },
+        {
+          "id": "coin-14p",
+          "label": "14p",
+          "displayText": "14p",
+          "audioKey": "coin/14p"
+        },
+        {
+          "id": "coin-15p",
+          "label": "15p",
+          "displayText": "15p",
+          "audioKey": "coin/15p"
+        }
+      ],
+      "correctOptionId": "coin-14p"
+    },
+    {
+      "id": "p2m-c20-08",
+      "skillId": "ccea-p2-num-coins-to-20p",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Drop UK coins into the jar to pay 15p for the train whistle!",
+        "audioKey": "prompt/p2m-c20-08",
+        "visualCueEmoji": "🪙"
+      },
+      "hint": {
+        "text": "Try combining coins like 10p + 5p to make 15p.",
+        "audioKey": "hint/p2m-c20-08"
+      },
+      "feedback": {
+        "correctText": "Lovely! You made 15p with UK coins!",
+        "correctAudioKey": "feedback/correct-p2m-c20-08",
+        "encourageText": "Check the total in your coin jar — we need 15p.",
+        "encourageAudioKey": "feedback/encourage-p2m-c20-08"
+      },
+      "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
+      "type": "uk-coin-match",
+      "targetPence": 15,
+      "coinsShown": [
+        "10p",
+        "5p"
+      ],
+      "options": [
+        {
+          "id": "coin-13p",
+          "label": "13p",
+          "displayText": "13p",
+          "audioKey": "coin/13p"
+        },
+        {
+          "id": "coin-14p",
+          "label": "14p",
+          "displayText": "14p",
+          "audioKey": "coin/14p"
+        },
+        {
+          "id": "coin-15p",
+          "label": "15p",
+          "displayText": "15p",
+          "audioKey": "coin/15p"
+        },
+        {
+          "id": "coin-16p",
+          "label": "16p",
+          "displayText": "16p",
+          "audioKey": "coin/16p"
+        }
+      ],
+      "correctOptionId": "coin-15p"
+    },
+    {
+      "id": "p2m-c20-09",
+      "skillId": "ccea-p2-num-coins-to-20p",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Drop UK coins into the jar to pay 17p for the planet poster!",
+        "audioKey": "prompt/p2m-c20-09",
+        "visualCueEmoji": "🪙"
+      },
+      "hint": {
+        "text": "Try combining coins like 10p + 5p + 2p to make 17p.",
+        "audioKey": "hint/p2m-c20-09"
+      },
+      "feedback": {
+        "correctText": "Lovely! You made 17p with UK coins!",
+        "correctAudioKey": "feedback/correct-p2m-c20-09",
+        "encourageText": "Check the total in your coin jar — we need 17p.",
+        "encourageAudioKey": "feedback/encourage-p2m-c20-09"
+      },
+      "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
+      "type": "uk-coin-match",
+      "targetPence": 17,
+      "coinsShown": [
+        "10p",
+        "5p",
+        "2p"
+      ],
+      "options": [
+        {
+          "id": "coin-15p",
+          "label": "15p",
+          "displayText": "15p",
+          "audioKey": "coin/15p"
+        },
+        {
+          "id": "coin-16p",
+          "label": "16p",
+          "displayText": "16p",
+          "audioKey": "coin/16p"
+        },
+        {
+          "id": "coin-17p",
+          "label": "17p",
+          "displayText": "17p",
+          "audioKey": "coin/17p"
+        },
+        {
+          "id": "coin-18p",
+          "label": "18p",
+          "displayText": "18p",
+          "audioKey": "coin/18p"
+        }
+      ],
+      "correctOptionId": "coin-17p"
+    },
+    {
+      "id": "p2m-c20-10",
+      "skillId": "ccea-p2-num-coins-to-20p",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Drop UK coins into the jar to pay 20p for the golden telescope!",
+        "audioKey": "prompt/p2m-c20-10",
+        "visualCueEmoji": "🪙"
+      },
+      "hint": {
+        "text": "Try combining coins like 10p + 10p to make 20p.",
+        "audioKey": "hint/p2m-c20-10"
+      },
+      "feedback": {
+        "correctText": "Lovely! You made 20p with UK coins!",
+        "correctAudioKey": "feedback/correct-p2m-c20-10",
+        "encourageText": "Check the total in your coin jar — we need 20p.",
+        "encourageAudioKey": "feedback/encourage-p2m-c20-10"
+      },
+      "offlineParentTip": "Put a handful of 1p, 2p, 5p, and 10p coins in a bowl and challenge your child to find two different ways to make 10p or 15p.",
+      "type": "uk-coin-match",
+      "targetPence": 20,
+      "coinsShown": [
+        "10p",
+        "10p"
+      ],
+      "options": [
+        {
+          "id": "coin-17p",
+          "label": "17p",
+          "displayText": "17p",
+          "audioKey": "coin/17p"
+        },
+        {
+          "id": "coin-18p",
+          "label": "18p",
+          "displayText": "18p",
+          "audioKey": "coin/18p"
+        },
+        {
+          "id": "coin-19p",
+          "label": "19p",
+          "displayText": "19p",
+          "audioKey": "coin/19p"
+        },
+        {
+          "id": "coin-20p",
+          "label": "20p",
+          "displayText": "20p",
+          "audioKey": "coin/20p"
+        }
+      ],
+      "correctOptionId": "coin-20p"
+    },
+    {
+      "id": "p2m-3d-01",
+      "skillId": "ccea-p2-num-shapes-3d",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "This space cargo box has 6 flat square faces! Sort the cube into the bucket!",
+        "audioKey": "prompt/p2m-3d-01",
+        "visualCueEmoji": "🔷"
+      },
+      "hint": {
+        "text": "Look closely at the sides and corners to spot the cube.",
+        "audioKey": "hint/p2m-3d-01"
+      },
+      "feedback": {
+        "correctText": "Brilliant shape spotting! That is a cube!",
+        "correctAudioKey": "feedback/correct-p2m-3d-01",
+        "encourageText": "Good try! Check the shape name and have another look.",
+        "encourageAudioKey": "feedback/encourage-p2m-3d-01"
+      },
+      "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
+      "type": "shape-sort",
+      "targetShape": "cube",
+      "options": [
+        {
+          "id": "shape-cube",
+          "label": "cube",
+          "displayText": "cube",
+          "audioKey": "shape/cube"
+        },
+        {
+          "id": "shape-sphere",
+          "label": "sphere",
+          "displayText": "sphere",
+          "audioKey": "shape/sphere"
+        },
+        {
+          "id": "shape-cylinder",
+          "label": "cylinder",
+          "displayText": "cylinder",
+          "audioKey": "shape/cylinder"
+        },
+        {
+          "id": "shape-cone",
+          "label": "cone",
+          "displayText": "cone",
+          "audioKey": "shape/cone"
+        }
+      ],
+      "correctOptionId": "shape-cube"
+    },
+    {
+      "id": "p2m-3d-02",
+      "skillId": "ccea-p2-num-shapes-3d",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "A bouncy planet rolls in every direction! Sort the sphere into the bucket!",
+        "audioKey": "prompt/p2m-3d-02",
+        "visualCueEmoji": "🔷"
+      },
+      "hint": {
+        "text": "Look closely at the sides and corners to spot the sphere.",
+        "audioKey": "hint/p2m-3d-02"
+      },
+      "feedback": {
+        "correctText": "Brilliant shape spotting! That is a sphere!",
+        "correctAudioKey": "feedback/correct-p2m-3d-02",
+        "encourageText": "Good try! Check the shape name and have another look.",
+        "encourageAudioKey": "feedback/encourage-p2m-3d-02"
+      },
+      "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
+      "type": "shape-sort",
+      "targetShape": "sphere",
+      "options": [
+        {
+          "id": "shape-sphere",
+          "label": "sphere",
+          "displayText": "sphere",
+          "audioKey": "shape/sphere"
+        },
+        {
+          "id": "shape-cylinder",
+          "label": "cylinder",
+          "displayText": "cylinder",
+          "audioKey": "shape/cylinder"
+        },
+        {
+          "id": "shape-cone",
+          "label": "cone",
+          "displayText": "cone",
+          "audioKey": "shape/cone"
+        },
+        {
+          "id": "shape-cube",
+          "label": "cube",
+          "displayText": "cube",
+          "audioKey": "shape/cube"
+        }
+      ],
+      "correctOptionId": "shape-sphere"
+    },
+    {
+      "id": "p2m-3d-03",
+      "skillId": "ccea-p2-num-shapes-3d",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "animals",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "A baked-bean tin can roll and stack! Sort the cylinder into the bucket!",
+        "audioKey": "prompt/p2m-3d-03",
+        "visualCueEmoji": "🔷"
+      },
+      "hint": {
+        "text": "Look closely at the sides and corners to spot the cylinder.",
+        "audioKey": "hint/p2m-3d-03"
+      },
+      "feedback": {
+        "correctText": "Brilliant shape spotting! That is a cylinder!",
+        "correctAudioKey": "feedback/correct-p2m-3d-03",
+        "encourageText": "Good try! Check the shape name and have another look.",
+        "encourageAudioKey": "feedback/encourage-p2m-3d-03"
+      },
+      "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
+      "type": "shape-sort",
+      "targetShape": "cylinder",
+      "options": [
+        {
+          "id": "shape-cylinder",
+          "label": "cylinder",
+          "displayText": "cylinder",
+          "audioKey": "shape/cylinder"
+        },
+        {
+          "id": "shape-cone",
+          "label": "cone",
+          "displayText": "cone",
+          "audioKey": "shape/cone"
+        },
+        {
+          "id": "shape-cube",
+          "label": "cube",
+          "displayText": "cube",
+          "audioKey": "shape/cube"
+        },
+        {
+          "id": "shape-sphere",
+          "label": "sphere",
+          "displayText": "sphere",
+          "audioKey": "shape/sphere"
+        }
+      ],
+      "correctOptionId": "shape-cylinder"
+    },
+    {
+      "id": "p2m-3d-04",
+      "skillId": "ccea-p2-num-shapes-3d",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Look at the pointy road traffic cone! Sort the cone into the bucket!",
+        "audioKey": "prompt/p2m-3d-04",
+        "visualCueEmoji": "🔷"
+      },
+      "hint": {
+        "text": "Look closely at the sides and corners to spot the cone.",
+        "audioKey": "hint/p2m-3d-04"
+      },
+      "feedback": {
+        "correctText": "Brilliant shape spotting! That is a cone!",
+        "correctAudioKey": "feedback/correct-p2m-3d-04",
+        "encourageText": "Good try! Check the shape name and have another look.",
+        "encourageAudioKey": "feedback/encourage-p2m-3d-04"
+      },
+      "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
+      "type": "shape-sort",
+      "targetShape": "cone",
+      "options": [
+        {
+          "id": "shape-cone",
+          "label": "cone",
+          "displayText": "cone",
+          "audioKey": "shape/cone"
+        },
+        {
+          "id": "shape-cube",
+          "label": "cube",
+          "displayText": "cube",
+          "audioKey": "shape/cube"
+        },
+        {
+          "id": "shape-sphere",
+          "label": "sphere",
+          "displayText": "sphere",
+          "audioKey": "shape/sphere"
+        },
+        {
+          "id": "shape-cylinder",
+          "label": "cylinder",
+          "displayText": "cylinder",
+          "audioKey": "shape/cylinder"
+        }
+      ],
+      "correctOptionId": "shape-cone"
+    },
+    {
+      "id": "p2m-3d-05",
+      "skillId": "ccea-p2-num-shapes-3d",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Spot the 3D dice block! Sort the cube into the bucket!",
+        "audioKey": "prompt/p2m-3d-05",
+        "visualCueEmoji": "🔷"
+      },
+      "hint": {
+        "text": "Look closely at the sides and corners to spot the cube.",
+        "audioKey": "hint/p2m-3d-05"
+      },
+      "feedback": {
+        "correctText": "Brilliant shape spotting! That is a cube!",
+        "correctAudioKey": "feedback/correct-p2m-3d-05",
+        "encourageText": "Good try! Check the shape name and have another look.",
+        "encourageAudioKey": "feedback/encourage-p2m-3d-05"
+      },
+      "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
+      "type": "shape-sort",
+      "targetShape": "cube",
+      "options": [
+        {
+          "id": "shape-cube",
+          "label": "cube",
+          "displayText": "cube",
+          "audioKey": "shape/cube"
+        },
+        {
+          "id": "shape-sphere",
+          "label": "sphere",
+          "displayText": "sphere",
+          "audioKey": "shape/sphere"
+        },
+        {
+          "id": "shape-cylinder",
+          "label": "cylinder",
+          "displayText": "cylinder",
+          "audioKey": "shape/cylinder"
+        },
+        {
+          "id": "shape-cone",
+          "label": "cone",
+          "displayText": "cone",
+          "audioKey": "shape/cone"
+        }
+      ],
+      "correctOptionId": "shape-cube"
+    },
+    {
+      "id": "p2m-3d-06",
+      "skillId": "ccea-p2-num-shapes-3d",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Find the round football shape! Sort the sphere into the bucket!",
+        "audioKey": "prompt/p2m-3d-06",
+        "visualCueEmoji": "🔷"
+      },
+      "hint": {
+        "text": "Look closely at the sides and corners to spot the sphere.",
+        "audioKey": "hint/p2m-3d-06"
+      },
+      "feedback": {
+        "correctText": "Brilliant shape spotting! That is a sphere!",
+        "correctAudioKey": "feedback/correct-p2m-3d-06",
+        "encourageText": "Good try! Check the shape name and have another look.",
+        "encourageAudioKey": "feedback/encourage-p2m-3d-06"
+      },
+      "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
+      "type": "shape-sort",
+      "targetShape": "sphere",
+      "options": [
+        {
+          "id": "shape-sphere",
+          "label": "sphere",
+          "displayText": "sphere",
+          "audioKey": "shape/sphere"
+        },
+        {
+          "id": "shape-cylinder",
+          "label": "cylinder",
+          "displayText": "cylinder",
+          "audioKey": "shape/cylinder"
+        },
+        {
+          "id": "shape-cone",
+          "label": "cone",
+          "displayText": "cone",
+          "audioKey": "shape/cone"
+        },
+        {
+          "id": "shape-cube",
+          "label": "cube",
+          "displayText": "cube",
+          "audioKey": "shape/cube"
+        }
+      ],
+      "correctOptionId": "shape-sphere"
+    },
+    {
+      "id": "p2m-3d-07",
+      "skillId": "ccea-p2-num-shapes-3d",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Find the rocket fuel drum! Sort the cylinder into the bucket!",
+        "audioKey": "prompt/p2m-3d-07",
+        "visualCueEmoji": "🔷"
+      },
+      "hint": {
+        "text": "Look closely at the sides and corners to spot the cylinder.",
+        "audioKey": "hint/p2m-3d-07"
+      },
+      "feedback": {
+        "correctText": "Brilliant shape spotting! That is a cylinder!",
+        "correctAudioKey": "feedback/correct-p2m-3d-07",
+        "encourageText": "Good try! Check the shape name and have another look.",
+        "encourageAudioKey": "feedback/encourage-p2m-3d-07"
+      },
+      "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
+      "type": "shape-sort",
+      "targetShape": "cylinder",
+      "options": [
+        {
+          "id": "shape-cylinder",
+          "label": "cylinder",
+          "displayText": "cylinder",
+          "audioKey": "shape/cylinder"
+        },
+        {
+          "id": "shape-cone",
+          "label": "cone",
+          "displayText": "cone",
+          "audioKey": "shape/cone"
+        },
+        {
+          "id": "shape-cube",
+          "label": "cube",
+          "displayText": "cube",
+          "audioKey": "shape/cube"
+        },
+        {
+          "id": "shape-sphere",
+          "label": "sphere",
+          "displayText": "sphere",
+          "audioKey": "shape/sphere"
+        }
+      ],
+      "correctOptionId": "shape-cylinder"
+    },
+    {
+      "id": "p2m-3d-08",
+      "skillId": "ccea-p2-num-shapes-3d",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Spot the pointy birthday party hat! Sort the cone into the bucket!",
+        "audioKey": "prompt/p2m-3d-08",
+        "visualCueEmoji": "🔷"
+      },
+      "hint": {
+        "text": "Look closely at the sides and corners to spot the cone.",
+        "audioKey": "hint/p2m-3d-08"
+      },
+      "feedback": {
+        "correctText": "Brilliant shape spotting! That is a cone!",
+        "correctAudioKey": "feedback/correct-p2m-3d-08",
+        "encourageText": "Good try! Check the shape name and have another look.",
+        "encourageAudioKey": "feedback/encourage-p2m-3d-08"
+      },
+      "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
+      "type": "shape-sort",
+      "targetShape": "cone",
+      "options": [
+        {
+          "id": "shape-cone",
+          "label": "cone",
+          "displayText": "cone",
+          "audioKey": "shape/cone"
+        },
+        {
+          "id": "shape-cube",
+          "label": "cube",
+          "displayText": "cube",
+          "audioKey": "shape/cube"
+        },
+        {
+          "id": "shape-sphere",
+          "label": "sphere",
+          "displayText": "sphere",
+          "audioKey": "shape/sphere"
+        },
+        {
+          "id": "shape-cylinder",
+          "label": "cylinder",
+          "displayText": "cylinder",
+          "audioKey": "shape/cylinder"
+        }
+      ],
+      "correctOptionId": "shape-cone"
+    },
+    {
+      "id": "p2m-3d-09",
+      "skillId": "ccea-p2-num-shapes-3d",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Find the wooden building block! Sort the cube into the bucket!",
+        "audioKey": "prompt/p2m-3d-09",
+        "visualCueEmoji": "🔷"
+      },
+      "hint": {
+        "text": "Look closely at the sides and corners to spot the cube.",
+        "audioKey": "hint/p2m-3d-09"
+      },
+      "feedback": {
+        "correctText": "Brilliant shape spotting! That is a cube!",
+        "correctAudioKey": "feedback/correct-p2m-3d-09",
+        "encourageText": "Good try! Check the shape name and have another look.",
+        "encourageAudioKey": "feedback/encourage-p2m-3d-09"
+      },
+      "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
+      "type": "shape-sort",
+      "targetShape": "cube",
+      "options": [
+        {
+          "id": "shape-cube",
+          "label": "cube",
+          "displayText": "cube",
+          "audioKey": "shape/cube"
+        },
+        {
+          "id": "shape-sphere",
+          "label": "sphere",
+          "displayText": "sphere",
+          "audioKey": "shape/sphere"
+        },
+        {
+          "id": "shape-cylinder",
+          "label": "cylinder",
+          "displayText": "cylinder",
+          "audioKey": "shape/cylinder"
+        },
+        {
+          "id": "shape-cone",
+          "label": "cone",
+          "displayText": "cone",
+          "audioKey": "shape/cone"
+        }
+      ],
+      "correctOptionId": "shape-cube"
+    },
+    {
+      "id": "p2m-3d-10",
+      "skillId": "ccea-p2-num-shapes-3d",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Spot the rolling log bridge! Sort the cylinder into the bucket!",
+        "audioKey": "prompt/p2m-3d-10",
+        "visualCueEmoji": "🔷"
+      },
+      "hint": {
+        "text": "Look closely at the sides and corners to spot the cylinder.",
+        "audioKey": "hint/p2m-3d-10"
+      },
+      "feedback": {
+        "correctText": "Brilliant shape spotting! That is a cylinder!",
+        "correctAudioKey": "feedback/correct-p2m-3d-10",
+        "encourageText": "Good try! Check the shape name and have another look.",
+        "encourageAudioKey": "feedback/encourage-p2m-3d-10"
+      },
+      "offlineParentTip": "While unpacking the shopping, sort items by 3D shape: baked-bean tins are cylinders, oranges are spheres, and dice or small boxes are cubes.",
+      "type": "shape-sort",
+      "targetShape": "cylinder",
+      "options": [
+        {
+          "id": "shape-sphere",
+          "label": "sphere",
+          "displayText": "sphere",
+          "audioKey": "shape/sphere"
+        },
+        {
+          "id": "shape-cylinder",
+          "label": "cylinder",
+          "displayText": "cylinder",
+          "audioKey": "shape/cylinder"
+        },
+        {
+          "id": "shape-cone",
+          "label": "cone",
+          "displayText": "cone",
+          "audioKey": "shape/cone"
+        },
+        {
+          "id": "shape-cube",
+          "label": "cube",
+          "displayText": "cube",
+          "audioKey": "shape/cube"
+        }
+      ],
+      "correctOptionId": "shape-cylinder"
+    }
+  ]
+}

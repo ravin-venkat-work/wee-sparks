@@ -65,13 +65,13 @@ export function ElkoninSoundBoxes({
                     ? "bg-emerald-100 text-emerald-950 ring-4 ring-emerald-400"
                     : placed
                     ? "bg-indigo-100 text-indigo-950 hover:bg-indigo-200"
-                    : "bg-white text-slate-300 hover:bg-sky-50"
+                    : "bg-white text-slate-500 hover:bg-sky-50"
                 }`}
               >
                 {placed ? (
                   <span className="animate-star-pop">{placed.grapheme}</span>
                 ) : (
-                  <span className="text-4xl font-bold opacity-35">
+                  <span className="text-4xl font-bold">
                     {guide ?? "•"}
                   </span>
                 )}

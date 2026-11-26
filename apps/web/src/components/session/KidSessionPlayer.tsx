@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
+import { AnimatePresence, motion } from "motion/react";
 import {
   getMicroSkillById,
   type Exercise,
@@ -12,6 +13,7 @@ import {
   isSfxEnabled,
   playAudioKey,
   playSfx,
+  playSuccessThenPraise,
   preloadAudioKeys,
   setMusicEnabled,
   setSfxEnabled,
@@ -32,71 +34,47 @@ import {
 } from "@/lib/adaptive/mastery";
 import {
   composeAdaptiveSession,
-  type ComposedSession,
-  type SessionSlotRole,
   type YearGroupFilter,
 } from "@/lib/adaptive/sessionComposer";
 import {
   getLearnerLifetimeStars,
   syncAndUnlockStickers,
-  type StickerDefinition,
 } from "@/lib/stickers";
-import { AudioReplayButton } from "./AudioReplayButton";
+import { runIfParentGateUnlocked } from "@/lib/parentGate";
+import {
+  EXERCISE_CARD_VARIANTS,
+  SCREEN_TRANSITION_VARIANTS,
+} from "@/lib/motion";
+import {
+  AUTO_ADVANCE_DELAY_MS,
+  canAutoAdvance,
+  createInitialSessionState,
+  deriveMascotMood,
+  HINT_PULSE_INACTIVITY_MS,
+  sessionStateReducer,
+  shouldTrackHintInactivity,
+} from "@/lib/sessionStateMachine";
 import { StarProgressBar } from "./StarProgressBar";
-import { TapChoiceEngine } from "./TapChoiceEngine";
-import { PhonicsBuilderEngine } from "./PhonicsBuilderEngine";
-import { NumberLineEngine } from "./NumberLineEngine";
-import { DragSortEngine } from "./DragSortEngine";
-import { TraceCanvasEngine } from "./TraceCanvasEngine";
+import { ExerciseStage } from "./ExerciseStage";
+import { WelcomeScreen } from "./WelcomeScreen";
+import { ParentGateModal } from "./ParentGate";
 import { ParentBridgeModal } from "./ParentBridgeModal";
 import { PrintablePracticeSheet } from "./PrintablePracticeSheet";
 import { CelebrationStickerChest } from "./CelebrationStickerChest";
-import { SparkyMascot, type MascotMood } from "./SparkyMascot";
-import { ThemePicker } from "./ThemePicker";
+import { SparkyMascot } from "./SparkyMascot";
 
 interface KidSessionPlayerProps {
   exercises: readonly Exercise[];
   availableSkillIds: readonly MicroSkillId[];
 }
 
-const THEME_BADGE_STYLES: Record<Exercise["theme"], string> = {
-  space: "bg-indigo-100 text-indigo-900",
-  dinosaurs: "bg-emerald-100 text-emerald-900",
-  animals: "bg-amber-100 text-amber-900",
-  vehicles: "bg-rose-100 text-rose-900",
-};
-
-const SLOT_ROLE_BADGE: Record<
-  SessionSlotRole,
-  { label: string; className: string }
-> = {
-  warmup: {
-    label: "🌱 Warm-up",
-    className: "bg-amber-100 text-amber-900",
-  },
-  focus: {
-    label: "🎯 Focus",
-    className: "bg-sky-100 text-sky-900",
-  },
-  review: {
-    label: "🔁 Review",
-    className: "bg-emerald-100 text-emerald-900",
-  },
-};
-
-const YEAR_FILTER_OPTIONS: ReadonlyArray<{
-  id: YearGroupFilter;
-  label: string;
-}> = [
-  { id: "P1", label: "P1" },
-  { id: "P2", label: "P2" },
-  { id: "all", label: "All" },
-];
-
 /**
- * Tablet-first Kid Session Player for Northern Ireland CCEA Foundation Stage (P1–P2).
- * Features Giant's Causeway stepping-stone progress, Sound/Music toggles, P1/P2/All
- * stage switcher, Sticker Chest rewards in Dexie, and all 5 interactive engines.
+ * Child-first Kid Session Player with a clean Welcome -> Playing -> Celebrating flow.
+ * Powered by `sessionStateReducer` (`idle -> thinking/encourage -> correct -> advancing`):
+ * - Automatically advances after a correct answer and its spoken praise finish,
+ *   while letting children linger (replay audio) or tap the big icon-only Next anytime.
+ * - Pulses the icon-only 💡 hint button gently after 8 seconds of inactivity.
+ * - Keeps all grown-up settings and printing strictly behind ParentGate.
  */
 export function KidSessionPlayer({
   exercises,
@@ -109,51 +87,58 @@ export function KidSessionPlayer({
     useState<LearnerThemePreference>("all");
   const [sfxOn, setSfxOn] = useState(true);
   const [musicOn, setMusicOn] = useState(false);
+  const [showParentGateChallenge, setShowParentGateChallenge] = useState(false);
+  const [parentGateUnlocked, setParentGateUnlocked] = useState(false);
+  const [activityNonce, setActivityNonce] = useState(0);
 
-  const [session, setSession] = useState<ComposedSession>(() =>
-    composeAdaptiveSession({
-      exercises,
-      masteryRecords: [],
-      yearGroupFilter: "P1",
-      selectedTheme: "all",
-      sessionLength: 6,
-    })
+  const [state, dispatch] = useReducer(
+    sessionStateReducer,
+    exercises,
+    (initialExercises) =>
+      createInitialSessionState(
+        composeAdaptiveSession({
+          exercises: initialExercises,
+          masteryRecords: [],
+          yearGroupFilter: "P1",
+          selectedTheme: "all",
+          sessionLength: 6,
+        })
+      )
   );
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [earnedIndices, setEarnedIndices] = useState<Set<number>>(
-    () => new Set()
-  );
-  const [retriesOnCurrent, setRetriesOnCurrent] = useState(0);
-  const [hintUsedOnCurrent, setHintUsedOnCurrent] = useState(false);
-  const [feedbackState, setFeedbackState] = useState<
-    "idle" | "correct" | "encourage"
-  >("idle");
-  const [isThinking, setIsThinking] = useState(false);
-  const [isPromptSpeaking, setIsPromptSpeaking] = useState(false);
-
-  const [showParentBridge, setShowParentBridge] = useState(false);
-  const [showStickerModal, setShowStickerModal] = useState(false);
-  const [showCompleteScreen, setShowCompleteScreen] = useState(false);
-  const [newlyUnlockedStickers, setNewlyUnlockedStickers] = useState<
-    StickerDefinition[]
-  >([]);
-  const [lifetimeStars, setLifetimeStars] = useState(0);
 
   const startedAtRef = useRef<number>(Date.now());
-  const earnedIndicesRef = useRef<Set<number>>(earnedIndices);
-  earnedIndicesRef.current = earnedIndices;
   const sessionRequestIdRef = useRef(0);
   const solvedStepLockRef = useRef<string | null>(null);
   const advancingRef = useRef(false);
+  const autoAdvanceTimerRef = useRef<number | null>(null);
 
-  const activeItems = session.items;
-  const currentItem = activeItems[currentIndex] ?? activeItems[0];
-  const currentExercise: Exercise | undefined =
-    currentItem?.exercise ?? exercises[0];
+  const activeItems = state.session.items;
+  const currentItem = activeItems[state.currentIndex] ?? activeItems[0];
+  const currentExercise: Exercise | null =
+    currentItem?.exercise ?? exercises[0] ?? null;
   const currentSkill = currentExercise
     ? getMicroSkillById(currentExercise.skillId)
     : null;
-  const isCurrentSolved = earnedIndices.has(currentIndex);
+  const isCurrentSolved = state.earnedIndices.has(state.currentIndex);
+  const currentStepKey = currentExercise
+    ? `${state.currentIndex}:${currentExercise.id}`
+    : "";
+
+  const activeStepKeyRef = useRef(currentStepKey);
+  activeStepKeyRef.current = currentStepKey;
+
+  const stateRef = useRef(state);
+  stateRef.current = state;
+
+  const parentGateOpenRef = useRef(false);
+  parentGateOpenRef.current = parentGateUnlocked || showParentGateChallenge;
+
+  const clearAutoAdvanceTimer = useCallback(() => {
+    if (autoAdvanceTimerRef.current !== null && typeof window !== "undefined") {
+      window.clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
+  }, []);
 
   const scopedSkillIds = useMemo<MicroSkillId[]>(() => {
     if (yearGroupFilter === "all") return [...availableSkillIds];
@@ -162,13 +147,15 @@ export function KidSessionPlayer({
     );
   }, [availableSkillIds, yearGroupFilter]);
 
-  const startAdaptiveSession = useCallback(
+  const composeAndLoadSession = useCallback(
     async (
       learnerId: number,
       yearFilter: YearGroupFilter,
-      theme: LearnerThemePreference
+      theme: LearnerThemePreference,
+      enterPlaying: boolean
     ) => {
       const requestId = ++sessionRequestIdRef.current;
+      clearAutoAdvanceTimer();
       stopAudio();
       const [snapshot, stars] = await Promise.all([
         getLearnerMasterySnapshot(learnerId),
@@ -187,22 +174,18 @@ export function KidSessionPlayer({
 
       solvedStepLockRef.current = null;
       advancingRef.current = false;
-      setLifetimeStars(stars);
-      setSession(nextSession);
-      setCurrentIndex(0);
-      setEarnedIndices(new Set());
-      setRetriesOnCurrent(0);
-      setHintUsedOnCurrent(false);
-      setFeedbackState("idle");
-      setIsThinking(false);
-      setShowCompleteScreen(false);
-      setNewlyUnlockedStickers([]);
       startedAtRef.current = Date.now();
+      dispatch({
+        type: "START_SESSION",
+        session: nextSession,
+        lifetimeStars: stars,
+        enterPlaying,
+      });
     },
-    [exercises]
+    [clearAutoAdvanceTimer, exercises]
   );
 
-  // Hydrate audio prefs, active learner profile & initial adaptive session
+  // Hydrate audio prefs and default local learner (staying on "Who's playing?" welcome screen)
   useEffect(() => {
     let active = true;
     setSfxOn(isSfxEnabled());
@@ -217,34 +200,21 @@ export function KidSessionPlayer({
       setYearGroupFilter(yr);
 
       if (profile.id !== undefined) {
-        const [snapshot, stars] = await Promise.all([
-          getLearnerMasterySnapshot(profile.id),
-          getLearnerLifetimeStars(profile.id),
-        ]);
-        if (!active) return;
-        setLifetimeStars(stars);
-        const composed = composeAdaptiveSession({
-          exercises,
-          masteryRecords: snapshot.masteryRecords,
-          recentAttempts: snapshot.recentAttempts,
-          yearGroupFilter: yr,
-          selectedTheme: theme,
-          sessionLength: 6,
-        });
-        setSession(composed);
+        await composeAndLoadSession(profile.id, yr, theme, false);
       }
     });
 
     return () => {
       active = false;
+      clearAutoAdvanceTimer();
       stopAudio();
       stopAmbientMusic();
     };
-  }, [exercises]);
+  }, [clearAutoAdvanceTimer, composeAndLoadSession]);
 
-  // Pre-warm static phoneme audio files for the active exercise
+  // Pre-warm audio keys for the active exercise
   useEffect(() => {
-    if (!currentExercise) return;
+    if (!currentExercise || state.screen !== "playing") return;
     const keys: string[] = [currentExercise.prompt.audioKey];
     if (currentExercise.type === "cvc-blending") {
       keys.push(
@@ -267,7 +237,38 @@ export function KidSessionPlayer({
       keys.push(currentExercise.hopperVisual.audioKey);
     }
     preloadAudioKeys(keys);
-  }, [currentExercise]);
+  }, [currentExercise, state.screen]);
+
+  // Reset per-step guards whenever moving to a new step
+  useEffect(() => {
+    clearAutoAdvanceTimer();
+    startedAtRef.current = Date.now();
+    solvedStepLockRef.current = null;
+    advancingRef.current = false;
+    stopAudio();
+  }, [clearAutoAdvanceTimer, state.currentIndex, state.session]);
+
+  // 8-second inactivity detector to gently pulse the icon-only 💡 hint button
+  useEffect(() => {
+    if (
+      parentGateUnlocked ||
+      showParentGateChallenge ||
+      !shouldTrackHintInactivity(state)
+    ) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      dispatch({ type: "HINT_INACTIVITY_ELAPSED" });
+    }, HINT_PULSE_INACTIVITY_MS);
+
+    return () => window.clearTimeout(timer);
+  }, [
+    state,
+    activityNonce,
+    parentGateUnlocked,
+    showParentGateChallenge,
+  ]);
 
   const masteryRecords = useLiveQuery(
     async () => {
@@ -287,48 +288,50 @@ export function KidSessionPlayer({
     []
   );
 
+  const handleUserInteraction = useCallback(() => {
+    setActivityNonce((n) => n + 1);
+    if (
+      stateRef.current.phase === "correct" ||
+      stateRef.current.phase === "advancing"
+    ) {
+      clearAutoAdvanceTimer();
+    }
+    dispatch({ type: "USER_ACTIVITY" });
+  }, [clearAutoAdvanceTimer]);
+
   const handlePlayPrompt = useCallback(() => {
     if (!currentExercise) return;
+    handleUserInteraction();
     playSfx("tap");
     void playAudioKey(
       currentExercise.prompt.audioKey,
       currentExercise.prompt.text,
       {
-        onStart: () => setIsPromptSpeaking(true),
-        onEnd: () => setIsPromptSpeaking(false),
+        onStart: () => dispatch({ type: "SET_SPEAKING", speaking: true }),
+        onEnd: () => dispatch({ type: "SET_SPEAKING", speaking: false }),
       }
     );
-  }, [currentExercise]);
+  }, [currentExercise, handleUserInteraction]);
 
-  useEffect(() => {
-    startedAtRef.current = Date.now();
-    solvedStepLockRef.current = null;
-    advancingRef.current = false;
-    setRetriesOnCurrent(0);
-    setHintUsedOnCurrent(false);
-    setFeedbackState(
-      earnedIndicesRef.current.has(currentIndex) ? "correct" : "idle"
-    );
-    setIsThinking(false);
-    setIsPromptSpeaking(false);
-    stopAudio();
-  }, [currentIndex, session]);
-
-  const handleToggleSfx = () => {
-    const next = !sfxOn;
-    setSfxOn(next);
-    setSfxEnabled(next);
-    if (next) playSfx("tap");
-  };
-
-  const handleToggleMusic = () => {
-    const next = !musicOn;
-    setMusicOn(next);
-    setMusicEnabled(next);
+  const handlePlayHint = useCallback(() => {
+    if (!currentExercise) return;
+    setActivityNonce((n) => n + 1);
+    clearAutoAdvanceTimer();
     playSfx("tap");
-  };
+    dispatch({ type: "USE_HINT" });
+    void playAudioKey(
+      currentExercise.hint.audioKey,
+      currentExercise.hint.text,
+      {
+        onEnd: () => dispatch({ type: "SET_THINKING", thinking: false }),
+      }
+    );
+  }, [clearAutoAdvanceTimer, currentExercise]);
 
-  const handleSelectLearner = async (nextLearner: LearnerProfile) => {
+  const handleStartForLearner = async (
+    nextLearner: LearnerProfile,
+    enterPlaying: boolean
+  ) => {
     setLearner(nextLearner);
     const nextTheme = nextLearner.preferredTheme ?? "all";
     const nextYear: YearGroupFilter = nextLearner.yearGroup ?? "P1";
@@ -336,560 +339,411 @@ export function KidSessionPlayer({
     setYearGroupFilter(nextYear);
     if (nextLearner.id !== undefined) {
       setStoredActiveLearnerId(nextLearner.id);
-      await startAdaptiveSession(nextLearner.id, nextYear, nextTheme);
+      await composeAndLoadSession(
+        nextLearner.id,
+        nextYear,
+        nextTheme,
+        enterPlaying
+      );
     }
   };
 
-  const handleYearFilterChange = async (nextYear: YearGroupFilter) => {
+  const handleUnlockParentSettings = useCallback(() => {
+    clearAutoAdvanceTimer();
+    stopAudio();
+    setShowParentGateChallenge(false);
+    setParentGateUnlocked(true);
+  }, [clearAutoAdvanceTimer]);
+
+  const handleRequestParentChallenge = useCallback(() => {
+    clearAutoAdvanceTimer();
+    stopAudio();
+    setShowParentGateChallenge(true);
+  }, [clearAutoAdvanceTimer]);
+
+  const handleSwitchLearnerFromSettings = async (
+    nextLearner: LearnerProfile
+  ) => {
+    const gated = runIfParentGateUnlocked(parentGateUnlocked, () => nextLearner);
+    if (!gated.allowed) return;
+    await handleStartForLearner(gated.result, state.screen === "playing");
+  };
+
+  const handleYearChange = async (nextYear: YearGroupFilter) => {
+    const gated = runIfParentGateUnlocked(parentGateUnlocked, () => nextYear);
+    if (!gated.allowed) return;
     playSfx("tap");
-    setYearGroupFilter(nextYear);
+    setYearGroupFilter(gated.result);
     if (learner?.id !== undefined) {
-      await startAdaptiveSession(learner.id, nextYear, selectedTheme);
-    } else {
-      const nextSession = composeAdaptiveSession({
-        exercises,
-        masteryRecords: [],
-        yearGroupFilter: nextYear,
+      await composeAndLoadSession(
+        learner.id,
+        gated.result,
         selectedTheme,
-        sessionLength: 6,
-      });
-      setSession(nextSession);
-      setCurrentIndex(0);
-      setEarnedIndices(new Set());
-      setShowCompleteScreen(false);
-      setFeedbackState("idle");
+        state.screen === "playing"
+      );
     }
   };
 
   const handleThemeChange = async (nextTheme: LearnerThemePreference) => {
+    const gated = runIfParentGateUnlocked(parentGateUnlocked, () => nextTheme);
+    if (!gated.allowed) return;
     playSfx("tap");
-    setSelectedTheme(nextTheme);
-
+    setSelectedTheme(gated.result);
     if (learner?.id !== undefined) {
-      const updated = await updateLearnerTheme(learner.id, nextTheme);
+      const updated = await updateLearnerTheme(learner.id, gated.result);
       if (updated) setLearner(updated);
-      await startAdaptiveSession(learner.id, yearGroupFilter, nextTheme);
-    } else {
-      const nextSession = composeAdaptiveSession({
-        exercises,
-        masteryRecords: [],
+      await composeAndLoadSession(
+        learner.id,
         yearGroupFilter,
-        selectedTheme: nextTheme,
-        sessionLength: 6,
-      });
-      setSession(nextSession);
-      setCurrentIndex(0);
-      setEarnedIndices(new Set());
-      setShowCompleteScreen(false);
-      setFeedbackState("idle");
+        gated.result,
+        state.screen === "playing"
+      );
     }
   };
 
-  const handleHintTap = () => {
-    if (!currentExercise) return;
-    playSfx("tap");
-    setHintUsedOnCurrent(true);
-    setIsThinking(true);
-    void playAudioKey(
-      currentExercise.hint.audioKey,
-      currentExercise.hint.text,
-      { onEnd: () => setIsThinking(false) }
-    );
+  const handleToggleSfx = () => {
+    runIfParentGateUnlocked(parentGateUnlocked, () => {
+      const next = !sfxOn;
+      setSfxOn(next);
+      setSfxEnabled(next);
+      if (next) playSfx("tap");
+    });
   };
+
+  const handleToggleMusic = () => {
+    runIfParentGateUnlocked(parentGateUnlocked, () => {
+      const next = !musicOn;
+      setMusicOn(next);
+      setMusicEnabled(next);
+      playSfx("tap");
+    });
+  };
+
+  const advanceToNextOrCelebrate = useCallback(
+    async (playTapCue: boolean) => {
+      if (advancingRef.current) return;
+      advancingRef.current = true;
+      clearAutoAdvanceTimer();
+      if (playTapCue) playSfx("tap");
+      stopAudio();
+
+      const snapshot = stateRef.current;
+      if (snapshot.currentIndex + 1 < snapshot.session.items.length) {
+        dispatch({ type: "ADVANCE_STEP" });
+      } else {
+        if (learner?.id !== undefined) {
+          const reward = await syncAndUnlockStickers(
+            learner.id,
+            snapshot.newlyUnlockedStickers.length === 0
+          );
+          dispatch({
+            type: "MERGE_STICKERS",
+            totalStars: reward.totalStars,
+            unlocked: reward.newlyUnlocked,
+          });
+        }
+        dispatch({ type: "FINISH_QUEST" });
+        void playSuccessThenPraise(
+          "feedback/quest-complete",
+          "Amazing work! You earned stars for your sticker chest!"
+        );
+      }
+    },
+    [clearAutoAdvanceTimer, learner?.id]
+  );
 
   const handleAttempt = async (isCorrect: boolean) => {
     if (!currentExercise) return;
-    const stepKey = `${currentIndex}:${currentExercise.id}`;
+    const stepKey = `${state.currentIndex}:${currentExercise.id}`;
 
-    // Guard against rapid double-taps recording duplicate solves/stars in Dexie
     if (isCorrect && (isCurrentSolved || solvedStepLockRef.current === stepKey)) {
       return;
     }
-    if (isCorrect) {
-      solvedStepLockRef.current = stepKey;
-    }
 
-    const nextRetries = isCorrect ? retriesOnCurrent : retriesOnCurrent + 1;
+    setActivityNonce((n) => n + 1);
+    const retriesCount = isCorrect
+      ? state.retriesOnCurrent
+      : state.retriesOnCurrent + 1;
+    const hintUsed = state.hintUsedOnCurrent;
+    const durationMs = Date.now() - startedAtRef.current;
+
     if (!isCorrect) {
-      setRetriesOnCurrent(nextRetries);
-    }
-
-    if (isCorrect) {
-      playSfx("success");
-      setIsThinking(false);
-      setFeedbackState("correct");
-      setEarnedIndices((prev) => {
-        const updated = new Set(prev);
-        updated.add(currentIndex);
-        return updated;
-      });
-      void playAudioKey(
-        currentExercise.feedback.correctAudioKey,
-        currentExercise.feedback.correctText
-      );
-    } else {
+      dispatch({ type: "RECORD_RETRY" });
       playSfx("retry");
-      setIsThinking(false);
-      setFeedbackState("encourage");
       void playAudioKey(
         currentExercise.feedback.encourageAudioKey,
         currentExercise.feedback.encourageText
       );
+      if (learner?.id !== undefined) {
+        await recordAdaptiveAttempt({
+          learnerId: learner.id,
+          exerciseId: currentExercise.id,
+          skillId: currentExercise.skillId,
+          isCorrect: false,
+          retriesCount,
+          hintUsed,
+          durationMs,
+        });
+      }
+      return;
     }
 
-    if (learner?.id !== undefined) {
+    solvedStepLockRef.current = stepKey;
+    dispatch({ type: "RECORD_CORRECT" });
+
+    // Persist progress + stickers in parallel with the non-overlapping jingle -> praise audio
+    const persistPromise = (async () => {
+      if (learner?.id === undefined) return;
       await recordAdaptiveAttempt({
         learnerId: learner.id,
         exerciseId: currentExercise.id,
         skillId: currentExercise.skillId,
-        isCorrect,
-        retriesCount: nextRetries,
-        hintUsed: hintUsedOnCurrent,
-        durationMs: Date.now() - startedAtRef.current,
+        isCorrect: true,
+        retriesCount,
+        hintUsed,
+        durationMs,
       });
+      const result = await syncAndUnlockStickers(learner.id, false);
+      dispatch({
+        type: "MERGE_STICKERS",
+        totalStars: result.totalStars,
+        unlocked: result.newlyUnlocked,
+      });
+    })();
 
-      if (isCorrect) {
-        const result = await syncAndUnlockStickers(learner.id, false);
-        setLifetimeStars(result.totalStars);
-        if (result.newlyUnlocked.length > 0) {
-          setNewlyUnlockedStickers((prev) => {
-            const seen = new Set(prev.map((s) => s.id));
-            return [
-              ...prev,
-              ...result.newlyUnlocked.filter((s) => !seen.has(s.id)),
-            ];
-          });
-        }
-      }
+    const praiseCompleted = await playSuccessThenPraise(
+      currentExercise.feedback.correctAudioKey,
+      currentExercise.feedback.correctText
+    );
+    await persistPromise;
+
+    // Ignore if user already moved on or opened ParentGate
+    if (
+      activeStepKeyRef.current !== stepKey ||
+      advancingRef.current ||
+      parentGateOpenRef.current
+    ) {
+      return;
     }
+
+    // If audio was interrupted (e.g., child tapped to replay/linger), pause auto-advance
+    if (!praiseCompleted || !canAutoAdvance(stateRef.current)) {
+      dispatch({ type: "PAUSE_AUTO_ADVANCE" });
+      return;
+    }
+
+    dispatch({ type: "BEGIN_ADVANCE" });
+    clearAutoAdvanceTimer();
+    autoAdvanceTimerRef.current = window.setTimeout(() => {
+      autoAdvanceTimerRef.current = null;
+      if (
+        activeStepKeyRef.current !== stepKey ||
+        advancingRef.current ||
+        parentGateOpenRef.current ||
+        stateRef.current.autoAdvancePaused
+      ) {
+        return;
+      }
+      void advanceToNextOrCelebrate(false);
+    }, AUTO_ADVANCE_DELAY_MS);
   };
 
-  const handleNext = async () => {
-    if (advancingRef.current) return;
-    advancingRef.current = true;
+  const handleStartFreshQuest = () => {
     playSfx("tap");
-    stopAudio();
-
-    if (currentIndex + 1 < activeItems.length) {
-      setCurrentIndex((prev) => prev + 1);
-    } else {
-      playSfx("success");
-      if (learner?.id !== undefined) {
-        const reward = await syncAndUnlockStickers(
-          learner.id,
-          newlyUnlockedStickers.length === 0
-        );
-        setLifetimeStars(reward.totalStars);
-        if (reward.newlyUnlocked.length > 0) {
-          setNewlyUnlockedStickers((prev) => {
-            const seen = new Set(prev.map((s) => s.id));
-            return [
-              ...prev,
-              ...reward.newlyUnlocked.filter((s) => !seen.has(s.id)),
-            ];
-          });
-        }
-      }
-      setShowCompleteScreen(true);
-      void playAudioKey(
-        "feedback/quest-complete",
-        "Amazing work! You crossed the Giant's Causeway and earned stars for your sticker chest!"
+    if (learner?.id !== undefined) {
+      void composeAndLoadSession(
+        learner.id,
+        yearGroupFilter,
+        selectedTheme,
+        true
       );
     }
   };
 
-  const handleStartFreshAdaptiveQuest = () => {
-    playSfx("tap");
-    if (learner?.id !== undefined) {
-      void startAdaptiveSession(learner.id, yearGroupFilter, selectedTheme);
-    } else {
-      setCurrentIndex(0);
-      setEarnedIndices(new Set());
-      setShowCompleteScreen(false);
-      setFeedbackState("idle");
-    }
-  };
-
-  const mascotMood: MascotMood = showCompleteScreen
-    ? "celebrating"
-    : feedbackState === "correct"
-    ? "celebrating"
-    : feedbackState === "encourage"
-    ? "encouraging"
-    : isThinking
-    ? "thinking"
-    : "idle";
-
-  const slotBadge = currentItem
-    ? SLOT_ROLE_BADGE[currentItem.slotRole]
-    : SLOT_ROLE_BADGE.focus;
-
-  if (!currentExercise || !currentSkill) {
-    return (
-      <div className="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center gap-4 p-6 text-center">
-        <SparkyMascot mood="thinking" />
-        <h2 className="text-2xl font-black text-slate-900">
-          No exercises loaded for this filter yet!
-        </h2>
-        <button
-          type="button"
-          onClick={() => void handleYearFilterChange("all")}
-          className="touch-card rounded-2xl bg-sky-600 px-8 py-4 text-lg font-extrabold text-white shadow-md hover:bg-sky-500"
-        >
-          Show All P1–P2 Exercises
-        </button>
-      </div>
-    );
-  }
+  const mascotMood = deriveMascotMood(state);
 
   return (
     <>
-      <div className="no-print mx-auto flex min-h-screen max-w-5xl flex-col gap-4 px-4 py-4 sm:px-6 sm:py-5">
-        {/* Top Tablet HUD: Mascot, P1/P2/All Stage Selector, Sound/Music, Stickers, Parent Bridge */}
-        <header className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <SparkyMascot
-              mood={mascotMood}
-              size="sm"
-              onTap={handlePlayPrompt}
+      <AnimatePresence mode="wait" initial={false}>
+        {state.screen === "welcome" ? (
+          <motion.div
+            key="screen-welcome"
+            variants={SCREEN_TRANSITION_VARIANTS}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
+            <WelcomeScreen
+              onSelectLearner={(profile) =>
+                void handleStartForLearner(profile, true)
+              }
+              onParentUnlock={handleUnlockParentSettings}
+              onRequestParentChallenge={handleRequestParentChallenge}
             />
-            <div>
-              <h1 className="text-xl font-black tracking-tight text-slate-900 sm:text-2xl">
-                ✨ Wee Sparks
-              </h1>
-              <p className="text-xs font-bold text-sky-800 sm:text-sm">
-                {learner?.displayName ?? "Wee Explorer"} · CCEA{" "}
-                {yearGroupFilter === "all" ? "P1–P2" : yearGroupFilter}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            {/* P1 / P2 / All Stage Selector (>= 64px touch targets) */}
-            <div
-              className="flex items-center gap-1 rounded-2xl bg-white/90 p-1 ring-2 ring-sky-100"
-              role="group"
-              aria-label="Choose CCEA stage"
-            >
-              {YEAR_FILTER_OPTIONS.map((opt) => {
-                const isActive = yearGroupFilter === opt.id;
-                return (
-                  <button
-                    key={opt.id}
-                    type="button"
-                    aria-pressed={isActive}
-                    onClick={() => void handleYearFilterChange(opt.id)}
-                    className={`touch-card rounded-xl px-4 py-2 text-sm font-black sm:text-base ${
-                      isActive
-                        ? "bg-indigo-600 text-white shadow-sm"
-                        : "bg-slate-50 text-slate-700 hover:bg-indigo-50"
-                    }`}
-                  >
-                    {opt.label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Sound SFX Toggle */}
-            <button
-              type="button"
-              aria-pressed={sfxOn}
-              aria-label={sfxOn ? "Mute sound effects" : "Enable sound effects"}
-              onClick={handleToggleSfx}
-              className={`touch-card rounded-2xl px-4 py-3 text-lg font-extrabold ${
-                sfxOn
-                  ? "bg-emerald-100 text-emerald-950 ring-2 ring-emerald-300"
-                  : "bg-slate-100 text-slate-500 ring-2 ring-slate-200"
-              }`}
-            >
-              {sfxOn ? "🔔" : "🔕"}
-            </button>
-
-            {/* Gentle Music Toggle */}
-            <button
-              type="button"
-              aria-pressed={musicOn}
-              aria-label={musicOn ? "Stop background music" : "Play gentle background music"}
-              onClick={handleToggleMusic}
-              className={`touch-card rounded-2xl px-4 py-3 text-lg font-extrabold ${
-                musicOn
-                  ? "bg-violet-100 text-violet-950 ring-2 ring-violet-300"
-                  : "bg-white text-slate-600 ring-2 ring-slate-200 hover:bg-violet-50"
-              }`}
-            >
-              🎵
-            </button>
-
-            {/* Sticker Chest Button */}
-            <button
-              type="button"
-              onClick={() => {
-                playSfx("tap");
-                setShowStickerModal(true);
-              }}
-              className="touch-card rounded-2xl bg-yellow-100 px-4 py-3 text-sm font-extrabold text-amber-950 ring-2 ring-amber-300 hover:bg-yellow-200 sm:text-base"
-            >
-              🎁 {unlockedStickers.length}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => {
-                playSfx("tap");
-                setShowParentBridge(true);
-              }}
-              className="touch-card rounded-2xl bg-amber-100 px-4 py-3 text-sm font-extrabold text-amber-950 ring-2 ring-amber-300 hover:bg-amber-200 sm:text-base"
-            >
-              🏡 Parent
-            </button>
-          </div>
-        </header>
-
-        {/* Theme Switcher + New Quest */}
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <ThemePicker
-            selectedTheme={selectedTheme}
-            onSelectTheme={(theme) => void handleThemeChange(theme)}
-          />
-          <button
-            type="button"
-            onClick={handleStartFreshAdaptiveQuest}
-            className="touch-card rounded-2xl bg-sky-100 px-4 py-3 text-sm font-extrabold text-sky-950 ring-2 ring-sky-200 hover:bg-sky-200 sm:text-base"
-          >
-            🎯 New Quest
-          </button>
-        </div>
-
-        {/* Giant's Causeway Stepping-Stone Progress Path */}
-        <StarProgressBar
-          total={activeItems.length}
-          currentIndex={currentIndex}
-          earnedIndices={earnedIndices}
-        />
-
-        {/* Post-Session Celebration & Sticker Chest */}
-        {showCompleteScreen ? (
-          <CelebrationStickerChest
-            mode="post-session"
-            starsThisSession={earnedIndices.size}
-            totalExercises={activeItems.length}
-            lifetimeStars={lifetimeStars}
-            unlockedRecords={unlockedStickers}
-            newlyUnlocked={newlyUnlockedStickers}
-            onPlayNextQuest={handleStartFreshAdaptiveQuest}
-            onOpenParentBridge={() => {
-              playSfx("tap");
-              setShowParentBridge(true);
-            }}
-          />
+          </motion.div>
         ) : (
-          /* Main Tablet-First Exercise Canvas with bouncy entrance per card */
-          <section
-            key={currentExercise.id}
-            className="animate-card-enter flex flex-1 flex-col justify-between gap-6 rounded-3xl bg-white/95 p-5 shadow-lg ring-2 ring-sky-200 sm:p-7"
+          <motion.div
+            key="screen-session"
+            variants={SCREEN_TRANSITION_VARIANTS}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="no-print mx-auto flex min-h-screen max-w-5xl flex-col gap-4 overflow-x-hidden px-4 py-4 sm:px-6 sm:py-5"
           >
-            {/* Prompt Row */}
-            <div className="flex flex-wrap items-center gap-4">
-              <AudioReplayButton
-                onClick={handlePlayPrompt}
-                isPlaying={isPromptSpeaking}
-                ariaLabel="Play question audio"
+            {/* Minimal Child Top Strip: Sparky + Stepping-Stone Path + Discreet Home */}
+            <header className="flex items-center gap-3">
+              <SparkyMascot
+                mood={mascotMood}
+                size="sm"
+                onTap={handlePlayPrompt}
               />
 
-              <div className="min-w-[200px] flex-1">
-                <div className="mb-1.5 flex flex-wrap items-center gap-2">
-                  <span
-                    className={`rounded-full px-3 py-0.5 text-xs font-extrabold ${slotBadge.className}`}
-                  >
-                    {slotBadge.label}
-                  </span>
-                  <span
-                    className={`rounded-full px-3 py-0.5 text-xs font-extrabold capitalize ${
-                      THEME_BADGE_STYLES[currentExercise.theme]
-                    }`}
-                  >
-                    {currentExercise.theme}
-                  </span>
-                  <span className="rounded-full bg-slate-100 px-3 py-0.5 text-xs font-bold text-slate-700">
-                    {currentSkill.code}
-                  </span>
-                </div>
-
-                <p className="text-xl font-extrabold leading-snug text-slate-900 sm:text-2xl">
-                  {currentExercise.prompt.visualCueEmoji && (
-                    <span className="mr-2" aria-hidden="true">
-                      {currentExercise.prompt.visualCueEmoji}
-                    </span>
-                  )}
-                  {currentExercise.prompt.text}
-                </p>
-              </div>
+              <StarProgressBar
+                total={activeItems.length}
+                currentIndex={state.currentIndex}
+                earnedIndices={state.earnedIndices}
+              />
 
               <button
                 type="button"
-                onClick={handleHintTap}
-                className="touch-card flex items-center gap-2 rounded-2xl bg-violet-100 px-5 py-4 text-lg font-extrabold text-violet-950 ring-2 ring-violet-200 hover:bg-violet-200"
-                aria-label="Play audio hint"
+                onClick={() => {
+                  clearAutoAdvanceTimer();
+                  playSfx("tap");
+                  stopAudio();
+                  dispatch({ type: "GO_WELCOME" });
+                }}
+                aria-label="Back to Who's playing"
+                className="touch-card flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/85 text-2xl shadow-sm ring-2 ring-sky-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-500"
               >
-                <span aria-hidden="true">💡</span>
-                <span>Hint</span>
+                🏠
               </button>
-            </div>
+            </header>
 
-            {/* Interactive Exercise Engine Router */}
-            <div className="py-2">
-              {currentExercise.type === "cvc-blending" ||
-              currentExercise.type === "phoneme-segment" ? (
-                <PhonicsBuilderEngine
-                  exercise={currentExercise}
-                  isSolved={isCurrentSolved}
-                  onAttempt={(ok) => void handleAttempt(ok)}
-                  onThinkingChange={setIsThinking}
-                />
-              ) : currentExercise.type === "number-line-hop" ? (
-                <NumberLineEngine
-                  exercise={currentExercise}
-                  isSolved={isCurrentSolved}
-                  onAttempt={(ok) => void handleAttempt(ok)}
-                />
-              ) : currentExercise.type === "trace-glyph" ? (
-                <TraceCanvasEngine
-                  exercise={currentExercise}
-                  isSolved={isCurrentSolved}
-                  onAttempt={(ok) => void handleAttempt(ok)}
-                />
-              ) : currentExercise.type === "shape-sort" ||
-                currentExercise.type === "uk-coin-match" ||
-                (currentExercise.type === "ten-frame-count" &&
-                  currentExercise.mode === "build-on-frame") ? (
-                <DragSortEngine
-                  exercise={currentExercise}
-                  isSolved={isCurrentSolved}
-                  onAttempt={(ok) => void handleAttempt(ok)}
-                />
+            <AnimatePresence mode="wait" initial={false}>
+              {state.screen === "celebrating" ? (
+                <motion.div
+                  key="stage-celebrating"
+                  variants={SCREEN_TRANSITION_VARIANTS}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="flex flex-1 flex-col"
+                >
+                  <CelebrationStickerChest
+                    mode="post-session"
+                    starsThisSession={state.earnedIndices.size}
+                    totalExercises={activeItems.length}
+                    lifetimeStars={state.lifetimeStars}
+                    unlockedRecords={unlockedStickers}
+                    newlyUnlocked={state.newlyUnlockedStickers}
+                    onPlayNextQuest={handleStartFreshQuest}
+                    onParentUnlock={handleUnlockParentSettings}
+                    onRequestParentChallenge={handleRequestParentChallenge}
+                  />
+                </motion.div>
+              ) : currentExercise ? (
+                <motion.div
+                  key={currentStepKey}
+                  variants={EXERCISE_CARD_VARIANTS}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="flex flex-1 flex-col"
+                >
+                  <ExerciseStage
+                    exercise={currentExercise}
+                    stepKey={currentStepKey}
+                    isSolved={isCurrentSolved}
+                    isFinalStep={
+                      activeItems.length > 0 &&
+                      state.currentIndex === activeItems.length - 1
+                    }
+                    isPromptSpeaking={state.isPromptSpeaking}
+                    hintPulseActive={state.hintPulseActive}
+                    feedbackPhase={state.phase}
+                    retriesCount={state.retriesOnCurrent}
+                    onPlayPrompt={handlePlayPrompt}
+                    onPlayHint={handlePlayHint}
+                    onAttempt={(ok) => void handleAttempt(ok)}
+                    onThinkingChange={(thinking) =>
+                      dispatch({ type: "SET_THINKING", thinking })
+                    }
+                    onUserInteraction={handleUserInteraction}
+                    onNext={() => void advanceToNextOrCelebrate(true)}
+                  />
+                </motion.div>
               ) : (
-                <TapChoiceEngine
-                  exercise={currentExercise}
-                  isSolved={isCurrentSolved}
-                  onAttempt={(ok) => void handleAttempt(ok)}
-                />
-              )}
-            </div>
-
-            {/* Bottom Feedback & Navigation Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-t-2 border-slate-100 pt-4">
-              <div className="flex flex-1 items-center gap-3">
-                {feedbackState === "correct" && (
-                  <div
-                    role="status"
-                    className="animate-star-pop inline-flex items-center gap-2 rounded-2xl bg-emerald-100 px-5 py-3 text-lg font-extrabold text-emerald-950"
-                  >
-                    <span aria-hidden="true">🌟</span>
-                    <span>{currentExercise.feedback.correctText}</span>
-                  </div>
-                )}
-
-                {feedbackState === "encourage" && (
-                  <div
-                    role="status"
-                    className="inline-flex items-center gap-2 rounded-2xl bg-amber-100 px-5 py-3 text-lg font-extrabold text-amber-950"
-                  >
-                    <span aria-hidden="true">💛</span>
-                    <span>{currentExercise.feedback.encourageText}</span>
-                  </div>
-                )}
-
-                {feedbackState === "idle" && (
-                  <p className="text-sm font-bold text-slate-500">
-                    Tap Sparky or 🔈 anytime to hear the question again.
-                  </p>
-                )}
-              </div>
-
-              <div className="flex items-center gap-3">
-                {currentIndex > 0 && (
+                <motion.div
+                  key="stage-empty"
+                  variants={SCREEN_TRANSITION_VARIANTS}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="flex flex-1 flex-col items-center justify-center gap-4 rounded-3xl bg-white p-8 text-center shadow-lg"
+                >
+                  <SparkyMascot mood="thinking" />
                   <button
                     type="button"
                     onClick={() => {
                       playSfx("tap");
-                      setCurrentIndex((prev) => prev - 1);
+                      dispatch({ type: "GO_WELCOME" });
                     }}
-                    className="touch-card rounded-2xl bg-slate-100 px-5 py-4 text-xl font-extrabold text-slate-800 hover:bg-slate-200"
-                    aria-label="Previous exercise"
+                    aria-label="Back to Who's playing"
+                    className="touch-card flex h-20 w-24 items-center justify-center rounded-3xl bg-sky-700 text-4xl text-white shadow-md hover:bg-sky-800"
                   >
-                    ⬅️
+                    🏠
                   </button>
-                )}
-
-                <button
-                  type="button"
-                  onClick={() => void handleNext()}
-                  className={`touch-card flex items-center gap-2 rounded-2xl px-7 py-4 text-xl font-extrabold shadow-md ${
-                    isCurrentSolved
-                      ? "bg-emerald-600 text-white hover:bg-emerald-500"
-                      : "bg-sky-600 text-white hover:bg-sky-500"
-                  }`}
-                >
-                  <span>
-                    {currentIndex + 1 === activeItems.length
-                      ? "Finish"
-                      : "Next"}
-                  </span>
-                  <span aria-hidden="true">➡️</span>
-                </button>
-              </div>
-            </div>
-          </section>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
         )}
+      </AnimatePresence>
 
-        {/* Anytime Sticker Chest Modal */}
-        {showStickerModal && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm"
-            role="dialog"
-            aria-modal="true"
-            aria-label="My Sticker Chest"
-          >
-            <div className="max-h-[90vh] w-full max-w-3xl overflow-y-auto">
-              <CelebrationStickerChest
-                mode="chest-modal"
-                lifetimeStars={lifetimeStars}
-                unlockedRecords={unlockedStickers}
-                newlyUnlocked={[]}
-                onClose={() => {
-                  playSfx("tap");
-                  setShowStickerModal(false);
-                }}
-              />
-            </div>
-          </div>
-        )}
+      {/* Spoken-free ParentGate Challenge Modal */}
+      <ParentGateModal
+        isOpen={showParentGateChallenge && !parentGateUnlocked}
+        onUnlock={handleUnlockParentSettings}
+        onCancel={() => setShowParentGateChallenge(false)}
+      />
 
-        <ParentBridgeModal
-          isOpen={showParentBridge}
-          onClose={() => {
-            playSfx("tap");
-            setShowParentBridge(false);
-          }}
-          learner={learner}
-          onSelectLearner={(next) => void handleSelectLearner(next)}
-          currentSkill={currentSkill}
-          currentExercise={currentExercise}
-          packSkillIds={scopedSkillIds}
-          masteryRecords={masteryRecords}
-          session={session}
-        />
-      </div>
+      {/* Single Gated Parent Settings & Parent Bridge Modal */}
+      <ParentBridgeModal
+        isOpen={parentGateUnlocked}
+        isGateUnlocked={parentGateUnlocked}
+        onClose={() => {
+          playSfx("tap");
+          setParentGateUnlocked(false);
+        }}
+        learner={learner}
+        onSelectLearner={(next) => void handleSwitchLearnerFromSettings(next)}
+        yearGroupFilter={yearGroupFilter}
+        onChangeYearGroup={(yr) => void handleYearChange(yr)}
+        selectedTheme={selectedTheme}
+        onChangeTheme={(theme) => void handleThemeChange(theme)}
+        sfxOn={sfxOn}
+        onToggleSfx={handleToggleSfx}
+        musicOn={musicOn}
+        onToggleMusic={handleToggleMusic}
+        onStartFreshQuest={handleStartFreshQuest}
+        unlockedStickers={unlockedStickers}
+        currentSkill={currentSkill}
+        currentExercise={currentExercise}
+        packSkillIds={scopedSkillIds}
+        masteryRecords={masteryRecords}
+        session={state.session}
+      />
 
-      {/* Dedicated A4 print-only target for 1-click Printable Practice Sheet */}
-      <div className="print-only-sheet hidden">
-        <PrintablePracticeSheet
-          learner={learner}
-          packSkillIds={scopedSkillIds}
-          masteryRecords={masteryRecords}
-        />
-      </div>
+      {/* Dedicated A4 print-only target — mounted ONLY after passing ParentGate */}
+      {parentGateUnlocked && (
+        <div className="print-only-sheet hidden">
+          <PrintablePracticeSheet
+            learner={learner}
+            packSkillIds={scopedSkillIds}
+            masteryRecords={masteryRecords}
+          />
+        </div>
+      )}
     </>
   );
 }

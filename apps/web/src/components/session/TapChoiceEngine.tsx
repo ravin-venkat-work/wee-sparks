@@ -13,6 +13,7 @@ import type {
 import { playAudioKey, playPhoneme, playSfx } from "@/lib/audio";
 import { SeedItemArt } from "./SeedItemArt";
 import { TenFrameBoard } from "./TenFrameBoard";
+import { RewardPopCard } from "./RewardBurst";
 
 export type TapChoiceExercise =
   | InitialSoundMatchExercise
@@ -209,7 +210,7 @@ export function TapChoiceEngine({
             {exercise.givenPart}
           </div>
           <span className="text-4xl font-black text-slate-500">+</span>
-          <div className="flex h-24 w-24 items-center justify-center rounded-full border-4 border-dashed border-sky-400 bg-sky-50 text-4xl font-black text-sky-600">
+          <div className="flex h-24 w-24 items-center justify-center rounded-full border-4 border-dashed border-sky-400 bg-sky-50 text-4xl font-black text-sky-800">
             ?
           </div>
           <span className="text-4xl font-black text-slate-500">=</span>
@@ -265,53 +266,54 @@ export function TapChoiceEngine({
             const isVisualOption = Boolean(option.emoji);
 
             return (
-              <button
-                key={option.id}
-                type="button"
-                onClick={() =>
-                  handleOptionTap(
-                    option.id,
-                    exercise.correctOptionId!,
-                    option.audioKey,
-                    option.label
-                  )
-                }
-                aria-label={`Choose ${option.label}`}
-                className={`touch-card flex min-h-[128px] w-full flex-col items-center justify-center gap-2 rounded-3xl border-4 p-4 text-center shadow-sm sm:min-h-[144px] ${
-                  isCorrectCard
-                    ? "border-emerald-500 bg-emerald-100 text-emerald-950 shadow-emerald-200"
-                    : isWrongFlash
-                    ? "animate-gentle-shake border-amber-400 bg-amber-100 text-amber-950"
-                    : isSelected
-                    ? "border-sky-400 bg-sky-50 text-slate-900"
-                    : "border-slate-200 bg-white text-slate-900 hover:border-sky-400 hover:bg-sky-50"
-                }`}
-              >
-                {isVisualOption && (
-                  <SeedItemArt
-                    itemKey={option.audioKey}
-                    fallbackEmoji={option.emoji}
-                    className="h-16 w-16 sm:h-20 sm:w-20"
-                  />
-                )}
-                <span
-                  className={`font-black ${
-                    isVisualOption
-                      ? "text-xl sm:text-2xl"
-                      : "text-5xl sm:text-6xl"
+              <RewardPopCard key={option.id} isPopped={isCorrectCard}>
+                <button
+                  type="button"
+                  onClick={() =>
+                    handleOptionTap(
+                      option.id,
+                      exercise.correctOptionId!,
+                      option.audioKey,
+                      option.label
+                    )
+                  }
+                  aria-label={`Choose ${option.label}`}
+                  className={`touch-card flex min-h-[128px] w-full flex-col items-center justify-center gap-2 rounded-3xl border-4 p-4 text-center shadow-sm sm:min-h-[144px] ${
+                    isCorrectCard
+                      ? "border-emerald-500 bg-emerald-100 text-emerald-950 shadow-emerald-200"
+                      : isWrongFlash
+                      ? "animate-gentle-shake border-amber-400 bg-amber-100 text-amber-950"
+                      : isSelected
+                      ? "border-sky-400 bg-sky-50 text-slate-900"
+                      : "border-slate-200 bg-white text-slate-900 hover:border-sky-400 hover:bg-sky-50"
                   }`}
                 >
-                  {option.displayText ?? option.label}
-                </span>
-                {isCorrectCard && (
+                  {isVisualOption && (
+                    <SeedItemArt
+                      itemKey={option.audioKey}
+                      fallbackEmoji={option.emoji}
+                      className="h-16 w-16 sm:h-20 sm:w-20"
+                    />
+                  )}
                   <span
-                    className="animate-star-pop text-lg font-extrabold text-emerald-700"
-                    aria-hidden="true"
+                    className={`font-black ${
+                      isVisualOption
+                        ? "text-xl sm:text-2xl"
+                        : "text-5xl sm:text-6xl"
+                    }`}
                   >
-                    ⭐
+                    {option.displayText ?? option.label}
                   </span>
-                )}
-              </button>
+                  {isCorrectCard && (
+                    <span
+                      className="animate-star-pop text-lg font-extrabold text-emerald-700"
+                      aria-hidden="true"
+                    >
+                      ⭐
+                    </span>
+                  )}
+                </button>
+              </RewardPopCard>
             );
           })}
         </div>

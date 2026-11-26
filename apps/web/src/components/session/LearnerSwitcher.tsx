@@ -92,7 +92,7 @@ export function LearnerSwitcher({
             playSfx("tap");
             setShowAddForm((prev) => !prev);
           }}
-          className="touch-card rounded-2xl bg-sky-600 px-4 py-3 text-sm font-extrabold text-white shadow-sm hover:bg-sky-500"
+          className="touch-card rounded-2xl bg-sky-700 px-4 py-3 text-sm font-extrabold text-white shadow-sm hover:bg-sky-800"
         >
           {showAddForm ? "Cancel" : "+ Add Child"}
         </button>
@@ -156,7 +156,7 @@ export function LearnerSwitcher({
                 placeholder="e.g. Aoife or Noah"
                 maxLength={24}
                 required
-                className="mt-1 w-full rounded-xl border-2 border-slate-200 px-3.5 py-2.5 text-base font-bold text-slate-900 focus:border-sky-500 focus:outline-none"
+                className="mt-1 w-full rounded-xl border-2 border-slate-200 px-3.5 py-2.5 text-base font-bold text-slate-900 focus-visible:border-sky-700 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-700"
               />
             </label>
 
@@ -176,7 +176,7 @@ export function LearnerSwitcher({
                     }}
                     className={`touch-card flex-1 rounded-xl px-4 py-2 text-base font-extrabold ${
                       yearGroup === yr
-                        ? "bg-sky-600 text-white"
+                        ? "bg-sky-700 text-white"
                         : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                     }`}
                   >
@@ -243,7 +243,7 @@ export function LearnerSwitcher({
             <button
               type="submit"
               disabled={isSaving}
-              className="touch-card rounded-2xl bg-emerald-600 px-6 py-3 text-base font-extrabold text-white shadow-sm hover:bg-emerald-500 disabled:opacity-50"
+              className="touch-card rounded-2xl bg-emerald-700 px-6 py-3 text-base font-extrabold text-white shadow-sm hover:bg-emerald-800 disabled:opacity-50"
             >
               ✅ Save &amp; Switch Child
             </button>

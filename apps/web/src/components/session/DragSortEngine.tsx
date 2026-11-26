@@ -257,7 +257,7 @@ export function DragSortEngine({
                     />
                   </div>
                 ) : (
-                  <span className="text-2xl font-black text-slate-300">
+                  <span className="text-2xl font-black text-slate-500">
                     {isHintCell ? "👇" : "+"}
                   </span>
                 )}
@@ -307,7 +307,7 @@ export function DragSortEngine({
             type="button"
             disabled={isSolved}
             onClick={checkFrame}
-            className={`touch-card rounded-2xl bg-emerald-600 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-500 disabled:opacity-55 ${
+            className={`touch-card rounded-2xl bg-emerald-700 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-800 disabled:opacity-55 ${
               showVisualHint && tenFrameCount === exercise.targetNumber
                 ? "animate-hint-glow"
                 : ""
@@ -591,7 +591,7 @@ export function DragSortEngine({
           type="button"
           disabled={isSolved || jarCoins.length === 0}
           onClick={checkCoinJar}
-          className={`touch-card rounded-2xl bg-emerald-600 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-500 disabled:opacity-50 ${
+          className={`touch-card rounded-2xl bg-emerald-700 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-800 disabled:opacity-50 ${
             showVisualHint && remainingPence === 0 ? "animate-hint-glow" : ""
           }`}
         >

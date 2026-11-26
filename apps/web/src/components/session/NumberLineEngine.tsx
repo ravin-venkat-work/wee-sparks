@@ -303,7 +303,7 @@ export function NumberLineEngine({
           type="button"
           onClick={() => moveTo(position + 1)}
           disabled={isSolved || position >= exercise.max}
-          className={`touch-card rounded-2xl bg-sky-600 px-6 py-4 text-lg font-extrabold text-white shadow-md hover:bg-sky-500 disabled:opacity-45 ${
+          className={`touch-card rounded-2xl bg-sky-700 px-6 py-4 text-lg font-extrabold text-white shadow-md hover:bg-sky-800 disabled:opacity-45 ${
             showVisualHint && shouldHopForward ? "animate-hint-glow" : ""
           }`}
         >
@@ -323,7 +323,7 @@ export function NumberLineEngine({
           type="button"
           onClick={handleCheck}
           disabled={isSolved}
-          className={`touch-card rounded-2xl bg-emerald-600 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-500 disabled:opacity-55 ${
+          className={`touch-card rounded-2xl bg-emerald-700 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-800 disabled:opacity-55 ${
             showVisualHint && position === exercise.targetNumber
               ? "animate-hint-glow"
               : ""

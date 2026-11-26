@@ -1,5 +1,9 @@
 "use client";
 
+import { motion, useReducedMotion } from "motion/react";
+import { MOTION_EASE, MOTION_SPRING } from "@/lib/motion";
+import { SparkySvg } from "./SparkyMascot";
+
 interface StarProgressBarProps {
   total: number;
   currentIndex: number;
@@ -8,16 +12,18 @@ interface StarProgressBarProps {
 
 /**
  * Hexagonal Giant's Causeway basalt stepping stone SVG tile.
- * Earned stones glow golden with a star; current stone pulses with a sky beacon.
+ * Pure visual progress cue — zero text or numbers to read.
  */
 function CausewayStone({
+  index,
   earned,
   current,
-  stepNumber,
+  prefersReducedMotion,
 }: {
+  index: number;
   earned: boolean;
   current: boolean;
-  stepNumber: number;
+  prefersReducedMotion: boolean;
 }) {
   return (
     <div
@@ -25,21 +31,47 @@ function CausewayStone({
         current ? "scale-110 -translate-y-1" : earned ? "animate-stone-pop" : ""
       }`}
     >
+      {/* Shared-layout SVG Sparky hopping in an arc from stone to stone */}
+      {current && (
+        <motion.div
+          layoutId="causeway-sparky-hop"
+          transition={MOTION_SPRING.card}
+          className="pointer-events-none absolute -top-7 z-10"
+        >
+          <motion.div
+            key={`hop-${index}`}
+            initial={{ y: 0, scale: 1 }}
+            animate={
+              prefersReducedMotion
+                ? { y: 0, scale: 1 }
+                : { y: [0, -16, 0], scale: [1, 1.15, 1] }
+            }
+            transition={{ duration: 0.42, ease: MOTION_EASE.smooth }}
+          >
+            <SparkySvg
+              mood={earned ? "celebrating" : "idle"}
+              animated={!prefersReducedMotion}
+              className="h-9 w-9 drop-shadow-sm sm:h-10 sm:w-10"
+            />
+          </motion.div>
+        </motion.div>
+      )}
+
       <svg
         viewBox="0 0 56 52"
-        className="h-12 w-14 sm:h-14 sm:w-16"
+        className="h-11 w-12 sm:h-12 sm:w-14"
         aria-hidden="true"
       >
         {/* Basalt 3D column side */}
         <polygon
           points="8,24 28,36 48,24 48,38 28,50 8,38"
-          fill={earned ? "#B45309" : current ? "#0284C7" : "#475569"}
+          fill={earned ? "#B45309" : current ? "#0284C7" : "#64748B"}
         />
         {/* Hexagonal top face */}
         <polygon
           points="28,4 48,15 48,26 28,37 8,26 8,15"
-          fill={earned ? "#FDE047" : current ? "#BAE6FD" : "#CBD5E1"}
-          stroke={earned ? "#CA8A04" : current ? "#0369A1" : "#64748B"}
+          fill={earned ? "#FDE047" : current ? "#BAE6FD" : "#E2E8F0"}
+          stroke={earned ? "#CA8A04" : current ? "#0369A1" : "#94A3B8"}
           strokeWidth="2.4"
           strokeLinejoin="round"
         />
@@ -52,94 +84,58 @@ function CausewayStone({
             strokeWidth="1.2"
           />
         ) : (
-          <text
-            x="28"
-            y="25"
-            textAnchor="middle"
-            fontSize="13"
-            fontWeight="900"
-            fill={current ? "#0C4A6E" : "#475569"}
-          >
-            {stepNumber}
-          </text>
+          <circle
+            cx="28"
+            cy="20.5"
+            r="4.2"
+            fill={current ? "#0284C7" : "#CBD5E1"}
+          />
         )}
       </svg>
-
-      {current && (
-        <span
-          className="absolute -top-2.5 text-sm leading-none animate-bounce"
-          aria-hidden="true"
-        >
-          🦊
-        </span>
-      )}
     </div>
   );
 }
 
 /**
- * Northern Ireland Giant's Causeway basalt stepping-stone progress path
- * across gentle coastal waves, tracking stars earned across the session.
+ * Pure visual Giant's Causeway basalt stepping-stone progress path.
+ * Contains zero text labels ("Step x/y", star counts, or titles) so
+ * pre-readers track progress purely through golden stars and Sparky hopping
+ * smoothly from stone to stone.
  */
 export function StarProgressBar({
   total,
   currentIndex,
   earnedIndices,
 }: StarProgressBarProps) {
-  const earnedCount = earnedIndices.size;
-  const percent = total > 0 ? Math.round((earnedCount / total) * 100) : 0;
+  const prefersReducedMotion = Boolean(useReducedMotion());
 
   return (
     <div
-      className="overflow-hidden rounded-3xl bg-gradient-to-r from-sky-100 via-cyan-50 to-sky-100 p-4 shadow-sm ring-2 ring-sky-200"
-      role="region"
-      aria-label={`Giant's Causeway progress: ${earnedCount} of ${total} stars earned`}
+      className="flex flex-1 items-center justify-around gap-1.5 rounded-3xl bg-gradient-to-r from-sky-100 via-cyan-100/80 to-sky-100 px-3 pb-2 pt-6 shadow-sm ring-2 ring-sky-200"
+      role="progressbar"
+      aria-label="Quest progress"
+      aria-valuemin={0}
+      aria-valuemax={total}
+      aria-valuenow={earnedIndices.size}
     >
-      <div className="mb-2.5 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <span className="text-xl" aria-hidden="true">
-            ⭐
-          </span>
-          <span className="text-base font-black text-slate-900 sm:text-lg">
-            {earnedCount} / {total} Stars
-          </span>
-          <span className="hidden rounded-full bg-white/80 px-2.5 py-0.5 text-xs font-extrabold text-sky-900 sm:inline">
-            Giant&apos;s Causeway Path
-          </span>
-        </div>
-
-        <div className="hidden h-3.5 flex-1 overflow-hidden rounded-full bg-white/80 ring-1 ring-sky-200 sm:block">
+      {Array.from({ length: total }).map((_, idx) => {
+        const isEarned = earnedIndices.has(idx);
+        const isCurrent = idx === currentIndex;
+        return (
           <div
-            className="h-full rounded-full bg-gradient-to-r from-amber-400 via-yellow-300 to-emerald-400 transition-all duration-500"
-            style={{ width: `${percent}%` }}
-          />
-        </div>
-
-        <span className="rounded-full bg-white px-3.5 py-1 text-sm font-extrabold text-sky-900 shadow-sm">
-          Step {currentIndex + 1} / {total}
-        </span>
-      </div>
-
-      {/* Stepping-stone hexagonal trail */}
-      <div className="relative flex flex-wrap items-center justify-around gap-1.5 rounded-2xl bg-sky-200/45 px-3 py-2.5">
-        {Array.from({ length: total }).map((_, idx) => {
-          const isEarned = earnedIndices.has(idx);
-          const isCurrent = idx === currentIndex;
-          return (
-            <div
-              key={idx}
-              aria-current={isCurrent ? "step" : undefined}
-              className={idx % 2 === 1 ? "translate-y-1" : "-translate-y-0.5"}
-            >
-              <CausewayStone
-                earned={isEarned}
-                current={isCurrent}
-                stepNumber={idx + 1}
-              />
-            </div>
-          );
-        })}
-      </div>
+            key={idx}
+            aria-current={isCurrent ? "step" : undefined}
+            className={idx % 2 === 1 ? "translate-y-1" : "-translate-y-0.5"}
+          >
+            <CausewayStone
+              index={idx}
+              earned={isEarned}
+              current={isCurrent}
+              prefersReducedMotion={prefersReducedMotion}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }

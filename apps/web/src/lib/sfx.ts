@@ -2,6 +2,13 @@
 
 export type SfxCue = "tap" | "snap" | "success" | "retry";
 
+export const SFX_DURATION_MS: Record<SfxCue, number> = {
+  tap: 70,
+  snap: 120,
+  success: 580,
+  retry: 310,
+};
+
 const SFX_STORAGE_KEY = "wee-sparks-sfx-enabled";
 const MUSIC_STORAGE_KEY = "wee-sparks-music-enabled";
 

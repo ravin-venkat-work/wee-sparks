@@ -17,7 +17,7 @@ const THEME_OPTIONS: ReadonlyArray<{
     id: "all",
     label: "All",
     emoji: "✨",
-    activeClass: "bg-sky-600 text-white ring-sky-300",
+    activeClass: "bg-sky-700 text-white ring-sky-300",
   },
   {
     id: "space",
@@ -29,7 +29,7 @@ const THEME_OPTIONS: ReadonlyArray<{
     id: "dinosaurs",
     label: "Dinos",
     emoji: "🦕",
-    activeClass: "bg-emerald-600 text-white ring-emerald-300",
+    activeClass: "bg-emerald-700 text-white ring-emerald-300",
   },
   {
     id: "animals",

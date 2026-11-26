@@ -6,9 +6,10 @@ import {
   type StickerDefinition,
 } from "@/lib/stickers";
 import type { UnlockedStickerRecord } from "@/lib/db";
-import { playAudioKey, playSfx } from "@/lib/audio";
+import { playAudioKey, playSfx, playSuccessThenPraise } from "@/lib/audio";
 import { SparkyMascot } from "./SparkyMascot";
 import { SeedItemArt } from "./SeedItemArt";
+import { ParentGateTrigger } from "./ParentGate";
 
 interface CelebrationStickerChestProps {
   mode: "post-session" | "chest-modal";
@@ -18,7 +19,8 @@ interface CelebrationStickerChestProps {
   unlockedRecords: readonly UnlockedStickerRecord[];
   newlyUnlocked: readonly StickerDefinition[];
   onPlayNextQuest?: () => void;
-  onOpenParentBridge?: () => void;
+  onParentUnlock?: () => void;
+  onRequestParentChallenge?: () => void;
   onClose?: () => void;
 }
 
@@ -36,7 +38,8 @@ export function CelebrationStickerChest({
   unlockedRecords,
   newlyUnlocked,
   onPlayNextQuest,
-  onOpenParentBridge,
+  onParentUnlock,
+  onRequestParentChallenge,
   onClose,
 }: CelebrationStickerChestProps) {
   const [chestOpened, setChestOpened] = useState(
@@ -51,15 +54,16 @@ export function CelebrationStickerChest({
 
   const handleOpenChest = () => {
     setChestOpened(true);
-    playSfx("success");
     const first = newlyUnlocked[0];
     if (first) {
-      void playAudioKey(`sticker/${first.id}`, first.cheerText);
+      void playSuccessThenPraise(`sticker/${first.id}`, first.cheerText);
+    } else {
+      playSfx("success");
     }
   };
 
   return (
-    <section className="animate-card-enter relative overflow-hidden rounded-3xl bg-white p-6 text-center shadow-xl ring-4 ring-amber-200 sm:p-8">
+    <section className="relative overflow-hidden rounded-3xl bg-white p-6 text-center shadow-xl ring-4 ring-amber-200 sm:p-8">
       {/* Decorative floating confetti sparkles */}
       <div
         aria-hidden="true"
@@ -76,8 +80,7 @@ export function CelebrationStickerChest({
         <SparkyMascot
           mood="celebrating"
           onTap={() => {
-            playSfx("success");
-            void playAudioKey(
+            void playSuccessThenPraise(
               "feedback/quest-complete",
               "Hooray! Look at your amazing stickers!"
             );
@@ -156,7 +159,7 @@ export function CelebrationStickerChest({
 
       {/* Full Sticker Collection Wall */}
       <div className="mt-6 text-left">
-        <p className="mb-3 text-center text-xs font-extrabold uppercase tracking-wider text-slate-500">
+        <p className="mb-3 text-center text-sm font-extrabold uppercase tracking-wider text-slate-700">
           Tap any unlocked sticker to hear its cheer!
         </p>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
@@ -188,16 +191,16 @@ export function CelebrationStickerChest({
                 className={`touch-card flex min-h-[112px] flex-col items-center justify-center gap-1.5 rounded-2xl border-2 p-3 text-center ${
                   isUnlocked
                     ? "border-amber-300 bg-amber-50/70 text-slate-900 hover:bg-amber-100"
-                    : "border-dashed border-slate-200 bg-slate-50 text-slate-400"
+                    : "border-dashed border-slate-300 bg-slate-50 text-slate-600"
                 }`}
               >
-                <div className={isUnlocked ? "" : "opacity-25 grayscale"}>
+                <div className={isUnlocked ? "" : "opacity-35 grayscale"}>
                   <SeedItemArt
                     itemKey={sticker.artKey}
                     className="h-12 w-12"
                   />
                 </div>
-                <span className="text-xs font-black leading-tight">
+                <span className="text-sm font-black leading-tight">
                   {isUnlocked ? sticker.title : `🔒 ${sticker.starsRequired} ⭐`}
                 </span>
               </button>
@@ -212,25 +215,23 @@ export function CelebrationStickerChest({
           <button
             type="button"
             onClick={onPlayNextQuest}
-            className="touch-card rounded-3xl bg-sky-600 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-sky-500"
+            className="touch-card rounded-3xl bg-sky-700 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-sky-800"
           >
             ✨ Next Adaptive Quest
           </button>
         )}
-        {onOpenParentBridge && (
-          <button
-            type="button"
-            onClick={onOpenParentBridge}
-            className="touch-card rounded-3xl bg-amber-200 px-7 py-4 text-xl font-extrabold text-amber-950 shadow-sm hover:bg-amber-300"
-          >
-            🏡 Parent Bridge
-          </button>
+        {onParentUnlock && onRequestParentChallenge && (
+          <ParentGateTrigger
+            onUnlock={onParentUnlock}
+            onRequestChallenge={onRequestParentChallenge}
+            label="Grown-Ups"
+          />
         )}
         {mode === "chest-modal" && onClose && (
           <button
             type="button"
             onClick={onClose}
-            className="touch-card rounded-3xl bg-sky-600 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-sky-500"
+            className="touch-card rounded-3xl bg-sky-700 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-sky-800"
           >
             Back to Quest ➡️
           </button>

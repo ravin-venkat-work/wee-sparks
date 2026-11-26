@@ -1,11 +1,20 @@
 "use client";
 
+import { isSfxEnabled, playSfx, SFX_DURATION_MS } from "./sfx";
+import {
+  PRAISE_GAP_AFTER_JINGLE_MS,
+  sequenceJingleThenPraise,
+} from "./rewardBurst";
+import { resolveAudioUrl } from "./audioUrls";
+
+export { resolveAudioUrl } from "./audioUrls";
 export {
   isMusicEnabled,
   isSfxEnabled,
   playSfx,
   setMusicEnabled,
   setSfxEnabled,
+  SFX_DURATION_MS,
   stopAmbientMusic,
   type SfxCue,
 } from "./sfx";
@@ -74,23 +83,6 @@ const missingAudioUrls = new Set<string>();
 let activeHtmlAudio: HTMLAudioElement | null = null;
 let activeCancelCallback: (() => void) | null = null;
 let playbackGeneration = 0;
-
-/**
- * Resolves an exercise audioKey to its static public asset path.
- * Phoneme keys ("phoneme/s", "phonemes/s") resolve under /audio/phonemes/.
- */
-export function resolveAudioUrl(audioKey: string): string {
-  const normalized = audioKey.replace(/^\/+/, "");
-  if (normalized.startsWith("phoneme/")) {
-    const slug = normalized.slice("phoneme/".length);
-    return `/audio/phonemes/${slug}.mp3`;
-  }
-  if (normalized.startsWith("phonemes/")) {
-    const slug = normalized.slice("phonemes/".length);
-    return `/audio/phonemes/${slug}.mp3`;
-  }
-  return `/audio/${normalized}.mp3`;
-}
 
 function getCachedAudioElement(url: string): HTMLAudioElement {
   const existing = audioElementCache.get(url);
@@ -405,4 +397,39 @@ export async function playAudioSequence(
 
   onStep?.(-1);
   return true;
+}
+
+/**
+ * Plays the Web Audio success jingle first, waits until it finishes cleanly
+ * (no overlap), and then speaks the praise audioKey. Cancels automatically
+ * if stopAudio() or another cue interrupts during the jingle.
+ */
+export async function playSuccessThenPraise(
+  audioKey: string,
+  fallbackText?: string,
+  options?: PlayAudioOptions & { pauseAfterJingleMs?: number }
+): Promise<boolean> {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  stopAudio();
+  const startGen = playbackGeneration;
+  const waitMs =
+    SFX_DURATION_MS.success +
+    (options?.pauseAfterJingleMs ?? PRAISE_GAP_AFTER_JINGLE_MS);
+
+  return sequenceJingleThenPraise({
+    sfxEnabled: isSfxEnabled(),
+    jingleWaitMs: waitMs,
+    isCancelled: () => playbackGeneration !== startGen,
+    playJingle: () => playSfx("success"),
+    wait: (ms) =>
+      new Promise<void>((resolve) => {
+        window.setTimeout(resolve, ms);
+      }),
+    playPraise: async () => {
+      await playAudioKey(audioKey, fallbackText, options);
+    },
+  });
 }

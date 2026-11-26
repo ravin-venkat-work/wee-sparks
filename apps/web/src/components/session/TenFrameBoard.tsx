@@ -82,7 +82,7 @@ export function TenFrameBoard({
                   />
                 </div>
               ) : (
-                <span className="text-2xl font-black text-slate-300">
+                <span className="text-2xl font-black text-slate-500">
                   {isBuildMode ? "+" : ""}
                 </span>
               )}
@@ -122,7 +122,7 @@ export function TenFrameBoard({
             type="button"
             onClick={onCheckBuild}
             disabled={isSolved}
-            className="touch-card rounded-2xl bg-emerald-600 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-500 disabled:opacity-60"
+            className="touch-card rounded-2xl bg-emerald-700 px-8 py-4 text-xl font-extrabold text-white shadow-md hover:bg-emerald-800 disabled:opacity-60"
           >
             ✅ Check!
           </button>
