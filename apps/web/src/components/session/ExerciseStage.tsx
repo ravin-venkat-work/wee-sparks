@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import type { Exercise } from "@wee-sparks/curriculum-schema";
+import type { CompanionAvatarId, Exercise } from "@wee-sparks/curriculum-schema";
 import type { FeedbackPhase } from "@/lib/sessionStateMachine";
 import { AudioReplayButton } from "./AudioReplayButton";
 import { TapChoiceEngine } from "./TapChoiceEngine";
@@ -21,6 +21,7 @@ interface ExerciseStageProps {
   skipAvailable: boolean;
   feedbackPhase: FeedbackPhase;
   retriesCount: number;
+  avatarId?: CompanionAvatarId;
   onPlayPrompt: () => void;
   onPlayHint: () => void;
   onAttempt: (isCorrect: boolean) => void;
@@ -48,6 +49,7 @@ export function ExerciseStage({
   skipAvailable,
   feedbackPhase,
   retriesCount,
+  avatarId = "sparky",
   onPlayPrompt,
   onPlayHint,
   onAttempt,
@@ -83,6 +85,7 @@ export function ExerciseStage({
         active={isSolved}
         burstKey={stepKey}
         variant={isFinalStep ? "finale" : "standard"}
+        avatarId={avatarId}
       />
 
       {/* Interactive prompt + answer zone resets inactivity timer & lets kids linger */}

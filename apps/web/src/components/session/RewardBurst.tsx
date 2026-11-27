@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import type { CompanionAvatarId } from "@wee-sparks/curriculum-schema";
 import { MOTION_DURATION, MOTION_SPRING } from "@/lib/motion";
 import {
   generateBurstParticles,
@@ -19,6 +20,8 @@ interface RewardBurstProps {
   burstKey: string;
   /** Use "finale" on the final step of the quest for a bigger celebration with Sparky. */
   variant?: RewardBurstVariant;
+  /** Chosen learner companion avatar to celebrate with on finale steps. */
+  avatarId?: CompanionAvatarId;
 }
 
 function ParticleGlyph({ particle }: { particle: BurstParticle }) {
@@ -76,6 +79,7 @@ export function RewardBurst({
   active,
   burstKey,
   variant = "standard",
+  avatarId = "sparky",
 }: RewardBurstProps) {
   const prefersReducedMotion = Boolean(useReducedMotion());
   const [burstVisible, setBurstVisible] = useState(false);
@@ -127,7 +131,7 @@ export function RewardBurst({
         />
         {visualMode === "glow-finale" && (
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-3xl bg-white/95 p-2 shadow-[0_0_24px_rgba(245,158,11,0.45)] ring-4 ring-amber-300">
-            <SparkyMascot mood="celebrating" size="md" />
+            <SparkyMascot avatarId={avatarId} mood="celebrating" size="md" />
           </div>
         )}
       </div>
@@ -208,7 +212,7 @@ export function RewardBurst({
                 }}
                 className="relative flex flex-col items-center rounded-3xl bg-white/95 p-3 shadow-2xl ring-4 ring-amber-300"
               >
-                <SparkyMascot mood="celebrating" size="md" />
+                <SparkyMascot avatarId={avatarId} mood="celebrating" size="md" />
               </motion.div>
             )}
           </motion.div>

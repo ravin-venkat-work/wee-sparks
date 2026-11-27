@@ -43,6 +43,19 @@ export const ThemeSchema = z.enum([
 export type Theme = z.infer<typeof ThemeSchema>;
 
 /**
+ * Canonical animated companion avatar IDs selectable by learners/parents.
+ */
+export const CompanionAvatarIdSchema = z.enum([
+  "sparky",
+  "pip",
+  "rex",
+  "nova",
+  "pippa",
+  "rusty",
+]);
+export type CompanionAvatarId = z.infer<typeof CompanionAvatarIdSchema>;
+
+/**
  * Progression tiers for adaptive scaffolding within a micro-skill.
  */
 export const DifficultyTierSchema = z.enum([

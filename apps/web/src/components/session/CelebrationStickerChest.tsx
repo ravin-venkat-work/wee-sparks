@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { CompanionAvatarId } from "@wee-sparks/curriculum-schema";
 import {
   STICKER_CATALOG,
   type StickerDefinition,
@@ -13,6 +14,7 @@ import { ParentGateTrigger } from "./ParentGate";
 
 interface CelebrationStickerChestProps {
   mode: "post-session" | "chest-modal";
+  avatarId?: CompanionAvatarId;
   starsThisSession?: number;
   totalExercises?: number;
   lifetimeStars: number;
@@ -32,6 +34,7 @@ interface CelebrationStickerChestProps {
  */
 export function CelebrationStickerChest({
   mode,
+  avatarId = "sparky",
   starsThisSession = 0,
   totalExercises = 6,
   lifetimeStars,
@@ -78,6 +81,7 @@ export function CelebrationStickerChest({
       {/* Header */}
       <div className="relative flex flex-col items-center">
         <SparkyMascot
+          avatarId={avatarId}
           mood="celebrating"
           onTap={() => {
             void playSuccessThenPraise(

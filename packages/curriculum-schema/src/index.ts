@@ -21,3 +21,4 @@
 export * from "./enums";
 export * from "./catalog";
 export * from "./exercises";
+export * from "./stories";

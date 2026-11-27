@@ -6,6 +6,7 @@
   "scripts": {
     "validate": "tsx src/validate.ts",
     "generate": "tsx src/generate.ts",
+    "build:stories": "tsx src/buildStoryPacks.ts",
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit"
   },

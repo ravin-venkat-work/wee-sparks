@@ -1,10 +1,12 @@
 import Dexie, { type EntityTable } from "dexie";
 import type {
+  CompanionAvatarId,
   DifficultyTier,
   MicroSkillId,
   Theme,
   YearGroup,
 } from "@wee-sparks/curriculum-schema";
+import { getCompanionAvatar, resolveCompanionAvatarId } from "./avatars";
 
 export type LearnerThemePreference = Theme | "all";
 
@@ -12,6 +14,7 @@ export interface LearnerProfile {
   id?: number;
   displayName: string;
   yearGroup: YearGroup;
+  avatarId?: CompanionAvatarId;
   avatarEmoji: string;
   preferredTheme: LearnerThemePreference;
   createdAt: string;
@@ -138,6 +141,29 @@ export class WeeSparksDatabase extends Dexie {
         "[learnerId+skillId], learnerId, skillId, status, nextReviewAt, updatedAt",
       stickers: "[learnerId+stickerId], learnerId, stickerId, unlockedAt",
     });
+
+    this.version(4)
+      .stores({
+        learners:
+          "++id, displayName, yearGroup, preferredTheme, avatarId, createdAt",
+        attempts: "++id, learnerId, exerciseId, skillId, completedAt",
+        skillMastery:
+          "[learnerId+skillId], learnerId, skillId, status, nextReviewAt, updatedAt",
+        stickers: "[learnerId+stickerId], learnerId, stickerId, unlockedAt",
+      })
+      .upgrade(async (tx) => {
+        await tx
+          .table("learners")
+          .toCollection()
+          .modify((learner: Partial<LearnerProfile>) => {
+            if (!learner.avatarId) {
+              learner.avatarId = resolveCompanionAvatarId(learner);
+            }
+            if (!learner.preferredTheme) {
+              learner.preferredTheme = "all";
+            }
+          });
+      });
   }
 }
 
@@ -179,14 +205,22 @@ export async function listLearners(): Promise<LearnerProfile[]> {
 export async function createLearnerProfile(params: {
   displayName: string;
   yearGroup: YearGroup;
-  avatarEmoji: string;
+  avatarId?: CompanionAvatarId;
+  avatarEmoji?: string;
   preferredTheme?: LearnerThemePreference;
 }): Promise<LearnerProfile> {
   const cleanedName = params.displayName.trim() || "Wee Explorer";
+  const resolvedAvatarId = resolveCompanionAvatarId({
+    avatarId: params.avatarId,
+    avatarEmoji: params.avatarEmoji,
+  });
+  const avatarDef = getCompanionAvatar(resolvedAvatarId);
+
   const profile: LearnerProfile = {
     displayName: cleanedName,
     yearGroup: params.yearGroup,
-    avatarEmoji: params.avatarEmoji || "🦊",
+    avatarId: resolvedAvatarId,
+    avatarEmoji: params.avatarEmoji || avatarDef.emoji,
     preferredTheme: params.preferredTheme ?? "all",
     createdAt: new Date().toISOString(),
   };
@@ -199,6 +233,72 @@ export async function createLearnerProfile(params: {
 }
 
 /**
+ * Updates an existing learner's name, CCEA stage focus, preferred theme, and companion avatar
+ * strictly in local IndexedDB.
+ */
+export async function updateLearnerProfile(
+  learnerId: number,
+  updates: {
+    displayName?: string;
+    yearGroup?: YearGroup;
+    preferredTheme?: LearnerThemePreference;
+    avatarId?: CompanionAvatarId;
+    avatarEmoji?: string;
+  }
+): Promise<LearnerProfile | undefined> {
+  const existing = await db.learners.get(learnerId);
+  if (!existing) return undefined;
+
+  const patch: Partial<LearnerProfile> = {};
+
+  if (typeof updates.displayName === "string") {
+    const cleaned = updates.displayName.trim();
+    if (cleaned.length > 0) {
+      patch.displayName = cleaned;
+    }
+  }
+
+  if (updates.yearGroup) {
+    patch.yearGroup = updates.yearGroup;
+  }
+
+  if (updates.preferredTheme) {
+    patch.preferredTheme = updates.preferredTheme;
+  }
+
+  if (updates.avatarId) {
+    const avatarDef = getCompanionAvatar(updates.avatarId);
+    patch.avatarId = avatarDef.id;
+    patch.avatarEmoji = updates.avatarEmoji || avatarDef.emoji;
+  } else if (updates.avatarEmoji) {
+    patch.avatarEmoji = updates.avatarEmoji;
+    patch.avatarId = resolveCompanionAvatarId({
+      avatarEmoji: updates.avatarEmoji,
+    });
+  }
+
+  await db.learners.update(learnerId, patch);
+  return db.learners.get(learnerId);
+}
+
+async function normaliseLearnerProfile(
+  profile: LearnerProfile
+): Promise<LearnerProfile> {
+  const patch: Partial<LearnerProfile> = {};
+  if (!profile.preferredTheme) {
+    patch.preferredTheme = "all";
+  }
+  if (!profile.avatarId) {
+    patch.avatarId = resolveCompanionAvatarId(profile);
+  }
+  if (Object.keys(patch).length > 0 && profile.id !== undefined) {
+    await db.learners.update(profile.id, patch);
+    return { ...profile, ...patch };
+  }
+  return profile;
+}
+
+/**
  * Restores the last-selected local learner (or creates the default profile)
  * so multiple children can share one device with isolated progress.
  */
@@ -207,11 +307,7 @@ export async function ensureDefaultLearner(): Promise<LearnerProfile> {
   if (storedId !== null) {
     const found = await db.learners.get(storedId);
     if (found) {
-      if (!found.preferredTheme && found.id !== undefined) {
-        await db.learners.update(found.id, { preferredTheme: "all" });
-        return { ...found, preferredTheme: "all" };
-      }
-      return found;
+      return normaliseLearnerProfile(found);
     }
   }
 
@@ -220,16 +316,13 @@ export async function ensureDefaultLearner(): Promise<LearnerProfile> {
     if (existing.id !== undefined) {
       setStoredActiveLearnerId(existing.id);
     }
-    if (!existing.preferredTheme && existing.id !== undefined) {
-      await db.learners.update(existing.id, { preferredTheme: "all" });
-      return { ...existing, preferredTheme: "all" };
-    }
-    return existing;
+    return normaliseLearnerProfile(existing);
   }
 
   return createLearnerProfile({
     displayName: "Wee Explorer",
     yearGroup: "P1",
+    avatarId: "sparky",
     avatarEmoji: "🦊",
     preferredTheme: "all",
   });

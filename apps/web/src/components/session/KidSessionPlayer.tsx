@@ -11,6 +11,7 @@ import {
   TRY_AGAIN_AUDIO_SCRIPTS,
   type Exercise,
   type MicroSkillId,
+  type StoryBook,
 } from "@wee-sparks/curriculum-schema";
 import {
   isMusicEnabled,
@@ -44,6 +45,8 @@ import {
   getLearnerLifetimeStars,
   syncAndUnlockStickers,
 } from "@/lib/stickers";
+import { resolveCompanionAvatarId } from "@/lib/avatars";
+import { getStoriesForYearFilter } from "@/lib/stories";
 import { runIfParentGateUnlocked } from "@/lib/parentGate";
 import {
   EXERCISE_CARD_VARIANTS,
@@ -72,6 +75,7 @@ import { ParentBridgeModal } from "./ParentBridgeModal";
 import { PrintablePracticeSheet } from "./PrintablePracticeSheet";
 import { CelebrationStickerChest } from "./CelebrationStickerChest";
 import { SparkyMascot } from "./SparkyMascot";
+import { StoryPlayer } from "../story/StoryPlayer";
 
 interface KidSessionPlayerProps {
   exercises: readonly Exercise[];
@@ -99,6 +103,7 @@ export function KidSessionPlayer({
   const [musicOn, setMusicOn] = useState(false);
   const [showParentGateChallenge, setShowParentGateChallenge] = useState(false);
   const [parentGateUnlocked, setParentGateUnlocked] = useState(false);
+  const [activeStory, setActiveStory] = useState<StoryBook | null>(null);
   const [activityNonce, setActivityNonce] = useState(0);
 
   const [state, dispatch] = useReducer(
@@ -426,7 +431,21 @@ export function KidSessionPlayer({
   ) => {
     const gated = runIfParentGateUnlocked(parentGateUnlocked, () => nextLearner);
     if (!gated.allowed) return;
+    setActiveStory(null);
     await handleStartForLearner(gated.result, state.screen === "playing");
+  };
+
+  const handleProfileUpdatedFromSettings = async (
+    updatedLearner: LearnerProfile
+  ) => {
+    const gated = runIfParentGateUnlocked(
+      parentGateUnlocked,
+      () => updatedLearner
+    );
+    if (!gated.allowed) return;
+    if (gated.result.id === learner?.id) {
+      await handleStartForLearner(gated.result, state.screen === "playing");
+    }
   };
 
   const handleYearChange = async (nextYear: YearGroupFilter) => {
@@ -666,11 +685,36 @@ export function KidSessionPlayer({
   };
 
   const mascotMood = deriveMascotMood(state);
+  const activeAvatarId = resolveCompanionAvatarId(learner);
+  const visibleStories = useMemo(
+    () => getStoriesForYearFilter(yearGroupFilter),
+    [yearGroupFilter]
+  );
 
   return (
     <>
       <AnimatePresence mode="wait" initial={false}>
-        {state.screen === "welcome" ? (
+        {activeStory ? (
+          <motion.div
+            key={`screen-story-${activeStory.storyId}`}
+            variants={SCREEN_TRANSITION_VARIANTS}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
+            <StoryPlayer
+              story={activeStory}
+              learner={learner}
+              avatarId={activeAvatarId}
+              availableStories={visibleStories}
+              onSelectStory={(nextStory) => setActiveStory(nextStory)}
+              onExitStory={() => {
+                setActiveStory(null);
+                dispatch({ type: "GO_WELCOME" });
+              }}
+            />
+          </motion.div>
+        ) : state.screen === "welcome" ? (
           <motion.div
             key="screen-welcome"
             variants={SCREEN_TRANSITION_VARIANTS}
@@ -679,9 +723,17 @@ export function KidSessionPlayer({
             exit="exit"
           >
             <WelcomeScreen
-              onSelectLearner={(profile) =>
-                void handleStartForLearner(profile, true)
-              }
+              activeLearner={learner}
+              stories={visibleStories}
+              onSelectLearner={(profile) => {
+                setActiveStory(null);
+                void handleStartForLearner(profile, true);
+              }}
+              onStartStory={(story) => {
+                clearAutoAdvanceTimer();
+                stopAudio();
+                setActiveStory(story);
+              }}
               onParentUnlock={handleUnlockParentSettings}
               onRequestParentChallenge={handleRequestParentChallenge}
             />
@@ -695,9 +747,10 @@ export function KidSessionPlayer({
             exit="exit"
             className="no-print mx-auto flex min-h-screen max-w-5xl flex-col gap-4 overflow-x-hidden px-4 py-4 sm:px-6 sm:py-5"
           >
-            {/* Minimal Child Top Strip: Sparky + Stepping-Stone Path + Discreet Home */}
+            {/* Minimal Child Top Strip: Companion + Stepping-Stone Path + Discreet Home */}
             <header className="flex items-center gap-3">
               <SparkyMascot
+                avatarId={activeAvatarId}
                 mood={mascotMood}
                 size="sm"
                 onTap={handlePlayPrompt}
@@ -707,6 +760,7 @@ export function KidSessionPlayer({
                 total={activeItems.length}
                 currentIndex={state.currentIndex}
                 earnedIndices={state.earnedIndices}
+                avatarId={activeAvatarId}
               />
 
               <button
@@ -736,6 +790,7 @@ export function KidSessionPlayer({
                 >
                   <CelebrationStickerChest
                     mode="post-session"
+                    avatarId={activeAvatarId}
                     starsThisSession={state.earnedIndices.size}
                     totalExercises={activeItems.length}
                     lifetimeStars={state.lifetimeStars}
@@ -768,6 +823,7 @@ export function KidSessionPlayer({
                     skipAvailable={isSkipAvailable(state)}
                     feedbackPhase={state.phase}
                     retriesCount={state.retriesOnCurrent}
+                    avatarId={activeAvatarId}
                     onPlayPrompt={handlePlayPrompt}
                     onPlayHint={handlePlayHint}
                     onAttempt={(ok) => void handleAttempt(ok)}
@@ -824,6 +880,9 @@ export function KidSessionPlayer({
         }}
         learner={learner}
         onSelectLearner={(next) => void handleSwitchLearnerFromSettings(next)}
+        onProfileUpdated={(updated) =>
+          void handleProfileUpdatedFromSettings(updated)
+        }
         yearGroupFilter={yearGroupFilter}
         onChangeYearGroup={(yr) => void handleYearChange(yr)}
         selectedTheme={selectedTheme}

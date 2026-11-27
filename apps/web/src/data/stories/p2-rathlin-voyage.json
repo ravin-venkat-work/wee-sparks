@@ -1,0 +1,255 @@
+{
+  "storyId": "p2-rathlin-voyage",
+  "version": "1.0.0",
+  "title": "Pip's Voyage to Rathlin Island",
+  "subtitle": "Sail across the North Channel with Pip using P2 digraphs, number bonds, and coins.",
+  "yearGroup": "P2",
+  "theme": "vehicles",
+  "locale": "en-GB-NI",
+  "coverIllustration": "rathlin-harbour",
+  "companionAvatarId": "pip",
+  "offlineParentTip": "Chat about the 'sh' digraph in 'ship' and play a quick game of 'Make 10 Snap' together while waiting for dinner or riding the bus.",
+  "chapters": [
+    {
+      "chapterId": "ch-1-harbour-ship",
+      "title": "All Aboard at Ballycastle",
+      "illustration": "rathlin-harbour",
+      "narrationText": "Pip the Rathlin Puffin packed a bright orange satchel and waddled down to the harbour. Blend the digraph word to see how Pip will cross the waves!",
+      "narrationAudioKey": "story/p2-rathlin-ch1-narration",
+      "companionMood": "idle",
+      "visualCueEmoji": "🚢",
+      "exercise": {
+        "id": "story-p2-rathlin-ex-1",
+        "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+        "yearGroup": "P2",
+        "subject": "literacy",
+        "theme": "vehicles",
+        "difficulty": "emerging",
+        "prompt": {
+          "text": "Blend sh, i, p together to find Pip's boat!",
+          "audioKey": "story/p2-rathlin-ex1-prompt",
+          "visualCueEmoji": "🚢"
+        },
+        "hint": {
+          "text": "Remember s and h team up to make one sound: sh - i - p, ship!",
+          "audioKey": "story/p2-rathlin-ex1-hint"
+        },
+        "feedback": {
+          "correctText": "Marvellous! You figured it out!",
+          "correctAudioKey": "feedback/praise-11",
+          "encourageText": "Almost! You're doing brilliantly — try another one.",
+          "encourageAudioKey": "feedback/try-again-11"
+        },
+        "type": "cvc-blending",
+        "targetWord": "ship",
+        "wordAudioKey": "word/ship",
+        "phonemes": [
+          {
+            "grapheme": "sh",
+            "audioKey": "phoneme/sh"
+          },
+          {
+            "grapheme": "i",
+            "audioKey": "phoneme/i"
+          },
+          {
+            "grapheme": "p",
+            "audioKey": "phoneme/p"
+          }
+        ],
+        "options": [
+          {
+            "id": "opt-ship",
+            "label": "ship",
+            "emoji": "🚢",
+            "audioKey": "word/ship"
+          },
+          {
+            "id": "opt-fish",
+            "label": "fish",
+            "emoji": "🐟",
+            "audioKey": "word/fish"
+          },
+          {
+            "id": "opt-shop",
+            "label": "shop",
+            "emoji": "🏪",
+            "audioKey": "word/shop"
+          }
+        ],
+        "correctOptionId": "opt-ship"
+      }
+    },
+    {
+      "chapterId": "ch-2-lantern-bonds",
+      "title": "Ten Lanterns for the Lighthouse",
+      "illustration": "starlight-launch",
+      "narrationText": "Out on the sea breeze, Rathlin's tall lighthouse needs 10 bright lanterns to shine through the mist. Pip has 6 lit already — how many more make 10?",
+      "narrationAudioKey": "story/p2-rathlin-ch2-narration",
+      "companionMood": "thinking",
+      "visualCueEmoji": "🏮",
+      "exercise": {
+        "id": "story-p2-rathlin-ex-2",
+        "skillId": "ccea-p2-num-bonds-to-10",
+        "yearGroup": "P2",
+        "subject": "numeracy",
+        "theme": "space",
+        "difficulty": "developing",
+        "prompt": {
+          "text": "6 and what number make 10 lanterns altogether?",
+          "audioKey": "story/p2-rathlin-ex2-prompt",
+          "visualCueEmoji": "⭐"
+        },
+        "hint": {
+          "text": "Count on from 6 up to 10: 7, 8, 9, 10 — that is 4 more!",
+          "audioKey": "story/p2-rathlin-ex2-hint"
+        },
+        "feedback": {
+          "correctText": "Top marks! What a bright spark!",
+          "correctAudioKey": "feedback/praise-12",
+          "encourageText": "Good effort! Listen closely and have one more go.",
+          "encourageAudioKey": "feedback/try-again-12"
+        },
+        "type": "number-bond",
+        "whole": 10,
+        "givenPart": 6,
+        "missingPart": 4,
+        "counterVisual": {
+          "emoji": "⭐",
+          "label": "lantern star",
+          "colour": "#F59E0B",
+          "audioKey": "word/star"
+        },
+        "options": [
+          {
+            "id": "opt-3",
+            "label": "3",
+            "displayText": "3",
+            "audioKey": "number/3"
+          },
+          {
+            "id": "opt-4",
+            "label": "4",
+            "displayText": "4",
+            "audioKey": "number/4"
+          },
+          {
+            "id": "opt-5",
+            "label": "5",
+            "displayText": "5",
+            "audioKey": "number/5"
+          }
+        ],
+        "correctOptionId": "opt-4"
+      }
+    },
+    {
+      "chapterId": "ch-3-wave-hops",
+      "title": "Hopping the Sea Waves",
+      "illustration": "rathlin-harbour",
+      "narrationText": "Splish, splash! Pip's ferry is at buoy number 9 and needs to hop 5 more waves forward to reach the pier. Jump along the number line!",
+      "narrationAudioKey": "story/p2-rathlin-ch3-narration",
+      "companionMood": "encouraging",
+      "visualCueEmoji": "🐧",
+      "exercise": {
+        "id": "story-p2-rathlin-ex-3",
+        "skillId": "ccea-p2-num-add-sub-within-20",
+        "yearGroup": "P2",
+        "subject": "numeracy",
+        "theme": "vehicles",
+        "difficulty": "developing",
+        "prompt": {
+          "text": "Start at 9 and hop forward 5 waves. Where does Pip land?",
+          "audioKey": "story/p2-rathlin-ex3-prompt",
+          "visualCueEmoji": "🐧"
+        },
+        "hint": {
+          "text": "Tap +1 five times from 9: 10, 11, 12, 13, 14!",
+          "audioKey": "story/p2-rathlin-ex3-hint"
+        },
+        "feedback": {
+          "correctText": "Brilliant work! You got it!",
+          "correctAudioKey": "feedback/praise-01",
+          "encourageText": "Good try! Have another go!",
+          "encourageAudioKey": "feedback/try-again-01"
+        },
+        "type": "number-line-hop",
+        "min": 0,
+        "max": 20,
+        "startNumber": 9,
+        "operation": "add",
+        "hops": 5,
+        "targetNumber": 14,
+        "hopperVisual": {
+          "emoji": "🐧",
+          "label": "Pip",
+          "audioKey": "word/puffin"
+        }
+      }
+    },
+    {
+      "chapterId": "ch-4-harbour-cafe",
+      "title": "Coins at the Island Pier",
+      "illustration": "belfast-depot",
+      "narrationText": "Welcome to Rathlin! Pip wants a warm scone at the harbour café. Add the two UK coins in Pip's pocket to see the total!",
+      "narrationAudioKey": "story/p2-rathlin-ch4-narration",
+      "companionMood": "celebrating",
+      "visualCueEmoji": "🪙",
+      "exercise": {
+        "id": "story-p2-rathlin-ex-4",
+        "skillId": "ccea-p2-num-coins-to-20p",
+        "yearGroup": "P2",
+        "subject": "numeracy",
+        "theme": "vehicles",
+        "difficulty": "secure",
+        "prompt": {
+          "text": "How much do Pip's 10p and 5p coins make altogether?",
+          "audioKey": "story/p2-rathlin-ex4-prompt",
+          "visualCueEmoji": "🪙"
+        },
+        "hint": {
+          "text": "Start with 10p and count on 5 more pence to reach 15p!",
+          "audioKey": "story/p2-rathlin-ex4-hint"
+        },
+        "feedback": {
+          "correctText": "Awesome! Sparky is so proud of you!",
+          "correctAudioKey": "feedback/praise-06",
+          "encourageText": "So close! Give it another try!",
+          "encourageAudioKey": "feedback/try-again-06"
+        },
+        "type": "uk-coin-match",
+        "targetPence": 15,
+        "coinsShown": [
+          "10p",
+          "5p"
+        ],
+        "options": [
+          {
+            "id": "opt-12p",
+            "label": "12p",
+            "displayText": "12p",
+            "audioKey": "number/12"
+          },
+          {
+            "id": "opt-15p",
+            "label": "15p",
+            "displayText": "15p",
+            "audioKey": "number/15"
+          },
+          {
+            "id": "opt-20p",
+            "label": "20p",
+            "displayText": "20p",
+            "audioKey": "coin/20p"
+          }
+        ],
+        "correctOptionId": "opt-15p"
+      }
+    }
+  ],
+  "finaleTitle": "Rathlin Island Navigator!",
+  "finaleText": "Bravo! Pip sailed safely across the sea, lit the lighthouse, and celebrated with a warm island scone thanks to your super P2 skills!",
+  "finaleAudioKey": "story/p2-rathlin-finale",
+  "finaleIllustration": "rathlin-harbour",
+  "rewardBadgeTitle": "Rathlin Navigator Badge"
+}

@@ -2,13 +2,15 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import type { CompanionAvatarId } from "@wee-sparks/curriculum-schema";
 import { MOTION_EASE, MOTION_SPRING } from "@/lib/motion";
-import { SparkySvg } from "./SparkyMascot";
+import { CompanionAvatarSvg } from "../avatars/CompanionAvatarSvg";
 
 interface StarProgressBarProps {
   total: number;
   currentIndex: number;
   earnedIndices: ReadonlySet<number>;
+  avatarId?: CompanionAvatarId;
 }
 
 interface OverlayPosition {
@@ -92,6 +94,7 @@ export function StarProgressBar({
   total,
   currentIndex,
   earnedIndices,
+  avatarId = "sparky",
 }: StarProgressBarProps) {
   const prefersReducedMotion = Boolean(useReducedMotion());
   const trackRef = useRef<HTMLDivElement | null>(null);
@@ -216,7 +219,8 @@ export function StarProgressBar({
               }
               transition={{ duration: 0.42, ease: MOTION_EASE.smooth }}
             >
-              <SparkySvg
+              <CompanionAvatarSvg
+                avatarId={avatarId}
                 mood={isCurrentEarned ? "celebrating" : "idle"}
                 animated={!prefersReducedMotion}
                 className="h-8 w-8 drop-shadow-sm sm:h-10 sm:w-10"

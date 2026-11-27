@@ -1,0 +1,273 @@
+{
+  "storyId": "p1-causeway-adventure",
+  "version": "1.0.0",
+  "title": "Sparky & the Causeway Stars",
+  "subtitle": "Help Sparky follow golden phonics and number clues along the Antrim coast.",
+  "yearGroup": "P1",
+  "theme": "animals",
+  "locale": "en-GB-NI",
+  "coverIllustration": "causeway-shore",
+  "companionAvatarId": "sparky",
+  "offlineParentTip": "After finishing Sparky's story, ask your child to retell their favourite stone clue and spot one thing in the room that starts with the pure /s/ sound.",
+  "chapters": [
+    {
+      "chapterId": "ch-1-sunny-stones",
+      "title": "The Sunny Stepping Stones",
+      "illustration": "causeway-shore",
+      "narrationText": "Early one morning at the Giant's Causeway, Sparky spotted a golden lantern glowing by the sea. To wake the first stepping stone, listen for the pure starting sound!",
+      "narrationAudioKey": "story/p1-causeway-ch1-narration",
+      "companionMood": "idle",
+      "visualCueEmoji": "☀️",
+      "exercise": {
+        "id": "story-p1-causeway-ex-1",
+        "skillId": "ccea-p1-lit-initial-satpin",
+        "yearGroup": "P1",
+        "subject": "literacy",
+        "theme": "animals",
+        "difficulty": "emerging",
+        "prompt": {
+          "text": "Tap the picture that starts with the /s/ sound to light Sparky's first stone.",
+          "audioKey": "story/p1-causeway-ex1-prompt",
+          "visualCueEmoji": "☀️"
+        },
+        "hint": {
+          "text": "Listen closely: sss... sun starts with /s/!",
+          "audioKey": "story/p1-causeway-ex1-hint"
+        },
+        "feedback": {
+          "correctText": "Terrific! Keep up the great work!",
+          "correctAudioKey": "feedback/praise-10",
+          "encourageText": "Have another wee think and tap again!",
+          "encourageAudioKey": "feedback/try-again-10"
+        },
+        "type": "initial-sound-match",
+        "mode": "sound-to-picture",
+        "targetSound": "s",
+        "targetSoundAudioKey": "phoneme/s",
+        "stimulus": {
+          "label": "s",
+          "emoji": "☀️",
+          "audioKey": "phoneme/s"
+        },
+        "options": [
+          {
+            "id": "opt-sun",
+            "label": "sun",
+            "emoji": "☀️",
+            "audioKey": "word/sun"
+          },
+          {
+            "id": "opt-ant",
+            "label": "ant",
+            "emoji": "🐜",
+            "audioKey": "word/ant"
+          },
+          {
+            "id": "opt-tap",
+            "label": "tap",
+            "emoji": "🚰",
+            "audioKey": "word/tap"
+          }
+        ],
+        "correctOptionId": "opt-sun"
+      }
+    },
+    {
+      "chapterId": "ch-2-treasure-pin",
+      "title": "The Shiny Badge Clue",
+      "illustration": "dino-valley",
+      "narrationText": "Hop, hop! Sparky bounced past the emerald glens and found three glowing letter tiles on a mossy rock. Blend the sounds together to read what Sparky found!",
+      "narrationAudioKey": "story/p1-causeway-ch2-narration",
+      "companionMood": "thinking",
+      "visualCueEmoji": "📌",
+      "exercise": {
+        "id": "story-p1-causeway-ex-2",
+        "skillId": "ccea-p1-lit-cvc-blend-satpin",
+        "yearGroup": "P1",
+        "subject": "literacy",
+        "theme": "animals",
+        "difficulty": "developing",
+        "prompt": {
+          "text": "Tap p, i, n to blend the clue word, then pick its picture!",
+          "audioKey": "story/p1-causeway-ex2-prompt",
+          "visualCueEmoji": "📌"
+        },
+        "hint": {
+          "text": "Push p - i - n together slowly... pin!",
+          "audioKey": "story/p1-causeway-ex2-hint"
+        },
+        "feedback": {
+          "correctText": "Brilliant work! You got it!",
+          "correctAudioKey": "feedback/praise-01",
+          "encourageText": "Good try! Have another go!",
+          "encourageAudioKey": "feedback/try-again-01"
+        },
+        "type": "cvc-blending",
+        "targetWord": "pin",
+        "wordAudioKey": "word/pin",
+        "phonemes": [
+          {
+            "grapheme": "p",
+            "audioKey": "phoneme/p"
+          },
+          {
+            "grapheme": "i",
+            "audioKey": "phoneme/i"
+          },
+          {
+            "grapheme": "n",
+            "audioKey": "phoneme/n"
+          }
+        ],
+        "options": [
+          {
+            "id": "opt-pin",
+            "label": "pin",
+            "emoji": "📌",
+            "audioKey": "word/pin"
+          },
+          {
+            "id": "opt-pan",
+            "label": "pan",
+            "emoji": "🍳",
+            "audioKey": "word/pan"
+          },
+          {
+            "id": "opt-tin",
+            "label": "tin",
+            "emoji": "🥫",
+            "audioKey": "word/tin"
+          }
+        ],
+        "correctOptionId": "opt-pin"
+      }
+    },
+    {
+      "chapterId": "ch-3-counting-stars",
+      "title": "Stars in the Sea Breeze",
+      "illustration": "starlight-launch",
+      "narrationText": "Twilight twinkled over the Antrim hills! A shower of friendly sea stars landed right on Sparky's ten-frame. Count how many stars are glowing!",
+      "narrationAudioKey": "story/p1-causeway-ch3-narration",
+      "companionMood": "encouraging",
+      "visualCueEmoji": "⭐",
+      "exercise": {
+        "id": "story-p1-causeway-ex-3",
+        "skillId": "ccea-p1-num-ten-frames-1-10",
+        "yearGroup": "P1",
+        "subject": "numeracy",
+        "theme": "space",
+        "difficulty": "developing",
+        "prompt": {
+          "text": "How many glowing stars landed on Sparky's ten-frame?",
+          "audioKey": "story/p1-causeway-ex3-prompt",
+          "visualCueEmoji": "⭐"
+        },
+        "hint": {
+          "text": "The top row is a full 5, plus 1 more star on the bottom row!",
+          "audioKey": "story/p1-causeway-ex3-hint"
+        },
+        "feedback": {
+          "correctText": "Top marks! What a bright spark!",
+          "correctAudioKey": "feedback/praise-12",
+          "encourageText": "Good effort! Listen closely and have one more go.",
+          "encourageAudioKey": "feedback/try-again-12"
+        },
+        "type": "ten-frame-count",
+        "mode": "count-to-numeral",
+        "frameSize": 10,
+        "targetNumber": 6,
+        "initialCounters": 6,
+        "counterVisual": {
+          "emoji": "⭐",
+          "label": "star",
+          "colour": "#F59E0B",
+          "audioKey": "word/star"
+        },
+        "options": [
+          {
+            "id": "opt-5",
+            "label": "5",
+            "displayText": "5",
+            "audioKey": "number/5"
+          },
+          {
+            "id": "opt-6",
+            "label": "6",
+            "displayText": "6",
+            "audioKey": "number/6"
+          },
+          {
+            "id": "opt-7",
+            "label": "7",
+            "displayText": "7",
+            "audioKey": "number/7"
+          }
+        ],
+        "correctOptionId": "opt-6"
+      }
+    },
+    {
+      "chapterId": "ch-4-harbour-treat",
+      "title": "A Coin for the Cove Chest",
+      "illustration": "treasure-cove",
+      "narrationText": "At last Sparky reached Golden Cove! One last riddle opens the seaside chest: count the UK coin to see how many pence Sparky collected.",
+      "narrationAudioKey": "story/p1-causeway-ch4-narration",
+      "companionMood": "celebrating",
+      "visualCueEmoji": "🪙",
+      "exercise": {
+        "id": "story-p1-causeway-ex-4",
+        "skillId": "ccea-p1-num-coins-1p-5p",
+        "yearGroup": "P1",
+        "subject": "numeracy",
+        "theme": "animals",
+        "difficulty": "secure",
+        "prompt": {
+          "text": "How much is Sparky's silver UK coin worth?",
+          "audioKey": "story/p1-causeway-ex4-prompt",
+          "visualCueEmoji": "🪙"
+        },
+        "hint": {
+          "text": "Look at the big number on the small silver coin — it says 5p!",
+          "audioKey": "story/p1-causeway-ex4-hint"
+        },
+        "feedback": {
+          "correctText": "Wonderful! You nailed that one!",
+          "correctAudioKey": "feedback/praise-07",
+          "encourageText": "Great effort! Let's try that one again.",
+          "encourageAudioKey": "feedback/try-again-07"
+        },
+        "type": "uk-coin-match",
+        "targetPence": 5,
+        "coinsShown": [
+          "5p"
+        ],
+        "options": [
+          {
+            "id": "opt-2p",
+            "label": "2p",
+            "displayText": "2p",
+            "audioKey": "coin/2p"
+          },
+          {
+            "id": "opt-5p",
+            "label": "5p",
+            "displayText": "5p",
+            "audioKey": "coin/5p"
+          },
+          {
+            "id": "opt-1p",
+            "label": "1p",
+            "displayText": "1p",
+            "audioKey": "coin/1p"
+          }
+        ],
+        "correctOptionId": "opt-5p"
+      }
+    }
+  ],
+  "finaleTitle": "Causeway Star Explorer!",
+  "finaleText": "Hooray! With every sound and number you solved, Sparky lit up all the stepping stones along the Giant's Causeway!",
+  "finaleAudioKey": "story/p1-causeway-finale",
+  "finaleIllustration": "treasure-cove",
+  "rewardBadgeTitle": "Causeway Star Badge"
+}

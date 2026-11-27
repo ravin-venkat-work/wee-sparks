@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { MotionProvider } from "@/components/providers/MotionProvider";
 import { ServiceWorkerRegistrar } from "@/components/providers/ServiceWorkerRegistrar";
 import "./globals.css";
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body className="min-h-screen">
         <ServiceWorkerRegistrar />
         <MotionProvider>{children}</MotionProvider>
+        <Analytics />
       </body>
     </html>
   );

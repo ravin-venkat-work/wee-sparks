@@ -31,6 +31,7 @@ interface ParentBridgeModalProps {
   onClose: () => void;
   learner: LearnerProfile | null;
   onSelectLearner: (learner: LearnerProfile) => void;
+  onProfileUpdated?: (learner: LearnerProfile) => void;
   yearGroupFilter: YearGroupFilter;
   onChangeYearGroup: (filter: YearGroupFilter) => void;
   selectedTheme: LearnerThemePreference;
@@ -93,6 +94,7 @@ export function ParentBridgeModal({
   onClose,
   learner,
   onSelectLearner,
+  onProfileUpdated,
   yearGroupFilter,
   onChangeYearGroup,
   selectedTheme,
@@ -156,6 +158,12 @@ export function ParentBridgeModal({
   const handleGuardedLearnerSelect = (nextLearner: LearnerProfile) => {
     runIfParentGateUnlocked(isGateUnlocked, () => {
       onSelectLearner(nextLearner);
+    });
+  };
+
+  const handleGuardedProfileUpdated = (updatedLearner: LearnerProfile) => {
+    runIfParentGateUnlocked(isGateUnlocked, () => {
+      onProfileUpdated?.(updatedLearner);
     });
   };
 
@@ -232,10 +240,11 @@ export function ParentBridgeModal({
         <div className="mt-5 space-y-5">
           {activeTab === "settings" && (
             <>
-              {/* Multi-Child Profile Switcher & Quick Add Child */}
+              {/* Multi-Child Profile Switcher & Create/Edit Child */}
               <LearnerSwitcher
                 activeLearner={learner}
                 onSelectLearner={handleGuardedLearnerSelect}
+                onProfileUpdated={handleGuardedProfileUpdated}
               />
 
               {/* Stage Switcher, Audio Toggles & Theme Picker */}
