@@ -1,13 +1,37 @@
 "use client";
 
-import { isSfxEnabled, playSfx, SFX_DURATION_MS } from "./sfx";
+import {
+  isSfxEnabled,
+  playSfx,
+  setMusicEnabled,
+  SFX_DURATION_MS,
+} from "./sfx";
 import {
   PRAISE_GAP_AFTER_JINGLE_MS,
   sequenceJingleThenPraise,
 } from "./rewardBurst";
 import { resolveAudioUrl } from "./audioUrls";
+import {
+  isCalmModeEnabled,
+  resolveSpeechRate,
+  resolveSpeechVolume,
+  setCalmModeEnabled as persistCalmModeEnabled,
+  subscribeCalmMode,
+} from "./sensory";
 
 export { resolveAudioUrl } from "./audioUrls";
+export { isCalmModeEnabled, subscribeCalmMode } from "./sensory";
+
+/**
+ * Toggles Calm Mode (quieter audio + reduced motion). Automatically switches
+ * off ambient music when turned on so the room stays quiet.
+ */
+export function setCalmModeEnabled(enabled: boolean): void {
+  persistCalmModeEnabled(enabled);
+  if (enabled) {
+    setMusicEnabled(false);
+  }
+}
 export {
   isMusicEnabled,
   isSfxEnabled,
@@ -218,10 +242,12 @@ function speakWithWebSpeech(
 
     try {
       window.speechSynthesis.cancel();
+      const calm = isCalmModeEnabled();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "en-GB";
-      utterance.rate = rate;
-      utterance.pitch = 1.04;
+      utterance.rate = resolveSpeechRate(rate, calm);
+      utterance.pitch = calm ? 1.0 : 1.04;
+      utterance.volume = resolveSpeechVolume(calm);
 
       const ukVoice = pickUkVoice();
       if (ukVoice) {
@@ -262,6 +288,7 @@ function playCachedHtmlAudio(
   return new Promise<boolean>((resolve) => {
     try {
       const audio = getCachedAudioElement(url);
+      audio.volume = resolveSpeechVolume(isCalmModeEnabled());
       activeHtmlAudio = audio;
 
       let settled = false;

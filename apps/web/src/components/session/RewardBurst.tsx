@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { CompanionAvatarId } from "@wee-sparks/curriculum-schema";
 import { MOTION_DURATION, MOTION_SPRING } from "@/lib/motion";
+import { useCalmMode } from "../providers/MotionProvider";
 import {
   generateBurstParticles,
   REWARD_BURST_MAX_DURATION_S,
@@ -81,7 +82,9 @@ export function RewardBurst({
   variant = "standard",
   avatarId = "sparky",
 }: RewardBurstProps) {
-  const prefersReducedMotion = Boolean(useReducedMotion());
+  const osReducedMotion = Boolean(useReducedMotion());
+  const calmMode = useCalmMode();
+  const prefersReducedMotion = osReducedMotion || calmMode;
   const [burstVisible, setBurstVisible] = useState(false);
 
   const isFinalStep = variant === "finale";
@@ -238,7 +241,9 @@ export function RewardPopCard({
   className = "",
   children,
 }: RewardPopCardProps) {
-  const prefersReducedMotion = Boolean(useReducedMotion());
+  const osReducedMotion = Boolean(useReducedMotion());
+  const calmMode = useCalmMode();
+  const prefersReducedMotion = osReducedMotion || calmMode;
   const [popPhase, setPopPhase] = useState<"idle" | "peak" | "settled">("idle");
 
   useEffect(() => {

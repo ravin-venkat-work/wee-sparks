@@ -28,10 +28,13 @@ import {
   SKIP_UNLOCK_INACTIVITY_MS,
   type FeedbackPhase,
 } from "@/lib/sessionStateMachine";
+import { shouldConfirmSessionExit } from "@/lib/sensory";
 import { AudioReplayButton } from "../session/AudioReplayButton";
 import { ExerciseStage } from "../session/ExerciseStage";
+import { LeaveSessionModal } from "../session/LeaveSessionModal";
 import { SparkyMascot, type MascotMood } from "../session/SparkyMascot";
 import { StarProgressBar } from "../session/StarProgressBar";
+import { HomeIconSvg, MedalIconSvg, StarIconSvg } from "../icons/KidUiIcons";
 import { StoryBeatCard } from "./StoryBeatCard";
 import { StorySceneIllustration } from "./StorySceneIllustration";
 
@@ -72,6 +75,7 @@ export function StoryPlayer({
   const [isPromptSpeaking, setIsPromptSpeaking] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
   const [isFinaleSpeaking, setIsFinaleSpeaking] = useState(false);
+  const [showLeaveConfirm, setShowLeaveConfirm] = useState(false);
   const [activityNonce, setActivityNonce] = useState(0);
 
   const startedAtRef = useRef(Date.now());
@@ -117,21 +121,49 @@ export function StoryPlayer({
 
   // 8s inactivity -> gentle hint pulse during active story exercise
   useEffect(() => {
-    if (stagePhase !== "exercise" || isCurrentSolved || hintPulseActive) return;
+    if (
+      showLeaveConfirm ||
+      stagePhase !== "exercise" ||
+      isCurrentSolved ||
+      hintPulseActive
+    ) {
+      return;
+    }
     const timer = window.setTimeout(() => {
       setHintPulseActive(true);
     }, HINT_PULSE_INACTIVITY_MS);
     return () => window.clearTimeout(timer);
-  }, [stagePhase, isCurrentSolved, hintPulseActive, chapterIndex, activityNonce]);
+  }, [
+    showLeaveConfirm,
+    stagePhase,
+    isCurrentSolved,
+    hintPulseActive,
+    chapterIndex,
+    activityNonce,
+  ]);
 
   // 25s inactivity -> gentle skip unlock during active story exercise
   useEffect(() => {
-    if (stagePhase !== "exercise" || isCurrentSolved || skipUnlocked) return;
+    if (
+      showLeaveConfirm ||
+      stagePhase !== "exercise" ||
+      isCurrentSolved ||
+      skipUnlocked
+    ) {
+      return;
+    }
     const timer = window.setTimeout(() => {
       setSkipUnlocked(true);
     }, SKIP_UNLOCK_INACTIVITY_MS);
     return () => window.clearTimeout(timer);
-  }, [stagePhase, isCurrentSolved, skipUnlocked, chapterIndex, activityNonce]);
+  }, [
+    showLeaveConfirm,
+    stagePhase,
+    isCurrentSolved,
+    skipUnlocked,
+    chapterIndex,
+    activityNonce,
+  ]);
 
   const handlePlayPrompt = useCallback(() => {
     setActivityNonce((n) => n + 1);
@@ -299,12 +331,16 @@ export function StoryPlayer({
           onClick={() => {
             stopAudio();
             playSfx("tap");
-            onExitStory();
+            if (shouldConfirmSessionExit({ mode: "story", stage: stagePhase })) {
+              setShowLeaveConfirm(true);
+            } else {
+              onExitStory();
+            }
           }}
           aria-label="Back to Who's playing"
-          className="touch-card flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/85 text-2xl shadow-sm ring-2 ring-sky-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-500"
+          className="touch-card flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/85 shadow-sm ring-2 ring-sky-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-500"
         >
-          🏠
+          <HomeIconSvg className="h-8 w-8" />
         </button>
       </header>
 
@@ -378,11 +414,12 @@ export function StoryPlayer({
                 />
 
                 <div className="inline-flex items-center gap-2 rounded-full bg-amber-100 px-4 py-1.5 text-sm font-black text-amber-900">
-                  <span>🏅</span>
+                  <MedalIconSvg className="h-5 w-5" />
                   <span>{story.rewardBadgeTitle}</span>
-                  <span>·</span>
+                  <span aria-hidden="true">·</span>
+                  <StarIconSvg className="h-4 w-4" />
                   <span>
-                    ⭐ {earnedIndices.size} / {story.chapters.length} Stars
+                    {earnedIndices.size} / {story.chapters.length} Stars
                   </span>
                 </div>
 
@@ -456,6 +493,19 @@ export function StoryPlayer({
           </motion.div>
         )}
       </AnimatePresence>
+
+      <LeaveSessionModal
+        isOpen={showLeaveConfirm}
+        mode="story"
+        starsEarned={earnedIndices.size}
+        avatarId={companionAvatarId}
+        onKeepPlaying={() => setShowLeaveConfirm(false)}
+        onConfirmLeave={() => {
+          setShowLeaveConfirm(false);
+          stopAudio();
+          onExitStory();
+        }}
+      />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion, type TargetAndTransition } from "motion/react";
 import { MOTION_EASE, MOTION_SPRING } from "@/lib/motion";
+import { useCalmMode } from "../providers/MotionProvider";
 
 export type MascotMood = "idle" | "thinking" | "encouraging" | "celebrating";
 
@@ -25,7 +26,9 @@ export function SparkySvg({
   animated = true,
   className = "h-full w-full",
 }: SparkySvgProps) {
-  const prefersReducedMotion = Boolean(useReducedMotion());
+  const osReducedMotion = Boolean(useReducedMotion());
+  const calmMode = useCalmMode();
+  const prefersReducedMotion = osReducedMotion || calmMode;
   const motionActive = animated && !prefersReducedMotion;
 
   const [isBlinking, setIsBlinking] = useState(false);

@@ -3,6 +3,16 @@
 import { motion, useReducedMotion } from "motion/react";
 import type { CompanionAvatarId, Exercise } from "@wee-sparks/curriculum-schema";
 import type { FeedbackPhase } from "@/lib/sessionStateMachine";
+import { useCalmMode } from "../providers/MotionProvider";
+import {
+  ArrowRightIconSvg,
+  HeartIconSvg,
+  HintBulbIconSvg,
+  RetryLoopIconSvg,
+  SkipForwardIconSvg,
+  SparklesIconSvg,
+  StarIconSvg,
+} from "../icons/KidUiIcons";
 import { AudioReplayButton } from "./AudioReplayButton";
 import { TapChoiceEngine } from "./TapChoiceEngine";
 import { PhonicsBuilderEngine } from "./PhonicsBuilderEngine";
@@ -58,7 +68,9 @@ export function ExerciseStage({
   onNext,
   onSkip,
 }: ExerciseStageProps) {
-  const prefersReducedMotion = Boolean(useReducedMotion());
+  const osReducedMotion = Boolean(useReducedMotion());
+  const calmMode = useCalmMode();
+  const prefersReducedMotion = osReducedMotion || calmMode;
 
   const liveFeedbackMessage =
     feedbackPhase === "correct" || feedbackPhase === "advancing"
@@ -133,7 +145,7 @@ export function ExerciseStage({
                 : "bg-violet-100 ring-2 ring-violet-200"
             }`}
           >
-            <span aria-hidden="true">💡</span>
+            <HintBulbIconSvg className="h-9 w-9" />
           </motion.button>
         </div>
 
@@ -184,20 +196,20 @@ export function ExerciseStage({
           {(feedbackPhase === "correct" || feedbackPhase === "advancing") && (
             <div
               aria-hidden="true"
-              className="animate-star-pop flex items-center gap-2 rounded-2xl bg-emerald-100 px-5 py-3 text-3xl"
+              className="animate-star-pop flex items-center gap-2 rounded-2xl bg-emerald-100 px-5 py-3"
             >
-              <span>🌟</span>
-              <span>🎉</span>
+              <StarIconSvg className="h-8 w-8" />
+              <SparklesIconSvg className="h-8 w-8" />
             </div>
           )}
 
           {feedbackPhase === "encourage" && (
             <div
               aria-hidden="true"
-              className="flex items-center gap-2 rounded-2xl bg-amber-100 px-5 py-3 text-3xl"
+              className="flex items-center gap-2 rounded-2xl bg-amber-100 px-5 py-3"
             >
-              <span>💛</span>
-              <span>🔁</span>
+              <HeartIconSvg className="h-8 w-8" />
+              <RetryLoopIconSvg className="h-8 w-8" />
             </div>
           )}
         </div>
@@ -210,9 +222,7 @@ export function ExerciseStage({
               aria-label="Skip this question"
               className="touch-card flex h-16 items-center justify-center gap-2 rounded-2xl bg-slate-100 px-5 text-base font-extrabold text-slate-700 ring-2 ring-slate-200 hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-700 focus-visible:ring-offset-2"
             >
-              <span className="text-2xl" aria-hidden="true">
-                ⏭️
-              </span>
+              <SkipForwardIconSvg className="h-7 w-7" />
             </button>
           )}
 
@@ -221,9 +231,9 @@ export function ExerciseStage({
               type="button"
               onClick={onNext}
               aria-label="Next"
-              className="touch-card animate-hint-glow flex h-20 w-24 items-center justify-center rounded-3xl bg-emerald-700 text-4xl text-white shadow-md hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-700 focus-visible:ring-offset-2"
+              className="touch-card animate-hint-glow flex h-20 w-24 items-center justify-center rounded-3xl bg-emerald-700 text-white shadow-md hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-700 focus-visible:ring-offset-2"
             >
-              <span aria-hidden="true">➡️</span>
+              <ArrowRightIconSvg className="h-10 w-10" />
             </button>
           )}
         </div>

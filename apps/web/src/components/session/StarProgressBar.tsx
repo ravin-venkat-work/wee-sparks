@@ -4,6 +4,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { motion, useReducedMotion } from "motion/react";
 import type { CompanionAvatarId } from "@wee-sparks/curriculum-schema";
 import { MOTION_EASE, MOTION_SPRING } from "@/lib/motion";
+import { useCalmMode } from "../providers/MotionProvider";
 import { CompanionAvatarSvg } from "../avatars/CompanionAvatarSvg";
 
 interface StarProgressBarProps {
@@ -96,7 +97,9 @@ export function StarProgressBar({
   earnedIndices,
   avatarId = "sparky",
 }: StarProgressBarProps) {
-  const prefersReducedMotion = Boolean(useReducedMotion());
+  const osReducedMotion = Boolean(useReducedMotion());
+  const calmMode = useCalmMode();
+  const prefersReducedMotion = osReducedMotion || calmMode;
   const trackRef = useRef<HTMLDivElement | null>(null);
   const stoneRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [sparkyPos, setSparkyPos] = useState<OverlayPosition>({

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, useReducedMotion, type TargetAndTransition } from "motion/react";
 import type { CompanionAvatarId } from "@wee-sparks/curriculum-schema";
 import { MOTION_EASE, MOTION_SPRING } from "@/lib/motion";
+import { useCalmMode } from "../providers/MotionProvider";
 import { SparkySvg, type MascotMood } from "./SparkySvg";
 
 interface CompanionAvatarSvgProps {
@@ -73,7 +74,9 @@ export function CompanionAvatarSvg({
   animated = true,
   className = "h-full w-full",
 }: CompanionAvatarSvgProps) {
-  const prefersReducedMotion = Boolean(useReducedMotion());
+  const osReducedMotion = Boolean(useReducedMotion());
+  const calmMode = useCalmMode();
+  const prefersReducedMotion = osReducedMotion || calmMode;
   const motionActive = animated && !prefersReducedMotion;
   const [isBlinking, setIsBlinking] = useState(false);
   const [accentTwitch, setAccentTwitch] = useState(false);

@@ -1,5 +1,7 @@
 "use client";
 
+import { isCalmModeEnabled, resolveAudioGain } from "./sensory";
+
 export type SfxCue = "tap" | "snap" | "success" | "retry";
 
 export const SFX_DURATION_MS: Record<SfxCue, number> = {
@@ -155,9 +157,14 @@ function scheduleTone(
     );
   }
 
+  const effectiveGain = Math.max(
+    0.0002,
+    resolveAudioGain(options.gain, isCalmModeEnabled())
+  );
+
   // Soft envelope to prevent clicks/pops on tablet speakers
   gainNode.gain.setValueAtTime(0.0001, now);
-  gainNode.gain.linearRampToValueAtTime(options.gain, now + 0.012);
+  gainNode.gain.linearRampToValueAtTime(effectiveGain, now + 0.012);
   gainNode.gain.exponentialRampToValueAtTime(0.0001, now + options.duration);
 
   osc.connect(gainNode);

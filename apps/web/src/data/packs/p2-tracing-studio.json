@@ -1,0 +1,398 @@
+{
+  "packId": "ccea-p2-tracing-studio",
+  "version": "1.0.0",
+  "title": "P2 Guided Tracing Studio: Numerals 6–9 & Digraph Teams",
+  "description": "Guided anti-reversal numeral (6, 7, 8, 9) and Linguistic Phonics digraph (sh, ch) tracing pack aligned to Northern Ireland CCEA Foundation Stage P2.",
+  "yearGroup": "P2",
+  "locale": "en-GB-NI",
+  "skillIds": [
+    "ccea-p2-num-bonds-to-10",
+    "ccea-p2-lit-digraphs-sh-ch-th-ng"
+  ],
+  "exercises": [
+    {
+      "id": "p2-trace-numeral-6",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "space",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Trace the number 6 starting high at the green 1 dot!",
+        "audioKey": "prompt/p2-trace-numeral-6",
+        "visualCueEmoji": "⭐"
+      },
+      "hint": {
+        "text": "Down to a loop — a six rolls a hoop!",
+        "audioKey": "hint/p2-trace-numeral-6"
+      },
+      "feedback": {
+        "correctText": "Top marks! What a bright spark!",
+        "correctAudioKey": "feedback/praise-12",
+        "encourageText": "Good effort! Listen closely and have one more go.",
+        "encourageAudioKey": "feedback/try-again-12"
+      },
+      "offlineParentTip": "Compare 6 (loop at the bottom) with 9 (loop at the top) using playdough snakes.",
+      "type": "trace-glyph",
+      "glyph": "6",
+      "glyphKind": "numeral",
+      "glyphAudioKey": "number/6",
+      "antiReversalCue": "Start high at the green 1 dot, swoop down the left side and curl a cosy circle at the bottom!",
+      "antiReversalAudioKey": "hint/trace-6-anti-reversal",
+      "startPoint": {
+        "x": 60,
+        "y": 22
+      },
+      "checkpoints": [
+        {
+          "x": 60,
+          "y": 22
+        },
+        {
+          "x": 38,
+          "y": 38
+        },
+        {
+          "x": 34,
+          "y": 64
+        },
+        {
+          "x": 52,
+          "y": 78
+        },
+        {
+          "x": 66,
+          "y": 62
+        },
+        {
+          "x": 46,
+          "y": 50
+        }
+      ],
+      "strokeGuidePath": "M 60 22 C 42 26, 32 46, 34 64 C 36 80, 66 80, 66 62 C 66 48, 44 46, 36 58",
+      "requiredCoverage": 0.75
+    },
+    {
+      "id": "p2-trace-numeral-7",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "vehicles",
+      "difficulty": "emerging",
+      "prompt": {
+        "text": "Trace the number 7 across the sky and down the slide!",
+        "audioKey": "prompt/p2-trace-numeral-7",
+        "visualCueEmoji": "🚀"
+      },
+      "hint": {
+        "text": "Across the sky and down from heaven — that is the way to make a 7!",
+        "audioKey": "hint/p2-trace-numeral-7"
+      },
+      "feedback": {
+        "correctText": "Brilliant work! You got it!",
+        "correctAudioKey": "feedback/praise-01",
+        "encourageText": "Good try! Have another go!",
+        "encourageAudioKey": "feedback/try-again-01"
+      },
+      "offlineParentTip": "Remind your child that 7 always starts on the left and zooms right before sliding down — this stops backwards 7s.",
+      "type": "trace-glyph",
+      "glyph": "7",
+      "glyphKind": "numeral",
+      "glyphAudioKey": "number/7",
+      "antiReversalCue": "Start on the top-left green 1 dot, zoom straight across the sky to the right, then slide diagonally down to the left!",
+      "antiReversalAudioKey": "hint/trace-7-anti-reversal",
+      "startPoint": {
+        "x": 30,
+        "y": 26
+      },
+      "checkpoints": [
+        {
+          "x": 30,
+          "y": 26
+        },
+        {
+          "x": 50,
+          "y": 26
+        },
+        {
+          "x": 68,
+          "y": 26
+        },
+        {
+          "x": 54,
+          "y": 52
+        },
+        {
+          "x": 42,
+          "y": 78
+        }
+      ],
+      "strokeGuidePath": "M 30 26 L 68 26 L 42 78",
+      "requiredCoverage": 0.75
+    },
+    {
+      "id": "p2-trace-numeral-8",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "dinosaurs",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Trace the number 8 like a racetrack loop!",
+        "audioKey": "prompt/p2-trace-numeral-8",
+        "visualCueEmoji": "🦕"
+      },
+      "hint": {
+        "text": "Make an S and do not wait — climb back up to make an 8!",
+        "audioKey": "hint/p2-trace-numeral-8"
+      },
+      "feedback": {
+        "correctText": "Terrific! Keep up the great work!",
+        "correctAudioKey": "feedback/praise-10",
+        "encourageText": "Have another wee think and tap again!",
+        "encourageAudioKey": "feedback/try-again-10"
+      },
+      "offlineParentTip": "Encourage drawing 8 in one continuous racetrack motion rather than stacking two separate circles.",
+      "type": "trace-glyph",
+      "glyph": "8",
+      "glyphKind": "numeral",
+      "glyphAudioKey": "number/8",
+      "antiReversalCue": "Start at the top green 1 dot, curve an S down to the bottom, then climb back up to close the gate!",
+      "antiReversalAudioKey": "hint/trace-8-anti-reversal",
+      "startPoint": {
+        "x": 52,
+        "y": 22
+      },
+      "checkpoints": [
+        {
+          "x": 52,
+          "y": 22
+        },
+        {
+          "x": 34,
+          "y": 34
+        },
+        {
+          "x": 50,
+          "y": 48
+        },
+        {
+          "x": 66,
+          "y": 64
+        },
+        {
+          "x": 50,
+          "y": 78
+        },
+        {
+          "x": 34,
+          "y": 64
+        },
+        {
+          "x": 64,
+          "y": 34
+        }
+      ],
+      "strokeGuidePath": "M 52 22 C 32 22, 30 42, 50 48 C 70 54, 70 78, 50 78 C 30 78, 30 54, 50 48 C 70 42, 68 22, 52 22",
+      "requiredCoverage": 0.75
+    },
+    {
+      "id": "p2-trace-numeral-9",
+      "skillId": "ccea-p2-num-bonds-to-10",
+      "yearGroup": "P2",
+      "subject": "numeracy",
+      "theme": "animals",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Trace the number 9: a neat loop at the top and a straight line down!",
+        "audioKey": "prompt/p2-trace-numeral-9",
+        "visualCueEmoji": "🐧"
+      },
+      "hint": {
+        "text": "Make a hoop and then a line — that is the way to make a 9!",
+        "audioKey": "hint/p2-trace-numeral-9"
+      },
+      "feedback": {
+        "correctText": "Marvellous! You figured it out!",
+        "correctAudioKey": "feedback/praise-11",
+        "encourageText": "Almost! You're doing brilliantly — try another one.",
+        "encourageAudioKey": "feedback/try-again-11"
+      },
+      "offlineParentTip": "Because 9 starts with the same anti-clockwise curve as 'a' and 'c', link them together during writing practice.",
+      "type": "trace-glyph",
+      "glyph": "9",
+      "glyphKind": "numeral",
+      "glyphAudioKey": "number/9",
+      "antiReversalCue": "Start at the green 1 dot on the right, make a round loop to the left, close it up, then drop straight down!",
+      "antiReversalAudioKey": "hint/trace-9-anti-reversal",
+      "startPoint": {
+        "x": 64,
+        "y": 34
+      },
+      "checkpoints": [
+        {
+          "x": 64,
+          "y": 34
+        },
+        {
+          "x": 44,
+          "y": 24
+        },
+        {
+          "x": 34,
+          "y": 40
+        },
+        {
+          "x": 52,
+          "y": 50
+        },
+        {
+          "x": 64,
+          "y": 38
+        },
+        {
+          "x": 64,
+          "y": 78
+        }
+      ],
+      "strokeGuidePath": "M 64 34 C 58 20, 34 22, 34 38 C 34 52, 54 54, 64 42 L 64 26 L 64 78",
+      "requiredCoverage": 0.75
+    },
+    {
+      "id": "p2-trace-digraph-sh",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "vehicles",
+      "difficulty": "developing",
+      "prompt": {
+        "text": "Trace the digraph team sh for ship!",
+        "audioKey": "prompt/p2-trace-digraph-sh",
+        "visualCueEmoji": "🚢"
+      },
+      "hint": {
+        "text": "Trace s on the left, then tall h on the right — together they say /sh/!",
+        "audioKey": "hint/p2-trace-digraph-sh"
+      },
+      "feedback": {
+        "correctText": "Super star! Well done!",
+        "correctAudioKey": "feedback/praise-02",
+        "encourageText": "Almost there! Listen again and try one more time.",
+        "encourageAudioKey": "feedback/try-again-02"
+      },
+      "offlineParentTip": "Underline 'sh' with one single line underneath so your child sees two letters working together for one sound.",
+      "type": "trace-glyph",
+      "glyph": "sh",
+      "glyphKind": "letter",
+      "glyphAudioKey": "phoneme/sh",
+      "antiReversalCue": "Trace the curvy s on the left first, then start tall for h and bounce over the hill to make the /sh/ team!",
+      "antiReversalAudioKey": "hint/trace-sh-anti-reversal",
+      "startPoint": {
+        "x": 40,
+        "y": 42
+      },
+      "checkpoints": [
+        {
+          "x": 40,
+          "y": 42
+        },
+        {
+          "x": 24,
+          "y": 48
+        },
+        {
+          "x": 40,
+          "y": 66
+        },
+        {
+          "x": 24,
+          "y": 74
+        },
+        {
+          "x": 54,
+          "y": 22
+        },
+        {
+          "x": 54,
+          "y": 74
+        },
+        {
+          "x": 74,
+          "y": 52
+        },
+        {
+          "x": 76,
+          "y": 74
+        }
+      ],
+      "strokeGuidePath": "M 40 42 C 30 36, 20 44, 24 52 C 28 58, 44 60, 40 70 C 36 78, 24 76, 20 72 M 54 22 L 54 76 M 54 54 C 58 40, 76 42, 76 58 L 76 76",
+      "requiredCoverage": 0.75
+    },
+    {
+      "id": "p2-trace-digraph-ch",
+      "skillId": "ccea-p2-lit-digraphs-sh-ch-th-ng",
+      "yearGroup": "P2",
+      "subject": "literacy",
+      "theme": "animals",
+      "difficulty": "secure",
+      "prompt": {
+        "text": "Trace the digraph team ch for chip!",
+        "audioKey": "prompt/p2-trace-digraph-ch",
+        "visualCueEmoji": "🍟"
+      },
+      "hint": {
+        "text": "Curl c first, then start tall at the top for h — together they say /ch/!",
+        "audioKey": "hint/p2-trace-digraph-ch"
+      },
+      "feedback": {
+        "correctText": "Terrific! Keep up the great work!",
+        "correctAudioKey": "feedback/praise-10",
+        "encourageText": "Have another wee think and tap again!",
+        "encourageAudioKey": "feedback/try-again-10"
+      },
+      "offlineParentTip": "Play 'ch' train: say 'ch-ch-ch' while tracing c and h side by side on a chalkboard or paper.",
+      "type": "trace-glyph",
+      "glyph": "ch",
+      "glyphKind": "letter",
+      "glyphAudioKey": "phoneme/ch",
+      "antiReversalCue": "Curl c back to the left first, then draw tall h down and over the hill to build the /ch/ team!",
+      "antiReversalAudioKey": "hint/trace-ch-anti-reversal",
+      "startPoint": {
+        "x": 42,
+        "y": 44
+      },
+      "checkpoints": [
+        {
+          "x": 42,
+          "y": 44
+        },
+        {
+          "x": 24,
+          "y": 58
+        },
+        {
+          "x": 42,
+          "y": 74
+        },
+        {
+          "x": 54,
+          "y": 22
+        },
+        {
+          "x": 54,
+          "y": 74
+        },
+        {
+          "x": 74,
+          "y": 52
+        },
+        {
+          "x": 76,
+          "y": 74
+        }
+      ],
+      "strokeGuidePath": "M 42 44 C 30 36, 20 46, 22 60 C 24 74, 36 78, 44 72 M 54 22 L 54 76 M 54 54 C 58 40, 76 42, 76 58 L 76 76",
+      "requiredCoverage": 0.75
+    }
+  ]
+}

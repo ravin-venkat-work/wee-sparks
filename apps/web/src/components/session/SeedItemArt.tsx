@@ -4,6 +4,7 @@ import type { UkCoin } from "@wee-sparks/curriculum-schema";
 import { UkCoinSvg } from "./art/UkCoinSvg";
 import { ShapeSvg } from "./art/ShapeSvg";
 import { renderP2OrStickerSvg } from "./art/P2WordArt";
+import { renderExtendedStickerOrWordSvg } from "./art/StickerPackArt";
 
 interface SeedItemArtProps {
   itemKey: string;
@@ -50,7 +51,7 @@ export function SeedItemArt({
     return <ShapeSvg shape={key} className={className} />;
   }
 
-  const p2Art = renderP2OrStickerSvg(key);
+  const p2Art = renderP2OrStickerSvg(key) ?? renderExtendedStickerOrWordSvg(key);
   if (p2Art) {
     return (
       <svg viewBox="0 0 80 80" className={className} role="img" aria-hidden="true">
@@ -396,10 +397,24 @@ export function SeedItemArt({
 
   const artwork = renderP1Artwork();
   if (!artwork) {
+    // SVG-first emblem fallback so visuals stay consistent across all devices (zero OS emoji drift)
     return (
-      <span className="text-5xl leading-none" aria-hidden="true">
-        {fallbackEmoji ?? "✨"}
-      </span>
+      <svg
+        viewBox="0 0 80 80"
+        className={className}
+        role="img"
+        aria-hidden="true"
+        data-fallback-emoji={fallbackEmoji ?? ""}
+      >
+        <circle cx="40" cy="40" r="32" fill="#E0F2FE" stroke="#0284C7" strokeWidth="3.2" />
+        <path
+          d="M40 16 L46.2 30.2 L61.5 32 L50 42.4 L53 57.5 L40 49.8 L27 57.5 L30 42.4 L18.5 32 L33.8 30.2 Z"
+          fill="#FACC15"
+          stroke="#CA8A04"
+          strokeWidth="2.6"
+          strokeLinejoin="round"
+        />
+      </svg>
     );
   }
 

@@ -1,9 +1,16 @@
 import { StoryBookSchema, type StoryBook } from "@wee-sparks/curriculum-schema";
 import type { YearGroupFilter } from "@/lib/adaptive/sessionComposer";
 import p1CausewayStory from "@/data/stories/p1-causeway-adventure.json";
+import p1GlensDinoStory from "@/data/stories/p1-glens-dino-picnic.json";
 import p2RathlinStory from "@/data/stories/p2-rathlin-voyage.json";
+import p2SpaceMissionStory from "@/data/stories/p2-starlight-moon-mission.json";
 
-const RAW_STORIES: readonly unknown[] = [p1CausewayStory, p2RathlinStory];
+const RAW_STORIES: readonly unknown[] = [
+  p1CausewayStory,
+  p1GlensDinoStory,
+  p2RathlinStory,
+  p2SpaceMissionStory,
+];
 
 /**
  * Validated offline CCEA Foundation Stage (P1–P2) illustrated story adventures.

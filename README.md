@@ -10,7 +10,7 @@ An offline-first, audio-first literacy and numeracy learning app built for **Pri
 ## Core Principles
 - **CCEA Curriculum Aligned:** Built around NI Linguistic Phonics and practical Foundation Stage number sense rather than generic English standards.
 - **Zero Runtime AI:** 100% deterministic, offline-capable student runtime in `apps/web` with pre-validated JSON content packs generated offline via `tools/content-studio`.
-- **Child-Safe & Privacy-First:** Designed for the UK ICO Children's Code with local-first Dexie (IndexedDB) storage, a spoken-free `ParentGate` protecting all settings and printing, and zero third-party tracking.
+- **Child-Safe & Privacy-First:** Designed for the UK ICO Children's Code with local-first Dexie (IndexedDB) storage using bare-minimum PII (nicknames only), a spoken-free `ParentGate` protecting adult settings and printing, zero third-party ad/behavioral trackers, and cookieless first-party Vercel Web Analytics limited strictly to aggregate page views and web vitals (zero child/parent identifiers or custom learner telemetry).
 - **Offline PWA & Audio-First UX:** Touch targets `>= 64px × 64px`, service-worker precaching of the app shell and bundled MP3s (`apps/web/public/audio/`), and plain-English Parent Bridge mastery & printable A4 practice sheets.
 
 ## Workspace Scripts

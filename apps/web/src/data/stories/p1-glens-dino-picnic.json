@@ -1,0 +1,269 @@
+{
+  "storyId": "p1-glens-dino-picnic",
+  "version": "1.0.0",
+  "title": "Rex's Dino Picnic in the Glens",
+  "subtitle": "Help Rex pack sounds, letters, berries, and shapes for a sunny Glens picnic.",
+  "yearGroup": "P1",
+  "theme": "dinosaurs",
+  "locale": "en-GB-NI",
+  "coverIllustration": "dino-valley",
+  "companionAvatarId": "rex",
+  "offlineParentTip": "After Rex's picnic, trace the letter 's' in the air or on a steamy window and count 5 pieces of fruit together on a plate.",
+  "chapters": [
+    {
+      "chapterId": "ch-1-picnic-ant",
+      "title": "A Tiny Picnic Visitor",
+      "illustration": "dino-valley",
+      "narrationText": "Rex spread a bright blanket in the green Glens of Antrim. Someone tiny marched right past the sandwiches! Listen for the /a/ sound to spot Rex's new friend.",
+      "narrationAudioKey": "story/p1-dino-ch1-narration",
+      "companionMood": "idle",
+      "visualCueEmoji": "🐜",
+      "exercise": {
+        "id": "story-p1-dino-ex-1",
+        "skillId": "ccea-p1-lit-initial-satpin",
+        "yearGroup": "P1",
+        "subject": "literacy",
+        "theme": "dinosaurs",
+        "difficulty": "emerging",
+        "prompt": {
+          "text": "Tap the picture that starts with the pure /a/ sound!",
+          "audioKey": "story/p1-dino-ex1-prompt",
+          "visualCueEmoji": "🐜"
+        },
+        "hint": {
+          "text": "Say the first sound slowly: a-a-ant starts with /a/!",
+          "audioKey": "story/p1-dino-ex1-hint"
+        },
+        "feedback": {
+          "correctText": "Top marks! What a bright spark!",
+          "correctAudioKey": "feedback/praise-12",
+          "encourageText": "Good effort! Listen closely and have one more go.",
+          "encourageAudioKey": "feedback/try-again-12"
+        },
+        "type": "initial-sound-match",
+        "mode": "sound-to-picture",
+        "targetSound": "a",
+        "targetSoundAudioKey": "phoneme/a",
+        "stimulus": {
+          "label": "a",
+          "emoji": "🐜",
+          "audioKey": "phoneme/a"
+        },
+        "options": [
+          {
+            "id": "opt-ant",
+            "label": "ant",
+            "emoji": "🐜",
+            "audioKey": "word/ant"
+          },
+          {
+            "id": "opt-sun",
+            "label": "sun",
+            "emoji": "☀️",
+            "audioKey": "word/sun"
+          },
+          {
+            "id": "opt-pig",
+            "label": "pig",
+            "emoji": "🐷",
+            "audioKey": "word/pig"
+          }
+        ],
+        "correctOptionId": "opt-ant"
+      }
+    },
+    {
+      "chapterId": "ch-2-trace-sunny-s",
+      "title": "Drawing a Sunny Signpost",
+      "illustration": "causeway-shore",
+      "narrationText": "Rex wants to write a curved letter s for 'sun' in the sand so every dinosaur finds the picnic spot. Follow the green 1 dot carefully!",
+      "narrationAudioKey": "story/p1-dino-ch2-narration",
+      "companionMood": "thinking",
+      "visualCueEmoji": "☀️",
+      "exercise": {
+        "id": "story-p1-dino-ex-2",
+        "skillId": "ccea-p1-lit-initial-satpin",
+        "yearGroup": "P1",
+        "subject": "literacy",
+        "theme": "dinosaurs",
+        "difficulty": "developing",
+        "prompt": {
+          "text": "Trace the curvy letter s for sun to guide Rex's friends!",
+          "audioKey": "story/p1-dino-ex2-prompt",
+          "visualCueEmoji": "☀️"
+        },
+        "hint": {
+          "text": "Slither back, around, and across like a friendly snake!",
+          "audioKey": "story/p1-dino-ex2-hint"
+        },
+        "feedback": {
+          "correctText": "Marvellous! You figured it out!",
+          "correctAudioKey": "feedback/praise-11",
+          "encourageText": "Almost! You're doing brilliantly — try another one.",
+          "encourageAudioKey": "feedback/try-again-11"
+        },
+        "type": "trace-glyph",
+        "glyph": "s",
+        "glyphKind": "letter",
+        "glyphAudioKey": "phoneme/s",
+        "antiReversalCue": "Start at the green 1 dot on the right, curve left like a little snake, then curve back to the right!",
+        "antiReversalAudioKey": "hint/trace-s-anti-reversal",
+        "startPoint": {
+          "x": 64,
+          "y": 30
+        },
+        "checkpoints": [
+          {
+            "x": 64,
+            "y": 30
+          },
+          {
+            "x": 42,
+            "y": 28
+          },
+          {
+            "x": 38,
+            "y": 44
+          },
+          {
+            "x": 60,
+            "y": 56
+          },
+          {
+            "x": 58,
+            "y": 74
+          },
+          {
+            "x": 34,
+            "y": 72
+          }
+        ],
+        "strokeGuidePath": "M 64 30 C 52 22, 34 26, 36 40 C 38 52, 64 50, 62 66 C 60 78, 42 78, 34 72",
+        "requiredCoverage": 0.75
+      }
+    },
+    {
+      "chapterId": "ch-3-five-berries",
+      "title": "Five Crunchy Dino Leaves",
+      "illustration": "dino-valley",
+      "narrationText": "Lunchtime! Rex needs 5 crunchy green leaves in the picnic basket. There are 3 leaves inside already — how many more make 5?",
+      "narrationAudioKey": "story/p1-dino-ch3-narration",
+      "companionMood": "encouraging",
+      "visualCueEmoji": "🌿",
+      "exercise": {
+        "id": "story-p1-dino-ex-3",
+        "skillId": "ccea-p1-num-bonds-to-5",
+        "yearGroup": "P1",
+        "subject": "numeracy",
+        "theme": "dinosaurs",
+        "difficulty": "developing",
+        "prompt": {
+          "text": "3 and what number make 5 picnic leaves?",
+          "audioKey": "story/p1-dino-ex3-prompt",
+          "visualCueEmoji": "🌿"
+        },
+        "hint": {
+          "text": "Hold up 5 fingers and hide 3 — you have 2 left!",
+          "audioKey": "story/p1-dino-ex3-hint"
+        },
+        "feedback": {
+          "correctText": "Terrific! Keep up the great work!",
+          "correctAudioKey": "feedback/praise-10",
+          "encourageText": "Have another wee think and tap again!",
+          "encourageAudioKey": "feedback/try-again-10"
+        },
+        "type": "number-bond",
+        "whole": 5,
+        "givenPart": 3,
+        "missingPart": 2,
+        "counterVisual": {
+          "emoji": "🌿",
+          "label": "leaf",
+          "colour": "#22C55E",
+          "audioKey": "word/leaf"
+        },
+        "options": [
+          {
+            "id": "opt-1",
+            "label": "1",
+            "displayText": "1",
+            "audioKey": "number/1"
+          },
+          {
+            "id": "opt-2",
+            "label": "2",
+            "displayText": "2",
+            "audioKey": "number/2"
+          },
+          {
+            "id": "opt-3",
+            "label": "3",
+            "displayText": "3",
+            "audioKey": "number/3"
+          }
+        ],
+        "correctOptionId": "opt-2"
+      }
+    },
+    {
+      "chapterId": "ch-4-triangle-sandwich",
+      "title": "The Triangle Sandwich Tray",
+      "illustration": "treasure-cove",
+      "narrationText": "Time for Rex's favourite treat! Sort the 3-sided triangle shape into the picnic tray to finish the feast.",
+      "narrationAudioKey": "story/p1-dino-ch4-narration",
+      "companionMood": "celebrating",
+      "visualCueEmoji": "🔺",
+      "exercise": {
+        "id": "story-p1-dino-ex-4",
+        "skillId": "ccea-p1-num-shapes-2d",
+        "yearGroup": "P1",
+        "subject": "numeracy",
+        "theme": "dinosaurs",
+        "difficulty": "secure",
+        "prompt": {
+          "text": "Drag or tap the triangle into Rex's picnic bucket!",
+          "audioKey": "story/p1-dino-ex4-prompt",
+          "visualCueEmoji": "🔺"
+        },
+        "hint": {
+          "text": "Count the corners — a triangle has 3 pointy corners and 3 straight sides!",
+          "audioKey": "story/p1-dino-ex4-hint"
+        },
+        "feedback": {
+          "correctText": "Hooray! Another shiny star for you!",
+          "correctAudioKey": "feedback/praise-09",
+          "encourageText": "Don't worry — mistakes help our brains grow! Try again.",
+          "encourageAudioKey": "feedback/try-again-09"
+        },
+        "type": "shape-sort",
+        "targetShape": "triangle",
+        "options": [
+          {
+            "id": "opt-circle",
+            "label": "circle",
+            "displayText": "circle",
+            "audioKey": "shape/circle"
+          },
+          {
+            "id": "opt-triangle",
+            "label": "triangle",
+            "displayText": "triangle",
+            "audioKey": "shape/triangle"
+          },
+          {
+            "id": "opt-square",
+            "label": "square",
+            "displayText": "square",
+            "audioKey": "shape/square"
+          }
+        ],
+        "correctOptionId": "opt-triangle"
+      }
+    }
+  ],
+  "finaleTitle": "Glens Picnic Champion!",
+  "finaleText": "Roar-some work! Rex and all the friendly dinosaurs shared crunchy leaves and triangle sandwiches under the Antrim sun!",
+  "finaleAudioKey": "story/p1-dino-finale",
+  "finaleIllustration": "dino-valley",
+  "rewardBadgeTitle": "Glens Dino Picnic Badge"
+}

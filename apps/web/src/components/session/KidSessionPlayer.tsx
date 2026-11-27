@@ -14,20 +14,24 @@ import {
   type StoryBook,
 } from "@wee-sparks/curriculum-schema";
 import {
+  isCalmModeEnabled,
   isMusicEnabled,
   isSfxEnabled,
   playAudioKey,
   playSfx,
   playSuccessThenPraise,
   preloadAudioKeys,
+  setCalmModeEnabled,
   setMusicEnabled,
   setSfxEnabled,
   stopAmbientMusic,
   stopAudio,
+  subscribeCalmMode,
 } from "@/lib/audio";
 import {
   db,
   ensureDefaultLearner,
+  loadActiveLearner,
   setStoredActiveLearnerId,
   updateLearnerTheme,
   type LearnerProfile,
@@ -47,6 +51,7 @@ import {
 } from "@/lib/stickers";
 import { resolveCompanionAvatarId } from "@/lib/avatars";
 import { getStoriesForYearFilter } from "@/lib/stories";
+import { shouldConfirmSessionExit } from "@/lib/sensory";
 import { runIfParentGateUnlocked } from "@/lib/parentGate";
 import {
   EXERCISE_CARD_VARIANTS,
@@ -74,8 +79,10 @@ import { ParentGateModal } from "./ParentGate";
 import { ParentBridgeModal } from "./ParentBridgeModal";
 import { PrintablePracticeSheet } from "./PrintablePracticeSheet";
 import { CelebrationStickerChest } from "./CelebrationStickerChest";
+import { LeaveSessionModal } from "./LeaveSessionModal";
 import { SparkyMascot } from "./SparkyMascot";
 import { StoryPlayer } from "../story/StoryPlayer";
+import { HomeIconSvg } from "../icons/KidUiIcons";
 
 interface KidSessionPlayerProps {
   exercises: readonly Exercise[];
@@ -101,8 +108,11 @@ export function KidSessionPlayer({
     useState<LearnerThemePreference>("all");
   const [sfxOn, setSfxOn] = useState(true);
   const [musicOn, setMusicOn] = useState(false);
+  const [calmMode, setCalmMode] = useState(false);
   const [showParentGateChallenge, setShowParentGateChallenge] = useState(false);
   const [parentGateUnlocked, setParentGateUnlocked] = useState(false);
+  const [showLeaveConfirm, setShowLeaveConfirm] = useState(false);
+  const [showStickerChestModal, setShowStickerChestModal] = useState(false);
   const [activeStory, setActiveStory] = useState<StoryBook | null>(null);
   const [activityNonce, setActivityNonce] = useState(0);
 
@@ -146,7 +156,8 @@ export function KidSessionPlayer({
   stateRef.current = state;
 
   const parentGateOpenRef = useRef(false);
-  parentGateOpenRef.current = parentGateUnlocked || showParentGateChallenge;
+  parentGateOpenRef.current =
+    parentGateUnlocked || showParentGateChallenge || showLeaveConfirm;
 
   const clearAutoAdvanceTimer = useCallback(() => {
     if (autoAdvanceTimerRef.current !== null && typeof window !== "undefined") {
@@ -200,14 +211,21 @@ export function KidSessionPlayer({
     [clearAutoAdvanceTimer, exercises]
   );
 
-  // Hydrate audio prefs and default local learner (staying on "Who's playing?" welcome screen)
+  // Hydrate sensory/audio prefs and any existing local learner WITHOUT silently creating one
   useEffect(() => {
     let active = true;
     setSfxOn(isSfxEnabled());
     setMusicOn(isMusicEnabled());
+    setCalmMode(isCalmModeEnabled());
+    const unsubscribeCalm = subscribeCalmMode((next) => {
+      setCalmMode(next);
+      if (next) {
+        setMusicOn(false);
+      }
+    });
 
-    void ensureDefaultLearner().then(async (profile) => {
-      if (!active) return;
+    void loadActiveLearner().then(async (profile) => {
+      if (!active || !profile) return;
       setLearner(profile);
       const theme = profile.preferredTheme ?? "all";
       const yr: YearGroupFilter = profile.yearGroup ?? "P1";
@@ -221,6 +239,7 @@ export function KidSessionPlayer({
 
     return () => {
       active = false;
+      unsubscribeCalm();
       clearAutoAdvanceTimer();
       stopAudio();
       stopAmbientMusic();
@@ -271,6 +290,7 @@ export function KidSessionPlayer({
     if (
       parentGateUnlocked ||
       showParentGateChallenge ||
+      showLeaveConfirm ||
       !trackHintInactivity
     ) {
       return;
@@ -288,6 +308,7 @@ export function KidSessionPlayer({
     activityNonce,
     parentGateUnlocked,
     showParentGateChallenge,
+    showLeaveConfirm,
   ]);
 
   // 25-second inactivity detector to reveal the gentle Skip button
@@ -296,6 +317,7 @@ export function KidSessionPlayer({
     if (
       parentGateUnlocked ||
       showParentGateChallenge ||
+      showLeaveConfirm ||
       !trackSkipInactivity
     ) {
       return;
@@ -313,6 +335,7 @@ export function KidSessionPlayer({
     activityNonce,
     parentGateUnlocked,
     showParentGateChallenge,
+    showLeaveConfirm,
   ]);
 
   const masteryRecords = useLiveQuery(
@@ -487,6 +510,22 @@ export function KidSessionPlayer({
       setSfxEnabled(next);
       if (next) playSfx("tap");
     });
+  };
+
+  const handleQuickStart = async () => {
+    const profile = await ensureDefaultLearner();
+    setActiveStory(null);
+    await handleStartForLearner(profile, true);
+  };
+
+  const handleToggleCalmMode = () => {
+    const next = !calmMode;
+    setCalmMode(next);
+    setCalmModeEnabled(next);
+    if (next) {
+      setMusicOn(false);
+    }
+    playSfx("tap");
   };
 
   const handleToggleMusic = () => {
@@ -725,15 +764,19 @@ export function KidSessionPlayer({
             <WelcomeScreen
               activeLearner={learner}
               stories={visibleStories}
+              calmMode={calmMode}
+              onToggleCalmMode={handleToggleCalmMode}
               onSelectLearner={(profile) => {
                 setActiveStory(null);
                 void handleStartForLearner(profile, true);
               }}
+              onQuickStart={() => void handleQuickStart()}
               onStartStory={(story) => {
                 clearAutoAdvanceTimer();
                 stopAudio();
                 setActiveStory(story);
               }}
+              onOpenStickerChest={() => setShowStickerChestModal(true)}
               onParentUnlock={handleUnlockParentSettings}
               onRequestParentChallenge={handleRequestParentChallenge}
             />
@@ -769,12 +812,21 @@ export function KidSessionPlayer({
                   clearAutoAdvanceTimer();
                   playSfx("tap");
                   stopAudio();
-                  dispatch({ type: "GO_WELCOME" });
+                  if (
+                    shouldConfirmSessionExit({
+                      mode: "quest",
+                      stage: state.screen,
+                    })
+                  ) {
+                    setShowLeaveConfirm(true);
+                  } else {
+                    dispatch({ type: "GO_WELCOME" });
+                  }
                 }}
                 aria-label="Back to Who's playing"
-                className="touch-card flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/85 text-2xl shadow-sm ring-2 ring-sky-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-500"
+                className="touch-card flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/85 shadow-sm ring-2 ring-sky-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-500"
               >
-                🏠
+                <HomeIconSvg className="h-8 w-8" />
               </button>
             </header>
 
@@ -797,6 +849,12 @@ export function KidSessionPlayer({
                     unlockedRecords={unlockedStickers}
                     newlyUnlocked={state.newlyUnlockedStickers}
                     onPlayNextQuest={handleStartFreshQuest}
+                    onFinishForToday={() => {
+                      clearAutoAdvanceTimer();
+                      playSfx("tap");
+                      stopAudio();
+                      dispatch({ type: "GO_WELCOME" });
+                    }}
                     onParentUnlock={handleUnlockParentSettings}
                     onRequestParentChallenge={handleRequestParentChallenge}
                   />
@@ -891,6 +949,8 @@ export function KidSessionPlayer({
         onToggleSfx={handleToggleSfx}
         musicOn={musicOn}
         onToggleMusic={handleToggleMusic}
+        calmMode={calmMode}
+        onToggleCalmMode={handleToggleCalmMode}
         onStartFreshQuest={handleStartFreshQuest}
         unlockedStickers={unlockedStickers}
         currentSkill={currentSkill}
@@ -898,6 +958,45 @@ export function KidSessionPlayer({
         packSkillIds={scopedSkillIds}
         masteryRecords={masteryRecords}
         session={state.session}
+      />
+
+      {/* Quick-peek Sticker Chest modal launched from Wee World */}
+      {showStickerChestModal && (
+        <div
+          className="no-print fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-label="My Sticker Chest"
+        >
+          <div className="max-h-[90vh] w-full max-w-3xl overflow-y-auto">
+            <CelebrationStickerChest
+              mode="chest-modal"
+              avatarId={activeAvatarId}
+              lifetimeStars={state.lifetimeStars}
+              unlockedRecords={unlockedStickers}
+              newlyUnlocked={[]}
+              onClose={() => {
+                playSfx("tap");
+                setShowStickerChestModal(false);
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Gentle mid-quest exit confirmation dialog */}
+      <LeaveSessionModal
+        isOpen={showLeaveConfirm}
+        mode="quest"
+        starsEarned={state.earnedIndices.size}
+        avatarId={activeAvatarId}
+        onKeepPlaying={() => setShowLeaveConfirm(false)}
+        onConfirmLeave={() => {
+          setShowLeaveConfirm(false);
+          clearAutoAdvanceTimer();
+          stopAudio();
+          dispatch({ type: "GO_WELCOME" });
+        }}
       />
 
       {/* Dedicated A4 print-only target — mounted ONLY after passing ParentGate */}

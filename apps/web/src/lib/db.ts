@@ -299,10 +299,10 @@ async function normaliseLearnerProfile(
 }
 
 /**
- * Restores the last-selected local learner (or creates the default profile)
- * so multiple children can share one device with isolated progress.
+ * Restores the last-selected (or first) local learner WITHOUT silently creating
+ * a default profile, enabling a friendly first-run setup flow on fresh devices.
  */
-export async function ensureDefaultLearner(): Promise<LearnerProfile> {
+export async function loadActiveLearner(): Promise<LearnerProfile | null> {
   const storedId = getStoredActiveLearnerId();
   if (storedId !== null) {
     const found = await db.learners.get(storedId);
@@ -318,6 +318,17 @@ export async function ensureDefaultLearner(): Promise<LearnerProfile> {
     }
     return normaliseLearnerProfile(existing);
   }
+
+  return null;
+}
+
+/**
+ * Restores an existing local learner or explicitly creates the default explorer
+ * profile (used for 1-tap quick start).
+ */
+export async function ensureDefaultLearner(): Promise<LearnerProfile> {
+  const existing = await loadActiveLearner();
+  if (existing) return existing;
 
   return createLearnerProfile({
     displayName: "Wee Explorer",

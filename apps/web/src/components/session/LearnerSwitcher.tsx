@@ -14,7 +14,7 @@ import {
   type LearnerThemePreference,
 } from "@/lib/db";
 import { getCompanionAvatar, resolveCompanionAvatarId } from "@/lib/avatars";
-import { playSfx } from "@/lib/audio";
+import { playAudioKey, playSfx } from "@/lib/audio";
 import { AvatarPicker } from "../avatars/AvatarPicker";
 import { CompanionAvatarSvg } from "../avatars/CompanionAvatarSvg";
 
@@ -339,7 +339,21 @@ export function LearnerSwitcher({
             </div>
           </div>
 
-          <div className="flex justify-end gap-2">
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+            <button
+              type="button"
+              onClick={() => {
+                playSfx("tap");
+                void playAudioKey(
+                  "prompt/sound-check",
+                  `Hello! ${selectedAvatarDef.name} is ready to play!`
+                );
+              }}
+              className="touch-card rounded-2xl bg-amber-100 px-4 py-3 text-sm font-extrabold text-amber-950 ring-1 ring-amber-300 hover:bg-amber-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-amber-500"
+            >
+              🔊 Sound Check
+            </button>
+
             <button
               type="submit"
               disabled={isSaving}

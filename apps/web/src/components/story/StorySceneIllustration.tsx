@@ -7,6 +7,7 @@ import type {
   StoryIllustrationKey,
 } from "@wee-sparks/curriculum-schema";
 import { CompanionAvatarSvg } from "../avatars/CompanionAvatarSvg";
+import { useCalmMode } from "../providers/MotionProvider";
 
 interface StorySceneIllustrationProps {
   illustration: StoryIllustrationKey;
@@ -27,7 +28,9 @@ export function StorySceneIllustration({
   compact = false,
   className = "",
 }: StorySceneIllustrationProps) {
-  const prefersReducedMotion = Boolean(useReducedMotion());
+  const osReducedMotion = Boolean(useReducedMotion());
+  const calmMode = useCalmMode();
+  const prefersReducedMotion = osReducedMotion || calmMode;
 
   return (
     <div

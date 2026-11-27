@@ -142,6 +142,15 @@
   }
 }
 
+[data-calm-mode="true"] .animate-star-pop,
+[data-calm-mode="true"] .animate-tile-snap,
+[data-calm-mode="true"] .animate-gentle-shake,
+[data-calm-mode="true"] .animate-hint-glow,
+[data-calm-mode="true"] .animate-stone-pop,
+[data-calm-mode="true"] .animate-confetti {
+  animation: none !important;
+}
+
 @media print {
   @page {
     size: A4 portrait;

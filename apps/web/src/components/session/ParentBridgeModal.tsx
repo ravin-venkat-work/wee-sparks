@@ -40,6 +40,8 @@ interface ParentBridgeModalProps {
   onToggleSfx: () => void;
   musicOn: boolean;
   onToggleMusic: () => void;
+  calmMode: boolean;
+  onToggleCalmMode: () => void;
   onStartFreshQuest: () => void;
   unlockedStickers: readonly UnlockedStickerRecord[];
   currentSkill: MicroSkill | null;
@@ -103,6 +105,8 @@ export function ParentBridgeModal({
   onToggleSfx,
   musicOn,
   onToggleMusic,
+  calmMode,
+  onToggleCalmMode,
   onStartFreshQuest,
   unlockedStickers,
   currentSkill,
@@ -323,6 +327,23 @@ export function ParentBridgeModal({
                     }`}
                   >
                     {musicOn ? "🎵 Gentle Music: On" : "🎵 Gentle Music: Off"}
+                  </button>
+
+                  <button
+                    type="button"
+                    aria-pressed={calmMode}
+                    onClick={() =>
+                      runIfParentGateUnlocked(isGateUnlocked, onToggleCalmMode)
+                    }
+                    className={`touch-card rounded-2xl px-4 py-3 text-sm font-extrabold focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500 ${
+                      calmMode
+                        ? "bg-indigo-700 text-white ring-2 ring-indigo-800 shadow-sm"
+                        : "bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-indigo-50"
+                    }`}
+                  >
+                    {calmMode
+                      ? "🌙 Calm Mode: On (Quiet & Low Motion)"
+                      : "🌙 Calm Mode: Off"}
                   </button>
                 </div>
 

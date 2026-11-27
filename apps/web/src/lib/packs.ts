@@ -9,8 +9,10 @@ import p1StarterPackRaw from "@/data/packs/p1-starter-pack.json";
 import p1ThemedExpansionRaw from "@/data/packs/p1-themed-expansion.json";
 import p1CoreExpansionRaw from "@/data/packs/p1-core-expansion.json";
 import p1MasteryExpansionRaw from "@/data/packs/p1-mastery-expansion.json";
+import p1TracingStudioRaw from "@/data/packs/p1-tracing-studio.json";
 import p2FoundationPackRaw from "@/data/packs/p2-foundation-pack.json";
 import p2MasteryExpansionRaw from "@/data/packs/p2-mastery-expansion.json";
+import p2TracingStudioRaw from "@/data/packs/p2-tracing-studio.json";
 import type { YearGroupFilter } from "@/lib/adaptive/sessionComposer";
 
 /**
@@ -29,19 +31,27 @@ export const P1_CORE_EXPANSION_PACK: ContentPack =
 export const P1_MASTERY_EXPANSION_PACK: ContentPack =
   ContentPackSchema.parse(p1MasteryExpansionRaw);
 
+export const P1_TRACING_STUDIO_PACK: ContentPack =
+  ContentPackSchema.parse(p1TracingStudioRaw);
+
 export const P2_FOUNDATION_PACK: ContentPack =
   ContentPackSchema.parse(p2FoundationPackRaw);
 
 export const P2_MASTERY_EXPANSION_PACK: ContentPack =
   ContentPackSchema.parse(p2MasteryExpansionRaw);
 
+export const P2_TRACING_STUDIO_PACK: ContentPack =
+  ContentPackSchema.parse(p2TracingStudioRaw);
+
 export const ALL_CONTENT_PACKS: readonly ContentPack[] = [
   P1_STARTER_PACK,
   P1_THEMED_EXPANSION_PACK,
   P1_CORE_EXPANSION_PACK,
   P1_MASTERY_EXPANSION_PACK,
+  P1_TRACING_STUDIO_PACK,
   P2_FOUNDATION_PACK,
   P2_MASTERY_EXPANSION_PACK,
+  P2_TRACING_STUDIO_PACK,
 ];
 
 /**

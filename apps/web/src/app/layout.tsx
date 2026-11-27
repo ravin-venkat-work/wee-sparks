@@ -47,6 +47,7 @@ export default function RootLayout({
       <body className="min-h-screen">
         <ServiceWorkerRegistrar />
         <MotionProvider>{children}</MotionProvider>
+        {/* First-party cookieless page views & web vitals only — zero child/parent PII */}
         <Analytics />
       </body>
     </html>

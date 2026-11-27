@@ -15,6 +15,7 @@ import { POST_SOLVE_DOUBLE_TAP_WINDOW_MS } from "@/lib/sessionStateMachine";
 import { SeedItemArt } from "./SeedItemArt";
 import { TenFrameBoard } from "./TenFrameBoard";
 import { RewardPopCard } from "./RewardBurst";
+import { SoundWaveIconSvg, StarIconSvg } from "../icons/KidUiIcons";
 
 export type TapChoiceExercise =
   | InitialSoundMatchExercise
@@ -149,9 +150,7 @@ export function TapChoiceEngine({
           >
             {isSoundPrompt ? (
               <>
-                <span className="text-4xl" aria-hidden="true">
-                  🔊
-                </span>
+                <SoundWaveIconSvg className="h-10 w-10 text-sky-700" />
                 <span className="text-5xl font-black tracking-wide">
                   /{exercise.targetSound}/
                 </span>
@@ -167,8 +166,9 @@ export function TapChoiceEngine({
                   <div className="text-3xl font-black capitalize">
                     {exercise.stimulus.label}
                   </div>
-                  <div className="text-sm font-extrabold text-sky-700">
-                    🔊 Tap to hear
+                  <div className="inline-flex items-center gap-1.5 text-sm font-extrabold text-sky-700">
+                    <SoundWaveIconSvg className="h-4 w-4" />
+                    <span>Tap to hear</span>
                   </div>
                 </div>
               </>
@@ -193,15 +193,18 @@ export function TapChoiceEngine({
             aria-label={`Hear sentence: ${exercise.contextSentence.replace(/___/g, exercise.targetWord)}`}
             className="touch-card flex min-h-[100px] items-center gap-4 rounded-3xl bg-violet-100 px-8 py-5 text-violet-950 shadow-sm ring-4 ring-violet-200 hover:bg-violet-200"
           >
-            <span className="text-5xl" aria-hidden="true">
-              {exercise.stimulusEmoji}
-            </span>
+            <SeedItemArt
+              itemKey={exercise.targetWordAudioKey}
+              fallbackEmoji={exercise.stimulusEmoji}
+              className="h-14 w-14 shrink-0"
+            />
             <div className="text-left">
               <div className="text-2xl font-black tracking-wide sm:text-3xl">
                 {exercise.contextSentence}
               </div>
-              <div className="text-sm font-extrabold text-violet-700">
-                🔊 Tap to hear the sentence
+              <div className="inline-flex items-center gap-1.5 text-sm font-extrabold text-violet-700">
+                <SoundWaveIconSvg className="h-4 w-4" />
+                <span>Tap to hear the sentence</span>
               </div>
             </div>
           </button>
@@ -325,10 +328,10 @@ export function TapChoiceEngine({
                   </span>
                   {isCorrectCard && (
                     <span
-                      className="animate-star-pop text-lg font-extrabold text-emerald-700"
+                      className="animate-star-pop inline-flex items-center"
                       aria-hidden="true"
                     >
-                      ⭐
+                      <StarIconSvg className="h-6 w-6" />
                     </span>
                   )}
                 </button>
